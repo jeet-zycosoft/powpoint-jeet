@@ -1,0 +1,6 @@
+paymentError:
+    altIllustration: Illustration d'échec de paiement
+    title: Échec du paiement
+    subtitle: Votre paiement a été annulé ou n'a pas pu être finalisé.
+    tryAgain: Réessayer
+    goHome: Aller à l'accueil

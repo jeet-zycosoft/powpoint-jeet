@@ -1,0 +1,59 @@
+listing:
+    filter: Filtrer
+    filters: Filtres
+    seeMore: Voir plus
+    loading: Chargement...
+    loadingListings: Chargement des annonces...
+    loadingSearch: Recherche de partenaires vérifiés dans votre zone...
+    heading:
+        sitters: Gardiens d'animaux suggérés dans votre zone.
+        owners: Propriétaires d'animaux suggérés dans votre zone.
+    counts:
+        sitter: gardien
+        sitters: gardiens
+        owner: propriétaire
+        owners: propriétaires
+        found: '{count} {role} trouvés'
+    guestLocation:
+        title: Ajoutez un lieu pour rechercher
+        desc: Choisissez une ville ou une adresse pour afficher les gardiens près de chez vous.
+    empty:
+        noneNearbyTitle: Aucun {role} trouvé à proximité
+        noneNearbyDesc: Aucun {roleLower} trouvé près de cet emplacement.
+        noneTitle: Aucun {role} trouvé
+        noneDesc: Essayez d'ajuster vos filtres ou votre emplacement pour découvrir plus de {roleLower}.
+        sitters: Gardiens
+        sittersLower: gardiens
+        owners: Propriétaires
+        ownersLower: propriétaires
+        sitter: Gardien
+        owner: Propriétaire
+    error: Échec du chargement des annonces actives
+    filterPanel:
+        addressLabel: Saisissez votre adresse*
+        additionalServices: Services supplémentaires*
+        chooseLanguage: Choisissez la langue*
+        availability: Disponibilité
+        puppyCare: Soins aux chiots
+        ownDog: Possède un chien
+        acceptsUnspayed: Accepte non stérilisées
+        bathingGrooming: Bain / toilettage
+        dutch: Néerlandais
+        english: Anglais
+        others: Autres
+        sunday: Dimanche
+        monday: Lundi
+        tuesday: Mardi
+        wednesday: Mercredi
+        thursday: Jeudi
+        friday: Vendredi
+        saturday: Samedi
+    map:
+        loadingCoordinates: Chargement des coordonnées de la carte...
+    guestModal:
+        title: Où devons-nous rechercher ?
+        copy: Choisissez un lieu pour trouver des gardiens d'animaux à proximité. Nous en avons besoin avant d'afficher les résultats.
+        locationLabel: Lieu
+        placeholder: Rechercher une ville ou une adresse
+        searchSitters: Rechercher des gardiens
+        locationRequired: Veuillez sélectionner un lieu parmi les suggestions. La saisie seule ne suffit pas.

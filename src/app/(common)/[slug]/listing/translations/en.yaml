@@ -1,0 +1,59 @@
+listing:
+    filter: Filter
+    filters: Filters
+    seeMore: See more
+    loading: Loading...
+    loadingListings: Loading listings...
+    loadingSearch: Searching for verified partners in your area...
+    heading:
+        sitters: Suggested Pet Sitters in Your Area.
+        owners: Suggested Pet Owners in Your Area.
+    counts:
+        sitter: sitter
+        sitters: sitters
+        owner: owner
+        owners: owners
+        found: '{count} {role} found'
+    guestLocation:
+        title: Add a location to search
+        desc: Choose a city or address so we can show sitters near you.
+    empty:
+        noneNearbyTitle: No {role} Found Nearby
+        noneNearbyDesc: No {roleLower} found near this location.
+        noneTitle: No {role} Found
+        noneDesc: Try adjusting your filters or location to discover more {roleLower}.
+        sitters: Sitters
+        sittersLower: sitters
+        owners: Owners
+        ownersLower: owners
+        sitter: Sitter
+        owner: Owner
+    error: Failed to fetch active listings
+    filterPanel:
+        addressLabel: Type Your Address*
+        additionalServices: Additional services*
+        chooseLanguage: Choose language*
+        availability: Availability
+        puppyCare: Puppy Care
+        ownDog: Own a dog
+        acceptsUnspayed: Accepts unspayed
+        bathingGrooming: Bathing / Grooming
+        dutch: Dutch
+        english: English
+        others: Others
+        sunday: Sunday
+        monday: Monday
+        tuesday: Tuesday
+        wednesday: Wednesday
+        thursday: Thursday
+        friday: Friday
+        saturday: Saturday
+    map:
+        loadingCoordinates: Loading map coordinates...
+    guestModal:
+        title: Where should we search?
+        copy: Choose a location to find pet sitters nearby. We need this before we can show results.
+        locationLabel: Location
+        placeholder: Search city or address
+        searchSitters: Search sitters
+        locationRequired: Please select a location from the suggestions. Typing alone is not enough.

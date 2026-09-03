@@ -1,0 +1,162 @@
+@use "@/styles/var";
+@use "sass:map";
+@use "sass:color";
+
+.pawpoint-chat-modal {
+    .modal-dialog {
+        max-width: 500px;
+        padding: 1.5rem;
+    }
+
+    .modal-content {
+        background: map.get(var.$colors, "white");
+        border: 1px solid map.get(var.$colors, "border1");
+        border-radius: 1.25rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        position: relative;
+    }
+
+    .modal-content-wrapper {
+        position: relative;
+        width: 100%;
+    }
+
+    .modal-close-btn {
+        position: absolute;
+        top: 1.25rem;
+        right: 1.25rem;
+        background: map.get(var.$colors, "light_bg");
+        border: 1px solid map.get(var.$colors, "border1");
+        color: map.get(var.$colors, "secondary");
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 10;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+
+        svg {
+            transition: transform 0.3s ease;
+        }
+
+        &:hover {
+            background-color: map.get(var.$colors, "primary");
+            border-color: map.get(var.$colors, "primary");
+            color: map.get(var.$colors, "heading");
+            transform: scale(1.08);
+            box-shadow: 0 4px 12px rgba(247, 178, 103, 0.25);
+
+            svg {
+                transform: rotate(90deg);
+            }
+        }
+
+        &:active {
+            transform: scale(0.95);
+        }
+    }
+
+    .modal-title {
+        font-family: map.get(var.$fonts, "primary");
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: map.get(var.$colors, "heading");
+    }
+
+    .modal-message {
+        font-family: map.get(var.$fonts, "secondary");
+        font-size: 1rem;
+        line-height: 1.6;
+        color: map.get(var.$colors, "secondary");
+    }
+
+    // Custom Icon styling
+    .icon-success {
+        color: map.get(var.$colors, "success");
+    }
+
+    .icon-lock,
+    .icon-warning {
+        color: map.get(var.$colors, "primary");
+    }
+
+    .icon-location {
+        color: map.get(var.$colors, "secondary");
+    }
+
+    // Button Styling matching the site theme
+    .btn-brand-primary {
+        background-color: map.get(var.$colors, "primary");
+        border-color: map.get(var.$colors, "primary");
+        color: map.get(var.$colors, "dark");
+        font-weight: 600;
+        border-radius: 0.75rem;
+        transition: all 0.2s ease;
+
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: color.adjust(
+                map.get(var.$colors, "primary"),
+                $lightness: -5%
+            ) !important;
+            border-color: color.adjust(map.get(var.$colors, "primary"), $lightness: -5%) !important;
+            color: map.get(var.$colors, "dark") !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(247, 178, 103, 0.2);
+        }
+
+        &:disabled {
+            background-color: color.adjust(map.get(var.$colors, "primary"), $lightness: 15%);
+            border-color: color.adjust(map.get(var.$colors, "primary"), $lightness: 15%);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+    }
+
+    .btn-brand-outline {
+        background-color: transparent;
+        border-color: map.get(var.$colors, "secondary");
+        color: map.get(var.$colors, "secondary");
+        font-weight: 600;
+        border-radius: 0.75rem;
+        transition: all 0.2s ease;
+
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: map.get(var.$colors, "secondary") !important;
+            border-color: map.get(var.$colors, "secondary") !important;
+            color: map.get(var.$colors, "white") !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(74, 118, 110, 0.15);
+        }
+    }
+
+    .btn-custom-secondary {
+        background-color: map.get(var.$colors, "light_bg");
+        border-color: map.get(var.$colors, "border1");
+        color: map.get(var.$colors, "secondary");
+        font-weight: 600;
+        border-radius: 0.75rem;
+        transition: all 0.2s ease;
+
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: color.adjust(
+                map.get(var.$colors, "light_bg"),
+                $lightness: -3%
+            ) !important;
+            border-color: color.adjust(map.get(var.$colors, "border1"), $lightness: -5%) !important;
+            color: map.get(var.$colors, "heading") !important;
+            transform: translateY(-1px);
+        }
+    }
+}

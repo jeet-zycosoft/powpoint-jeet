@@ -1,0 +1,112 @@
+@use "@/styles/var";
+@use "sass:map";
+
+.form-container-2 {
+    //   max-width: 992px;
+    margin-top: 40px;
+    //   background-color: #faf8f5;
+    padding-block: 4rem;
+
+    .form-section {
+        background-color: map.get(var.$colors, "white");
+        padding: 3rem;
+        border-radius: 1.2rem;
+        margin-bottom: 30px;
+        border: 1px solid map.get(var.$colors, "formBorder");
+
+        &:first-child {
+            background-color: map.get(var.$colors, "formBorder");
+        }
+
+        h2 {
+            color: map.get(var.$colors, "text");
+            font-family: map.get(var.$fonts, "primary");
+            font-weight: 700;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            color: map.get(var.$colors, "secondary");
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+
+            span {
+                font-weight: 400;
+            }
+        }
+
+        .address-input {
+            display: flex;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 5px;
+
+            input {
+                flex: 1;
+                border: none;
+                padding: 15px;
+                background-color: transparent;
+                font-size: 16px;
+            }
+
+            button {
+                background-color: #f5a623;
+                border: none;
+                border-radius: 5px;
+                color: white;
+                padding: 0 20px;
+                cursor: pointer;
+
+                svg {
+                    stroke: white;
+                }
+            }
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+
+            //   label {
+            //     display: flex;
+            //     align-items: center;
+            //     background-color: #962f2f;
+            //     padding: 10px 20px;
+            //     border-radius: 5px;
+            //     cursor: pointer;
+            //     transition: all 0.2s ease;
+
+            //     input[type='checkbox'] {
+            //       margin-right: 10px;
+            //       accent-color: #005c5c;
+            //     }
+
+            //     &:has(input:checked) {
+            //       background-color: #e6f2f2;
+            //       color: #005c5c;
+            //     }
+            //   }
+        }
+
+        .add-language-btn {
+            display: block;
+            margin: 20px auto 0;
+            background: none;
+            border: none;
+            color: #005c5c;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+
+    .btn-primary {
+        display: block;
+        margin: 30px auto 0;
+    }
+}

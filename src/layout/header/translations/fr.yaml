@@ -1,0 +1,13 @@
+header:
+    home: 'Accueil'
+    findSitter: 'Trouver un Gardien'
+    findOwner: 'Trouver un Propriétaire'
+    conversations: 'Conversations'
+    favorites: 'Favoris'
+    becomeSitter: 'Devenir Gardien'
+    blog: 'Blog'
+    support: 'Support'
+    login: 'Connexion'
+    logoAlt: 'Logo PawPoint'
+    incompleteProfileDefault: "Complétez d'abord votre profil pour parcourir les annonces."
+    incompleteProfileMissing: 'Encore requis : {items}'

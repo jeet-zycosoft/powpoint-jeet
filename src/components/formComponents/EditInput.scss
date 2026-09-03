@@ -1,0 +1,29 @@
+@use "@/styles/var";
+@use "sass:map";
+.EditableInput-box {
+    width: 100%;
+    position: relative;
+    input {
+        width: 100%;
+        padding-inline-start: 1.5rem;
+        padding-inline-end: 3.5rem;
+        padding-block: 1rem;
+        border: 1px solid map.get(var.$colors, "formBorder");
+        border-radius: 1rem;
+        font-family: map.get(var.$fonts, "primary");
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #0ca589;
+        &:focus {
+            outline: none;
+        }
+    }
+    button {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        border: none;
+        background-color: transparent;
+    }
+}

@@ -1,0 +1,59 @@
+listing:
+    filter: Filtrar
+    filters: Filtros
+    seeMore: Ver más
+    loading: Cargando...
+    loadingListings: Cargando listados...
+    loadingSearch: Buscando socios verificados en su zona...
+    heading:
+        sitters: Cuidadores de mascotas sugeridos en su zona.
+        owners: Dueños de mascotas sugeridos en su zona.
+    counts:
+        sitter: cuidador
+        sitters: cuidadores
+        owner: dueño
+        owners: dueños
+        found: '{count} {role} encontrados'
+    guestLocation:
+        title: Añada una ubicación para buscar
+        desc: Elija una ciudad o dirección para mostrar cuidadores cerca de usted.
+    empty:
+        noneNearbyTitle: No se encontraron {role} cerca
+        noneNearbyDesc: No se encontraron {roleLower} cerca de esta ubicación.
+        noneTitle: No se encontró {role}
+        noneDesc: Intente ajustar sus filtros o ubicación para descubrir más {roleLower}.
+        sitters: Cuidadores
+        sittersLower: cuidadores
+        owners: Dueños
+        ownersLower: dueños
+        sitter: Cuidador
+        owner: Dueño
+    error: No se pudieron cargar los listados activos
+    filterPanel:
+        addressLabel: Escriba su dirección*
+        additionalServices: Servicios adicionales*
+        chooseLanguage: Elija idioma*
+        availability: Disponibilidad
+        puppyCare: Cuidado de cachorros
+        ownDog: Tiene perro
+        acceptsUnspayed: Acepta sin esterilizar
+        bathingGrooming: Baño / peluquería
+        dutch: Neerlandés
+        english: Inglés
+        others: Otros
+        sunday: Domingo
+        monday: Lunes
+        tuesday: Martes
+        wednesday: Miércoles
+        thursday: Jueves
+        friday: Viernes
+        saturday: Sábado
+    map:
+        loadingCoordinates: Cargando coordenadas del mapa...
+    guestModal:
+        title: ¿Dónde debemos buscar?
+        copy: Elija una ubicación para encontrar cuidadores de mascotas cerca. Lo necesitamos antes de mostrar resultados.
+        locationLabel: Ubicación
+        placeholder: Buscar ciudad o dirección
+        searchSitters: Buscar cuidadores
+        locationRequired: Seleccione una ubicación de las sugerencias. Escribir solo no es suficiente.

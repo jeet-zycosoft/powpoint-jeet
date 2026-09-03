@@ -1,0 +1,21 @@
+auth:
+    changePasswordTitle: 'Cambiar contraseña'
+    changePasswordDesc: 'Por favor ingrese su nueva contraseña a continuación.'
+    newPasswordLabel: 'Nueva contraseña'
+    newPasswordPlaceholder: 'Ingrese nueva contraseña'
+    confirmPasswordLabel: 'Confirmar contraseña'
+    confirmPasswordPlaceholder: 'Confirmar nueva contraseña'
+    passwordMismatch: 'Las contraseñas no coinciden.'
+    passwordRequired: 'La contraseña es obligatoria.'
+    tokenMissing: 'Enlace de restablecimiento de contraseña no válido o caducado. Solicite uno nuevo.'
+    continue: 'Restablecer contraseña'
+    back: 'Volver a iniciar sesión'
+    successTitle: 'Contraseña cambiada'
+    successDesc: 'Tu contraseña ha sido restablecida con éxito. Serás redirigido a la página de inicio de sesión en breve.'
+    changePasswordImageAlt: Imagen de cambio de contraseña
+    invalidResetLinkTitle: Enlace de restablecimiento no válido
+    requestNewLink: Solicitar nuevo enlace
+    redirectingCountdown: 'Redirigiendo al inicio de sesión en {seconds}s'
+    passwordChangedDefault: La contraseña se ha cambiado correctamente.
+    resetError: Algo salió mal. Inténtalo de nuevo.
+    loadingFallback: Cargando...

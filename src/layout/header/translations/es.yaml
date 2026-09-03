@@ -1,0 +1,13 @@
+header:
+    home: 'Inicio'
+    findSitter: 'Buscar un Cuidador'
+    findOwner: 'Buscar un Dueño'
+    conversations: 'Conversaciones'
+    favorites: 'Favoritos'
+    becomeSitter: 'Convertirse en Cuidador'
+    blog: 'Blog'
+    support: 'Soporte'
+    login: 'Iniciar Sesión'
+    logoAlt: 'Logo de PawPoint'
+    incompleteProfileDefault: 'Completa tu perfil primero para explorar los listados.'
+    incompleteProfileMissing: 'Aún falta: {items}'

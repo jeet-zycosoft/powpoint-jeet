@@ -1,0 +1,286 @@
+@use "@/styles/var";
+@use "sass:map";
+
+.blog-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    .sidebar-widget {
+        background-color: map.get(var.$colors, "white");
+        border: 1px solid map.get(var.$colors, "formBorder");
+        border-radius: 20px;
+        padding: 24px;
+        box-shadow: 0 8px 24px rgba(12, 39, 34, 0.04);
+
+        .widget-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: map.get(var.$colors, "heading");
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 40px;
+                height: 3px;
+                background-color: map.get(var.$colors, "primary");
+                border-radius: 10px;
+            }
+        }
+    }
+
+    // Categories Widget
+    .widget-categories {
+        .category-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            .category-link {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px 14px;
+                border-radius: 12px;
+                background: transparent;
+                border: 1px solid transparent;
+                color: map.get(var.$colors, "text");
+                font-size: 0.95rem;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.25s ease;
+
+                .cat-count {
+                    font-size: 0.8rem;
+                    font-weight: 600;
+                    background: #f0ece2;
+                    color: map.get(var.$colors, "heading");
+                    padding: 2px 10px;
+                    border-radius: 20px;
+                    transition: all 0.25s ease;
+                }
+
+                &:hover,
+                &.active {
+                    background-color: #f8f6f1;
+                    color: map.get(var.$colors, "secondary");
+
+                    .cat-count {
+                        background-color: map.get(var.$colors, "secondary");
+                        color: map.get(var.$colors, "white");
+                    }
+                }
+            }
+        }
+    }
+
+    // Recent Posts Widget
+    .widget-recent-posts {
+        .recent-posts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .recent-post-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+
+            .recent-post-thumb {
+                flex-shrink: 0;
+                width: 66px;
+                height: 66px;
+                border-radius: 12px;
+                overflow: hidden;
+                background-color: map.get(var.$colors, "light_bg");
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: transform 0.3s ease;
+                }
+
+                &:hover img {
+                    transform: scale(1.08);
+                }
+            }
+
+            .recent-post-info {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+
+                .post-date {
+                    font-size: 0.78rem;
+                    color: #6b7280;
+                    display: flex;
+                    align-items: center;
+                    gap: 4px;
+
+                    .icon {
+                        color: map.get(var.$colors, "secondary");
+                    }
+                }
+
+                .post-title {
+                    font-size: 0.95rem;
+                    font-weight: 600;
+                    line-height: 1.35;
+                    margin: 0;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    overflow: hidden;
+
+                    a {
+                        color: map.get(var.$colors, "heading");
+                        text-decoration: none !important;
+
+                        &:hover {
+                            color: map.get(var.$colors, "secondary");
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Newsletter Widget
+    .widget-newsletter {
+        background: linear-gradient(135deg, #0c2722 0%, #19453d 100%);
+        color: map.get(var.$colors, "white");
+        border: none;
+
+        .newsletter-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+
+            .icon-wrapper {
+                width: 54px;
+                height: 54px;
+                border-radius: 50%;
+                background: rgba(247, 178, 103, 0.2);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 14px;
+
+                .newsletter-icon {
+                    font-size: 1.5rem;
+                    color: map.get(var.$colors, "primary");
+                }
+            }
+
+            h4 {
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: map.get(var.$colors, "white");
+                margin-bottom: 8px;
+            }
+
+            p {
+                font-size: 0.88rem;
+                color: #d1d5db;
+                line-height: 1.45;
+                margin-bottom: 18px;
+            }
+
+            .newsletter-form {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                .newsletter-input {
+                    width: 100%;
+                    padding: 10px 16px;
+                    border-radius: 50px;
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                    background: rgba(255, 255, 255, 0.1);
+                    color: map.get(var.$colors, "white");
+                    font-size: 0.9rem;
+
+                    &::placeholder {
+                        color: #9ca3af;
+                    }
+
+                    &:focus {
+                        outline: none;
+                        background: rgba(255, 255, 255, 0.2);
+                        border-color: map.get(var.$colors, "primary");
+                    }
+                }
+
+                .newsletter-btn {
+                    width: 100%;
+                    padding: 10px 20px;
+                    border-radius: 50px;
+                    border: none;
+                    background-color: map.get(var.$colors, "primary");
+                    color: map.get(var.$colors, "black");
+                    font-weight: 700;
+                    font-size: 0.9rem;
+                    cursor: pointer;
+                    transition: background-color 0.25s ease;
+
+                    &:hover {
+                        background-color: #e5a156;
+                    }
+                }
+            }
+
+            .newsletter-success {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                padding: 10px 16px;
+                border-radius: 50px;
+                background-color: rgba(96, 200, 105, 0.2);
+                color: map.get(var.$colors, "success");
+                font-weight: 600;
+                font-size: 0.9rem;
+            }
+        }
+    }
+
+    // Tags Widget
+    .widget-tags {
+        .tags-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+
+            .tag-pill {
+                font-size: 0.82rem;
+                font-weight: 600;
+                color: map.get(var.$colors, "secondary");
+                background-color: #f8f6f1;
+                border: 1px solid map.get(var.$colors, "formBorder");
+                padding: 6px 14px;
+                border-radius: 50px;
+                transition: all 0.25s ease;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: map.get(var.$colors, "secondary");
+                    color: map.get(var.$colors, "white");
+                    border-color: map.get(var.$colors, "secondary");
+                }
+            }
+        }
+    }
+}
+

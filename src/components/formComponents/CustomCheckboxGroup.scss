@@ -1,0 +1,75 @@
+@use "@/styles/var";
+@use "sass:map";
+.custom-checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: map.get(var.$colors, "secondary");
+    user-select: none;
+    border: 2px solid map.get(var.$colors, "formBorder1");
+    border-radius: 1.5rem;
+    background: map.get(var.$colors, "formBorder2");
+    height: 400px;
+
+    .heading {
+        font-size: 1.75rem;
+        font-weight: 600;
+        color: map.get(var.$colors, "text");
+        margin-bottom: 1rem;
+    }
+
+    input {
+        display: none;
+    }
+    /* Checkbox box */
+    .checkbox {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 0.75rem;
+
+        .checkmark {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            border: 2px solid #8ba59b;
+            display: inline-block;
+            position: relative;
+            transition: 0.25s;
+            /* Checkmark tick */
+            &::after {
+                content: "";
+                position: absolute;
+                width: 6px;
+                height: 12px;
+                border: solid white;
+                border-width: 0 2.5px 2.5px 0;
+                top: 2px;
+                left: 6px;
+                opacity: 0;
+                transform: rotate(45deg);
+                transition: 0.25s;
+            }
+        }
+        /* Checked state */
+        input:checked + .checkmark {
+            background: map.get(var.$colors, "secondary");
+            border-color: map.get(var.$colors, "secondary");
+            &::after {
+                opacity: 1;
+            }
+        }
+    }
+
+    .checkbox-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+}

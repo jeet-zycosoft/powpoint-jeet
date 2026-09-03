@@ -1,0 +1,63 @@
+workerDetails:
+    loading: Cargando detalles del perfil...
+    notFound:
+        title: Cuidador no encontrado
+        message: Este perfil de cuidador no está disponible.
+    fallbackName: Cuidador de mascotas
+    reviewsCount: '{count} Reseñas'
+    locationLabel: 'Ubicación:'
+    chatNow: Chatear ahora
+    verifying: Verificando...
+    services:
+        title: Servicios
+        empty: No hay servicios listados.
+        seeAdditionalRates: Ver tarifas adicionales
+        boarding:
+            title: Alojamiento
+            description: en el hogar del cuidador
+            unit: por noche
+        houseSitting:
+            title: Cuidado de casas
+            description: en tu hogar
+            unit: por noche
+        dropIn:
+            title: Visitas a domicilio
+            description: visitas en tu hogar
+            unit: por visita
+        daycare:
+            title: Guardería para perros
+            description: en el hogar del cuidador
+            unit: por día
+        walking:
+            title: Paseo de perros
+            description: paseos en tu vecindario
+            unit: por paseo
+    verified:
+        title: Datos verificados
+        email: Dirección de correo
+        idCheck: Verificación de identidad
+        reviews: Reseñas
+    location:
+        title: Ubicación
+    description: Descripción
+    experience: Experiencia
+    starSitter:
+        title: '{name} tiene el estado Star Sitter'
+        body: El programa Star Sitter destaca a cuidadores receptivos que ofrecen un cuidado muy valorado y tienen un historial de disponibilidad y preferencias precisas, facilitando a los dueños encontrar el mejor cuidado para sus mascotas.
+    reviews:
+        title: Reseñas
+        readMore: Leer más reseñas
+        petParent: Dueño de mascota
+        repeatClient: Cliente habitual
+    about: Acerca de {name}.
+    communication: Comunicación
+    skills: Habilidades
+    safety: Seguridad, confianza y entorno
+    alternatives: Alternativas
+    toasts:
+        loginRequired: Inicia sesión para chatear con cuidadores.
+        verifyFailed: No se pudo verificar el estado del chat.
+        accepted: ¡Conversación aceptada!
+        acceptFailed: No se pudo aceptar la conversación.
+        declined: Conversación rechazada.
+        declineFailed: No se pudo rechazar la conversación.

@@ -1,0 +1,9 @@
+conversations:
+    title: My conversations
+    loading: Loading conversations...
+    error: Failed to load conversations.
+    empty: No conversations found.
+    findSitter: Find a Sitter
+    findOwner: Find an Owner
+    fallbackUser: User
+    pendingAccept: Pending accept

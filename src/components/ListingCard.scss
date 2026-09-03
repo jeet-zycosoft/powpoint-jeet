@@ -1,0 +1,137 @@
+@use "@/styles/var";
+@use "sass:map";
+.sitter-card {
+    width: 100%;
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.25rem;
+    border: 1px solid #e8ebf0;
+    border-radius: 0.5rem;
+    background-color: #ffffff;
+    transition: 0.3s ease-in-out;
+    position: relative;
+
+    &__image {
+        position: relative;
+        img {
+            width: 100%;
+            min-width: 180px;
+            max-width: 400px;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 1rem;
+            background-color: map.get(var.$colors, "primary");
+        }
+        .verify {
+            position: absolute;
+            right: -16px;
+            bottom: -10px;
+            padding: 0.2rem;
+            width: 2.2rem;
+            height: 2.2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50px;
+            background-color: #fff;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    .sitter-info {
+        flex: 1;
+        &--name {
+            font-family: map.get(var.$fonts, "primary");
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+        &--location {
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: map.get(var.$colors, "secondary");
+        }
+    }
+    .sitter-details {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 0.5rem;
+        &-item {
+            font-family: map.get(var.$fonts, "primary");
+            color: map.get(var.$colors, "secondary");
+            font-weight: 500;
+            padding: 0.25rem 1rem;
+            border-radius: 0.5rem;
+            background-color: #faf9f6;
+            span {
+                color: map.get(var.$colors, "text");
+                font-weight: bold;
+            }
+        }
+    }
+    .short-desc-heading {
+        font-weight: 600;
+        color: map.get(var.$colors, "heading");
+        margin-bottom: 0.2rem;
+    }
+    .short-desc {
+        max-width: 666px;
+        color: map.get(var.$colors, "secondary");
+        font-weight: 500;
+    }
+
+    .favorite-btn {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+    }
+    &:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    // card-type: fav
+    &.fav {
+        flex-direction: column;
+        border-radius: 0.8rem;
+        padding: 1rem;
+
+        .verify {
+            width: 2.8rem;
+            height: 2.8rem;
+            right: -12px;
+            bottom: -12px;
+            svg {
+                width: 2rem;
+                height: 3rem;
+            }
+        }
+        .favorite-btn {
+            right: 28px;
+            top: 28px;
+        }
+        .sitter-details {
+            gap: 0.8rem;
+            &-item {
+                font-size: 0.8rem;
+            }
+        }
+        .short-desc {
+            font-size: 0.8rem;
+            max-width: 100%;
+        }
+
+        @media screen and (max-width: 575px) {
+            .sitter-details {
+                gap: 0.8rem;
+                &-item {
+                    font-size: 1.2rem;
+                }
+            }
+            .short-desc {
+                font-size: 1rem;
+                max-width: 100%;
+            }
+        }
+    }
+}

@@ -1,0 +1,54 @@
+{
+  "header": {
+    "login": "Connexion / Inscription",
+    "home": "Accueil",
+    "findSitter": "Trouver un gardien",
+    "becomeSitter": "Devenir gardien",
+    "blog": "Blog",
+    "support": "Support",
+    "languages": "Langues"
+  },
+  "home": {
+    "hero": {
+      "heading": "Des <span>gardiens</span> fiables.",
+      "desc": "Réservez des gardiens locaux et vérifiés pour prendre soin de vos animaux comme vous le feriez pendant votre absence, au travail* ou en vacances.",
+      "buttonText": "Réserver un gardien"
+    },
+    "about": {
+      "heading": "Nous sommes plus <br /> que <span>juste des gardiens</span>",
+      "p1": "Contrairement à la croyance populaire, le Lorem Ipsum n'est pas simplement du texte aléatoire. Il a ses racines dans une pièce de la littérature latine classique de 45 av. J.-C., ce qui lui donne plus de 2000 ans.",
+      "p2": "Richard McClintock, professeur de latin au Hampden-Sydney College en Virginie, a recherché l'un des mots latins les plus obscurs, consectetur, d'un passage du Lorem Ipsum, et en parcourant les citations du mot dans la littérature classique, a découvert la source incontestable.",
+      "p3": "Le Lorem Ipsum provient des sections 1.10.32 et 1.10.33 de \"de Finibus Bonorum et Malorum\" (Les extrêmes du bien et du mal) de Cicéron, écrit en 45 av. J.-C. Ce livre est un traité sur la théorie de l'éthique, très populaire à la Renaissance.",
+      "button": "Réserver un gardien"
+    }
+  },
+  "auth": {
+    "login": "Connexion",
+    "loginDesc": "Connectez-vous pour voir vos prochaines promenades, séances de jeu et amis à quatre pattes.",
+    "emailLabel": "Adresse e-mail*",
+    "emailPlaceholder": "Entrer l'email",
+    "passwordLabel": "Mot de passe*",
+    "confpasswordLabel": "Confirm Password*",
+    "forgotPassword": "Mot de passe oublié ?",
+    "continue": "Continuer",
+    "noAccount": "Vous n'avez pas de compte ?",
+    "register": "S'inscrire",
+    "or": "OU",
+    "google": "Continuer avec Google",
+    "createAccount": "Créez votre compte",
+    "signupDesc": "Inscrivez-vous et transformez votre amour des animaux en revenus.",
+    "firstName": "Prénom*",
+    "lastName": "Nom*",
+    "alreadyHaveAccount": "Vous avez déjà un compte ?"
+  },
+  "sitter": {
+    "hero": {
+      "heading": "Transformez votre amour pour les <span>animaux en un</span> chèque de paie",
+      "desc": "Rejoignez notre équipe et transformez chaque empreinte de patte en chèque de paie. Promenez des chiens, jouez à aller chercher et soyez payé - oui, c'est un vrai travail !",
+      "buttonText": "Commencer"
+    },
+    "benefits": {
+        "heading": "Avantages d'être <span>gardien</span>"
+    }
+  }
+}

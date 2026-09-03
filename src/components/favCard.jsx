@@ -1,0 +1,82 @@
+'use client';
+import Image from 'next/image';
+import { useIntl } from 'react-intl';
+import './favCard.scss';
+
+const HeartIcon = ({ active }) => {
+    return (
+        <svg
+            width="20"
+            height="18"
+            viewBox="0 0 20 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                d="M16 0.0658112C13.4479 -0.525521 10 3.06594 10 3.06594C10 3.06594 6.55214 -0.525572 4 0.065755C1.25655 0.701408 -2.13739e-05 3.68233 0 6.06581C5.82901e-05 12.5658 10 17.5659 10 17.5659C10 17.5659 20 12.0658 20 6.06581C20 3.56524 18.7434 0.701468 16 0.0658112Z"
+                fill={active ? '#FF0000' : 'none'}
+                stroke={active ? 'none' : '#beb4b4'}
+                strokeWidth={active ? '0' : '2px'}
+                stroke-location="inside"
+            />
+        </svg>
+    );
+};
+
+const VerifyIcon = () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+            d="M12.0572 22.5035C11.1189 22.4301 10.1572 24.3385 8.51521 23.947C6.61172 23.4932 6.75413 21.0655 6.21641 20.5461C5.58307 19.9345 3.96453 20.8153 2.51021 19.5675C1.20336 18.4462 2.60872 15.8485 2.51021 15.3347C2.36479 14.5762 -0.0292087 13.6917 0.00026999 12.0072C0.029104 10.3596 2.27561 9.3893 2.48672 8.85103C2.76033 8.15343 1.47324 6.2237 2.27561 4.76509C3.09661 3.27262 5.7238 3.88488 6.12257 3.59068C6.75591 3.12342 6.61562 0.678973 8.23371 0.116405C9.92264 -0.470794 11.3066 1.55993 12.0807 1.55993C12.6905 1.55994 14.2153 -0.504368 15.8338 0.116405C17.4523 0.737179 17.3116 3.24815 18.0153 3.61515C18.627 3.93417 20.7573 3.26412 21.6981 4.59382C22.8406 6.20862 21.2289 8.0681 21.6043 8.77763C22.0403 9.60205 24.0907 10.2701 23.9969 12.0806C23.9031 13.8912 21.9303 14.356 21.6043 15.2369C21.3325 15.9709 22.8024 18.0261 21.745 19.3228C20.4079 20.9625 18.5548 19.955 17.9684 20.4483C17.2412 21.0599 17.394 23.3631 15.8104 23.8736C14.0276 24.4483 12.9955 22.5769 12.0572 22.5035Z"
+            fill="#16E600"
+        />
+        <path
+            d="M16.5377 8.63102C17.053 9.19374 16.6784 9.92775 16.6784 9.92775L11.5592 15.3531C11.1666 15.7691 10.5058 15.7718 10.11 15.3589L7.48324 12.6191C7.48324 12.6191 7.03751 11.9096 7.55358 11.2979C8.13527 10.6084 8.93757 11.2 8.93757 11.2L10.8376 13.1329L15.2475 8.50868C15.2475 8.50868 16.0223 8.0683 16.5377 8.63102Z"
+            fill="white"
+            stroke="white"
+        />
+    </svg>
+);
+
+const Card = ({ name, location, age, exp, snippet, image }) => {
+    const intl = useIntl();
+    return (
+        <div className="fav_card">
+            <Image
+                src={`/images/sitter_thumb/${image}`}
+                alt={name}
+                width={200}
+                height={200}
+                className="fav_card-image"
+            />
+            <div className="">
+                <div className="card-like">
+                    <HeartIcon active={true} />
+                </div>
+                <div className="card-verified">
+                    <VerifyIcon />
+                </div>
+            </div>
+            <div className="card-content">
+                <h3>{name}</h3>
+                <p>{location}</p>
+                <div className="card-stats">
+                    <span>
+                        {intl.formatMessage({ id: 'common.age' })}{' '}
+                        <strong>
+                            {age} {intl.formatMessage({ id: 'common.years' })}
+                        </strong>
+                    </span>
+                    <span>
+                        {intl.formatMessage({ id: 'common.exp' })}{' '}
+                        <strong>
+                            {exp} {intl.formatMessage({ id: 'common.years' })}
+                        </strong>
+                    </span>
+                </div>
+                <p className="card-snippet">"{snippet}"</p>
+            </div>
+        </div>
+    );
+};
+
+export default Card;

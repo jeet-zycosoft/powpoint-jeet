@@ -1,0 +1,16 @@
+.upload-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1f4f4;
+    gap: 0.5rem;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+
+    p {
+        color: #666;
+        margin: 0;
+    }
+}

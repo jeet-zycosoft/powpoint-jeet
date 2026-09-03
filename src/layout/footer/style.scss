@@ -1,0 +1,440 @@
+@use "@/styles/custom-functions" as *;
+@use "@/styles/var";
+@use "@/styles/mixins";
+@use "sass:map";
+
+.site-footer {
+    margin-top: auto;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.footer-cities {
+    background-color: map.get(var.$colors, "secondary");
+    padding: toRem(48) 0 toRem(44);
+    color: #ffffff;
+
+    &__heading {
+        color: #ffffff;
+        font-size: toRem(24);
+        font-weight: 700;
+        line-height: 1.3;
+        margin: 0 0 toRem(28);
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        column-gap: toRem(32);
+        row-gap: toRem(12);
+    }
+
+    &__link {
+        display: inline-flex;
+        align-items: center;
+        width: fit-content;
+        max-width: 100%;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        appearance: none;
+        font-family: inherit;
+        color: #ffffff !important;
+        font-size: toRem(14);
+        font-weight: 400;
+        line-height: 1.5;
+        text-align: left;
+        text-decoration: none;
+        cursor: pointer;
+        transition:
+            color 0.2s ease,
+            transform 0.2s ease;
+
+        &:hover,
+        &:focus-visible {
+            color: map.get(var.$colors, "primary") !important;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            outline: none;
+        }
+
+        &.is-active {
+            color: map.get(var.$colors, "primary") !important;
+            font-weight: 600;
+        }
+    }
+
+    @include mixins.media-down("xl") {
+        &__grid {
+            column-gap: toRem(20);
+        }
+    }
+
+    @include mixins.media-down("lg") {
+        padding: toRem(40) 0 toRem(36);
+
+        &__heading {
+            font-size: toRem(22);
+            margin-bottom: toRem(22);
+        }
+
+        &__grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+
+    @include mixins.media-down("md") {
+        padding: toRem(32) 0 toRem(28);
+
+        &__heading {
+            font-size: toRem(20);
+            margin-bottom: toRem(18);
+        }
+
+        &__grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            column-gap: toRem(16);
+            row-gap: toRem(10);
+        }
+
+        &__link {
+            font-size: toRem(13);
+        }
+    }
+
+    @include mixins.mobile {
+        &__grid {
+            row-gap: toRem(8);
+        }
+    }
+}
+
+.footer-main {
+    background-color: #ffffff;
+    color: map.get(var.$colors, "heading");
+    padding: toRem(18) 0 toRem(16);
+
+    &__row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        align-items: center;
+        gap: toRem(16) toRem(24);
+    }
+
+    @include mixins.media-down("lg") {
+        padding: toRem(16) 0 toRem(14);
+
+        &__row {
+            gap: toRem(14) toRem(18);
+        }
+    }
+
+    @include mixins.media-down("md") {
+        &__row {
+            grid-template-columns: 1fr;
+            justify-items: center;
+            text-align: center;
+        }
+    }
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    justify-self: start;
+    gap: toRem(16);
+
+    &__logo-link {
+        display: inline-flex;
+        align-items: center;
+        line-height: 0;
+    }
+
+    &__logo {
+        width: auto;
+        max-width: toRem(122);
+        height: auto;
+        object-fit: contain;
+    }
+
+    @include mixins.media-down("md") {
+        width: 100%;
+        justify-content: center;
+        justify-self: center;
+        gap: toRem(12);
+
+        &__logo {
+            max-width: toRem(108);
+        }
+    }
+}
+
+.footer-social {
+    display: flex;
+    align-items: center;
+    justify-self: end;
+    gap: toRem(8);
+
+    &__item {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: toRem(32);
+        height: toRem(32);
+        border-radius: 50%;
+        background-color: map.get(var.$colors, "secondary");
+        color: #ffffff !important;
+        transition:
+            transform 0.2s ease,
+            background-color 0.2s ease,
+            box-shadow 0.2s ease;
+
+        svg {
+            width: toRem(13);
+            height: toRem(13);
+        }
+
+        &:hover,
+        &:focus-visible {
+            background-color: map.get(var.$colors, "primary");
+            color: map.get(var.$colors, "heading") !important;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(74, 118, 110, 0.22);
+            outline: none;
+        }
+    }
+
+    @include mixins.media-down("md") {
+        justify-self: center;
+    }
+}
+
+.footer-contact {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    gap: toRem(4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &__item {
+        display: inline-flex;
+        align-items: center;
+        min-width: 0;
+
+        &:not(:last-child)::after {
+            content: "";
+            display: block;
+            width: 1px;
+            height: toRem(16);
+            margin: 0 toRem(12);
+            background-color: map.get(var.$colors, "border1");
+            flex-shrink: 0;
+        }
+    }
+
+    &__link {
+        display: inline-flex;
+        align-items: center;
+        gap: toRem(8);
+        color: map.get(var.$colors, "text") !important;
+        text-decoration: none;
+        font-size: toRem(14);
+        font-weight: 500;
+        line-height: 1.3;
+        max-width: 100%;
+        transition: color 0.2s ease;
+
+        &:hover,
+        &:focus-visible {
+            color: map.get(var.$colors, "secondary") !important;
+            outline: none;
+
+            .footer-contact__icon {
+                background-color: map.get(var.$colors, "secondary");
+                color: #ffffff;
+            }
+        }
+
+        &--static {
+            cursor: default;
+        }
+    }
+
+    &__icon {
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: toRem(30);
+        height: toRem(30);
+        border-radius: 50%;
+        background-color: rgba(74, 118, 110, 0.1);
+        color: map.get(var.$colors, "secondary");
+        transition:
+            background-color 0.2s ease,
+            color 0.2s ease;
+
+        svg {
+            width: toRem(13);
+            height: toRem(13);
+        }
+    }
+
+    &__text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    @include mixins.media-down("md") {
+        width: 100%;
+        justify-content: center;
+        gap: toRem(10);
+
+        &__item:not(:last-child)::after {
+            display: none;
+        }
+
+        &__text {
+            white-space: normal;
+        }
+    }
+}
+
+.footer-legal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: toRem(6) toRem(16);
+
+    a {
+        position: relative;
+        color: #8a9199 !important;
+        font-size: toRem(13);
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 0.2s ease;
+
+        &:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            right: toRem(-9);
+            top: 50%;
+            width: 1px;
+            height: toRem(12);
+            background-color: #d7dbdf;
+            transform: translateY(-50%);
+        }
+
+        &:hover,
+        &:focus-visible {
+            color: map.get(var.$colors, "secondary") !important;
+            outline: none;
+        }
+    }
+}
+
+.footer-copy {
+    background-color: #ffffff;
+    border-top: 1px solid map.get(var.$colors, "border1");
+    padding: toRem(12) 0;
+
+    &__row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: toRem(12) toRem(20);
+    }
+
+    p {
+        margin: 0;
+        color: #9aa0a6;
+        font-size: toRem(13);
+        font-weight: 400;
+        line-height: 1.4;
+    }
+
+    @include mixins.media-down("md") {
+        padding: toRem(12) 0 toRem(14);
+
+        &__row {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: toRem(8);
+        }
+    }
+}
+
+.site-footer.is-sitter {
+    .footer-main,
+    .footer-copy {
+        background-color: map.get(var.$colors, "secondary");
+        color: #ffffff;
+    }
+
+    .footer-brand__logo-link {
+        background-color: #ffffff;
+        border-radius: toRem(8);
+        padding: toRem(6) toRem(10);
+    }
+
+    .footer-contact__link {
+        color: #ffffff !important;
+
+        &:hover,
+        &:focus-visible {
+            color: map.get(var.$colors, "primary") !important;
+
+            .footer-contact__icon {
+                background-color: map.get(var.$colors, "primary");
+                color: map.get(var.$colors, "heading");
+            }
+        }
+    }
+
+    .footer-contact__icon {
+        background-color: rgba(255, 255, 255, 0.16);
+        color: #ffffff;
+    }
+
+    .footer-contact__item:not(:last-child)::after {
+        background-color: rgba(255, 255, 255, 0.28);
+    }
+
+    .footer-social__item {
+        background-color: rgba(255, 255, 255, 0.16);
+        color: #ffffff !important;
+
+        &:hover,
+        &:focus-visible {
+            background-color: map.get(var.$colors, "primary");
+            color: map.get(var.$colors, "heading") !important;
+        }
+    }
+
+    .footer-copy {
+        border-top-color: rgba(255, 255, 255, 0.16);
+    }
+
+    .footer-copy p {
+        color: rgba(255, 255, 255, 0.72);
+    }
+
+    .footer-legal a {
+        color: rgba(255, 255, 255, 0.78) !important;
+
+        &:not(:last-child)::after {
+            background-color: rgba(255, 255, 255, 0.28);
+        }
+
+        &:hover,
+        &:focus-visible {
+            color: map.get(var.$colors, "primary") !important;
+        }
+    }
+}

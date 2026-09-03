@@ -1,0 +1,46 @@
+premium:
+    loading: Loading subscription plans...
+    errors:
+        loadFailed: Failed to load plan details. Please try again later.
+        unableToLoad: Unable to load subscription details.
+        loginRequired: Please log in to purchase Premium.
+        completeLocation: Please complete your profile location (city and map coordinates) before purchasing Active Premium.
+        orderFailed: Failed to initialize order checkout.
+        sdkFailed: Failed to load Razorpay payment SDK.
+        verificationFailed: Payment verification failed.
+        loginToContinue: Please log in to continue.
+        completeProfileLocation: Please complete your profile location.
+        invalidRequest: Invalid request. Please try again.
+        serviceUnavailable: Service temporarily unavailable. Please try again later.
+        genericError: An error occurred. Please try again.
+        unsupportedGateway: Unsupported payment gateway configuration.
+    retry: Retry
+    processing: Processing...
+    securePayment: Secure payment
+    noPlan: No active plan available at this time.
+    titles:
+        purchase: Active Premium
+        renew: Renew Your Active Premium
+        location: Active Premium for New Area
+        upgrade: Add Another Package
+    descriptions:
+        purchase: Get access to chat with sitters in your area.
+        renew: Your plan expired. Renew to continue chatting with sitters.
+        location: Buy Active Premium for this new location.
+        upgrade: Monthly sitter limit reached. Buy another package to connect with more sitters.
+    coverage: 'Coverage:'
+    coverageDetail: Sitters within {radius}m of your location
+    connections: 'Connections:'
+    connectionsDetail: Connect with {limit} new sitters per package
+    intervals:
+        month: /month
+        year: /year
+        week: /week
+        day: /day
+    defaultBenefits:
+        arrange: Arrange everything amongst yourselves
+        fullAccess: Full access
+        cancellable: Can be cancelled immediately
+    checkout:
+        name: PawPoint
+        description: Active Premium Subscription

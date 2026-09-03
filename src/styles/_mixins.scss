@@ -1,0 +1,122 @@
+@use "sass:map";
+// Breakpoint map matching standard Bootstrap 5 layouts
+$breakpoints: (
+    "xs": 0,
+    "sm": 576px,
+    "md": 768px,
+    "lg": 992px,
+    "xl": 1200px,
+    "xxl": 1400px,
+) !default;
+
+// Respond ABOVE a specific breakpoint (min-width)
+// Useful for mobile-first designs
+@mixin media-up($breakpoint) {
+    @if map.has-key($breakpoints, $breakpoint) {
+        $value: map.get($breakpoints, $breakpoint);
+        @media (min-width: $value) {
+            @content;
+        }
+    } @else {
+        // Fallback for custom raw values (e.g., 500px)
+        @media (min-width: $breakpoint) {
+            @content;
+        }
+    }
+}
+
+// Respond BELOW a specific breakpoint (max-width)
+// E.g., media-down("md") targets screen widths strictly below 768px (max-width: 767.98px)
+@mixin media-down($breakpoint) {
+    @if map.has-key($breakpoints, $breakpoint) {
+        $value: map.get($breakpoints, $breakpoint);
+        @if $value == 0 {
+            @content;
+        } @else {
+            @media (max-width: ($value - 1)) {
+                @content;
+            }
+        }
+    } @else {
+        // Fallback for custom raw values (e.g., 500px)
+        @media (max-width: $breakpoint) {
+            @content;
+        }
+    }
+}
+
+// Respond BETWEEN two breakpoints (min-width and max-width)
+@mixin media-between($min, $max) {
+    $min-val: if(map.has-key($breakpoints, $min), map.get($breakpoints, $min), $min);
+    $max-val: if(map.has-key($breakpoints, $max), map.get($breakpoints, $max), $max);
+
+    @if $min-val != 0 and $max-val != 0 {
+        @media (min-width: $min-val) and (max-width: ($max-val - 0.02px)) {
+            @content;
+        }
+    } @else if $min-val == 0 {
+        @include media-down($max) {
+            @content;
+        }
+    } @else if $max-val == 0 {
+        @include media-up($min) {
+            @content;
+        }
+    }
+}
+
+// Convenient device-specific aliases
+@mixin mobile {
+    @include media-down("sm") {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @include media-between("sm", "lg") {
+        @content;
+    }
+}
+
+@mixin tablet-portrait {
+    @include media-between("sm", "md") {
+        @content;
+    }
+}
+
+@mixin tablet-landscape {
+    @include media-between("md", "lg") {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @include media-up("lg") {
+        @content;
+    }
+}
+
+@mixin large-desktop {
+    @include media-up("xl") {
+        @content;
+    }
+}
+
+// Shorthand/Alias Mixins
+@mixin mq-up($breakpoint) {
+    @include media-up($breakpoint) {
+        @content;
+    }
+}
+
+@mixin mq-down($breakpoint) {
+    @include media-down($breakpoint) {
+        @content;
+    }
+}
+
+@mixin mq-between($min, $max) {
+    @include media-between($min, $max) {
+        @content;
+    }
+}

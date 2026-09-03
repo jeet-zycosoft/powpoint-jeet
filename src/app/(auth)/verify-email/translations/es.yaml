@@ -1,0 +1,27 @@
+auth:
+    verifyEmail: 'Verificar Correo'
+    verifyEmailDesc: 'Por favor, introduzca el código OTP enviado a su correo electrónico para verificar su cuenta.'
+    otpLabel: 'Contraseña de un solo uso'
+    otpPlaceholder: 'Introduzca su OTP'
+    continue: 'Continuar'
+    successTitle: 'Correo verificado'
+    successTitleHighlight: 'Exitosamente'
+    successDesc: 'Hemos verificado con éxito su correo electrónico. Abriendo su perfil...'
+    successDescLogin: 'Hemos verificado con éxito su correo electrónico. Inicie sesión para continuar.'
+    profileBtn: 'Ir al perfil'
+    resendOtp: 'Reenviar OTP'
+    resendingOtp: 'Enviando...'
+    verifyingLink: 'Verificando su correo...'
+    openingProfile: 'Abriendo su perfil...'
+    loginBtn: 'Ir a la página de inicio de sesión'
+    verifyEmailImageAlt: Imagen de verificación de correo
+    successImageAlt: Verificación exitosa
+    emailNotFound: No pudimos encontrar tu correo. Inicia sesión o regístrate de nuevo.
+    codeLength: El código de verificación debe tener 6 dígitos.
+    invalidVerification: Correo o código de verificación no válido.
+    invalidVerificationLink: Enlace de verificación no válido o caducado.
+    resendSuccess: Se ha enviado un nuevo código de verificación.
+    resendFailed: No se pudo reenviar el código de verificación. Inténtalo de nuevo.
+    verifiedLoginRequired: Correo verificado. Inicia sesión para continuar.
+    verifying: Verificando...
+    loadingFallback: Cargando...

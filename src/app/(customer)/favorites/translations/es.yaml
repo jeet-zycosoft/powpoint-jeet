@@ -1,0 +1,15 @@
+favorites:
+    title: Mis favoritos
+    loading: Cargando favoritos...
+    error: No se pudieron cargar los favoritos
+    empty:
+        title: Aún no hay favoritos
+        desc: Explora y añade {role} de mascotas a tu lista de favoritos.
+        roleOwners: dueños
+        roleSitters: cuidadores
+    petPartner: Compañero de mascotas
+    pets:
+        dog: Perros
+        cat: Gatos
+        bird: Aves
+        other: Otros

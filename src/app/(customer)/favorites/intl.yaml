@@ -1,0 +1,15 @@
+favorites:
+    title: My favorites
+    loading: Loading favorites...
+    error: Failed to fetch favorites
+    empty:
+        title: No favorites yet
+        desc: Explore and add pet {role} to your favorites list.
+        roleOwners: owners
+        roleSitters: sitters
+    petPartner: Pet Partner
+    pets:
+        dog: Dogs
+        cat: Cats
+        bird: Birds
+        other: Other

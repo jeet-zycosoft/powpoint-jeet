@@ -1,0 +1,81 @@
+home:
+    hero:
+        heading: Des <span>gardiens d'animaux</span> fiables en qui vous pouvez avoir confiance
+        desc: Trouvez des gardiens d'animaux de compagnie de confiance et des promeneurs
+            de quartier pour des soins fiables et aimants lorsque vous ne pouvez pas
+            être là.
+        buttonText: Trouver un Gardien
+    searchBar:
+        lookingFor: Je cherche*
+        options:
+            boarding: Hébergement pour chiens
+            sitting: Garde à domicile
+            daycare: Garderie pour chiens
+            walking: Promenade de chiens
+        addressLabel: Adresse*
+        addressPlaceholder: Manchester au Royaume-Uni
+        button: Recherche
+    howItWorks:
+        heading: Comment <span>Ça Marche</span>
+        desc: Contrairement aux idées reçues, le Lorem Ipsum n'est pas simplement du
+            texte aléatoire.
+        card1:
+            title: Parcourir les Gardiens
+            desc: Recherchez des gardiens d'animaux par emplacement, disponibilité et
+                service.
+        card2:
+            title: Réservez en Toute Confiance
+            desc: Envoyez des messages, rencontrez et confirmez vos réservations en toute
+                sécurité.
+        card3:
+            title: Profitez d'une Tranquillité
+            desc: Votre gardien envoie des mises à jour quotidiennes et des photos.
+    testimonials:
+        heading: Ce Que Nos <span>Clients</span> Disent
+        desc: Contrairement aux idées reçues, le Lorem Ipsum n'est pas simplement du
+            texte aléatoire.
+    about:
+        heading: Des {br} <span>promeneurs d'animaux</span> {br} dévoués en qui vous
+            pouvez avoir confiance
+        p1: Au fond, nous comprenons que le bonheur de votre animal de compagnie est de
+            la plus haute importance.
+        button: En Savoir Plus
+    featuredSitters:
+        heading: <span>Gardiens d'Animaux</span> Près de Chez Vous
+        desc: Contrairement aux idées reçues, le Lorem Ipsum n'est pas simplement du
+            texte aléatoire.
+        button: Voir Tous
+    faq:
+        heading: FAQ – Vous Demandez, <span>Nous Répondons</span>
+        desc: Contrairement aux idées reçues, le Lorem Ipsum n'est pas simplement du
+            texte aléatoire.
+        q1: Vos gardiens sont-ils vérifiés ?
+        a1: Oui, tous nos gardiens subissent un processus de sélection rigoureux.
+        q2: Que comprend la garde d'animaux ?
+        a2: L'alimentation, les jeux, les promenades, les câlins et les mises à jour
+            régulières.
+        q3: Ma réservation est-elle assurée ?
+        a3: Oui, toutes les réservations sont couvertes par notre assurance haut de
+            gamme.
+        q4: Puis-je rencontrer le gardien d'abord ?
+        a4: Absolument ! Nous encourageons une rencontre préalable avant la réservation.
+        q5: Et si mon gardien annule ?
+        a5: Dans le cas rare d'une annulation, nous vous aidons à trouver un remplaçant
+            approprié.
+    services:
+        heading: Services de <span>Garde d'Animaux</span>
+        desc: Contrairement aux idées reçues, le Lorem Ipsum n'est pas simplement du
+            texte aléatoire.
+        boarding:
+            desc: Vos animaux passent la nuit chez le gardien.
+        sitting:
+            desc: Votre gardien prend soin de vos animaux et de votre maison.
+        walking:
+            desc: Votre chien se promène dans votre quartier.
+        daycare:
+            desc: Votre chien passe la journée chez le gardien.
+        button: Réserver un Gardien
+    blog:
+        heading: Conseils, Actualités et <span>Histoires</span>
+        desc: Contrairement aux idées reçues, le Lorem Ipsum n'est pas simplement du
+            texte aléatoire.

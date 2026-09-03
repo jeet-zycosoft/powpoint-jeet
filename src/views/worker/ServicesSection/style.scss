@@ -1,0 +1,53 @@
+@use "@/styles/_var.scss";
+@use "sass:map";
+
+.services-section {
+    background-color: #faf9f6;
+
+    .service-card {
+        padding: 2rem;
+        padding-block: 6rem;
+        flex: 1;
+        min-width: 300px;
+        height: 100%;
+
+        &.first {
+            border-right: 2px solid #dedfdc;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: map.get(var.$colors, "secondary");
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            color: map.get(var.$colors, "secondary");
+            font-weight: 500;
+        }
+
+        .service-item {
+            margin-bottom: 1.5rem;
+
+            h3 {
+                font-size: 1.25rem;
+                font-weight: 700;
+                margin-bottom: 0.7rem;
+            }
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+
+            li {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                margin-bottom: 1.2rem;
+            }
+        }
+    }
+}

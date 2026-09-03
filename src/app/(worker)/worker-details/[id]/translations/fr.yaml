@@ -1,0 +1,63 @@
+workerDetails:
+    loading: Chargement des détails du profil...
+    notFound:
+        title: Petsitter introuvable
+        message: Ce profil de petsitter n'est pas disponible.
+    fallbackName: Petsitter
+    reviewsCount: '{count} Avis'
+    locationLabel: 'Lieu :'
+    chatNow: Discuter maintenant
+    verifying: Vérification...
+    services:
+        title: Services
+        empty: Aucun service listé.
+        seeAdditionalRates: Voir les tarifs supplémentaires
+        boarding:
+            title: Pension
+            description: chez le petsitter
+            unit: par nuit
+        houseSitting:
+            title: Garde à domicile
+            description: chez vous
+            unit: par nuit
+        dropIn:
+            title: Visites à domicile
+            description: visites chez vous
+            unit: par visite
+        daycare:
+            title: Garderie pour chiens
+            description: chez le petsitter
+            unit: par jour
+        walking:
+            title: Promenade de chiens
+            description: promenades dans votre quartier
+            unit: par promenade
+    verified:
+        title: Données vérifiées
+        email: Adresse e-mail
+        idCheck: Vérification d'identité
+        reviews: Avis
+    location:
+        title: Lieu
+    description: Description
+    experience: Expérience
+    starSitter:
+        title: '{name} a le statut Star Sitter'
+        body: Le programme Star Sitter met en avant les petsitters réactifs qui offrent des soins très bien notés et ont un historique de disponibilités et de préférences précises, afin d'aider les propriétaires à trouver les meilleurs soins pour leurs animaux.
+    reviews:
+        title: Avis
+        readMore: Lire plus d'avis
+        petParent: Propriétaire
+        repeatClient: Client régulier
+    about: À propos de {name}.
+    communication: Communication
+    skills: Compétences
+    safety: Sécurité, confiance et environnement
+    alternatives: Alternatives
+    toasts:
+        loginRequired: Veuillez vous connecter pour discuter avec les petsitters.
+        verifyFailed: Échec de la vérification du chat.
+        accepted: Conversation acceptée !
+        acceptFailed: Échec de l'acceptation de la conversation.
+        declined: Conversation refusée.
+        declineFailed: Échec du refus de la conversation.

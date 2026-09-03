@@ -1,0 +1,38 @@
+auth:
+    createAccount: Crear Cuenta
+    signupDesc: ¡Únete a nosotros hoy! Solo toma unos pocos pasos.
+    firstName: Nombre
+    lastName: Apellido
+    emailLabel: Correo Electrónico
+    passwordLabel: Contraseña
+    confpasswordLabel: Confirmar Contraseña
+    continue: Continuar
+    alreadyHaveAccount: ¿Ya tienes cuenta?
+    login: Iniciar Sesión
+    or: O
+    google: Continuar con Google
+    lookingForLabel: Buscando
+    selectLookingFor: Seleccione una opción
+    owner: Dueño
+    sitter: Cuidador
+    ownerDesc: Necesito a alguien que cuide de mi mascota
+    sitterDesc: Quiero ofrecer servicios de cuidado de mascotas
+    selectRoleTitle: Elige tu rol
+    selectRoleDesc: Por favor selecciona si eres un dueño de mascota buscando un cuidador, o un cuidador ofreciendo servicios.
+    back: Atrás
+    signupImageAlt: Imagen de registro
+    googleLogoAlt: Logo de Google
+    connecting: Conectando...
+    googleProfileFailed: No se pudo obtener el perfil de Google.
+    googleAuthFailed: Error en la autorización de Google.
+    firstNameRequired: El nombre es obligatorio.
+    lastNameRequired: El apellido es obligatorio.
+    emailRequired: El correo electrónico es obligatorio.
+    emailInvalid: Correo electrónico no válido.
+    passwordRequired: La contraseña es obligatoria.
+    passwordMismatch: Las contraseñas no coinciden.
+    registrationSuccessVerify: ¡Registro exitoso! Revisa tu correo para el código de verificación.
+    registrationSuccess: ¡Registro exitoso!
+    registrationFailed: Error en el registro. Inténtalo de nuevo.
+    emailAlreadyRegistered: El correo electrónico ya está registrado
+    loading: Cargando...

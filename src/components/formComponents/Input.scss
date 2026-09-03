@@ -1,0 +1,47 @@
+@use "@/styles/var";
+@use "sass:map";
+.form-group {
+    margin-bottom: 18px;
+
+    //   label {
+    //     display: block;
+    //     font-size: 0.75rem;
+    //     color: map.get(var.$colors, 'text');
+    //     margin-bottom: 5px;
+    //   }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        padding-left: 18px;
+        border: none;
+        border-radius: 120px;
+        background-color: #faf9f5;
+    }
+    .password-input-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        input {
+            padding-right: 40px;
+        }
+
+        .password-toggle-btn {
+            position: absolute;
+            right: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+auth:
+    login: Iniciar Sesión
+    loginDesc: ¡Bienvenido de nuevo! Introduce tus datos para iniciar sesión.
+    emailLabel: Correo electrónico
+    emailPlaceholder: Introduce tu correo electrónico
+    passwordLabel: Contraseña
+    forgotPassword: ¿Olvidaste tu contraseña?
+    continue: Continuar
+    noAccount: ¿No tienes una cuenta?
+    register: Registrarse
+    or: O
+    google: Continuar con Google
+    loginImageAlt: Imagen de inicio de sesión
+    googleLogoAlt: Logo de Google
+    connecting: Conectando...
+    loggedInSuccess: ¡Sesión iniciada correctamente!
+    googleAccountNotFound: Cuenta no encontrada. Regístrate primero con Google.
+    googleAuthFailed: Error en la autorización de Google.
+    emailRequired: El correo electrónico es obligatorio.
+    passwordRequired: La contraseña es obligatoria.
+    unexpectedError: Ocurrió un error inesperado

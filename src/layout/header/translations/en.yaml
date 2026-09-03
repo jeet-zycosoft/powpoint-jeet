@@ -1,0 +1,13 @@
+header:
+    home: 'Home'
+    findSitter: 'Find a Sitter'
+    findOwner: 'Find an Owner'
+    conversations: 'Conversations'
+    favorites: 'Favorites'
+    becomeSitter: 'Become a Sitter'
+    blog: 'Blog'
+    support: 'Support'
+    login: 'Login'
+    logoAlt: 'PawPoint Logo'
+    incompleteProfileDefault: 'Complete your profile first to browse listings.'
+    incompleteProfileMissing: 'Still needed: {items}'

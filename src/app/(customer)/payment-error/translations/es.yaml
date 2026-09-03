@@ -1,0 +1,6 @@
+paymentError:
+    altIllustration: Ilustración de error de pago
+    title: Pago fallido
+    subtitle: Tu pago fue cancelado o no pudo completarse.
+    tryAgain: Intentar de nuevo
+    goHome: Ir al inicio

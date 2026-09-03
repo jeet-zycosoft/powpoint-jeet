@@ -1,0 +1,38 @@
+auth:
+    createAccount: Créer un compte
+    signupDesc: Rejoignez-nous aujourd'hui ! Cela ne prend que quelques étapes.
+    firstName: Prénom
+    lastName: Nom
+    emailLabel: Email
+    passwordLabel: Mot de passe
+    confpasswordLabel: Confirmer le mot de passe
+    continue: Continuer
+    alreadyHaveAccount: Vous avez déjà un compte ?
+    login: Connexion
+    or: OU
+    google: Continuer avec Google
+    lookingForLabel: Rechercher
+    selectLookingFor: Sélectionner une option
+    owner: Propriétaire
+    sitter: Gardien
+    ownerDesc: J'ai besoin de quelqu'un pour s'occuper de mon animal
+    sitterDesc: Je souhaite proposer des services de garde d'animaux
+    selectRoleTitle: Choisissez votre rôle
+    selectRoleDesc: Veuillez choisir si vous êtes un propriétaire d'animal cherchant un gardien, ou un gardien proposant ses services.
+    back: Retour
+    signupImageAlt: Image d'inscription
+    googleLogoAlt: Logo Google
+    connecting: Connexion...
+    googleProfileFailed: Échec de la récupération du profil Google.
+    googleAuthFailed: Échec de l'autorisation Google.
+    firstNameRequired: Le prénom est obligatoire.
+    lastNameRequired: Le nom est obligatoire.
+    emailRequired: L'e-mail est obligatoire.
+    emailInvalid: Adresse e-mail invalide.
+    passwordRequired: Le mot de passe est obligatoire.
+    passwordMismatch: Les mots de passe ne correspondent pas.
+    registrationSuccessVerify: Inscription réussie ! Vérifiez votre e-mail pour le code de vérification.
+    registrationSuccess: Inscription réussie !
+    registrationFailed: Échec de l'inscription. Veuillez réessayer.
+    emailAlreadyRegistered: Cet e-mail est déjà enregistré
+    loading: Chargement...

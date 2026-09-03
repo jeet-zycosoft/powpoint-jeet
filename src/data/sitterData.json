@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Emma J.",
+    "location": "Hackney, London",
+    "typesOfPets": "Dog and Cat",
+    "lastOnline": "15 minutes ago",
+    "profileSnippet": "Experienced pet sitter with 4+ years caring for dogs, cats & rabbits. Fully insured. Happy to provide photo updates!",
+    "image": "sitter6.png",
+    "isInFev": true
+  },
+  {
+    "name": "Tariq B.",
+    "location": "Manchester, Greater Manchester",
+    "typesOfPets": "Dog and Cat",
+    "lastOnline": "15 minutes ago",
+    "profileSnippet": "Dog walker turned pet sitter. Comfortable with large breeds and pets with special needs.",
+    "image": "sitter7.png",
+    "isInFev": false
+  },
+  {
+    "name": "Amelia W.",
+    "location": "Leeds, West Yorkshire",
+    "typesOfPets": "Dog and Cat",
+    "lastOnline": "15 minutes ago",
+    "profileSnippet": "Friendly and patient sitter for cats, rabbits, and small pets. References available.",
+    "image": "sitter8.png",
+    "isInFev": false
+  },
+  {
+    "name": "Josh R.",
+    "location": "Clifton, Bristol",
+    "typesOfPets": "Dog and Cat",
+    "lastOnline": "15 minutes ago",
+    "profileSnippet": "Outdoor-loving sitter with a secure garden, long walks, daily photos, and SOS availability for your dog.",
+    "image": "sitter9.png",
+    "isInFev": false
+  },
+  {
+    "name": "Priya M.",
+    "location": "Croydon, London",
+    "typesOfPets": "Dog and Cat",
+    "lastOnline": "15 minutes ago",
+    "profileSnippet": "Vet student with loads of experience. I specialise in puppies and nervous pets. Available evenings and weekends.",
+    "image": "sitter10.png",
+    "isInFev": false
+  },
+  {
+    "name": "Ben L.",
+    "location": "Moseley, Birmingham",
+    "typesOfPets": "Dog and Cat",
+    "lastOnline": "15 minutes ago",
+    "profileSnippet": "Vet student with loads of experience. I specialise in puppies and nervous pets. Available evenings and weekends.",
+    "image": "sitter11.png",
+    "isInFev": false
+  },
+  {
+    "name": "Louise K.",
+    "location": "Glasgow's West End",
+    "typesOfPets": "Dog and Cat",
+    "lastOnline": "15 minutes ago",
+    "profileSnippet": "Experienced with rabbits, hamsters, guinea pigs, and birds. Happy to follow specific routines and diet needs.",
+    "image": "sitter1.png",
+    "isInFev": false
+  },
+  {
+    "name": "Oliver T.",
+    "location": "Edinburgh, Leith",
+    "typesOfPets": "Dog and Cat",
+    "lastOnline": "15 minutes ago",
+    "profileSnippet": "Dependable, caring, and always on time. I send photo updates and make sure your pet feels safe and loved.",
+    "image": "sitter2.png",
+    "isInFev": false
+  }
+]

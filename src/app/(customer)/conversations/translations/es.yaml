@@ -1,0 +1,9 @@
+conversations:
+    title: Mis conversaciones
+    loading: Cargando conversaciones...
+    error: No se pudieron cargar las conversaciones.
+    empty: No se encontraron conversaciones.
+    findSitter: Buscar un cuidador
+    findOwner: Buscar un dueño
+    fallbackUser: Usuario
+    pendingAccept: Pendiente de aceptar

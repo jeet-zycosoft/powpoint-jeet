@@ -1,0 +1,247 @@
+@use "@/styles/mixins";
+@use "@/styles/var";
+@use "sass:map";
+
+.search-bar-section {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    scroll-margin-top: 7.5rem;
+
+    &.is-location-filled .search-bar {
+        animation: searchLocationPulse 1.6s ease;
+        border-color: #4a766e;
+        box-shadow:
+            0 14px 36px rgba(12, 39, 34, 0.14),
+            0 0 0 4px rgba(74, 118, 110, 0.22);
+    }
+
+    .container {
+        max-width: 100%;
+        width: 100%;
+        padding: 0;
+    }
+
+    .search-bar {
+        width: 100%;
+        background-color: #fff;
+        border-radius: 1.25rem;
+        padding: 1.45rem 1.5rem;
+        border: 2px solid rgba(247, 178, 103, 0.55);
+        box-shadow:
+            0 14px 36px rgba(12, 39, 34, 0.14),
+            0 0 0 4px rgba(247, 178, 103, 0.12);
+    }
+
+    .search-bar__fields {
+        display: grid;
+        // Option smaller, address/search larger
+        grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.75fr) auto;
+        gap: 1rem;
+        align-items: end;
+        width: 100%;
+    }
+
+    .search-bar__field {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .form-group {
+        margin-bottom: 0;
+        width: 100%;
+    }
+
+    .address-field {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            text-align: left;
+            font-weight: 600;
+        }
+    }
+
+    .custom-select-container {
+        label {
+            text-align: left;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .select-trigger {
+            min-height: 3.15rem;
+            padding: 0.85rem 1.1rem;
+            font-size: 1rem;
+            align-items: center;
+        }
+    }
+
+    .search-box {
+        width: 100%;
+        max-width: none;
+        position: relative;
+
+        .search-input-wrapper {
+            input {
+                background-color: #faf9f5;
+                border-radius: 120px;
+                min-height: 3.15rem;
+                padding: 0.85rem 1.2rem;
+                font-size: 1.05rem;
+                box-shadow: none;
+                border: 1px solid transparent;
+                width: 100%;
+                transition:
+                    border-color 0.2s ease,
+                    box-shadow 0.2s ease;
+
+                &:focus {
+                    outline: none;
+                    border-color: map.get(var.$colors, "primary");
+                    box-shadow: 0 0 0 3px rgba(247, 178, 103, 0.25);
+                }
+            }
+
+            .search-button {
+                display: none;
+            }
+        }
+
+        .suggestions-dropdown {
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            z-index: 5;
+        }
+    }
+
+    .search-bar__action {
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .search-bar__icon-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 3.15rem;
+        height: 3.15rem;
+        border: none;
+        border-radius: 50%;
+        background-color: map.get(var.$colors, "primary");
+        color: #0c2722;
+        cursor: pointer;
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+
+        &:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(247, 178, 103, 0.5);
+        }
+    }
+
+    // Inside hero — under heading/text
+    &--hero {
+        padding: 0;
+        background: transparent;
+        margin-top: 0.35rem;
+
+        .search-bar {
+            margin-top: 0;
+        }
+    }
+
+    // Standalone (if reused elsewhere)
+    &--default {
+        padding-block: 2rem;
+        background-color: #ffffff;
+
+        .container {
+            max-width: 1200px;
+            padding-inline: 12px;
+        }
+
+        .search-bar {
+            margin-top: -48px;
+        }
+    }
+
+    @include mixins.media-down("lg") {
+        .search-bar {
+            padding: 1.25rem;
+        }
+
+        .search-bar__fields {
+            gap: 0.875rem;
+            grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr) auto;
+        }
+    }
+
+    @include mixins.media-down("md") {
+        .search-bar {
+            padding: 1.2rem;
+            text-align: left;
+        }
+
+        .search-bar__fields {
+            grid-template-columns: 1fr auto;
+            gap: 0.75rem;
+            align-items: end;
+        }
+
+        .search-bar__field:first-child {
+            grid-column: 1 / -1;
+        }
+
+        .search-bar__action {
+            align-self: end;
+        }
+
+        .custom-select-container .select-trigger,
+        .search-box .search-input-wrapper input,
+        .search-bar__icon-btn {
+            min-height: 2.9rem;
+        }
+
+        .search-bar__icon-btn {
+            width: 2.9rem;
+            height: 2.9rem;
+        }
+    }
+
+    @include mixins.mobile {
+        .search-bar {
+            padding: 1.05rem;
+            border-radius: 1rem;
+        }
+
+        .search-bar__fields {
+            gap: 0.75rem;
+        }
+    }
+}
+
+@keyframes searchLocationPulse {
+    0% {
+        box-shadow:
+            0 14px 36px rgba(12, 39, 34, 0.14),
+            0 0 0 4px rgba(74, 118, 110, 0.08);
+    }
+    35% {
+        box-shadow:
+            0 14px 36px rgba(12, 39, 34, 0.14),
+            0 0 0 6px rgba(74, 118, 110, 0.28);
+    }
+    100% {
+        box-shadow:
+            0 14px 36px rgba(12, 39, 34, 0.14),
+            0 0 0 4px rgba(247, 178, 103, 0.12);
+    }
+}

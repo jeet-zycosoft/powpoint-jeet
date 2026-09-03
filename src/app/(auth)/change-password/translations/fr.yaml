@@ -1,0 +1,21 @@
+auth:
+    changePasswordTitle: 'Changer le mot de passe'
+    changePasswordDesc: 'Veuillez saisir votre nouveau mot de passe ci-dessous.'
+    newPasswordLabel: 'Nouveau mot de passe'
+    newPasswordPlaceholder: 'Saisissez le nouveau mot de passe'
+    confirmPasswordLabel: 'Confirmer le mot de passe'
+    confirmPasswordPlaceholder: 'Confirmer le nouveau mot de passe'
+    passwordMismatch: 'Les mots de passe ne correspondent pas.'
+    passwordRequired: 'Le mot de passe est requis.'
+    tokenMissing: 'Lien de réinitialisation du mot de passe invalide ou expiré. Veuillez en demander un nouveau.'
+    continue: 'Réinitialiser le mot de passe'
+    back: 'Retour à la connexion'
+    successTitle: 'Mot de passe changé'
+    successDesc: 'Votre mot de passe a été réinitialisé avec succès. Vous serez bientôt redirigé vers la page de connexion.'
+    changePasswordImageAlt: Image changement de mot de passe
+    invalidResetLinkTitle: Lien de réinitialisation invalide
+    requestNewLink: Demander un nouveau lien
+    redirectingCountdown: 'Redirection vers la connexion dans {seconds}s'
+    passwordChangedDefault: Le mot de passe a été changé avec succès.
+    resetError: Une erreur s'est produite. Veuillez réessayer.
+    loadingFallback: Chargement...

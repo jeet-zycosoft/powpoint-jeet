@@ -1,0 +1,248 @@
+@use "@/styles/var";
+@use "sass:map";
+
+.listings-page {
+    display: flex;
+    padding: 2rem;
+    gap: 2rem;
+
+    @media screen and (max-width: 576px) {
+        padding: 0.75rem;
+    }
+
+    .section-heading {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .section-desc {
+        font-weight: 500;
+        color: map.get(var.$colors, "secondaey");
+    }
+
+    .results {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        @media screen and (max-width: 576px) {
+            margin-top: 1rem;
+        }
+
+        .results-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            @media screen and (max-width: 575px) {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                width: 100%;
+
+                .section-heading {
+                    font-size: 2rem;
+                }
+
+                .section-desc {
+                    font-size: 0.95rem;
+                }
+            }
+
+            .header-controls {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+
+                @media screen and (max-width: 575px) {
+                    width: 100%;
+                    justify-content: space-between;
+                }
+            }
+
+            .mobile-filter-btn {
+                background-color: map.get(var.$colors, "white");
+                border: 1px solid map.get(var.$colors, "formBorder");
+                border-radius: 1rem;
+                padding: 0 1.25rem;
+                font-size: 1.1rem;
+                font-weight: 500;
+                color: map.get(var.$colors, "secondary");
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex: 1;
+                outline: none;
+                transition:
+                    border-color 0.2s ease,
+                    box-shadow 0.2s ease;
+                height: 3.5rem;
+                cursor: pointer;
+
+                &:hover,
+                &:focus {
+                    border-color: map.get(var.$colors, "secondary");
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+                }
+
+                .chevron-icon {
+                    font-size: 1.3rem;
+                    color: map.get(var.$colors, "secondary");
+                }
+            }
+
+            .btns {
+                display: flex;
+                gap: 0.75rem;
+                background-color: #faf9f6;
+                padding: 0.5rem;
+                border-radius: 10rem;
+
+                button {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 2.5rem;
+                    height: 2.5rem;
+                    font-size: 1.5rem;
+                    padding: 0.5rem;
+                    border: none;
+                    border-radius: 5rem;
+                    background-color: map.get(var.$colors, "transparent");
+                    position: relative;
+
+                    &.active {
+                        background-color: map.get(var.$colors, "primary");
+                    }
+                }
+
+                // &::after {
+                //   width: 2.5rem;
+                //   height: 2.5rem;
+                //   background-color: map.get(var.$colors, 'primary');
+                //   position: absolute;
+                //   top: 0.25rem;
+                //   left: 0.25rem;
+                //   z-index: 112;
+                // }
+            }
+
+            .results-count {
+                margin: 0.35rem 0 0;
+                font-size: 0.95rem;
+                font-weight: 600;
+                color: map.get(var.$colors, "heading");
+            }
+        }
+
+        .see-more-footer {
+            display: flex;
+            justify-content: center;
+            padding: 1.25rem 0 0.5rem;
+
+            .see-more-btn {
+                border: 1px solid map.get(var.$colors, "primary");
+                background-color: map.get(var.$colors, "white");
+                color: map.get(var.$colors, "primary");
+                font-weight: 600;
+                font-size: 0.95rem;
+                padding: 0.7rem 1.75rem;
+                border-radius: 2rem;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                white-space: nowrap;
+
+                &:hover:not(:disabled) {
+                    background-color: map.get(var.$colors, "primary");
+                    color: map.get(var.$colors, "white");
+                }
+
+                &:disabled {
+                    opacity: 0.6;
+                    cursor: not-allowed;
+                }
+            }
+        }
+
+        .result-tabs {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            min-height: calc(100dvh - 300px);
+        }
+    }
+
+    .loading-box {
+        text-align: center;
+        padding: 4rem 2rem;
+        width: 100%;
+        margin-top: 12rem;
+    }
+
+    .no-results-box {
+        // border: 1px solid map.get(var.$colors, "formBorder");
+        padding: 4rem 2rem;
+        border-radius: 1rem;
+        background-color: white;
+        font-family: map.get(var.$fonts, "primary");
+        margin-block: 0 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin: 2rem auto;
+        max-width: 600px;
+        width: 100%;
+        margin-top: 12rem;
+        // box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+}
+
+.mobile-filter-offcanvas {
+    max-width: 400px;
+    border-left: 1px solid map.get(var.$colors, "formBorder") !important;
+
+    .offcanvas-header {
+        padding: 1.25rem 1.5rem;
+        border-bottom: 1px solid map.get(var.$colors, "formBorder");
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .offcanvas-title {
+            color: map.get(var.$colors, "heading");
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .btn-close {
+            box-shadow: none !important;
+            background-color: map.get(var.$colors, "light_bg");
+            opacity: 1;
+            border-radius: 50%;
+            width: 2.25rem;
+            height: 2.25rem;
+            background-size: 0.8rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+            &:hover {
+                background-color: map.get(var.$colors, "primary");
+                transform: rotate(90deg);
+            }
+        }
+    }
+
+    .offcanvas-body {
+        padding: 1.5rem;
+
+        .filters {
+            width: 100% !important;
+        }
+    }
+}

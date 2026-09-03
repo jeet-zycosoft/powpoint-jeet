@@ -1,0 +1,39 @@
+updateProfile:
+    enterName: Enter your name
+    profilePhoto:
+        title: Profile photo
+        desc: This is the first photo pet owners will see. We recommend using a well-lit, clear photo of your face (without sunglasses).
+        upload: Upload Your Photo
+        removeTitle: Remove Profile Photo
+        alt: profile-image
+    headline:
+        title: Write an eye-catching headline
+        infoOwner: Before you can find a sitter
+        infoSitter: Before you can find an owner
+        hint: Make your headline short, descriptive and genuine.
+        placeholderOwner: I have a fenced yard and two friendly dogs to keep your fur baby company. I can easily crate your dog if needed...
+        placeholderSitter: Introduce yourself and the care you offer...
+        charCount: '{count} / {max} characters'
+        required: Headline is required.
+        maxLength: Headline must be 100 characters or fewer.
+    gallery:
+        title: Gallery photos
+        desc: Add photos of yourself with pets (including your own) to show the care and attention you give to them. If possible, try to include photos of yourself walking or playing with pets. We suggest 5-10 of your best photos.
+        removeTitle: Remove photo
+    submit:
+        saving: Saving...
+        saveContinue: Save & Continue
+    crop:
+        profileTitle: Crop profile photo
+        galleryTitle: Crop gallery photo
+        queueLabel: Photo {current} of {total}
+    toasts:
+        updateSuccess: Profile updated successfully!
+        updateFailed: Failed to update profile.
+        saveError: An error occurred while saving profile.
+        profilePhotoDeleted: Profile photo deleted successfully.
+        profilePhotoDeleteFailed: Failed to delete profile photo.
+        profilePhotoDeleteError: An error occurred while deleting the profile photo.
+        galleryPhotoDeleted: Gallery photo deleted successfully.
+        galleryPhotoDeleteFailed: Failed to delete gallery photo.
+        galleryPhotoDeleteError: An error occurred while deleting the gallery photo.

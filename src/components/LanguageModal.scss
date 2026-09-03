@@ -1,0 +1,114 @@
+@use "@/styles/var";
+@use "sass:map";
+
+.add-language-modal {
+    .modal-content {
+        border-radius: 16px;
+        border: none;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .modal-header {
+        border-bottom: 1px solid #f1f5f9;
+        padding: 20px 24px;
+
+        .modal-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .btn-close {
+            box-shadow: none;
+        }
+    }
+
+    .modal-body {
+        padding: 24px;
+
+        .language-search-input {
+            border: 1.5px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 0.95rem;
+            color: #334155;
+            transition: all 0.2s ease;
+
+            &:focus {
+                border-color: #005c5c;
+                box-shadow: 0 0 0 3px rgba(0, 92, 92, 0.1);
+            }
+        }
+
+        .languages-scroll-container {
+            max-height: 250px;
+            overflow-y: auto;
+            padding-right: 4px;
+
+            &::-webkit-scrollbar {
+                width: 6px;
+            }
+
+            &::-webkit-scrollbar-track {
+                background: #f8fafc;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: #cbd5e1;
+                border-radius: 3px;
+
+                &:hover {
+                    background: #94a3b8;
+                }
+            }
+
+            .languages-list {
+                .language-item {
+                    background-color: #f8fafc;
+                    border: 1px solid #f1f5f9;
+                    margin-bottom: 6px;
+                    transition: all 0.2s ease;
+
+                    &:hover {
+                        background-color: #f1f5f9;
+                    }
+
+                    &.active {
+                        background-color: #005c5c;
+                        border-color: #005c5c;
+                        color: #ffffff;
+
+                        .lang-code {
+                            color: rgba(255, 255, 255, 0.8) !important;
+                        }
+                    }
+
+                    .lang-name {
+                        font-weight: 600;
+                        font-size: 0.95rem;
+                    }
+
+                    .lang-code {
+                        font-size: 0.8rem;
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+    }
+
+    .modal-footer {
+        border-top: 1px solid #f1f5f9;
+        padding: 16px 24px;
+
+        button {
+            font-weight: 600;
+            font-size: 0.95rem;
+
+            &:disabled {
+                opacity: 0.6;
+                cursor: not-allowed;
+            }
+        }
+    }
+}

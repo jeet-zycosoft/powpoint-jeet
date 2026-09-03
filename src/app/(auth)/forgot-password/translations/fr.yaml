@@ -1,0 +1,16 @@
+auth:
+    forgotPasswordTitle: 'Mot de passe oublié'
+    forgotPasswordDesc: 'Entrez votre adresse e-mail pour recevoir un lien de réinitialisation.'
+    emailLabel: 'E-mail'
+    emailPlaceholder: 'Entrez votre e-mail'
+    continue: 'Envoyer le lien'
+    back: 'Retour'
+    successTitle: 'Lien envoyé'
+    successDesc: 'Nous avons envoyé un lien de réinitialisation à votre adresse e-mail.'
+    forgotPasswordImageAlt: Image mot de passe oublié
+    successIconAlt: Icône de succès
+    emailRequired: L'e-mail est obligatoire.
+    emailInvalid: Veuillez entrer une adresse e-mail valide.
+    resetError: Une erreur s'est produite. Veuillez réessayer.
+    resetLinkSent: Lien de réinitialisation envoyé avec succès.
+    login: Aller à la connexion

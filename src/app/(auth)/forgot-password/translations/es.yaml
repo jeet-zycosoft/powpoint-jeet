@@ -1,0 +1,16 @@
+auth:
+    forgotPasswordTitle: '¿Olvidó su contraseña?'
+    forgotPasswordDesc: 'Ingrese su correo electrónico para recibir un enlace de restablecimiento de contraseña.'
+    emailLabel: 'Correo electrónico'
+    emailPlaceholder: 'Ingrese su correo electrónico'
+    continue: 'Enviar enlace'
+    back: 'Atrás'
+    successTitle: 'Enlace enviado'
+    successDesc: 'Hemos enviado un enlace de restablecimiento de contraseña a su correo electrónico.'
+    forgotPasswordImageAlt: Imagen de contraseña olvidada
+    successIconAlt: Icono de éxito
+    emailRequired: El correo electrónico es obligatorio.
+    emailInvalid: Por favor, introduce un correo electrónico válido.
+    resetError: Algo salió mal. Inténtalo de nuevo.
+    resetLinkSent: Enlace de restablecimiento enviado correctamente.
+    login: Ir a iniciar sesión

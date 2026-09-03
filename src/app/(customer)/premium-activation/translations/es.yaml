@@ -1,0 +1,46 @@
+premium:
+    loading: Cargando planes de suscripción...
+    errors:
+        loadFailed: Error al cargar los detalles del plan. Inténtalo de nuevo más tarde.
+        unableToLoad: No se pudieron cargar los detalles de la suscripción.
+        loginRequired: Inicia sesión para comprar Premium.
+        completeLocation: Completa la ubicación de tu perfil (ciudad y coordenadas del mapa) antes de comprar Active Premium.
+        orderFailed: Error al inicializar el pago del pedido.
+        sdkFailed: Error al cargar el SDK de pago de Razorpay.
+        verificationFailed: Error en la verificación del pago.
+        loginToContinue: Inicia sesión para continuar.
+        completeProfileLocation: Completa la ubicación de tu perfil.
+        invalidRequest: Solicitud no válida. Inténtalo de nuevo.
+        serviceUnavailable: Servicio temporalmente no disponible. Inténtalo de nuevo más tarde.
+        genericError: Ocurrió un error. Inténtalo de nuevo.
+        unsupportedGateway: Configuración de pasarela de pago no compatible.
+    retry: Reintentar
+    processing: Procesando...
+    securePayment: Pago seguro
+    noPlan: No hay ningún plan activo disponible en este momento.
+    titles:
+        purchase: Active Premium
+        renew: Renueva tu Active Premium
+        location: Active Premium para nueva zona
+        upgrade: Añadir otro paquete
+    descriptions:
+        purchase: Obtén acceso para chatear con cuidadores en tu zona.
+        renew: Tu plan ha expirado. Renuévalo para seguir chateando con cuidadores.
+        location: Compra Active Premium para esta nueva ubicación.
+        upgrade: Límite mensual de cuidadores alcanzado. Compra otro paquete para conectar con más cuidadores.
+    coverage: 'Cobertura:'
+    coverageDetail: Cuidadores dentro de {radius}m de tu ubicación
+    connections: 'Conexiones:'
+    connectionsDetail: Conecta con {limit} cuidadores nuevos por paquete
+    intervals:
+        month: /mes
+        year: /año
+        week: /semana
+        day: /día
+    defaultBenefits:
+        arrange: Organizadlo todo entre vosotros
+        fullAccess: Acceso completo
+        cancellable: Se puede cancelar inmediatamente
+    checkout:
+        name: PawPoint
+        description: Suscripción Active Premium

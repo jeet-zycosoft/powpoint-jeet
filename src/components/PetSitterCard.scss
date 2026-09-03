@@ -1,0 +1,124 @@
+.pet-sitter-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    flex: 1 1 auto;
+    flex-shrink: 0;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    &:hover {
+        transform: translateY(-4px);
+    }
+}
+
+.pet-sitter-card {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1.25rem;
+    padding: 0.8rem;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    box-sizing: border-box;
+
+    &:hover {
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.14);
+    }
+
+    &__image-wrap {
+        position: relative;
+        width: 100%;
+        height: 250px;
+        min-height: 250px;
+        max-height: 250px;
+        margin-bottom: 0.9rem;
+        border-radius: 0.9rem;
+        overflow: hidden;
+        background-color: #f0f4f3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 0.9rem;
+        display: block;
+    }
+
+    svg {
+        width: 100%;
+        height: 100%;
+        border-radius: 0.9rem;
+        display: block;
+    }
+
+    h3 {
+        font-size: 1.35rem;
+        font-weight: bold;
+        color: #0c2722;
+        margin-bottom: 5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    p {
+        font-size: 0.95rem;
+        color: #555555;
+        margin: 0;
+        line-height: 1.35;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-height: 2.5rem;
+    }
+
+    @media screen and (max-width: 991px) {
+        &__image-wrap {
+            height: 200px;
+            min-height: 200px;
+            max-height: 200px;
+        }
+    }
+
+    @media screen and (max-width: 767px) {
+        padding: 0.6rem;
+        border-radius: 1rem;
+
+        &__image-wrap {
+            height: 160px;
+            min-height: 160px;
+            max-height: 160px;
+            margin-bottom: 0.6rem;
+            border-radius: 0.8rem;
+        }
+
+        img,
+        svg {
+            border-radius: 0.8rem;
+        }
+
+        h3 {
+            font-size: 1.05rem;
+        }
+
+        p {
+            font-size: 0.8rem;
+            min-height: 2.1rem;
+        }
+    }
+}

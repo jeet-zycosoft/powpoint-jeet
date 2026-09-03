@@ -1,0 +1,171 @@
+ownerServices:
+    location:
+        title: ¿Para qué dirección?
+        infoTitle: Antes de poder encontrar un cuidador
+        desc: Introduzca su dirección o código postal para ver solo ayudantes realmente dispuestos en su zona
+        privacyNote: (su información permanecerá privada)
+        selectHint: Seleccione una ubicación sugerida
+        selectNote: — escribir solo no se puede guardar.
+        locationRequired: Seleccione una ubicación de las sugerencias. Escribir solo no es suficiente.
+    pets:
+        title: ¿Qué tipo de mascota?
+        dog: Perro
+        cat: Gato
+    services:
+        title: ¿Qué servicios desea?
+        boarding: Alojamiento
+        houseSitting: Cuidado en casa
+        dropInVisits: Visitas puntuales
+        doggyDayCare: Guardería diurna
+        dogWalking: Paseo de perros
+    days:
+        title: ¿Qué días está disponible?
+        monday: Lunes
+        tuesday: Martes
+        wednesday: Miércoles
+        thursday: Jueves
+        friday: Viernes
+        saturday: Sábado
+        sunday: Domingo
+    languages:
+        title: ¿Qué idiomas habla?
+        dutch: Neerlandés
+        english: Inglés
+        german: Alemán
+        french: Francés
+        spanish: Español
+        addLanguage: Añadir un idioma
+        addedSuccess: '¡{language} añadido correctamente!'
+    applies:
+        title: ¿Qué aplica?
+        thereIsDog: Hay un perro
+        thereIsCat: Hay un gato
+        thereIsIroning: Hay plancha
+    validation:
+        selectPet: Seleccione al menos un tipo de mascota.
+        selectService: Seleccione al menos un servicio.
+        selectDay: Seleccione al menos un día disponible.
+        selectLanguage: Seleccione al menos un idioma.
+        selectApplies: Seleccione al menos una opción que aplique.
+        requiredFields: Complete los campos obligatorios marcados con *.
+    modals:
+        locationChangeTitle: Advertencia de cambio de ubicación
+        locationChangeMessage: Cambiar su ubicación NO moverá sus paquetes Active Premium existentes. Permanecen en {city}. La nueva ubicación se usará para futuras compras.
+        oldAreaFallback: su zona anterior
+        cancel: Cancelar
+        continue: Continuar
+        locationUpdatedTitle: Ubicación actualizada
+        locationUpdatedMessage: Su ubicación ahora es {city}. ¿Desea comprar Active Premium para esta nueva ubicación?
+        updatedFallback: actualizada
+        notNow: Ahora no
+        buyPremium: Comprar Active Premium
+        stillNeeded: 'Aún necesario: {items}'
+    submit:
+        saving: Guardando...
+        submitContinue: Enviar y continuar
+    toasts:
+        updateSuccess: ¡Detalles del servicio actualizados correctamente!
+        updateFailed: No se pudieron actualizar los detalles del servicio.
+        saveError: Se produjo un error al guardar.
+
+sitterServices:
+    location:
+        title: Consiga clientes (gratis)
+        infoTitle: Antes de poder encontrar un dueño
+        desc: ¡Introduzca su dirección aquí y vea los clientes con los que puede chatear gratis de inmediato!
+        selectHint: Seleccione una ubicación sugerida
+        selectNote: — escribir solo no se puede guardar.
+        locationRequired: Seleccione una ubicación de las sugerencias. Escribir solo no es suficiente.
+    travelDistance: ¿Cuál es su distancia máxima de desplazamiento?
+    showWorkArea: Mostrar su zona de trabajo en un mapa
+    serviceSelection: Selección de servicios
+    whichServices: ¿Qué servicios debo elegir?
+    services:
+        boarding: Alojamiento
+        houseSitting: Cuidado en casa
+        dropInVisits: Visitas puntuales
+        doggyDayCare: Guardería diurna
+        dogWalking: Paseo de perros
+        desc: Cuidado nocturno de mascotas en su hogar
+    petTypes: Tipo(s) de mascota
+    dog: Perro
+    cat: Gato
+    dogSize: Tamaño del perro (lbs)
+    housingConditions: Condiciones de la vivienda
+    hasHouse: Tiene casa (excluye apartamentos)
+    hasFencedYard: Tiene patio cerrado
+    dogsOnFurniture: Perros permitidos en muebles
+    dogsOnBed: Perros permitidos en la cama
+    nonSmokingHome: Hogar sin humo
+    petsInHome: Mascotas en el hogar
+    noDog: No tiene perro
+    noCat: No tiene gato
+    oneClient: Acepta solo un cliente a la vez
+    noCagedPets: No tiene mascotas en jaula
+    childrenInHouse: Niños en la casa
+    noChildren: Sin niños
+    children0to5: Niños de 0 a 5 años
+    children6to12: Niños de 6 a 12 años
+    additionalServices: Servicios adicionales
+    puppyCare: Cuidado de cachorros
+    catCare: Cuidado de gatos
+    unspayedFemales: Hembras sin esterilizar
+    nonNeuteredMales: Machos sin castrar
+    bathingGrooming: Baño y peluquería
+    dogFirstAid: Primeros auxilios y RCP canina
+    days:
+        title: ¿Qué días está disponible?
+        monday: Lunes
+        tuesday: Martes
+        wednesday: Miércoles
+        thursday: Jueves
+        friday: Viernes
+        saturday: Sábado
+        sunday: Domingo
+    languages:
+        title: ¿Qué idiomas habla?
+        dutch: Neerlandés
+        english: Inglés
+        german: Alemán
+        french: Francés
+        spanish: Español
+        addLanguage: Añadir un idioma
+        addedSuccess: '¡{language} añadido correctamente!'
+    exclusions:
+        title: ¿Qué no hace?
+        noDogs: No en una casa con perros
+        noCats: No en una casa con gatos
+        noIroning: No plancha
+    bio:
+        title: Biografía
+        desc: Cuéntele a los dueños de mascotas sobre usted y su estilo de cuidado.
+        placeholder: Preséntese y describa el cuidado que ofrece...
+    experience:
+        title: Experiencia
+        desc: ¿Qué le diferencia? Incluya habilidades especiales como adiestramiento o cuidado de mayores.
+        placeholder: p. ej. He cuidado perros de todos los tamaños durante muchos años y puedo seguir planes de alimentación y medicación.
+    safety:
+        title: Seguridad
+        desc: Describa su entorno doméstico y las medidas de seguridad para las mascotas que se quedan con usted.
+        placeholder: p. ej. Mantengo a las mascotas en un hogar seguro, sigo las instrucciones del dueño y envío fotos de seguimiento regulares.
+    communication:
+        title: Comunicación
+        desc: Destaque sus fortalezas de comunicación con los dueños de mascotas.
+        placeholder: p. ej. 92% de tasa de respuesta
+    skills:
+        title: Habilidades
+        desc: Enumere sus habilidades de cuidado de mascotas y certificaciones.
+        placeholder: p. ej. Administración de medicación oral
+    validation:
+        selectService: Seleccione al menos un servicio.
+        selectPet: Seleccione al menos un tipo de mascota.
+        selectDay: Seleccione al menos un día disponible.
+        selectLanguage: Seleccione al menos un idioma.
+        requiredFields: Complete los campos obligatorios marcados con *.
+    submit:
+        submitContinue: Enviar y continuar
+    toasts:
+        updateSuccess: ¡Servicios actualizados correctamente!
+        updateFailed: No se pudieron actualizar los servicios.
+        saveError: Se produjo un error al guardar los servicios.
+        stillNeeded: 'Aún necesario: {items}'

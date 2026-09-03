@@ -1,0 +1,123 @@
+@use "@/styles/var";
+@use "sass:map";
+@use "sass:color";
+
+.rate-slider-container {
+    width: 100%;
+    margin-top: 1.5rem;
+
+    label {
+        font-family: map.get(var.$fonts, "secondary");
+        font-size: 1.25rem;
+        font-weight: 500;
+        display: block;
+        margin-bottom: 0.7rem;
+        color: map.get(var.$colors, "text");
+    }
+
+    .slider-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        background-color: map.get(var.$colors, "light_bg");
+        border-radius: 12px;
+        padding: 0.6rem 1rem;
+        width: 100%;
+        box-sizing: border-box;
+
+        span {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: map.get(var.$colors, "text");
+            font-family: map.get(var.$fonts, "secondary");
+            white-space: nowrap;
+            user-select: none;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            flex: 1;
+            height: 4px;
+            background-color: color.adjust(map.get(var.$colors, "light_bg"), $lightness: -6%);
+            border-radius: 9999px;
+            outline: none;
+            background-image: linear-gradient(
+                map.get(var.$colors, "secondary"),
+                map.get(var.$colors, "secondary")
+            );
+            background-repeat: no-repeat;
+            cursor: pointer;
+
+            $thumbSize: 20px;
+            $thumbBorderSize: 3px;
+            $rangeColor: map.get(var.$colors, "secondary");
+
+            &::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: $thumbSize;
+                height: $thumbSize;
+                background-color: #fff;
+                border: $thumbBorderSize solid $rangeColor;
+                border-radius: 50%;
+                cursor: pointer;
+                margin-top: -1px;
+                transition:
+                    transform 0.1s ease,
+                    box-shadow 0.2s ease;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
+
+                &:active {
+                    transform: scale(1.15);
+                    box-shadow: 0 0 0 6px rgba($rangeColor, 0.15);
+                }
+            }
+
+            &::-moz-range-thumb {
+                width: $thumbSize;
+                height: $thumbSize;
+                background-color: #fff;
+                border: $thumbBorderSize solid $rangeColor;
+                border-radius: 50%;
+                cursor: pointer;
+                transition:
+                    transform 0.1s ease,
+                    box-shadow 0.2s ease;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
+
+                &:active {
+                    transform: scale(1.15);
+                    box-shadow: 0 0 0 6px rgba($rangeColor, 0.15);
+                }
+            }
+
+            &::-ms-thumb {
+                width: $thumbSize;
+                height: $thumbSize;
+                background-color: #fff;
+                border: $thumbBorderSize solid $rangeColor;
+                border-radius: 50%;
+                cursor: pointer;
+                transition:
+                    transform 0.1s ease,
+                    box-shadow 0.2s ease;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
+
+                &:active {
+                    transform: scale(1.15);
+                    box-shadow: 0 0 0 6px rgba($rangeColor, 0.15);
+                }
+            }
+        }
+    }
+}

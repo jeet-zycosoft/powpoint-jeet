@@ -1,0 +1,38 @@
+auth:
+    createAccount: Create Account
+    signupDesc: Join us today! It takes only a few steps.
+    firstName: First Name
+    lastName: Last Name
+    emailLabel: Email
+    passwordLabel: Password
+    confpasswordLabel: Confirm Password
+    continue: Continue
+    alreadyHaveAccount: Already have an account?
+    login: Login
+    or: OR
+    google: Continue with Google
+    lookingForLabel: Looking for
+    selectLookingFor: Select an option
+    owner: Owner
+    sitter: Sitter
+    ownerDesc: I need someone to look after my pet
+    sitterDesc: I want to offer pet sitting services
+    selectRoleTitle: Choose your role
+    selectRoleDesc: Please select whether you are a pet owner looking for a sitter, or a pet sitter offering services.
+    back: Back
+    signupImageAlt: Signup Image
+    googleLogoAlt: Google Logo
+    connecting: Connecting...
+    googleProfileFailed: Failed to fetch user profile from Google.
+    googleAuthFailed: Google authorization failed.
+    firstNameRequired: First name is required.
+    lastNameRequired: Last name is required.
+    emailRequired: Email is required.
+    emailInvalid: Invalid email address.
+    passwordRequired: Password is required.
+    passwordMismatch: Passwords do not match.
+    registrationSuccessVerify: Registration successful! Check your email for verification code.
+    registrationSuccess: Registration successful!
+    registrationFailed: Registration failed. Please try again.
+    emailAlreadyRegistered: Email is already registered
+    loading: Loading...

@@ -1,0 +1,9 @@
+instructions:
+    title: Instrucciones
+    emailAddress: Dirección de correo electrónico
+    phoneNumber: Número de teléfono
+    addPhoneNumber: Añadir número de teléfono
+    app: Aplicación
+    install: Instalar
+    pushNotifications: Notificaciones push
+    turnOn: Activar

@@ -1,0 +1,171 @@
+ownerServices:
+    location:
+        title: For which address?
+        infoTitle: Before you can find a sitter
+        desc: Enter your address or postal code to see only helpers who are genuinely willing in your area
+        privacyNote: (your information will remain private)
+        selectHint: Select a suggested location
+        selectNote: — typing alone cannot be saved.
+        locationRequired: Please select a location from the suggestions. Typing alone is not enough.
+    pets:
+        title: Which type of pet?
+        dog: Dog
+        cat: Cat
+    services:
+        title: What services you want
+        boarding: Boarding
+        houseSitting: House Sitting
+        dropInVisits: Drop-in Visits
+        doggyDayCare: Doggy Day Care
+        dogWalking: Dog Walking
+    days:
+        title: Which days are you available?
+        monday: Monday
+        tuesday: Tuesday
+        wednesday: Wednesday
+        thursday: Thursday
+        friday: Friday
+        saturday: Saturday
+        sunday: Sunday
+    languages:
+        title: What languages do you speak?
+        dutch: Dutch
+        english: English
+        german: German
+        french: French
+        spanish: Spanish
+        addLanguage: Add a language
+        addedSuccess: '{language} added successfully!'
+    applies:
+        title: What applies?
+        thereIsDog: There is a dog
+        thereIsCat: There is a cat
+        thereIsIroning: There is ironing
+    validation:
+        selectPet: Select at least one pet type.
+        selectService: Select at least one service.
+        selectDay: Select at least one available day.
+        selectLanguage: Select at least one language.
+        selectApplies: Select at least one option that applies.
+        requiredFields: Please complete the required fields marked with *.
+    modals:
+        locationChangeTitle: Location Change Warning
+        locationChangeMessage: Changing your location will NOT move your existing Active Premium packages. They stay at {city}. The new location will be used for future package purchases.
+        oldAreaFallback: your old area
+        cancel: Cancel
+        continue: Continue
+        locationUpdatedTitle: Location Updated
+        locationUpdatedMessage: Your location is now {city}. Would you like to buy Active Premium for this new location?
+        updatedFallback: updated
+        notNow: Not Now
+        buyPremium: Buy Active Premium
+        stillNeeded: 'Still needed: {items}'
+    submit:
+        saving: Saving...
+        submitContinue: Submit and Continue
+    toasts:
+        updateSuccess: Service details updated successfully!
+        updateFailed: Failed to update service details.
+        saveError: An error occurred while saving.
+
+sitterServices:
+    location:
+        title: Get Customers (Free)
+        infoTitle: Before you can find an owner
+        desc: Enter your address here and see the customers you can chat with immediately for free!
+        selectHint: Select a suggested location
+        selectNote: — typing alone cannot be saved.
+        locationRequired: Please select a location from the suggestions. Typing alone is not enough.
+    travelDistance: What is your maximum travel distance?
+    showWorkArea: Show your work area on a map
+    serviceSelection: Service Selection
+    whichServices: Which services should I choose?
+    services:
+        boarding: Boarding
+        houseSitting: House Sitting
+        dropInVisits: Drop-In Visits
+        doggyDayCare: Doggy Day Care
+        dogWalking: Dog Walking
+        desc: Overnight pet care in your home
+    petTypes: Pet type(s)
+    dog: Dog
+    cat: Cat
+    dogSize: Dog size (lbs)
+    housingConditions: Housing conditions
+    hasHouse: Has house (excludes apartments)
+    hasFencedYard: Has fenced yard
+    dogsOnFurniture: Dogs allowed on furniture
+    dogsOnBed: Dogs allowed on bed
+    nonSmokingHome: Non-smoking home
+    petsInHome: Pets in the home
+    noDog: Doesn't own a dog
+    noCat: Doesn't own a cat
+    oneClient: Accepts only one client at a time
+    noCagedPets: Does not own caged pets
+    childrenInHouse: Children in the house
+    noChildren: No children
+    children0to5: Children 0-5 years old
+    children6to12: Children 6-12 years old
+    additionalServices: Additional Services
+    puppyCare: Puppy care
+    catCare: Cat care
+    unspayedFemales: Unspayed female dogs
+    nonNeuteredMales: Non-neutered male dogs
+    bathingGrooming: Bathing & grooming
+    dogFirstAid: Dog first aid & CPR
+    days:
+        title: Which days are you available?
+        monday: Monday
+        tuesday: Tuesday
+        wednesday: Wednesday
+        thursday: Thursday
+        friday: Friday
+        saturday: Saturday
+        sunday: Sunday
+    languages:
+        title: What languages do you speak?
+        dutch: Dutch
+        english: English
+        german: German
+        french: French
+        spanish: Spanish
+        addLanguage: Add a language
+        addedSuccess: '{language} added successfully!'
+    exclusions:
+        title: What don't you do?
+        noDogs: Not in a house with dogs
+        noCats: Not in a house with cats
+        noIroning: I don't iron
+    bio:
+        title: Bio
+        desc: Tell pet parents about yourself and your care style.
+        placeholder: Introduce yourself and the care you offer...
+    experience:
+        title: Experience
+        desc: What sets you apart? Include special skills like training or senior care.
+        placeholder: e.g. I have cared for dogs of all sizes for many years and can follow feeding and medication plans.
+    safety:
+        title: Safety
+        desc: Describe your home environment and safety measures for pets staying with you.
+        placeholder: e.g. I keep pets in a secure home, follow owner instructions, and send regular check-in photos.
+    communication:
+        title: Communication
+        desc: Highlight your communication strengths with pet parents.
+        placeholder: e.g. 92% response rate
+    skills:
+        title: Skills
+        desc: List your pet care skills and certifications.
+        placeholder: e.g. Oral medication administration
+    validation:
+        selectService: Select at least one service.
+        selectPet: Select at least one pet type.
+        selectDay: Select at least one available day.
+        selectLanguage: Select at least one language.
+        requiredFields: Please complete the required fields marked with *.
+    submit:
+        submitContinue: Submit and Continue
+    toasts:
+        updateSuccess: Services updated successfully!
+        updateFailed: Failed to update services.
+        saveError: An error occurred while saving services.
+        stillNeeded: 'Still needed: {items}'

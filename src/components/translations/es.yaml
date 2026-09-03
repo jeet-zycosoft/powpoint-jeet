@@ -1,0 +1,168 @@
+common:
+    close: Cerrar
+    closeModal: Cerrar modal
+    cancel: Cancelar
+    retry: Reintentar
+    send: Enviar
+    save: Guardar
+    edit: Editar
+    add: Añadir
+    loading: Cargando...
+    user: Usuario
+    notification: Notificación
+    required: obligatorio
+    gotIt: Entendido
+    all: Todos
+    me: Yo
+    km: KM
+    favorite: Favorito
+    addFavorite: Añadir a favoritos
+    removeFavorite: Quitar de favoritos
+    readArticle: Leer artículo
+    blogPost: Entrada del blog
+    petPartner: Compañero de mascotas
+    petSitter: Cuidador de mascotas
+    age: 'Edad:'
+    exp: 'Exp:'
+    years: Años
+    reviews: '{count} Reseñas'
+    from: desde
+    viewProfile: Ver perfil
+    chat: Chat
+    contact: Contacto
+chatModal:
+    defaultSitter: el cuidador
+    processTitle: Proceso de chat
+    acceptTitle: ¿Aceptar conversación?
+    acceptQuota: 'Aceptar usa 1 crédito (ahora {display}, después {nextDisplay}).'
+    acceptCredit: Aceptar consumirá 1 crédito de conexión.
+    decline: Rechazar
+    acceptConnection: Aceptar conexión
+    purchaseTitle: Suscripción requerida
+    getPremium: Obtener Active Premium
+    renewTitle: Renovar suscripción
+    renewMessage: Tu plan ha expirado. Renueva para seguir chateando con cuidadores.
+    renewButton: Renovar suscripción
+    locationTitle: Cuidador en otra zona
+    locationMessage: 'Este cuidador está en {sitterCity}, pero tu perfil está en {ownerCity}. Los paquetes existentes permanecen en tu zona anterior. Reemplaza tu ubicación con la dirección de este cuidador para comprar Active Premium para su zona.'
+    anotherArea: otra zona
+    yourArea: tu zona actual
+    replaceLocation: Reemplazar ubicación
+    upgradeTitle: Límite de conexiones alcanzado
+    upgradeMessage: Se alcanzó el límite mensual de cuidadores. Compra otro paquete para conectar con más cuidadores.
+    buyPackage: Comprar otro paquete
+    verifyTitle: Verificación de chat
+reviewModal:
+    title: Escribir una reseña
+    ratingLabel: Valoración
+    commentLabel: Tu reseña
+    commentPlaceholder: Comparte tu experiencia...
+    submit: Enviar reseña
+    submitting: Enviando...
+    validationRating: Por favor selecciona una valoración.
+    validationComment: Por favor escribe una reseña.
+    success: Reseña enviada correctamente.
+    error: No se pudo enviar la reseña.
+    closeAria: Cerrar reseña
+sitterModal:
+    chatNow: Chatear ahora
+    services: Servicios
+    reviews: Reseñas
+    location: Ubicación
+    about: Acerca de
+    favorite: Favorito
+    loginFavorite: Inicia sesión para gestionar favoritos.
+    addSuccess: Añadido a favoritos.
+    removeSuccess: Eliminado de favoritos.
+    favoriteError: No se pudieron actualizar los favoritos.
+profileMenu:
+    myAccount: Mi cuenta
+    profile: Perfil
+    conversations: Conversaciones
+    favorites: Favoritos
+    instructions: Instrucciones
+    feedback: Comentarios
+    logout: Cerrar sesión
+    petOwner: Dueño de mascota
+    petSitter: Cuidador de mascotas
+    advertisements: Anuncios
+    pawpoint: PawPoint
+    faq: Preguntas frecuentes
+    terms: Términos y condiciones generales
+    privacy: Política de privacidad
+language:
+    english: English
+    spanish: Español
+    french: Français
+    title: Seleccionar idiomas
+    search: Buscar idiomas
+    save: Guardar idiomas
+    noResults: No se encontraron idiomas
+fieldHint:
+    completeProfile: Completa tu perfil
+    defaultMessage: Completa este campo para continuar.
+searchBox:
+    placeholder: Buscar ubicación
+    searchAria: Buscar ubicación
+    submitAria: Enviar búsqueda
+    searching: Buscando ubicaciones...
+forms:
+    ratePerNight: Tarifa por noche*
+    enterItem: Introducir elemento
+    items: Elementos
+    removeItem: Eliminar elemento
+    itemsCount: '{count}/{max} elementos'
+    duplicateItem: Este elemento ya existe.
+    maxItems: Se alcanzó el número máximo de elementos.
+    cropPhoto: Recortar foto
+    closeCrop: Cerrar recorte
+    applyCrop: Aplicar
+    cropping: Recortando...
+    cropError: No se pudo recortar la imagen.
+    dropFiles: Suelta los archivos aquí
+    dragDrop: Arrastra y suelta archivos aquí, o haz clic para seleccionar
+    avgNight: 'Media, €25/noche'
+    bold: Negrita
+    italic: Cursiva
+    underline: Subrayado
+    bulletList: Lista con viñetas
+    numberedList: Lista numerada
+services:
+    boarding: Alojamiento para perros
+    sitting: Cuidado de casas
+    daycare: Guardería para perros
+    walking: Paseo de perros
+    dropIn: Visitas a domicilio
+    dog: Perro
+    cat: Gato
+    serviceType: Tipo de servicio
+    petType: Tipo de mascota
+    dogSize: Tamaño del perro
+    maxPrice: Precio máximo
+blogSidebar:
+    categories: Categorías
+    recentPosts: Publicaciones recientes
+    tags: Etiquetas
+    search: Buscar
+    noPosts: No hay publicaciones recientes
+authLogo:
+    homeAria: Inicio de PawPoint
+    logoAlt: Logo de PawPoint
+chatRooms:
+    joinFailed: No se pudieron unir las salas de chat.
+cards:
+    noServices: No hay servicios listados
+    pending: Pendiente
+popup:
+    closeAria: Cerrar modal
+header:
+    incompleteProfileDefault: Completa tu perfil primero para explorar los listados.
+    incompleteProfileMissing: 'Aún falta: {items}'
+sitter:
+    gallery:
+        prevPhotos: Fotos anteriores
+        nextPhotos: Fotos siguientes
+        closeImage: Cerrar imagen
+        prevImage: Imagen anterior
+        nextImage: Imagen siguiente
+        imageAlt: 'Imagen de galería {number}'

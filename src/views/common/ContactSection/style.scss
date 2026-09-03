@@ -1,0 +1,172 @@
+@use "sass:color";
+@use "@/styles/var";
+@use "sass:map";
+
+.contact-section {
+    padding: 4rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-color: #fff; // or transparent if handled by parent
+
+    .container {
+        max-width: 800px;
+        width: 100%;
+        padding: 0 1.5rem;
+        margin: 0 auto;
+    }
+
+    .contact-title {
+        text-align: center;
+        color: #1a423e; // Dark green from screenshot
+        font-size: 2.5rem;
+        font-weight: 500;
+        margin-bottom: 3rem;
+
+        @media (max-width: 768px) {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+    }
+
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            label {
+                font-weight: 600;
+                color: #556c68; // Muted green/gray
+                font-size: 1rem;
+            }
+
+            input,
+            textarea {
+                background-color: #f9f9f7; // Light cream background
+                border: none;
+                border-radius: 12px;
+                padding: 1rem 1.25rem;
+                font-size: 1rem;
+                color: #000;
+                font-weight: 600;
+                outline: none;
+                transition: box-shadow 0.2s;
+
+                &:focus {
+                    box-shadow: 0 0 0 2px #f4b873;
+                }
+
+                &::placeholder {
+                    color: #ccc;
+                    font-weight: 400;
+                }
+                &:disabled {
+                    opacity: 0.6;
+                    cursor: not-allowed;
+                }
+            }
+
+            textarea {
+                min-height: 150px;
+                resize: vertical;
+            }
+        }
+
+        .recaptcha-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+
+            .recaptcha-mock {
+                background: #f9f9f9;
+                border: 1px solid #d3d3d3;
+                border-radius: 3px;
+                padding: 0.5rem 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 300px;
+                box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.08);
+
+                .checkbox-wrapper {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    input[type="checkbox"] {
+                        width: 24px;
+                        height: 24px;
+                        cursor: pointer;
+                        margin: 0;
+
+                        &:disabled {
+                            cursor: not-allowed;
+                            opacity: 0.6;
+                        }
+                    }
+
+                    label {
+                        font-weight: 400;
+                        color: #000;
+                        font-size: 14px;
+                    }
+                }
+
+                .recaptcha-logo {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    img {
+                        width: 32px;
+                        height: 32px;
+                    }
+
+                    span {
+                        font-size: 10px;
+                        color: #555;
+                    }
+
+                    .terms {
+                        font-size: 8px;
+                        color: #555;
+                    }
+                }
+            }
+        }
+
+        .send-button {
+            background-color: #f4b873; // Orange/Yellow color
+            color: #1a423e;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 1rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.2s, opacity 0.2s;
+            margin-top: 1rem;
+            width: 100%;
+            max-width: 400px;
+            align-self: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover:not(:disabled) {
+                background-color: color.adjust(#f4b873, $lightness: -5%);
+            }
+
+            &:disabled {
+                opacity: 0.7;
+                cursor: not-allowed;
+            }
+        }
+    }
+}

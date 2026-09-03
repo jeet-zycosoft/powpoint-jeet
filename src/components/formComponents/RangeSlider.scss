@@ -1,0 +1,213 @@
+@use "@/styles/var";
+@use "sass:map";
+
+$rangeColor: map.get(var.$colors, "text");
+
+.range-slider-container {
+    padding: 24px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 800px;
+    transition: padding 0.2s ease;
+
+    @media screen and (max-width: 768px) {
+        padding: 20px;
+    }
+
+    @media screen and (max-width: 480px) {
+        padding: 16px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 16px;
+        font-size: 18px;
+        font-weight: 500;
+        color: map.get(var.$colors, "secondary");
+        font-family: map.get(var.$fonts, "secondary"), sans-serif;
+        transition:
+            font-size 0.2s ease,
+            margin-bottom 0.2s ease;
+
+        @media screen and (max-width: 768px) {
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        @media screen and (max-width: 480px) {
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+    }
+
+    .slider-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        transition: gap 0.2s ease;
+
+        @media screen and (max-width: 576px) {
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 0px;
+        }
+
+        span {
+            font-size: 14px;
+            font-weight: 500;
+            color: #374151;
+            font-family: map.get(var.$fonts, "primary"), sans-serif;
+            opacity: 0.5;
+            transition: font-size 0.2s ease;
+
+            @media screen and (max-width: 576px) {
+                font-size: 12px;
+
+                &:first-of-type {
+                    order: 2;
+                }
+
+                &:last-of-type {
+                    order: 3;
+                }
+            }
+        }
+
+        .slider-input-container {
+            position: relative;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            height: 40px;
+            transition: margin 0.2s ease;
+
+            @media screen and (max-width: 576px) {
+                order: 1;
+                flex: 0 0 100%;
+                margin-top: 16px;
+                margin-bottom: 4px;
+            }
+
+            .slider-tooltip {
+                position: absolute;
+                bottom: 2.5rem;
+                transform: translateX(-50%);
+                // background-color: $rangeColor;
+                // color: #fff;
+                color: $rangeColor;
+                padding: 4px 10px;
+                border-radius: 6px;
+                font-size: 12px;
+                font-weight: 600;
+                font-family: map.get(var.$fonts, "primary"), sans-serif;
+                white-space: nowrap;
+                pointer-events: none;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+                line-height: 1.2;
+                transition:
+                    bottom 0.2s ease,
+                    font-size 0.2s ease,
+                    padding 0.2s ease;
+
+                @media screen and (max-width: 576px) {
+                    bottom: 3rem;
+                    font-size: 11px;
+                    padding: 3px 8px;
+                }
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    bottom: -4px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    border-width: 4px 4px 0;
+                    border-style: solid;
+                    border-color: $rangeColor transparent transparent;
+                }
+            }
+
+            input[type="range"] {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 100%;
+                height: 6px;
+                background-color: #e5e7eb;
+                border-radius: 9999px;
+                outline: none;
+                background-image: linear-gradient($rangeColor, $rangeColor);
+                background-repeat: no-repeat;
+
+                $thumbSize: 20px;
+                $thumbBorderSize: 4px;
+
+                &:focus-visible {
+                    &::-webkit-slider-thumb {
+                        box-shadow: 0 0 0 6px rgba($rangeColor, 0.15);
+                    }
+
+                    &::-moz-range-thumb {
+                        box-shadow: 0 0 0 6px rgba($rangeColor, 0.15);
+                    }
+
+                    &::-ms-thumb {
+                        box-shadow: 0 0 0 6px rgba($rangeColor, 0.15);
+                    }
+                }
+
+                &::-webkit-slider-thumb {
+                    -webkit-appearance: none;
+                    appearance: none;
+                    width: $thumbSize;
+                    height: $thumbSize;
+                    background-color: #fff;
+                    border: $thumbBorderSize solid $rangeColor;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    transition:
+                        transform 0.1s ease,
+                        box-shadow 0.2s ease;
+
+                    &:active {
+                        transform: scale(1.15);
+                        box-shadow: 0 0 0 8px rgba($rangeColor, 0.2);
+                    }
+                }
+
+                &::-moz-range-thumb {
+                    width: $thumbSize;
+                    height: $thumbSize;
+                    background-color: #fff;
+                    border: $thumbBorderSize solid $rangeColor;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    transition:
+                        transform 0.1s ease,
+                        box-shadow 0.2s ease;
+
+                    &:active {
+                        transform: scale(1.15);
+                        box-shadow: 0 0 0 8px rgba($rangeColor, 0.2);
+                    }
+                }
+
+                &::-ms-thumb {
+                    width: $thumbSize;
+                    height: $thumbSize;
+                    background-color: #fff;
+                    border: $thumbBorderSize solid $rangeColor;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    transition:
+                        transform 0.1s ease,
+                        box-shadow 0.2s ease;
+
+                    &:active {
+                        transform: scale(1.15);
+                        box-shadow: 0 0 0 8px rgba($rangeColor, 0.2);
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,190 @@
+@use "@/styles/var";
+@use "@/styles/custom-functions" as *;
+@use "sass:map";
+
+html {
+    font-size: 16px;
+    min-height: 100%;
+
+    @media only screen and (max-width: 768px) {
+        font-size: 15px;
+    }
+
+    @media only screen and (max-width: 576px) {
+        font-size: 14px;
+    }
+}
+
+body {
+    position: relative;
+    min-height: 100dvh;
+    font-family: map.get(var.$fonts, "secondary");
+}
+
+.site-shell {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+}
+
+.site-main {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    width: 100%;
+    min-height: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+p {
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+// sisavle user select ----- start //
+// * {
+//     user-select: none;
+// }
+// sisavle user select ----- end //
+
+.absolute-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-bg {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.section-top-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+// color ----- start //
+.white {
+    color: #fff !important;
+}
+
+// color ----- start //
+
+// Buttons ----- start //
+.main-btn {
+    font-size: toRem(12);
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: toRem(4);
+    border: 2px solid white;
+    border-radius: toRem(80);
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    &:hover {
+        .main-btn {
+            &__content {
+                padding-left: toRem(16);
+                padding-right: toRem(48);
+            }
+
+            &__icon {
+                left: calc(100% - toRem(36));
+            }
+        }
+    }
+
+    &__icon {
+        display: grid;
+        place-items: center;
+        width: toRem(32);
+        height: toRem(32);
+        border-radius: toRem(20);
+        color: white;
+        background-color: map.get(var.$colors, "secondary");
+        transition: 0.4s ease-in-out;
+        position: absolute;
+        left: toRem(4);
+    }
+
+    &__content {
+        padding: toRem(7) toRem(16);
+        padding-left: toRem(48);
+
+        color: white;
+        transition: 0.4s ease-in-out;
+    }
+}
+
+.btn-primary {
+    background-color: map.get(var.$colors, "primary");
+    color: map.get(var.$colors, "black");
+    padding: toRem(15) toRem(30);
+    border: none;
+    border-radius: 10rem;
+    font-size: toRem(16);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #ec971f;
+    }
+}
+
+.btn-secondary {
+    background-color: map.get(var.$colors, "white");
+    color: map.get(var.$colors, "black");
+    padding: toRem(15) toRem(30);
+    border: 1px solid map.get(var.$colors, "primary");
+    border-radius: 10rem;
+    font-size: toRem(16);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #ec971f;
+    }
+}
+
+// Buttons ----- end //
+
+// primaryBtn ----- end //
+.form-select:focus,
+.btn-close:focus,
+.form-control:focus {
+    box-shadow: unset;
+}
+
+:not(.btn-check) + .btn:active {
+    border-color: transparent;
+}
+
+// primaryBtn ----- end //
+
+.form-group {
+    margin-bottom: 18px;
+
+    label {
+        display: block;
+        font-size: 0.9rem;
+        color: map.get(var.$colors, "text");
+        margin-bottom: 5px;
+    }
+}

@@ -1,0 +1,39 @@
+updateProfile:
+    enterName: Introduce su nombre
+    profilePhoto:
+        title: Foto de perfil
+        desc: Esta es la primera foto que verán los dueños de mascotas. Recomendamos usar una foto clara y bien iluminada de su rostro (sin gafas de sol).
+        upload: Subir su foto
+        removeTitle: Eliminar foto de perfil
+        alt: imagen de perfil
+    headline:
+        title: Escriba un titular llamativo
+        infoOwner: Antes de poder encontrar un cuidador
+        infoSitter: Antes de poder encontrar un dueño
+        hint: Haga su titular breve, descriptivo y auténtico.
+        placeholderOwner: Tengo un patio cerrado y dos perros amigables para hacer compañía a su mascota. Puedo usar una jaula si es necesario...
+        placeholderSitter: Preséntese y describa el cuidado que ofrece...
+        charCount: '{count} / {max} caracteres'
+        required: El titular es obligatorio.
+        maxLength: El titular debe tener 100 caracteres o menos.
+    gallery:
+        title: Fotos de la galería
+        desc: Añada fotos suyas con mascotas (incluidas las suyas) para mostrar el cuidado y la atención que les brinda. Si es posible, incluya fotos caminando o jugando con mascotas. Sugerimos entre 5 y 10 de sus mejores fotos.
+        removeTitle: Eliminar foto
+    submit:
+        saving: Guardando...
+        saveContinue: Guardar y continuar
+    crop:
+        profileTitle: Recortar foto de perfil
+        galleryTitle: Recortar foto de galería
+        queueLabel: Foto {current} de {total}
+    toasts:
+        updateSuccess: ¡Perfil actualizado correctamente!
+        updateFailed: No se pudo actualizar el perfil.
+        saveError: Se produjo un error al guardar el perfil.
+        profilePhotoDeleted: Foto de perfil eliminada correctamente.
+        profilePhotoDeleteFailed: No se pudo eliminar la foto de perfil.
+        profilePhotoDeleteError: Se produjo un error al eliminar la foto de perfil.
+        galleryPhotoDeleted: Foto de galería eliminada correctamente.
+        galleryPhotoDeleteFailed: No se pudo eliminar la foto de galería.
+        galleryPhotoDeleteError: Se produjo un error al eliminar la foto de galería.

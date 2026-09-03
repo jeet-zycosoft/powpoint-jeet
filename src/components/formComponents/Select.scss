@@ -1,0 +1,60 @@
+.form-group {
+    margin-bottom: 18px;
+
+    //   label {
+    //     display: block;
+    //     font-size: 0.75rem;
+    //     color: map.get(var.$colors, 'text');
+    //     margin-bottom: 5px;
+    //   }
+
+    select {
+        width: 100%;
+        padding: 10px;
+        padding-left: 18px;
+        border: none;
+        border-radius: 120px;
+        background-color: #faf9f5;
+    }
+    option {
+        border-radius: 1rem;
+    }
+}
+
+.custom-select-container {
+    position: relative;
+}
+
+.select-trigger {
+    padding: 10px;
+    padding-left: 18px;
+    background: #faf9f5;
+    border: 0px solid #ddd;
+    border-radius: 10rem; /* Rounded box */
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.options-list {
+    position: absolute;
+    top: 110%;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    list-style: none;
+    z-index: 10;
+    li {
+        padding: 10px;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: background 0.2s;
+        &:hover {
+            background-color: #f0f7ff;
+            color: #007bff;
+        }
+    }
+}

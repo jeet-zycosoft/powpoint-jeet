@@ -1,0 +1,21 @@
+auth:
+    changePasswordTitle: 'Change Password'
+    changePasswordDesc: 'Please enter your new password below.'
+    newPasswordLabel: 'New Password'
+    newPasswordPlaceholder: 'Enter new password'
+    confirmPasswordLabel: 'Confirm Password'
+    confirmPasswordPlaceholder: 'Confirm new password'
+    passwordMismatch: 'Passwords do not match.'
+    passwordRequired: 'Password is required.'
+    tokenMissing: 'Invalid or expired password reset link. Please request a new one.'
+    continue: 'Reset Password'
+    back: 'Back to Login'
+    successTitle: 'Password Changed'
+    successDesc: 'Your password has been successfully reset. You will be redirected to the login page shortly.'
+    changePasswordImageAlt: Change Password Image
+    invalidResetLinkTitle: Invalid Reset Link
+    requestNewLink: Request New Link
+    redirectingCountdown: 'Redirecting to login in {seconds}s'
+    passwordChangedDefault: Password has been successfully changed.
+    resetError: Something went wrong. Please try again.
+    loadingFallback: Loading...

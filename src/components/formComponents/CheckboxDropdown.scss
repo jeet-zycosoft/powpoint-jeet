@@ -1,0 +1,58 @@
+@use "@/styles/var";
+@use "sass:map";
+
+.checkbox-dropdown {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    .checkbox-dropdown-title {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.25rem;
+        color: map.get(var.$colors, "heading");
+        margin-bottom: 0;
+        transition: all 0.3s;
+
+        .chevron {
+            transition: all 0.3s;
+        }
+    }
+
+    .checkbox-group {
+        --item-height: 3.8rem;
+        height: 0px;
+        opacity: 1;
+        padding-top: 0px;
+        overflow: hidden;
+        transition: all 1s;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+
+        @media only screen and (max-width: 768px) {
+            --item-height: 4rem;
+        }
+    }
+
+    &.open {
+        .checkbox-dropdown-title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.7rem;
+
+            .chevron {
+                transform: rotate(180deg);
+            }
+        }
+
+        .checkbox-group {
+            opacity: 1;
+            padding-top: 0px;
+        }
+    }
+}

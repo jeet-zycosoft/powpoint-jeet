@@ -1,0 +1,19 @@
+contact:
+    title: 'Send PawPoint a message'
+    nameLabel: 'Name'
+    namePlaceholder: 'Enter your name'
+    emailLabel: 'Email address'
+    emailPlaceholder: 'Enter your email'
+    messageLabel: 'Make account changes yourself. Enter your message here.'
+    messagePlaceholder: 'Make account changes yourself. Enter your message here.'
+    robotLabel: "I'm not a robot"
+    recaptchaAlt: 'reCAPTCHA logo'
+    send: 'Send'
+    sending: 'Sending...'
+    validation:
+        nameRequired: 'Please enter your name.'
+        emailRequired: 'Please enter your email address.'
+        emailInvalid: 'Please enter a valid email address.'
+        messageRequired: 'Please enter your message.'
+        robotRequired: 'Please verify that you are not a robot.'
+    errorFallback: 'An error occurred while sending your message. Please try again later.'

@@ -1,0 +1,69 @@
+@use "@/styles/var";
+@use "sass:map";
+.feedback-container {
+    max-width: 700px;
+    margin: 4rem auto;
+    padding: 2rem;
+    font-family: sans-serif;
+
+    .section-heading {
+        text-align: center;
+        margin-bottom: 3rem;
+        text-transform: unset;
+        @media screen and (max-width: 768px) {
+            margin-bottom: 2rem;
+        }
+    }
+
+    .feedback-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        .form-group {
+            margin-bottom: 18px;
+
+            label {
+                display: block;
+                font-size: 1.1rem;
+                font-weight: 550;
+                color: map.get(var.$colors, "secondary");
+                margin-bottom: 6px;
+            }
+            textarea,
+            input {
+                width: 100%;
+                padding: 10px;
+                font-family: map.get(var.$fonts, "secondary");
+                font-size: 1.2rem;
+                font-weight: 700;
+                padding-left: 18px;
+                border: none;
+                border-radius: 120px;
+                color: map.get(var.$colors, "text");
+                background-color: #faf9f5;
+            }
+            textarea {
+                min-height: 120px;
+                font-size: 1rem;
+                font-weight: 400;
+                resize: vertical;
+                border-radius: 1rem;
+            }
+        }
+        .btn-primary {
+            width: 450px;
+            margin: 0 auto;
+            @media screen and (max-width: 768px) {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .feedback-container {
+        margin: 2rem auto;
+        padding: 1rem;
+    }
+}

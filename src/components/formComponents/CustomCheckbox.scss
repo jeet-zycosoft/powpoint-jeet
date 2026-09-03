@@ -1,0 +1,51 @@
+@use "@/styles/var";
+@use "sass:map";
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    background: #f8f6f1;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: map.get(var.$colors, "secondary");
+    user-select: none;
+    input {
+        display: none;
+    }
+    /* Checkbox box */
+    .checkmark {
+        width: 22px;
+        height: 22px;
+        border-radius: 6px;
+        border: 2px solid #8ba59b;
+        display: inline-block;
+        position: relative;
+        transition: 0.25s;
+    }
+    /* Checked state */
+    input:checked + .checkmark {
+        background: map.get(var.$colors, "secondary");
+        border-color: map.get(var.$colors, "secondary");
+        &::after {
+            opacity: 1;
+        }
+    }
+
+    /* Checkmark tick */
+    .checkmark::after {
+        content: "";
+        position: absolute;
+        width: 6px;
+        height: 12px;
+        border: solid white;
+        border-width: 0 2.5px 2.5px 0;
+        top: 2px;
+        left: 6px;
+        opacity: 0;
+        transform: rotate(45deg);
+        transition: 0.25s;
+    }
+}

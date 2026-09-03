@@ -1,0 +1,49 @@
+chat:
+    joinError: No se puede unir al chat hasta que start devuelva room_id
+    toasts:
+        verifyFailed: Error al verificar el acceso al chat.
+        messageNotSent: Mensaje no enviado. El chat no está conectado.
+        accepted: ¡Conversación aceptada!
+        acceptFailed: Error al aceptar la conversación.
+        declined: Conversación rechazada.
+        declineFailed: Error al rechazar la conversación.
+        reportSubmitted: Solicitud de reporte enviada correctamente.
+        userBlocked: Usuario bloqueado correctamente.
+        chatCleared: Historial del chat eliminado.
+    loading: Verificando conexión del chat...
+    loadingUser: Cargando...
+    fallbackUser: Usuario
+    connection:
+        online: En línea
+        joining: Uniéndose…
+        connecting: Conectando…
+        disconnected: Desconectado
+    placeholders:
+        waitingJoin: Esperando para unirse al chat…
+        typeMessage: Escribe tu mensaje ...
+        inputDisabled: Entrada deshabilitada hasta que se acepte la conexión
+    header:
+        title: Chat con {name}
+        writeReview: Escribir una reseña
+    settings:
+        report: Reportar chat
+        block: Bloquear chat
+        delete: Eliminar chat
+    status:
+        connectingLive: Conectando al chat en vivo…
+        disconnectedReconnecting: Chat en vivo desconectado. Reconectando…
+    body:
+        messagesAfterAccept: Los mensajes aparecerán después de que se acepte la conversación.
+        chatStartedOn: Chat iniciado el {date}
+        typing: '{name} está escribiendo…'
+    banners:
+        waitingOwnerTitle: Esperando que el dueño acepte
+        waitingOwnerBody: Has enviado tu mensaje inicial. El dueño debe aceptar antes de que puedas continuar chateando.
+        acceptTitle: Acepta la conexión para empezar a chatear
+        acceptOwnerBody: Aceptar consumirá 1 crédito de conexión.
+        acceptSitterBody: Debes aceptar este chat para responder.
+    buttons:
+        decline: Rechazar
+        acceptConnection: Aceptar conexión
+        send: Enviar
+    altMe: Yo

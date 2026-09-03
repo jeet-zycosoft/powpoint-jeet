@@ -1,0 +1,153 @@
+@use "@/styles/var";
+@use "sass:map";
+
+.faq-page-view {
+    padding: 4rem 0 5rem;
+    background-color: map.get(var.$colors, "light_bg");
+    min-height: 70vh;
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 1.25rem;
+    }
+
+    .faq-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+
+        .faq-title {
+            color: map.get(var.$colors, "heading");
+            font-family: map.get(var.$fonts, "primary");
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+
+            @media (max-width: 768px) {
+                font-size: 1.85rem;
+            }
+        }
+
+        .faq-subtitle {
+            color: map.get(var.$colors, "text");
+            font-family: map.get(var.$fonts, "secondary");
+            font-size: 1.05rem;
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+    }
+
+    .faq-list-container {
+        display: flex;
+        flex-direction: column;
+        gap: 0.875rem;
+
+        .faq-card {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            transition: box-shadow 0.25s ease, border-color 0.25s ease;
+
+            &:hover {
+                border-color: map.get(var.$colors, "secondary");
+            }
+
+            &.open {
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+
+                .faq-card-question .chevron {
+                    transform: rotate(180deg);
+                }
+
+                .faq-card-answer {
+                    max-height: 600px;
+                    opacity: 1;
+                    padding-top: 0.875rem;
+                }
+            }
+        }
+
+        .faq-card-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            color: map.get(var.$colors, "heading");
+
+            h3 {
+                font-size: 1.1rem;
+                font-weight: 600;
+                font-family: map.get(var.$fonts, "primary");
+                margin: 0;
+                line-height: 1.4;
+
+                @media (max-width: 576px) {
+                    font-size: 1rem;
+                }
+            }
+
+            .chevron {
+                flex-shrink: 0;
+                color: map.get(var.$colors, "secondary");
+                transition: transform 0.3s ease;
+            }
+        }
+
+        .faq-card-answer {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.3s ease, opacity 0.3s ease, padding-top 0.3s ease;
+
+            p {
+                font-size: 1rem;
+                line-height: 1.65;
+                color: map.get(var.$colors, "secondary");
+                font-family: map.get(var.$fonts, "secondary");
+                margin: 0;
+                font-weight: 500;
+                white-space: pre-wrap;
+            }
+        }
+
+        .faq-skeleton {
+            cursor: default;
+            pointer-events: none;
+
+            .skeleton-line {
+                height: 1.1rem;
+                width: 65%;
+                border-radius: 6px;
+                background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+                background-size: 200% 100%;
+                animation: faq-shimmer 1.4s infinite;
+            }
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            background-color: #ffffff;
+            border-radius: 10px;
+            border: 1px dashed map.get(var.$colors, "formBorder");
+
+            p {
+                font-size: 1.05rem;
+                color: map.get(var.$colors, "text");
+                margin: 0;
+            }
+        }
+    }
+}
+
+@keyframes faq-shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}

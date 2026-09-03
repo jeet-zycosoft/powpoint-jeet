@@ -1,0 +1,94 @@
+@use "var";
+@use "@/styles/custom-functions" as *;
+@use "sass:map";
+
+.section-heading {
+    color: map.get(var.$colors, "heading");
+    font-size: toRem(42);
+    font-family: map.get(var.$fonts, "primary");
+    font-weight: 800;
+    margin-bottom: toRem(20);
+    text-transform: capitalize;
+
+    span {
+        color: map.get(var.$colors, "secondary");
+    }
+
+    &--2 {
+        color: map.get(var.$colors, "white");
+
+        span {
+            color: map.get(var.$colors, "primary");
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        font-size: toRem(34);
+    }
+}
+
+.section-desc {
+    font-size: toRem(18);
+    font-weight: 500;
+    color: map.get(var.$colors, "text");
+}
+
+.primary-para {
+    font-size: toRem(14);
+    font-weight: 400;
+}
+
+.primary-tag {
+    color: var.$secondary;
+    font-size: toRem(12);
+    font-weight: 600;
+    margin-bottom: toRem(0);
+    text-transform: uppercase;
+    letter-spacing: toRem(6);
+}
+
+.color-primary {
+    color: var.$primary;
+}
+
+.color-secondary {
+    color: var.$secondary;
+}
+
+// line clamp classes
+.line-clamp {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.clamp-2 {
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+}
+
+.clamp-3 {
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+}
+
+.clamp-4 {
+    line-clamp: 4;
+    -webkit-line-clamp: 4;
+}
+
+.clamp-6 {
+    line-clamp: 6;
+    -webkit-line-clamp: 6;
+}
+
+.text-ellipsis {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}

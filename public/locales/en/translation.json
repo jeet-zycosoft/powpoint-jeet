@@ -1,0 +1,54 @@
+{
+  "header": {
+    "login": "Login / SignUp",
+    "home": "Home",
+    "findSitter": "Find a Sitter",
+    "becomeSitter": "Become a Sitter",
+    "blog": "Blog",
+    "support": "Support",
+    "languages": "Languages"
+  },
+  "home": {
+    "hero": {
+      "heading": "Reliable <span>pet Sitters</span> You Can Trust.",
+      "desc": "Book local, vetted pet sitters to Care for your pets just like you would while you're away, at work* or on holiday.",
+      "buttonText": "Book a Sitter"
+    },
+    "about": {
+      "heading": "We're More <br /> Than <span>Just Sitters</span>",
+      "p1": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+      "p2": "Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.",
+      "p3": "Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance.",
+      "button": "Book a Sitter"
+    }
+  },
+  "auth": {
+    "login": "Log in",
+    "loginDesc": "Log in to see your upcoming walks, play sessions, and pet pals.",
+    "emailLabel": "Email Address*",
+    "emailPlaceholder": "Enter email",
+    "passwordLabel": "Password*",
+    "confpasswordLabel": "Confirm Password*",
+    "forgotPassword": "Forgot Your Password?",
+    "continue": "Continue",
+    "noAccount": "Don't have an account?",
+    "register": "Register",
+    "or": "OR",
+    "google": "Continue With Google",
+    "createAccount": "Create Your Account",
+    "signupDesc": "Sign up and turn your love for animals into income.",
+    "firstName": "First name*",
+    "lastName": "Last name*",
+    "alreadyHaveAccount": "Already have an account?"
+  },
+  "sitter": {
+    "hero": {
+      "heading": "Turn Your Love for <span>Animals Into a</span> Paycheck",
+      "desc": "Join our team and turn every paw print into a paycheck. Walk dogs, play fetch, and get paid—yes, it's a real job!",
+      "buttonText": "Get started"
+    },
+    "benefits": {
+        "heading": "Perks of <span>Being a Sitter</span>"
+    }
+  }
+}

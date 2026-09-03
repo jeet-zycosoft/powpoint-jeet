@@ -1,0 +1,27 @@
+auth:
+    verifyEmail: "Vérifier l'e-mail"
+    verifyEmailDesc: 'Veuillez saisir le code OTP envoyé à votre adresse e-mail pour vérifier votre compte.'
+    otpLabel: 'Mot de passe à usage unique'
+    otpPlaceholder: 'Entrez votre OTP'
+    continue: 'Continuer'
+    successTitle: 'E-mail vérifié'
+    successTitleHighlight: 'Avec succès'
+    successDesc: 'Nous avons vérifié avec succès votre adresse e-mail. Ouverture de votre profil...'
+    successDescLogin: 'Nous avons vérifié avec succès votre adresse e-mail. Veuillez vous connecter pour continuer.'
+    profileBtn: 'Aller au profil'
+    resendOtp: 'Renvoyer le code'
+    resendingOtp: 'Envoi...'
+    verifyingLink: 'Vérification de votre e-mail...'
+    openingProfile: 'Ouverture de votre profil...'
+    loginBtn: 'Aller à la page de connexion'
+    verifyEmailImageAlt: Image de vérification d'e-mail
+    successImageAlt: Vérification réussie
+    emailNotFound: Nous n'avons pas trouvé votre e-mail. Connectez-vous ou inscrivez-vous à nouveau.
+    codeLength: Le code de vérification doit comporter 6 chiffres.
+    invalidVerification: E-mail ou code de vérification invalide.
+    invalidVerificationLink: Lien de vérification invalide ou expiré.
+    resendSuccess: Un nouveau code de vérification a été envoyé.
+    resendFailed: Impossible de renvoyer le code de vérification. Veuillez réessayer.
+    verifiedLoginRequired: E-mail vérifié. Veuillez vous connecter pour continuer.
+    verifying: Vérification...
+    loadingFallback: Chargement...

@@ -1,0 +1,85 @@
+@use "@/styles/var";
+@use "sass:map";
+
+.terms-conditions-section {
+    padding: 5rem 0;
+    background-color: map.get(var.$colors, "light_bg");
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2.5rem;
+        background-color: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(12, 39, 34, 0.04);
+        border: 1px solid map.get(var.$colors, "border1");
+
+        @media (max-width: 768px) {
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: none;
+            border: none;
+            background-color: transparent;
+        }
+    }
+
+    .terms-title {
+        text-align: center;
+        color: map.get(var.$colors, "heading");
+        font-family: map.get(var.$fonts, "primary");
+        font-size: 2.75rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+
+        @media (max-width: 768px) {
+            font-size: 2rem;
+        }
+    }
+
+    .terms-meta {
+        text-align: center;
+        color: map.get(var.$colors, "secondary");
+        font-family: map.get(var.$fonts, "secondary");
+        font-size: 0.95rem;
+        margin-bottom: 3.5rem;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+    }
+
+    .terms-content {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+        font-family: map.get(var.$fonts, "secondary");
+        color: map.get(var.$colors, "text");
+        line-height: 1.8;
+
+        .terms-intro {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: map.get(var.$colors, "heading");
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .terms-section-block {
+            h2 {
+                font-size: 1.4rem;
+                color: map.get(var.$colors, "heading");
+                font-family: map.get(var.$fonts, "primary");
+                font-weight: 650;
+                margin-bottom: 1rem;
+                border-bottom: 2px solid map.get(var.$colors, "formBorder");
+                padding-bottom: 0.5rem;
+            }
+
+            p {
+                font-size: 1.05rem;
+                font-weight: 400;
+                margin: 0;
+                color: map.get(var.$colors, "text");
+            }
+        }
+    }
+}

@@ -1,0 +1,39 @@
+updateProfile:
+    enterName: Saisissez votre nom
+    profilePhoto:
+        title: Photo de profil
+        desc: C'est la première photo que verront les propriétaires d'animaux. Nous recommandons une photo claire et bien éclairée de votre visage (sans lunettes de soleil).
+        upload: Télécharger votre photo
+        removeTitle: Supprimer la photo de profil
+        alt: image de profil
+    headline:
+        title: Rédigez un titre accrocheur
+        infoOwner: Avant de pouvoir trouver un gardien
+        infoSitter: Avant de pouvoir trouver un propriétaire
+        hint: Rédigez un titre court, descriptif et authentique.
+        placeholderOwner: J'ai un jardin clôturé et deux chiens amicaux pour tenir compagnie à votre animal. Je peux utiliser une cage si nécessaire...
+        placeholderSitter: Présentez-vous et décrivez les soins que vous proposez...
+        charCount: '{count} / {max} caractères'
+        required: Le titre est obligatoire.
+        maxLength: Le titre doit comporter 100 caractères ou moins.
+    gallery:
+        title: Photos de la galerie
+        desc: Ajoutez des photos de vous avec des animaux (y compris les vôtres) pour montrer les soins et l'attention que vous leur portez. Si possible, incluez des photos de vous en promenade ou en jeu avec des animaux. Nous suggérons 5 à 10 de vos meilleures photos.
+        removeTitle: Supprimer la photo
+    submit:
+        saving: Enregistrement...
+        saveContinue: Enregistrer et continuer
+    crop:
+        profileTitle: Recadrer la photo de profil
+        galleryTitle: Recadrer la photo de galerie
+        queueLabel: Photo {current} sur {total}
+    toasts:
+        updateSuccess: Profil mis à jour avec succès !
+        updateFailed: Échec de la mise à jour du profil.
+        saveError: Une erreur s'est produite lors de l'enregistrement du profil.
+        profilePhotoDeleted: Photo de profil supprimée avec succès.
+        profilePhotoDeleteFailed: Échec de la suppression de la photo de profil.
+        profilePhotoDeleteError: Une erreur s'est produite lors de la suppression de la photo de profil.
+        galleryPhotoDeleted: Photo de galerie supprimée avec succès.
+        galleryPhotoDeleteFailed: Échec de la suppression de la photo de galerie.
+        galleryPhotoDeleteError: Une erreur s'est produite lors de la suppression de la photo de galerie.

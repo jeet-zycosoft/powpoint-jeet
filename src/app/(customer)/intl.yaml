@@ -1,0 +1,66 @@
+home:
+    hero:
+        heading: Reliable <span>Pet Sitters</span> You Can Trust.
+        desc: Book local, vetted pet sitters to care for your pets just like you would while you're away, at work, or on holiday.
+        buttonText: Book a Sitter
+    searchBar:
+        lookingFor: "I'm looking for*"
+        options:
+            boarding: 'Dog Boarding'
+            sitting: 'House Sitting'
+            daycare: 'Doggy Day Care'
+            walking: 'Dog Walking'
+        addressLabel: 'Address*'
+        addressPlaceholder: 'Manchester in UK'
+        button: 'Search'
+    howItWorks:
+        heading: 'How Pet <span>Sitting Works</span>'
+        desc: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.'
+        card1:
+            title: 'Browse Local Sitters'
+            desc: 'Search Any Pet sitters by location, availability, and service.'
+        card2:
+            title: 'Book With Confidence'
+            desc: 'Message, meet & confirm all bookings are secure and insured.'
+        card3:
+            title: 'Enjoy Peace of Mind'
+            desc: 'Your sitter sends daily updates, photos, and tails wag.'
+    testimonials:
+        heading: "What Our <span>Client</span> Say's"
+        desc: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.'
+    about:
+        heading: We're More{br} Than <span>Just Sitters</span>
+        p1: "At our core, we understand that your pet's happiness is of utmost importance."
+        button: 'Book a Sitter'
+    featuredSitters:
+        heading: 'Featured <span>Pet Sitters</span> Near You'
+        desc: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.'
+        button: 'View All Sitters'
+    faq:
+        heading: 'FAQs – You Ask, <span>We Answer</span>'
+        desc: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.'
+        q1: 'Are your sitters vetted?'
+        a1: 'Yes, all our sitters undergo a thorough vetting process, including background checks and interviews.'
+        q2: "What's included in pet sitting?"
+        a2: 'Feeding, playtime, walks, cuddles, and regular updates.'
+        q3: 'Is my booking insured?'
+        a3: 'Yes, all bookings made through our platform are covered by our premium insurance.'
+        q4: 'Can I meet the sitter first?'
+        a4: 'Absolutely! We encourage a meet-and-greet before the booking to ensure a good fit for you, your pet, and the sitter.'
+        q5: 'What if my sitter cancels?'
+        a5: "In the rare event of a cancellation, we'll help you find a suitable replacement from our network of trusted sitters."
+    services:
+        heading: 'Pet Sitting <span>Services</span>'
+        desc: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.'
+        boarding:
+            desc: "Your pets stay overnight in your sitter's  They'll be treated like part of the family in a comfortable environment."
+        sitting:
+            desc: 'Your sitter takes care of your pets and your house. Your pets will get all the attention they need from the comfort of '
+        walking:
+            desc: 'Your dog gets a walk around your neighborhood. Perfect for busy days and dogs with extra energy to burn.'
+        daycare:
+            desc: "Your dog spends the day at your sitter's  Drop them off in the morning and pick up a happy pup in the evening."
+        button: 'Book a Sitter'
+    blog:
+        heading: 'Pet Care Tips, <span>News & Stories</span>'
+        desc: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.'

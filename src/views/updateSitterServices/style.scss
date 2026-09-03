@@ -1,0 +1,353 @@
+@use "@/styles/var";
+@use "sass:map";
+
+.form-container-2 {
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+    padding-block: 0rem;
+
+    .form-section {
+        padding: 2rem;
+        margin-bottom: 30px;
+        border: 2px solid map.get(var.$colors, "formBorder1");
+        border-radius: 1.2rem;
+        background-color: map.get(var.$colors, "white");
+
+        @media (max-width: 767px) {
+            padding: 1.5rem;
+            margin-bottom: 20px;
+            border-radius: 1rem;
+        }
+
+        &:first-child,
+        &:nth-child(2) {
+            background-color: map.get(var.$colors, "formBorder1");
+        }
+
+        h2 {
+            color: map.get(var.$colors, "text");
+            font-family: map.get(var.$fonts, "primary");
+            font-weight: 600;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+
+            @media (max-width: 767px) {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+        }
+
+        &.d-flex {
+            align-items: center;
+            gap: 1.5rem;
+
+            @media (max-width: 767px) {
+                flex-direction: column;
+
+                h2 {
+                    margin-bottom: 1rem;
+                }
+            }
+
+            @media (min-width: 768px) {
+                h2 {
+                    margin-bottom: 0;
+                    text-align: left;
+                }
+            }
+        }
+
+        p {
+            color: map.get(var.$colors, "secondary");
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+
+            span {
+                font-weight: 400;
+            }
+        }
+
+        .underline {
+            text-decoration: underline;
+            //   display: inline-block;
+            cursor: pointer;
+            color: map.get(var.$colors, "secondary");
+            margin: 0 auto;
+        }
+
+        .address-input {
+            display: flex;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 5px;
+
+            input {
+                flex: 1;
+                border: none;
+                padding: 15px;
+                background-color: transparent;
+                font-size: 16px;
+            }
+
+            button {
+                background-color: #f5a623;
+                border: none;
+                border-radius: 5px;
+                color: white;
+                padding: 0 20px;
+                cursor: pointer;
+
+                svg {
+                    stroke: white;
+                }
+            }
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+
+            label {
+                display: flex;
+                align-items: center;
+                background-color: map.get(var.$colors, "formBorder1");
+                padding: 10px 20px;
+                border-radius: 0.75rem;
+                cursor: pointer;
+                transition: all 0.2s ease;
+
+                input[type="checkbox"] {
+                    margin-right: 10px;
+                    accent-color: #005c5c;
+                }
+
+                &:has(input:checked) {
+                    color: #005c5c;
+                }
+            }
+        }
+
+        .add-language-btn {
+            display: block;
+            margin: 20px auto 0;
+            background: none;
+            border: none;
+            color: #005c5c;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+
+    .heading1 {
+        color: map.get(var.$colors, "text");
+        font-family: map.get(var.$fonts, "primary");
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+
+        @media (max-width: 767px) {
+            font-size: 1.5rem;
+        }
+    }
+
+    .heading1-list {
+        padding-left: 20px;
+        list-style-type: none;
+
+        li {
+            position: relative;
+            font-size: 1rem;
+            margin-bottom: 0.4rem;
+            color: map.get(var.$colors, "secondary");
+            padding-left: 1.25rem;
+
+            @media (max-width: 767px) {
+                font-size: 0.9rem;
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0.35em;
+                width: 0.6em;
+                height: 0.6em;
+                border: 2px solid map.get(var.$colors, "primary");
+                border-radius: 50%;
+                background-color: transparent;
+                box-sizing: border-box;
+            }
+        }
+    }
+
+    .subheading1 {
+        color: map.get(var.$colors, "secondary");
+        font-weight: 500;
+
+        @media (max-width: 767px) {
+            font-size: 1rem;
+        }
+    }
+
+    .btn-primary {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin: 30px auto 0;
+
+        &:disabled {
+            opacity: 0.8;
+            cursor: not-allowed;
+        }
+
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(0, 0, 0, 0.15);
+            border-top-color: currentColor;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+    }
+
+    .custom-checkbox-group {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        padding: 2.5rem;
+        margin-bottom: 2rem;
+        border: 1.5px solid #e9ebe8;
+        border-radius: 1.5rem;
+        background: map.get(var.$colors, "formBorder2");
+        height: 100%;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.015);
+
+        @media (max-width: 767px) {
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 1rem;
+        }
+
+        .heading {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: map.get(var.$colors, "heading");
+            margin-bottom: 1.5rem;
+            font-family: map.get(var.$fonts, "primary");
+
+            @media (max-width: 767px) {
+                font-size: 1.35rem;
+                margin-bottom: 1rem;
+            }
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
+        .checkbox-item {
+            width: 100%;
+        }
+
+        .custom-checkbox {
+            background: transparent !important;
+            padding: 0 !important;
+            border-radius: 0 !important;
+            font-weight: 500;
+            font-size: 1.05rem;
+            color: #334e48;
+            gap: 14px;
+            width: 100%;
+            transition: color 0.2s ease;
+
+            &:hover {
+                color: map.get(var.$colors, "secondary");
+            }
+
+            .checkmark {
+                width: 22px;
+                height: 22px;
+                border-radius: 6px;
+                border: 2px solid #ccd6d1;
+                background-color: map.get(var.$colors, "white");
+
+                &::after {
+                    width: 5px;
+                    height: 10px;
+                    border-width: 0 2px 2px 0;
+                    top: 3px;
+                    left: 6.5px;
+                }
+            }
+
+            input:checked + .checkmark {
+                background: #5f8a7d;
+                border-color: #5f8a7d;
+            }
+        }
+    }
+
+    .text-area-field {
+        width: 100%;
+        padding: 1rem 1.25rem;
+        border: 1.5px solid map.get(var.$colors, "formBorder1");
+        border-radius: 0.75rem;
+        font-size: 0.95rem;
+        font-family: inherit;
+        color: map.get(var.$colors, "text");
+        background: map.get(var.$colors, "white");
+        resize: vertical;
+        min-height: 120px;
+        transition: all 0.2s ease;
+
+        &:focus {
+            outline: none;
+            border-color: map.get(var.$colors, "secondary");
+        }
+
+        &::placeholder {
+            color: #aaa;
+        }
+    }
+
+    .character-count {
+        display: block;
+        font-size: 0.85rem;
+        color: #888;
+        text-align: right;
+        margin-top: 0.5rem;
+    }
+
+    .rich-text-editor {
+        width: 100%;
+
+        &__content {
+            min-height: 200px;
+
+            p,
+            div,
+            ul,
+            ol {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

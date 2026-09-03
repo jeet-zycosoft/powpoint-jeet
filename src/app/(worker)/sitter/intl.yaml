@@ -1,0 +1,56 @@
+sitter:
+    hero:
+        heading: 'Turn Your Love for <span>Animals Into a</span> Paycheck'
+        desc: ''
+        buttonText: 'Find a job'
+    howItWorks:
+        heading: 'How it <span>works</span>'
+        desc: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.'
+        step1Title: 'Create your profile'
+        step1Desc: 'We guide you through building a profile that showcase information pet owners care about.'
+        step2Title: 'Accept requests'
+        step2Desc: 'Tell us the types of pets you want to care for and the dates that work for you. You make your own schedule.'
+        step3Title: 'Get paid'
+        step3Desc: 'Payments are made ready for withdrawal two days after you have completed a service.'
+        getStarted: 'Get Started'
+    benefits:
+        flexibilityTitle: 'Flexibility puts you in control'
+        flexibility1: 'Set your own schedule and prices.'
+        flexibility2: 'Offer any combination of pet care services.'
+        flexibility3: 'Set size, age, and other pet preferences that work for you.'
+        toolsTitle: 'The tools to succeed'
+        tools1: 'The Pawpoint Guarantee, which includes up to $25,000 in vet care reimbursement.'
+        tools2: 'Manage your pet sitting schedule and more with the Pawpoint.'
+        tools3: '24/7 support, including vet assistance.'
+    services:
+        title: 'Services'
+        boardingTitle: 'Boarding'
+        boardingDesc: "Care for a dog or cat overnight in your home. Sitters who offer boarding can make up to 2x more than sitters who don't."
+        dogWalkingTitle: 'Dog Walking'
+        dogWalkingDesc: 'Pick up dog walks that fit your schedule.'
+        daycareTitle: 'Doggy Day Care'
+        daycareDesc: 'Ideal for work-from-home dog lovers.'
+        houseSittingTitle: 'House Sitting, Drop-In Visits'
+        houseSittingDesc: 'Stay with or check up on pets in their own homes.'
+        trainingTitle: 'Dog Training'
+        trainingDesc: "Private training in your client's home or neighborhood. Available to credentialed trainers."
+        intro: "We work tirelessly to ensure tails keep wagging and pet owner's minds are at ease."
+        guarantee: 'Every service you offer on Pawpoint is backed by Guarantee.'
+        payments: 'Safe, secured, and convenient online payments.'
+        support: 'A top tire support team available 24/7.'
+        education: 'Ongoing pet care education for pet sitters.'
+    testimonials:
+        message1: "It's easy. I go to the calendar and mark myself as available when I want to be."
+        location1: 'Cari C., Plano TX'
+        message2: "Thanks to the Pawpoint, I know about my business requests immediately and I'm uick to res ond!"
+        location2: 'Carol U., Atlanta GA'
+        heading: 'Connect with pet owners once your profile is approved'
+        desc: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.'
+        cta: 'Start Creating Your Profile'
+    gallery:
+        prevPhotos: 'Previous photos'
+        nextPhotos: 'Next photos'
+        closeImage: 'Close image'
+        prevImage: 'Previous image'
+        nextImage: 'Next image'
+        imageAlt: 'Gallery Image {number}'

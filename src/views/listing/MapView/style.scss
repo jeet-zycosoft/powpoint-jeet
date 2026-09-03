@@ -1,0 +1,339 @@
+@use "@/styles/var";
+@use "sass:map";
+@use "sass:color";
+
+.custom-map-marker {
+    background: transparent;
+    border: none;
+}
+
+.pin-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    &:hover {
+        transform: scale(1.15) translateY(-2px);
+        z-index: 1000 !important;
+    }
+
+    .pin-body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 2px solid map.get(var.$colors, "white");
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        color: map.get(var.$colors, "white");
+        font-family: map.get(var.$fonts, "primary");
+        font-weight: 700;
+        font-size: 13px;
+        text-transform: uppercase;
+
+        &.sitter-color {
+            background: linear-gradient(
+                135deg,
+                map.get(var.$colors, "secondary"),
+                color.adjust(map.get(var.$colors, "secondary"), $lightness: -10%)
+            );
+        }
+
+        &.user-color {
+            background: linear-gradient(
+                135deg,
+                map.get(var.$colors, "primary"),
+                color.adjust(map.get(var.$colors, "primary"), $lightness: -10%)
+            );
+            color: map.get(var.$colors, "heading");
+            font-size: 11px;
+        }
+
+        .pin-initial {
+            display: inline-block;
+            pointer-events: none;
+        }
+
+        .pin-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    }
+
+    .pin-arrow {
+        width: 0;
+        height: 0;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        margin-top: -2px;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+
+        &.sitter-arrow {
+            border-top: 8px solid color.adjust(map.get(var.$colors, "secondary"), $lightness: -10%);
+        }
+
+        &.user-arrow {
+            border-top: 8px solid color.adjust(map.get(var.$colors, "primary"), $lightness: -10%);
+        }
+    }
+
+    // Ripple effect for active/logged-in user
+    &.pulsating {
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 36px;
+            height: 36px;
+            margin-top: -20px; // adjusted for center offset of the pin body
+            margin-left: -18px;
+            border-radius: 50%;
+            border: 3px solid map.get(var.$colors, "primary");
+            opacity: 0;
+            animation: pulse-ring 1.8s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+            pointer-events: none;
+        }
+    }
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(0.65);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(1.6);
+        opacity: 0;
+    }
+}
+
+// Leaflet Popup customizations
+.leaflet-popup {
+    margin-bottom: 30px;
+}
+
+.leaflet-popup-content-wrapper {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px !important;
+    box-shadow: 0 8px 32px rgba(12, 39, 34, 0.1) !important;
+    padding: 0;
+    overflow: hidden;
+}
+
+.leaflet-popup-content {
+    margin: 0 !important;
+    width: 240px !important;
+    font-family: map.get(var.$fonts, "primary") !important;
+    color: map.get(var.$colors, "text");
+
+    .popup-card {
+        padding: 12px;
+
+        .popup-header {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 8px;
+
+            .popup-img {
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 2px solid map.get(var.$colors, "secondary");
+                background-color: map.get(var.$colors, "light_bg");
+            }
+
+            .popup-meta {
+                display: flex;
+                flex-direction: column;
+                gap: 2px;
+                min-width: 0;
+
+                h4 {
+                    margin: 0;
+                    font-size: 14px;
+                    font-weight: 700;
+                    color: map.get(var.$colors, "heading");
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                .popup-sub {
+                    font-size: 11px;
+                    color: color.adjust(map.get(var.$colors, "text"), $lightness: 15%);
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+
+        .popup-details {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid map.get(var.$colors, "formBorder");
+
+            .popup-price {
+                font-size: 13px;
+                font-weight: 700;
+                color: map.get(var.$colors, "secondary");
+
+                span {
+                    font-size: 10px;
+                    font-weight: 500;
+                    color: color.adjust(map.get(var.$colors, "text"), $lightness: 20%);
+                }
+            }
+
+            .popup-rating {
+                display: flex;
+                align-items: center;
+                gap: 3px;
+                font-size: 12px;
+                font-weight: 600;
+                color: map.get(var.$colors, "warning");
+            }
+        }
+
+        .popup-action-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background-color: map.get(var.$colors, "secondary");
+            color: map.get(var.$colors, "white") !important;
+            border: none;
+            border-radius: 8px;
+            padding: 6px 0;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 10px;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+
+            &:hover {
+                background-color: color.adjust(map.get(var.$colors, "secondary"), $lightness: -8%);
+                color: map.get(var.$colors, "white");
+            }
+
+            &.primary-btn {
+                background-color: map.get(var.$colors, "primary");
+                color: map.get(var.$colors, "heading") !important;
+
+                &:hover {
+                    background-color: color.adjust(
+                        map.get(var.$colors, "primary"),
+                        $lightness: -8%
+                    );
+                    color: map.get(var.$colors, "heading");
+                }
+            }
+        }
+    }
+}
+
+.leaflet-popup-tip {
+    background: rgba(255, 255, 255, 0.95) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05) !important;
+}
+
+.leaflet-popup-close-button {
+    color: map.get(var.$colors, "text") !important;
+    padding: 8px 8px 0 0 !important;
+
+    &:hover {
+        color: map.get(var.$colors, "danger") !important;
+        background: transparent !important;
+    }
+}
+
+// Map Container style wrapper
+.map-view-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    border: 1px solid map.get(var.$colors, "formBorder");
+    box-shadow: 0 10px 30px rgba(12, 39, 34, 0.04);
+}
+
+// Glassmorphic No Sitters Alert Banner
+.map-no-sitters-alert {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 90%;
+    max-width: 440px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(12, 39, 34, 0.12);
+    padding: 16px;
+    transition: all 0.3s ease;
+    animation: fade-in-down 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+    .alert-content {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+
+        .alert-icon {
+            font-size: 24px;
+            color: map.get(var.$colors, "primary");
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .alert-text {
+            flex: 1;
+
+            h5 {
+                margin: 0 0 4px 0;
+                font-size: 15px;
+                font-weight: 700;
+                color: map.get(var.$colors, "heading");
+            }
+
+            p {
+                margin: 0;
+                font-size: 12px;
+                line-height: 1.45;
+                color: color.adjust(map.get(var.$colors, "text"), $lightness: 10%);
+            }
+        }
+    }
+}
+
+@keyframes fade-in-down {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -15px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}

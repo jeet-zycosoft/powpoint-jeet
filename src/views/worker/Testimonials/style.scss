@@ -1,0 +1,66 @@
+@use "@/styles/var";
+@use "sass:map";
+
+.testimonials {
+    background-color: map.get(var.$colors, "secondary");
+    //   padding-block: 5rem;
+    padding-bottom: 5rem;
+    text-align: center;
+    color: map.get(var.$colors, "white");
+
+    .block {
+        position: relative;
+        margin-bottom: 14rem;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        .content {
+            width: clamp(340px, 71%, 480px);
+            padding: 4.5rem;
+            background-color: #fff;
+            text-align: start;
+            position: absolute;
+            bottom: -10rem;
+            left: 50%;
+            transform: translateX(-50%);
+
+            @media screen and (max-width: 767px) {
+                padding: 3rem;
+            }
+
+            .message {
+                color: map.get(var.$colors, "dark");
+                font-size: 1.2rem;
+                font-weight: 500;
+                margin-bottom: 1.8rem;
+            }
+
+            .location {
+                color: map.get(var.$colors, "secondary");
+                font-size: 1.2rem;
+                font-weight: 500;
+            }
+        }
+    }
+
+    .section-heading {
+        color: #ffffff;
+        width: 100%;
+        max-width: 800px;
+        margin-inline: auto;
+    }
+
+    .section-desc {
+        margin-bottom: 20px;
+        color: map.get(var.$colors, "white");
+        max-width: 800px;
+        margin: 0 auto 40px;
+    }
+
+    .btn-primary {
+        color: map.get(var.$colors, "dark") !important;
+    }
+}

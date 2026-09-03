@@ -1,0 +1,10 @@
+paymentSuccess:
+    loading: Chargement des détails de l'abonnement...
+    altIllustration: Illustration de paiement réussi
+    altSuccess: Succès
+    title: Paiement effectué !
+    subtitle: Votre abonnement Active Premium est maintenant actif.
+    activePackages: 'Forfaits actifs :'
+    connections: 'Connexions :'
+    findSitter: Trouver un pet sitter
+    openChats: Ouvrir les chats

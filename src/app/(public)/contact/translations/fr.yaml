@@ -1,0 +1,19 @@
+contact:
+    title: 'Envoyer un message à PawPoint'
+    nameLabel: 'Nom'
+    namePlaceholder: 'Entrez votre nom'
+    emailLabel: 'Adresse e-mail'
+    emailPlaceholder: 'Entrez votre e-mail'
+    messageLabel: 'Effectuez vous-même les modifications de compte. Saisissez votre message ici.'
+    messagePlaceholder: 'Effectuez vous-même les modifications de compte. Saisissez votre message ici.'
+    robotLabel: "Je ne suis pas un robot"
+    recaptchaAlt: 'Logo reCAPTCHA'
+    send: 'Envoyer'
+    sending: 'Envoi en cours...'
+    validation:
+        nameRequired: 'Veuillez entrer votre nom.'
+        emailRequired: 'Veuillez entrer votre adresse e-mail.'
+        emailInvalid: 'Veuillez entrer une adresse e-mail valide.'
+        messageRequired: 'Veuillez entrer votre message.'
+        robotRequired: 'Veuillez confirmer que vous n''êtes pas un robot.'
+    errorFallback: 'Une erreur s''est produite lors de l''envoi de votre message. Veuillez réessayer plus tard.'

@@ -1,0 +1,81 @@
+.filters {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @media screen and (max-width: 576px) {
+        width: 100%;
+    }
+
+    .form-group {
+        // border: 1px solid #f0ece3;
+        // border-radius: 1rem;
+        // padding: 1rem;
+        label {
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+    }
+
+    .filter-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        label {
+            font-weight: bold;
+        }
+
+        &.address-search {
+            label {
+                font-weight: 500;
+                color: #2a4740;
+                font-size: 1.1rem;
+            }
+            .search-box {
+                margin: 0;
+            }
+        }
+
+        input[type="text"]:not(.search-input),
+        select {
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            width: 100%;
+        }
+
+        .pet-type-options {
+            display: flex;
+            gap: 0.5rem;
+
+            button {
+                flex: 1;
+                padding: 0.75rem;
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                background-color: white;
+                cursor: pointer;
+
+                &.active {
+                    background-color: #e0e0e0;
+                    border-color: #a0a0a0;
+                }
+            }
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            label {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-weight: normal;
+            }
+        }
+    }
+}

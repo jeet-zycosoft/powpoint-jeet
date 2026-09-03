@@ -1,0 +1,265 @@
+@use "@/styles/var";
+@use "sass:map";
+
+.sitter-card {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "image info"
+        "image desc";
+    gap: 0.5rem 2rem;
+    padding: 1.5rem;
+    border: 1px solid map.get(var.$colors, "formBorder");
+    border-radius: 1.25rem;
+    background-color: #ffffff;
+    transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    cursor: pointer;
+
+    @media screen and (max-width: 575px) {
+        grid-template-columns: 140px 1fr;
+        grid-template-areas:
+            "image info"
+            "desc desc";
+        gap: 0.1rem 1.5rem;
+        padding: 1.25rem;
+    }
+
+    &__image {
+        grid-area: image;
+        position: relative;
+        flex-shrink: 0;
+        width: 200px;
+        height: 200px;
+
+        @media screen and (max-width: 575px) {
+            width: 145px;
+            height: 145px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 1rem;
+            background-color: map.get(var.$colors, "primary");
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .verify {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            width: 2.2rem;
+            height: 2.2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            padding: 0.1rem;
+            background-color: #ffffff;
+            border: 3px solid #ffffff;
+            box-shadow: 0 4px 12px rgba(12, 39, 34, 0.16);
+            z-index: 2;
+
+            svg {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    .sitter-info {
+        grid-area: info;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        &--name {
+            font-family: map.get(var.$fonts, "primary");
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: map.get(var.$colors, "heading");
+            margin-bottom: 0.25rem;
+            line-height: 1.2;
+            text-transform: capitalize;
+        }
+
+        &--location {
+            font-family: map.get(var.$fonts, "primary");
+            font-size: 1rem;
+            font-weight: 500;
+            color: map.get(var.$colors, "secondary");
+            margin-bottom: 0.75rem;
+        }
+    }
+
+    .sitter-desc {
+        grid-area: desc;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .sitter-badges {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-bottom: 0.75rem;
+    }
+
+    .sitter-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.45rem 1rem;
+        border-radius: 0.75rem;
+        font-family: map.get(var.$fonts, "primary");
+        font-size: 0.9rem;
+        font-weight: 600;
+        background-color: #faf8f5;
+        color: map.get(var.$colors, "text");
+        transition: background-color 0.2s ease;
+
+        @media screen and (max-width: 575px) {
+            border-radius: 0.5rem;
+            flex-basis: 100%;
+        }
+
+        svg {
+            flex-shrink: 0;
+        }
+
+        &--rating {
+            // matches star styling
+        }
+
+        &--repeat {
+            // matches repeat clients styling
+            color: map.get(var.$colors, "text");
+
+            svg {
+                color: map.get(var.$colors, "secondary");
+            }
+        }
+    }
+
+    .short-desc-heading {
+        font-family: map.get(var.$fonts, "primary");
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: map.get(var.$colors, "heading");
+        margin-bottom: 0.35rem;
+    }
+
+    .short-desc {
+        font-family: map.get(var.$fonts, "primary");
+        font-size: 1.05rem;
+        line-height: 1.5;
+        color: map.get(var.$colors, "text");
+        font-weight: 500;
+        max-width: 666px;
+        margin-bottom: 0;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+    }
+
+    .favorite-btn {
+        position: absolute;
+        right: 1.2rem;
+        top: 1.2rem;
+    }
+
+    &:hover {
+        box-shadow: 0 12px 30px rgba(12, 39, 34, 0.06);
+        border-color: rgba(240, 236, 226, 0.8);
+    }
+
+    // card-type: fav
+    &.fav {
+        display: flex;
+        flex-direction: column;
+        border-radius: 1.25rem;
+        padding: 1rem;
+        gap: 0.5rem;
+
+        .sitter-card__image {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            border-radius: 1rem;
+
+            img {
+                width: 100%;
+                height: 100%;
+                max-width: 100%;
+                object-fit: cover;
+            }
+
+            .verify {
+                width: 2.4rem;
+                height: 2.4rem;
+                right: 12px;
+                bottom: 12px;
+            }
+        }
+
+        .favorite-btn {
+            right: 1.5rem;
+            top: 1.5rem;
+        }
+
+        .sitter-info {
+            justify-content: flex-start;
+
+            &--name {
+                font-size: 1.5rem;
+                margin-bottom: 0.1rem;
+            }
+
+            &--location {
+                font-size: 0.95rem;
+                margin-bottom: 0.4rem;
+            }
+        }
+
+        .sitter-badges {
+            flex-direction: column;
+            gap: 0.3rem;
+            align-items: flex-start;
+            margin-bottom: 0.35rem;
+        }
+
+        .sitter-badge {
+            font-size: 0.85rem;
+            padding: 0.3rem 0.7rem;
+        }
+
+        .sitter-desc {
+            min-width: 0;
+            overflow: hidden;
+        }
+
+        .short-desc-heading {
+            font-size: 1rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .short-desc {
+            font-size: 0.95rem;
+            max-width: 100%;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            text-overflow: ellipsis;
+        }
+    }
+}

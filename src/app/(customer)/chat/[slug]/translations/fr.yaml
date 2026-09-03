@@ -1,0 +1,49 @@
+chat:
+    joinError: Impossible de rejoindre le chat tant que start ne renvoie pas room_id
+    toasts:
+        verifyFailed: Échec de la vérification de l'accès au chat.
+        messageNotSent: Message non envoyé. Le chat n'est pas connecté.
+        accepted: Conversation acceptée !
+        acceptFailed: Échec de l'acceptation de la conversation.
+        declined: Conversation refusée.
+        declineFailed: Échec du refus de la conversation.
+        reportSubmitted: Demande de signalement envoyée avec succès.
+        userBlocked: Utilisateur bloqué avec succès.
+        chatCleared: Historique du chat effacé.
+    loading: Vérification de la connexion au chat...
+    loadingUser: Chargement...
+    fallbackUser: Utilisateur
+    connection:
+        online: En ligne
+        joining: Connexion en cours…
+        connecting: Connexion…
+        disconnected: Déconnecté
+    placeholders:
+        waitingJoin: En attente de rejoindre le chat…
+        typeMessage: Tapez votre message ...
+        inputDisabled: Saisie désactivée jusqu'à l'acceptation de la connexion
+    header:
+        title: Chat avec {name}
+        writeReview: Écrire un avis
+    settings:
+        report: Signaler le chat
+        block: Bloquer le chat
+        delete: Supprimer le chat
+    status:
+        connectingLive: Connexion au chat en direct…
+        disconnectedReconnecting: Chat en direct déconnecté. Reconnexion…
+    body:
+        messagesAfterAccept: Les messages apparaîtront après l'acceptation de la conversation.
+        chatStartedOn: Chat démarré le {date}
+        typing: '{name} est en train d''écrire…'
+    banners:
+        waitingOwnerTitle: En attente de l'acceptation du propriétaire
+        waitingOwnerBody: Vous avez envoyé votre message initial. Le propriétaire doit accepter avant que vous puissiez continuer à discuter.
+        acceptTitle: Acceptez la connexion pour commencer à discuter
+        acceptOwnerBody: L'acceptation consommera 1 crédit de connexion.
+        acceptSitterBody: Vous devez accepter ce chat pour répondre.
+    buttons:
+        decline: Refuser
+        acceptConnection: Accepter la connexion
+        send: Envoyer
+    altMe: Moi

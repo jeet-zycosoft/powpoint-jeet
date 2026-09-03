@@ -1,0 +1,98 @@
+@use "@/styles/var";
+@use "@/styles/custom-functions" as *;
+@use "sass:map";
+@use "sass:color";
+
+.guest-location-modal {
+    .modal-dialog {
+        max-width: toRem(520);
+        padding: 1rem;
+    }
+
+    .modal-content {
+        background: map.get(var.$colors, "white");
+        border: 1px solid map.get(var.$colors, "border1");
+        border-radius: 1.25rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        overflow: visible;
+    }
+
+    .modal-body {
+        padding: toRem(32) toRem(28) toRem(28);
+        text-align: center;
+        overflow: visible;
+    }
+
+    &__icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: toRem(56);
+        height: toRem(56);
+        margin-bottom: toRem(16);
+        border-radius: 50%;
+        background-color: rgba(74, 118, 110, 0.12);
+        color: map.get(var.$colors, "secondary");
+        font-size: toRem(22);
+    }
+
+    &__title {
+        font-family: map.get(var.$fonts, "primary");
+        font-size: toRem(24);
+        font-weight: 700;
+        color: map.get(var.$colors, "heading");
+        margin: 0 0 toRem(8);
+    }
+
+    &__copy {
+        font-size: toRem(15);
+        line-height: 1.5;
+        color: map.get(var.$colors, "secondary");
+        margin: 0 0 toRem(22);
+    }
+
+    &__label {
+        display: block;
+        text-align: left;
+        font-weight: 600;
+        font-size: toRem(14);
+        color: map.get(var.$colors, "heading");
+        margin-bottom: toRem(8);
+    }
+
+    .search-box {
+        max-width: none;
+        margin: 0;
+        text-align: left;
+
+        .search-input-wrapper input {
+            border: 1px solid map.get(var.$colors, "formBorder");
+        }
+    }
+
+    &__search {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: toRem(16);
+        padding: toRem(12) toRem(20);
+        border: 0;
+        border-radius: toRem(12);
+        background-color: map.get(var.$colors, "primary");
+        color: map.get(var.$colors, "heading");
+        font-weight: 700;
+        font-size: toRem(15);
+        cursor: pointer;
+        transition:
+            background-color 0.2s ease,
+            transform 0.15s ease;
+
+        &:hover,
+        &:focus-visible {
+            background-color: color.adjust(map.get(var.$colors, "primary"), $lightness: -5%);
+            outline: none;
+            transform: translateY(-1px);
+        }
+    }
+}

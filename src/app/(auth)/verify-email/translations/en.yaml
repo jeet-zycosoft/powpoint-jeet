@@ -1,0 +1,31 @@
+auth:
+    verifyEmail: 'Verify Email'
+    verifyEmailDesc: 'Please enter the OTP sent to your email to verify your account.'
+    otpLabel: 'One Time Password'
+    otpPlaceholder: 'Enter your OTP'
+    continue: 'Continue'
+    # successTitle: 'Confirm Your'
+    # successTitleHighlight: 'Email Address'
+    # successDesc: 'We’ve successfully verified your email. Redirecting you to the login page...'
+    # loginBtn: 'Go to Login Page'
+    successTitle: 'Email verified'
+    successTitleHighlight: 'Successfully'
+    successDesc: 'We’ve successfully verified your email. Opening your profile...'
+    successDescLogin: 'We’ve successfully verified your email. Please log in to continue.'
+    profileBtn: 'Go to Profile'
+    resendOtp: 'Resend OTP'
+    resendingOtp: 'Sending...'
+    verifyingLink: 'Verifying your email...'
+    openingProfile: 'Opening your profile...'
+    loginBtn: 'Go to Login Page'
+    verifyEmailImageAlt: Verify Email Image
+    successImageAlt: Verification success
+    emailNotFound: We could not find your email. Please log in or sign up again.
+    codeLength: Verification code must be 6 digits.
+    invalidVerification: Invalid email or verification code.
+    invalidVerificationLink: Invalid or expired verification link.
+    resendSuccess: A new verification code has been sent.
+    resendFailed: Could not resend the verification code. Please try again.
+    verifiedLoginRequired: Email verified. Please log in to continue.
+    verifying: Verifying...
+    loadingFallback: Loading...

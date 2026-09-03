@@ -1,0 +1,95 @@
+@use "@/styles/var";
+@use "sass:map";
+
+.rich-text-editor {
+    width: 100%;
+    border: 1px solid map.get(var.$colors, "formBorder");
+    border-radius: 1.2rem;
+    background: map.get(var.$colors, "white");
+    overflow: hidden;
+
+    &.is-invalid {
+        border-color: #dc3545;
+    }
+
+    &__toolbar {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 0.65rem 0.85rem;
+        border-bottom: 1px solid map.get(var.$colors, "formBorder");
+        background: map.get(var.$colors, "formBorder2");
+
+        button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            border: none;
+            border-radius: 8px;
+            background: transparent;
+            color: map.get(var.$colors, "text");
+            cursor: pointer;
+            transition: background 0.2s ease;
+
+            &:hover,
+            &:focus-visible {
+                background: map.get(var.$colors, "formBorder");
+                outline: none;
+            }
+        }
+    }
+
+    &__divider {
+        width: 1px;
+        height: 20px;
+        margin-inline: 4px;
+        background: map.get(var.$colors, "formBorder");
+    }
+
+    &__content {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        min-height: 200px;
+        padding: 1.25rem 1.5rem;
+        box-sizing: border-box;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: map.get(var.$colors, "text");
+        outline: none;
+        overflow-y: auto;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+
+        p,
+        div,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 0.5rem;
+        }
+
+        ul,
+        ol {
+            width: 100%;
+            max-width: 100%;
+            padding-left: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        &.is-empty::before {
+            content: attr(data-placeholder);
+            color: map.get(var.$colors, "secondary");
+            font-style: italic;
+            pointer-events: none;
+        }
+    }
+}

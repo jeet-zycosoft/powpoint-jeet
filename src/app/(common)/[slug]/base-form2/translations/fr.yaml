@@ -1,0 +1,171 @@
+ownerServices:
+    location:
+        title: Pour quelle adresse ?
+        infoTitle: Avant de pouvoir trouver un gardien
+        desc: Saisissez votre adresse ou code postal pour voir uniquement les aides réellement disponibles dans votre zone
+        privacyNote: (vos informations resteront privées)
+        selectHint: Sélectionnez un lieu suggéré
+        selectNote: — la saisie seule ne peut pas être enregistrée.
+        locationRequired: Veuillez sélectionner un lieu parmi les suggestions. La saisie seule ne suffit pas.
+    pets:
+        title: Quel type d'animal ?
+        dog: Chien
+        cat: Chat
+    services:
+        title: Quels services souhaitez-vous ?
+        boarding: Hébergement
+        houseSitting: Garde à domicile
+        dropInVisits: Visites ponctuelles
+        doggyDayCare: Garderie de jour
+        dogWalking: Promenade de chiens
+    days:
+        title: Quels jours êtes-vous disponible ?
+        monday: Lundi
+        tuesday: Mardi
+        wednesday: Mercredi
+        thursday: Jeudi
+        friday: Vendredi
+        saturday: Samedi
+        sunday: Dimanche
+    languages:
+        title: Quelles langues parlez-vous ?
+        dutch: Néerlandais
+        english: Anglais
+        german: Allemand
+        french: Français
+        spanish: Espagnol
+        addLanguage: Ajouter une langue
+        addedSuccess: '{language} ajouté avec succès !'
+    applies:
+        title: Qu'est-ce qui s'applique ?
+        thereIsDog: Il y a un chien
+        thereIsCat: Il y a un chat
+        thereIsIroning: Il y a du repassage
+    validation:
+        selectPet: Sélectionnez au moins un type d'animal.
+        selectService: Sélectionnez au moins un service.
+        selectDay: Sélectionnez au moins un jour disponible.
+        selectLanguage: Sélectionnez au moins une langue.
+        selectApplies: Sélectionnez au moins une option applicable.
+        requiredFields: Veuillez remplir les champs obligatoires marqués d'un *.
+    modals:
+        locationChangeTitle: Avertissement de changement de lieu
+        locationChangeMessage: Changer votre lieu ne déplacera PAS vos forfaits Active Premium existants. Ils restent à {city}. Le nouveau lieu sera utilisé pour les futurs achats.
+        oldAreaFallback: votre ancienne zone
+        cancel: Annuler
+        continue: Continuer
+        locationUpdatedTitle: Lieu mis à jour
+        locationUpdatedMessage: Votre lieu est maintenant {city}. Souhaitez-vous acheter Active Premium pour ce nouveau lieu ?
+        updatedFallback: mis à jour
+        notNow: Pas maintenant
+        buyPremium: Acheter Active Premium
+        stillNeeded: 'Encore requis : {items}'
+    submit:
+        saving: Enregistrement...
+        submitContinue: Envoyer et continuer
+    toasts:
+        updateSuccess: Détails du service mis à jour avec succès !
+        updateFailed: Échec de la mise à jour des détails du service.
+        saveError: Une erreur s'est produite lors de l'enregistrement.
+
+sitterServices:
+    location:
+        title: Obtenez des clients (gratuit)
+        infoTitle: Avant de pouvoir trouver un propriétaire
+        desc: Saisissez votre adresse ici et voyez les clients avec lesquels vous pouvez discuter gratuitement immédiatement !
+        selectHint: Sélectionnez un lieu suggéré
+        selectNote: — la saisie seule ne peut pas être enregistrée.
+        locationRequired: Veuillez sélectionner un lieu parmi les suggestions. La saisie seule ne suffit pas.
+    travelDistance: Quelle est votre distance de déplacement maximale ?
+    showWorkArea: Afficher votre zone de travail sur une carte
+    serviceSelection: Sélection des services
+    whichServices: Quels services dois-je choisir ?
+    services:
+        boarding: Hébergement
+        houseSitting: Garde à domicile
+        dropInVisits: Visites ponctuelles
+        doggyDayCare: Garderie de jour
+        dogWalking: Promenade de chiens
+        desc: Garde de nuit d'animaux chez vous
+    petTypes: Type(s) d'animal
+    dog: Chien
+    cat: Chat
+    dogSize: Taille du chien (lbs)
+    housingConditions: Conditions du logement
+    hasHouse: Possède une maison (hors appartements)
+    hasFencedYard: Possède un jardin clôturé
+    dogsOnFurniture: Chiens autorisés sur les meubles
+    dogsOnBed: Chiens autorisés sur le lit
+    nonSmokingHome: Foyer non-fumeur
+    petsInHome: Animaux à la maison
+    noDog: Ne possède pas de chien
+    noCat: Ne possède pas de chat
+    oneClient: N'accepte qu'un client à la fois
+    noCagedPets: Ne possède pas d'animaux en cage
+    childrenInHouse: Enfants à la maison
+    noChildren: Pas d'enfants
+    children0to5: Enfants de 0 à 5 ans
+    children6to12: Enfants de 6 à 12 ans
+    additionalServices: Services supplémentaires
+    puppyCare: Soins aux chiots
+    catCare: Soins aux chats
+    unspayedFemales: Chiennes non stérilisées
+    nonNeuteredMales: Mâles non castrés
+    bathingGrooming: Bain et toilettage
+    dogFirstAid: Premiers secours et RCP canins
+    days:
+        title: Quels jours êtes-vous disponible ?
+        monday: Lundi
+        tuesday: Mardi
+        wednesday: Mercredi
+        thursday: Jeudi
+        friday: Vendredi
+        saturday: Samedi
+        sunday: Dimanche
+    languages:
+        title: Quelles langues parlez-vous ?
+        dutch: Néerlandais
+        english: Anglais
+        german: Allemand
+        french: Français
+        spanish: Espagnol
+        addLanguage: Ajouter une langue
+        addedSuccess: '{language} ajouté avec succès !'
+    exclusions:
+        title: Que ne faites-vous pas ?
+        noDogs: Pas dans une maison avec des chiens
+        noCats: Pas dans une maison avec des chats
+        noIroning: Je ne repasse pas
+    bio:
+        title: Biographie
+        desc: Parlez aux propriétaires d'animaux de vous et de votre style de soins.
+        placeholder: Présentez-vous et décrivez les soins que vous proposez...
+    experience:
+        title: Expérience
+        desc: Qu'est-ce qui vous distingue ? Incluez des compétences spéciales comme l'éducation ou les soins aux seniors.
+        placeholder: p. ex. J'ai pris soin de chiens de toutes tailles pendant de nombreuses années et je peux suivre les plans d'alimentation et de médication.
+    safety:
+        title: Sécurité
+        desc: Décrivez votre environnement domestique et les mesures de sécurité pour les animaux qui séjournent chez vous.
+        placeholder: p. ex. Je garde les animaux dans un foyer sécurisé, je suis les instructions du propriétaire et j'envoie des photos de suivi régulières.
+    communication:
+        title: Communication
+        desc: Mettez en avant vos atouts en communication avec les propriétaires d'animaux.
+        placeholder: p. ex. 92 % de taux de réponse
+    skills:
+        title: Compétences
+        desc: Listez vos compétences en soins aux animaux et vos certifications.
+        placeholder: p. ex. Administration de médicaments oraux
+    validation:
+        selectService: Sélectionnez au moins un service.
+        selectPet: Sélectionnez au moins un type d'animal.
+        selectDay: Sélectionnez au moins un jour disponible.
+        selectLanguage: Sélectionnez au moins une langue.
+        requiredFields: Veuillez remplir les champs obligatoires marqués d'un *.
+    submit:
+        submitContinue: Envoyer et continuer
+    toasts:
+        updateSuccess: Services mis à jour avec succès !
+        updateFailed: Échec de la mise à jour des services.
+        saveError: Une erreur s'est produite lors de l'enregistrement des services.
+        stillNeeded: 'Encore requis : {items}'

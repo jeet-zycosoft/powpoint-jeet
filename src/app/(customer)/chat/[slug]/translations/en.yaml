@@ -1,0 +1,49 @@
+chat:
+    joinError: Cannot join chat until start returns room_id
+    toasts:
+        verifyFailed: Failed to verify chat access.
+        messageNotSent: Message not sent. Chat is not connected.
+        accepted: Conversation accepted!
+        acceptFailed: Failed to accept conversation.
+        declined: Conversation declined.
+        declineFailed: Failed to decline conversation.
+        reportSubmitted: Report request submitted successfully.
+        userBlocked: User blocked successfully.
+        chatCleared: Chat history cleared.
+    loading: Verifying chat connection...
+    loadingUser: Loading...
+    fallbackUser: User
+    connection:
+        online: Online
+        joining: Joining…
+        connecting: Connecting…
+        disconnected: Disconnected
+    placeholders:
+        waitingJoin: Waiting to join chat…
+        typeMessage: Type your message ...
+        inputDisabled: Input disabled until connection accepted
+    header:
+        title: Chat with {name}
+        writeReview: Write a review
+    settings:
+        report: Report chat
+        block: Block chat
+        delete: Delete chat
+    status:
+        connectingLive: Connecting to live chat…
+        disconnectedReconnecting: Live chat disconnected. Reconnecting…
+    body:
+        messagesAfterAccept: Messages will appear after the conversation is accepted.
+        chatStartedOn: Chat Started On {date}
+        typing: '{name} is typing…'
+    banners:
+        waitingOwnerTitle: Waiting for owner to accept
+        waitingOwnerBody: You've sent your initial message. The owner needs to accept before you can continue chatting.
+        acceptTitle: Accept connection to start chatting
+        acceptOwnerBody: Accepting will consume 1 connection credit.
+        acceptSitterBody: You need to accept this chat to reply.
+    buttons:
+        decline: Decline
+        acceptConnection: Accept Connection
+        send: Send
+    altMe: Me

@@ -1,0 +1,206 @@
+@use "@/styles/var";
+@use "@/styles/mixins";
+@use "sass:map";
+@use "sass:color";
+
+.pawpoint-review-modal {
+    .modal-dialog {
+        max-width: 450px;
+        margin: 1.75rem auto;
+
+        @include mixins.mobile {
+            max-width: 90%;
+            margin: 1rem auto;
+        }
+    }
+
+    .modal-content {
+        background: map.get(var.$colors, "white");
+        border: 1px solid map.get(var.$colors, "border1");
+        border-radius: 1.25rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        position: relative;
+    }
+
+    .modal-content-wrapper {
+        position: relative;
+        width: 100%;
+    }
+
+    .modal-close-btn {
+        position: absolute;
+        top: 1.25rem;
+        right: 1.25rem;
+        background: map.get(var.$colors, "light_bg");
+        border: 1px solid map.get(var.$colors, "border1");
+        color: map.get(var.$colors, "secondary");
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 10;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+
+        svg {
+            transition: transform 0.3s ease;
+        }
+
+        &:hover:not(:disabled) {
+            background-color: map.get(var.$colors, "primary");
+            border-color: map.get(var.$colors, "primary");
+            color: map.get(var.$colors, "heading");
+            transform: scale(1.08);
+            box-shadow: 0 4px 12px rgba(247, 178, 103, 0.25);
+
+            svg {
+                transform: rotate(90deg);
+            }
+        }
+
+        &:active:not(:disabled) {
+            transform: scale(0.95);
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+
+    .modal-title {
+        font-family: map.get(var.$fonts, "primary");
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: map.get(var.$colors, "heading");
+        margin-top: 0.5rem;
+
+        @include mixins.mobile {
+            font-size: 1.4rem;
+        }
+    }
+
+    // Star Button Selector Styling
+    .stars-container {
+        gap: 0.5rem;
+
+        .star-btn {
+            background: none;
+            border: none;
+            padding: 0.25rem;
+            font-size: 2.2rem;
+            color: #d0d5dd; // Light grey when unselected
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            svg {
+                stroke-width: 1px;
+                transition: transform 0.15s ease;
+            }
+
+            &:hover:not(:disabled) {
+                color: map.get(var.$colors, "warning");
+                transform: scale(1.15);
+            }
+
+            &.active {
+                color: map.get(var.$colors, "warning"); // Yellow / Golden color from system palette
+            }
+
+            &:disabled {
+                cursor: not-allowed;
+                opacity: 0.8;
+            }
+
+            @include mixins.mobile {
+                font-size: 1.9rem;
+            }
+        }
+    }
+
+    // Custom Styled Comment Input
+    .comment-container {
+        .review-comment-input {
+            width: 100%;
+            background-color: map.get(var.$colors, "white");
+            border: 1px solid map.get(var.$colors, "formBorder");
+            border-radius: 0.75rem;
+            padding: 0.875rem 1.125rem;
+            font-family: map.get(var.$fonts, "secondary");
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: map.get(var.$colors, "text");
+            resize: vertical;
+            min-height: 110px;
+            transition: all 0.2s ease-in-out;
+
+            &::placeholder {
+                color: #8c9896;
+                opacity: 0.85;
+            }
+
+            &:focus {
+                outline: none;
+                border-color: map.get(var.$colors, "secondary");
+                box-shadow: 0 0 0 3px rgba(74, 120, 111, 0.12);
+            }
+
+            &:disabled {
+                background-color: map.get(var.$colors, "light_bg");
+                cursor: not-allowed;
+            }
+
+            @include mixins.mobile {
+                font-size: 0.9rem;
+                padding: 0.75rem 1rem;
+            }
+        }
+    }
+
+    // Submit Button Styling with left-alignment
+    .actions-container {
+        padding-top: 0.25rem;
+
+        .btn-brand-primary {
+            background-color: map.get(var.$colors, "primary");
+            border-color: map.get(var.$colors, "primary");
+            color: map.get(var.$colors, "dark");
+            font-weight: 600;
+            border-radius: 0.75rem;
+            padding: 0.625rem 2rem;
+            font-size: 0.95rem;
+            transition: all 0.25s ease-in-out;
+            border: none;
+
+            &:hover:not(:disabled) {
+                background-color: color.adjust(
+                    map.get(var.$colors, "primary"),
+                    $lightness: -5%
+                ) !important;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(247, 178, 103, 0.25);
+            }
+
+            &:focus {
+                box-shadow: 0 0 0 3px rgba(247, 178, 103, 0.25);
+            }
+
+            &:disabled {
+                background-color: #e2e8f0 !important;
+                color: #94a3b8 !important;
+                border-color: #e2e8f0 !important;
+                cursor: not-allowed;
+                transform: none;
+                box-shadow: none;
+                opacity: 1;
+            }
+        }
+    }
+}

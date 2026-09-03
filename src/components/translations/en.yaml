@@ -1,0 +1,168 @@
+common:
+    close: Close
+    closeModal: Close modal
+    cancel: Cancel
+    retry: Retry
+    send: Send
+    save: Save
+    edit: Edit
+    add: Add
+    loading: Loading...
+    user: User
+    notification: Notification
+    required: required
+    gotIt: Got it
+    all: All
+    me: Me
+    km: KM
+    favorite: Favorite
+    addFavorite: Add to favorites
+    removeFavorite: Remove from favorites
+    readArticle: Read Article
+    blogPost: Blog Post
+    petPartner: Pet Partner
+    petSitter: Pet sitter
+    age: 'Age:'
+    exp: 'Exp:'
+    years: Years
+    reviews: '{count} Reviews'
+    from: from
+    viewProfile: View Profile
+    chat: Chat
+    contact: Contact
+chatModal:
+    defaultSitter: the sitter
+    processTitle: Chat Process
+    acceptTitle: Accept Conversation?
+    acceptQuota: 'Accepting uses 1 credit (now {display}, after accept {nextDisplay}).'
+    acceptCredit: Accepting will consume 1 connection credit.
+    decline: Decline
+    acceptConnection: Accept Connection
+    purchaseTitle: Subscription Required
+    getPremium: Get Active Premium
+    renewTitle: Renew Subscription
+    renewMessage: Your plan expired. Renew to continue chatting with sitters.
+    renewButton: Renew Subscription
+    locationTitle: Sitter in Different Area
+    locationMessage: 'This sitter is in {sitterCity}, but your profile is in {ownerCity}. Existing packages stay at your old area. Replace your location with this sitter''s address to buy Active Premium for their area.'
+    anotherArea: another area
+    yourArea: your current area
+    replaceLocation: Replace Location
+    upgradeTitle: Connection Limit Reached
+    upgradeMessage: Monthly sitter limit reached. Buy another package to connect with more sitters.
+    buyPackage: Buy Another Package
+    verifyTitle: Chat Verification
+reviewModal:
+    title: Write a review
+    ratingLabel: Rating
+    commentLabel: Your review
+    commentPlaceholder: Share your experience...
+    submit: Submit review
+    submitting: Submitting...
+    validationRating: Please select a rating.
+    validationComment: Please enter a review.
+    success: Review submitted successfully.
+    error: Failed to submit review.
+    closeAria: Close review
+sitterModal:
+    chatNow: Chat now
+    services: Services
+    reviews: Reviews
+    location: Location
+    about: About
+    favorite: Favorite
+    loginFavorite: Please log in to manage favorites.
+    addSuccess: Added to favorites.
+    removeSuccess: Removed from favorites.
+    favoriteError: Failed to update favorites.
+profileMenu:
+    myAccount: My Account
+    profile: Profile
+    conversations: Conversations
+    favorites: Favorites
+    instructions: Instructions
+    feedback: Feedback
+    logout: Log Out
+    petOwner: Pet Owner
+    petSitter: Pet Sitter
+    advertisements: Advertisements
+    pawpoint: PawPoint
+    faq: FAQ
+    terms: General terms & Conditions
+    privacy: Privacy Policy
+language:
+    english: English
+    spanish: Español
+    french: Français
+    title: Select languages
+    search: Search languages
+    save: Save languages
+    noResults: No languages found
+fieldHint:
+    completeProfile: Complete your profile
+    defaultMessage: Please complete this field to continue.
+searchBox:
+    placeholder: Search location
+    searchAria: Search location
+    submitAria: Submit search
+    searching: Searching locations...
+forms:
+    ratePerNight: Rate per night*
+    enterItem: Enter item
+    items: Items
+    removeItem: Remove item
+    itemsCount: '{count}/{max} items'
+    duplicateItem: This item already exists.
+    maxItems: Maximum number of items reached.
+    cropPhoto: Crop photo
+    closeCrop: Close crop
+    applyCrop: Apply
+    cropping: Cropping...
+    cropError: Failed to crop image.
+    dropFiles: Drop files here
+    dragDrop: Drag & drop files here, or click to select
+    avgNight: 'Avg, €25/night'
+    bold: Bold
+    italic: Italic
+    underline: Underline
+    bulletList: Bullet list
+    numberedList: Numbered list
+services:
+    boarding: Dog Boarding
+    sitting: House Sitting
+    daycare: Doggy Day Care
+    walking: Dog Walking
+    dropIn: Drop-In Visits
+    dog: Dog
+    cat: Cat
+    serviceType: Service type
+    petType: Pet type
+    dogSize: Dog size
+    maxPrice: Max price
+blogSidebar:
+    categories: Categories
+    recentPosts: Recent Posts
+    tags: Tags
+    search: Search
+    noPosts: No recent posts
+authLogo:
+    homeAria: PawPoint home
+    logoAlt: PawPoint Logo
+chatRooms:
+    joinFailed: Failed to join chat rooms.
+cards:
+    noServices: No services listed
+    pending: Pending
+popup:
+    closeAria: Close modal
+header:
+    incompleteProfileDefault: Complete your profile first to browse listings.
+    incompleteProfileMissing: 'Still needed: {items}'
+sitter:
+    gallery:
+        prevPhotos: Previous photos
+        nextPhotos: Next photos
+        closeImage: Close image
+        prevImage: Previous image
+        nextImage: Next image
+        imageAlt: 'Gallery Image {number}'

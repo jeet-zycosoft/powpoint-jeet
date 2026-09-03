@@ -1,0 +1,21 @@
+auth:
+    login: Connexion
+    loginDesc: Bon retour ! Veuillez entrer vos informations pour vous connecter.
+    emailLabel: E-mail
+    emailPlaceholder: Entrez votre e-mail
+    passwordLabel: Mot de passe
+    forgotPassword: Mot de passe oublié ?
+    continue: Continuer
+    noAccount: Vous n'avez pas de compte ?
+    register: S'inscrire
+    or: OU
+    google: Continuer avec Google
+    loginImageAlt: Image de connexion
+    googleLogoAlt: Logo Google
+    connecting: Connexion...
+    loggedInSuccess: Connexion réussie !
+    googleAccountNotFound: Compte introuvable. Inscrivez-vous d'abord avec Google.
+    googleAuthFailed: Échec de l'autorisation Google.
+    emailRequired: L'e-mail est obligatoire.
+    passwordRequired: Le mot de passe est obligatoire.
+    unexpectedError: Une erreur inattendue s'est produite

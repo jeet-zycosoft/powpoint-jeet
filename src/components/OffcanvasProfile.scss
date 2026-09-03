@@ -1,0 +1,179 @@
+@use "@/styles/custom-functions" as *;
+@use "@/styles/var";
+@use "sass:map";
+@use "sass:color";
+
+.offcanvas-profile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: toRem(10);
+    margin-bottom: toRem(16);
+    padding: toRem(16);
+    background: rgba(map.get(var.$colors, "primary"), 0.06);
+    border-radius: toRem(16);
+    border: toRem(1) solid rgba(map.get(var.$colors, "primary"), 0.1);
+
+    &__card {
+        display: flex;
+        align-items: center;
+        gap: toRem(12);
+        padding-bottom: toRem(15);
+        border-bottom: toRem(1) solid rgba(map.get(var.$colors, "primary"), 0.1);
+    }
+
+    &__avatar-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: toRem(64);
+        height: toRem(64);
+        border-radius: 50%;
+        background-color: map.get(var.$colors, "primary");
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    &__avatar {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__avatar-placeholder {
+        color: white;
+    }
+
+    &__details {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__name {
+        font-size: toRem(16);
+        font-weight: 700;
+        color: #1a4d43;
+        line-height: 1.2;
+    }
+
+    &__role {
+        font-size: toRem(13);
+        font-weight: 600;
+        color: #fca558;
+        margin-top: toRem(2);
+        text-transform: capitalize;
+    }
+
+    &__menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: toRem(12);
+    }
+
+    &__menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        background: none;
+        border: none;
+        padding: toRem(8) 0;
+        font-size: toRem(15);
+        font-weight: 700;
+        color: #1a4d43;
+        cursor: pointer;
+        text-align: left;
+        font-size: toRem(18);
+
+        .arrow-icon {
+            transition: transform 0.3s ease;
+        }
+
+        &.active .arrow-icon {
+            transform: rotate(180deg);
+        }
+    }
+
+    &__menu-items {
+        display: flex;
+        flex-direction: column;
+        max-height: 0;
+        overflow: hidden;
+        transition:
+            max-height 0.3s ease-out,
+            opacity 0.2s ease;
+        opacity: 0;
+
+        &.show {
+            max-height: toRem(500);
+            opacity: 1;
+            margin-top: toRem(8);
+        }
+    }
+
+    &__menu-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: toRem(8);
+        padding: toRem(10) toRem(8);
+        margin-bottom: toRem(6);
+        font-size: toRem(16);
+        font-weight: 600;
+        color: #4a766e;
+        text-decoration: none;
+        transition:
+            color 0.2s ease,
+            padding-left 0.2s ease;
+        border-bottom: toRem(1) solid rgba(0, 0, 0, 0.03);
+        text-transform: capitalize;
+
+        &:hover {
+            color: #fca558;
+            padding-left: toRem(14);
+        }
+
+        &:last-of-type {
+            border-bottom: none;
+        }
+    }
+
+    &__alert-count {
+        min-width: toRem(18);
+        height: toRem(18);
+        padding: 0 toRem(6);
+        border-radius: 999px;
+        background-color: #dc3545;
+        color: #ffffff;
+        font-size: toRem(11);
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        text-transform: none;
+    }
+
+    &__logout-btn {
+        display: block;
+        width: 100%;
+        background: none;
+        border: none;
+        text-align: left;
+        padding: toRem(12) toRem(8);
+        font-size: toRem(16);
+        font-weight: 700;
+        color: #dc3545;
+        cursor: pointer;
+        transition:
+            color 0.2s ease,
+            padding-left 0.2s ease;
+        margin-top: toRem(5);
+
+        &:hover {
+            color: color.adjust(#dc3545, $lightness: -15%);
+            padding-left: toRem(14);
+        }
+    }
+}

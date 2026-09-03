@@ -1,0 +1,59 @@
+@use "@/styles/var";
+@use "sass:map";
+.how-it-works {
+    text-align: center;
+    padding: 4rem 0rem;
+    //   background-color: #f9f9f9;
+
+    .section-heading {
+        margin-bottom: 1rem;
+    }
+
+    .section-desc {
+        max-width: 760px;
+        margin: 0 auto 3rem auto;
+    }
+
+    .steps {
+        display: flex;
+        justify-content: space-around;
+        gap: 2rem;
+        margin-bottom: 3rem;
+
+        .step {
+            flex: 1;
+            max-width: 340px;
+            padding: 0.5rem;
+
+            .step-number {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background-color: map.get(var.$colors, "secondary");
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.5rem;
+                margin: 0 auto 1rem auto;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+                font-weight: 600;
+                margin-bottom: 0.7rem;
+            }
+            p {
+                font-weight: 500;
+                color: map.get(var.$colors, "secondary");
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .steps {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}

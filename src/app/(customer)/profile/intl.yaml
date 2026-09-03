@@ -1,0 +1,50 @@
+profile:
+    title: Profile
+    personalData: Personal data
+    name: Name
+    personalMessage: Personal message
+    myAdvertisement: My advertisement
+    address: Address
+    maximumDistance: Maximum distance
+    availability: Availability
+    languages: Languages
+    none: None
+    notificationSettings: Notification settings
+    notifications:
+        newUsers:
+            title: New users
+            description: Get notified when new users sign up that match your needs.
+        personalMessages:
+            title: Personal messages
+            description: Personal messages from other users and / or important messages from the website itself.
+        newMatchAlerts:
+            title: New match alerts
+            description: Get notified when new users sign up that match your pet preferences.
+    deleteAccount: Delete Account
+    subscriptions:
+        title: Manage chat subscription(s)
+        loading: Loading subscriptions...
+        loadError: Failed to load subscriptions.
+        retry: Retry
+        empty: No active subscriptions found.
+        activatePremium: Activate Premium
+        modal:
+            activatePremium:
+                title: Activate Premium
+                message: This subscription is cancelled or expired. If you want to activate premium for this or a new area, please proceed to the Premium Activation page.
+                close: Close
+                activate: Activate Premium
+            cancelRenewal:
+                title: Cancel Subscription Renewal
+                message: Are you sure you want to cancel the auto-renewal for the subscription in {location}? Once cancelled, you will still have access to chat with sitters in this area until the billing period ends on {date}.
+                keep: Keep Subscription
+                cancel: Cancel Renewal
+        toasts:
+            cancelSuccess: Subscription renewal cancelled successfully.
+            cancelFailed: Failed to cancel subscription renewal.
+            cancelError: An error occurred while cancelling subscription.
+        status:
+            activeRenew: Automatically renew the chat subscription for this location on {date}
+            expired: Subscription expired on {date}
+            cancelled: Subscription cancelled. Access will end on {date}
+        fallbackLocation: this location

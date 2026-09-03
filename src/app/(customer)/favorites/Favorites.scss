@@ -1,0 +1,48 @@
+@use "@/styles/mixins";
+@use "@/styles/var";
+@use "sass:map";
+
+.favorites-section {
+    padding-block: 3.5rem 5rem;
+    min-height: calc(100vh - 200px);
+
+    .container {
+        max-width: 960px;
+    }
+
+    .section-heading {
+        text-align: center;
+        font-size: 2.25rem;
+        font-weight: 600;
+        margin-bottom: 2.5rem;
+        color: map.get(var.$colors, "heading");
+
+        @media screen and (max-width: 575px) {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    .favorites-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        width: 100%;
+
+        @media screen and (max-width: 575px) {
+            gap: 1rem;
+        }
+    }
+
+    .no-results-box {
+        padding: 4rem 2rem;
+        border-radius: 1rem;
+        background-color: white;
+        text-align: center;
+        border: 1px solid map.get(var.$colors, "formBorder");
+        margin: 2rem auto;
+        max-width: 600px;
+        width: 100%;
+    }
+}
+

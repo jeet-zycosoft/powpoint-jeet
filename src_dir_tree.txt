@@ -1,0 +1,465 @@
+Folder PATH listing for volume Windows-SSD
+Volume serial number is 00000222 4236:F216
+C:\USERS\SAYAN\FREELANCEPROJECTS\PAWPOINT\SRC
++---app
+|   |   favicon.ico
+|   |   I18nProvider.jsx
+|   |   layout.jsx
+|   |   LocalIntlProvider.jsx
+|   |   ModalProvider.jsx
+|   |   StoreProvider.jsx
+|   |   ToastProvider.jsx
+|   |   
+|   +---(auth)
+|   |   |   layout.jsx
+|   |   |   
+|   |   +---change-password
+|   |   |   |   intl.yaml
+|   |   |   |   page.jsx
+|   |   |   |   style.scss
+|   |   |   |   
+|   |   |   \---translations
+|   |   |           en.yaml
+|   |   |           es.yaml
+|   |   |           fr.yaml
+|   |   |           
+|   |   +---forgot-password
+|   |   |   |   intl.yaml
+|   |   |   |   page.jsx
+|   |   |   |   style.scss
+|   |   |   |   
+|   |   |   \---translations
+|   |   |           en.yaml
+|   |   |           es.yaml
+|   |   |           fr.yaml
+|   |   |           
+|   |   +---login
+|   |   |   |   intl.yaml
+|   |   |   |   login.scss
+|   |   |   |   page.jsx
+|   |   |   |   
+|   |   |   \---translations
+|   |   |           en.yaml
+|   |   |           es.yaml
+|   |   |           fr.yaml
+|   |   |           
+|   |   +---signup
+|   |   |   |   intl.yaml
+|   |   |   |   page.jsx
+|   |   |   |   
+|   |   |   \---translations
+|   |   |           en.yaml
+|   |   |           es.yaml
+|   |   |           fr.yaml
+|   |   |           
+|   |   \---verify-email
+|   |       |   intl.yaml
+|   |       |   page.jsx
+|   |       |   style.scss
+|   |       |   
+|   |       \---translations
+|   |               en.yaml
+|   |               es.yaml
+|   |               fr.yaml
+|   |               
+|   +---(common)
+|   |   |   layout.jsx
+|   |   |   
+|   |   \---[slug]
+|   |       +---base-form
+|   |       |   |   intl.yaml
+|   |       |   |   page.jsx
+|   |       |   |   
+|   |       |   \---translations
+|   |       |           en.yaml
+|   |       |           es.yaml
+|   |       |           fr.yaml
+|   |       |           
+|   |       +---base-form2
+|   |       |   |   intl.yaml
+|   |       |   |   page.jsx
+|   |       |   |   
+|   |       |   \---translations
+|   |       |           en.yaml
+|   |       |           es.yaml
+|   |       |           fr.yaml
+|   |       |           
+|   |       \---listing
+|   |           |   intl.yaml
+|   |           |   listings.scss
+|   |           |   page.jsx
+|   |           |   
+|   |           \---translations
+|   |                   en.yaml
+|   |                   es.yaml
+|   |                   fr.yaml
+|   |                   
+|   +---(customer)
+|   |   |   intl.yaml
+|   |   |   layout.jsx
+|   |   |   page.jsx
+|   |   |   
+|   |   +---chat
+|   |   |   \---[slug]
+|   |   |           chat.scss
+|   |   |           page.jsx
+|   |   |           
+|   |   +---contact
+|   |   |       page.jsx
+|   |   |       
+|   |   +---conversations
+|   |   |   |   conversations.scss
+|   |   |   |   intl.yaml
+|   |   |   |   page.jsx
+|   |   |   |   
+|   |   |   \---translations
+|   |   |           en.yaml
+|   |   |           es.yaml
+|   |   |           fr.yaml
+|   |   |           
+|   |   +---faq
+|   |   |   |   intl.yaml
+|   |   |   |   page.jsx
+|   |   |   |   
+|   |   |   \---translations
+|   |   |           en.yaml
+|   |   |           es.yaml
+|   |   |           fr.yaml
+|   |   |           
+|   |   +---favorites
+|   |   |   |   Favorites.scss
+|   |   |   |   intl.yaml
+|   |   |   |   page.jsx
+|   |   |   |   
+|   |   |   \---translations
+|   |   |           en.yaml
+|   |   |           es.yaml
+|   |   |           fr.yaml
+|   |   |           
+|   |   +---feedback
+|   |   |   |   feedback.scss
+|   |   |   |   intl.yaml
+|   |   |   |   page.jsx
+|   |   |   |   
+|   |   |   \---translations
+|   |   |           en.yaml
+|   |   |           es.yaml
+|   |   |           fr.yaml
+|   |   |           
+|   |   +---instructions
+|   |   |   |   intl.yaml
+|   |   |   |   page.jsx
+|   |   |   |   
+|   |   |   \---translations
+|   |   |           en.yaml
+|   |   |           es.yaml
+|   |   |           fr.yaml
+|   |   |           
+|   |   +---payment-success
+|   |   |       page.jsx
+|   |   |       style.scss
+|   |   |       
+|   |   +---premium-activation
+|   |   |       page.jsx
+|   |   |       premium.scss
+|   |   |       
+|   |   +---privacy-policy
+|   |   |       page.jsx
+|   |   |       
+|   |   +---profile
+|   |   |   |   intl.yaml
+|   |   |   |   page.jsx
+|   |   |   |   profile.scss
+|   |   |   |   
+|   |   |   \---translations
+|   |   |           en.yaml
+|   |   |           es.yaml
+|   |   |           fr.yaml
+|   |   |           
+|   |   +---terms-and-conditions
+|   |   |   |   intl.yaml
+|   |   |   |   page.jsx
+|   |   |   |   
+|   |   |   \---translations
+|   |   |           en.yaml
+|   |   |           es.yaml
+|   |   |           fr.yaml
+|   |   |           
+|   |   \---translations
+|   |           en.yaml
+|   |           es.yaml
+|   |           fr.yaml
+|   |           
+|   \---(worker)
+|       |   layout.jsx
+|       |   
+|       +---sitter
+|       |   |   intl.yaml
+|       |   |   page.jsx
+|       |   |   
+|       |   +---listings
+|       |   |   |   intl.yaml
+|       |   |   |   listings.scss
+|       |   |   |   page.jsx
+|       |   |   |   
+|       |   |   \---translations
+|       |   |           en.yaml
+|       |   |           es.yaml
+|       |   |           fr.yaml
+|       |   |           
+|       |   \---translations
+|       |           en.yaml
+|       |           es.yaml
+|       |           fr.yaml
+|       |           
+|       \---worker-details
+|           |   intl.yaml
+|           |   
+|           +---translations
+|           |       en.yaml
+|           |       es.yaml
+|           |       fr.yaml
+|           |       
+|           \---[id]
+|                   page.jsx
+|                   worker-details.scss
+|                   
++---auth
+|       auth.js
+|       
++---components
+|   |   AuthGuard.jsx
+|   |   BlogCard.jsx
+|   |   BlogCard.scss
+|   |   ChatModal.jsx
+|   |   ChatModal.scss
+|   |   favCard.jsx
+|   |   favCard.scss
+|   |   LanguageModal.jsx
+|   |   LanguageModal.scss
+|   |   LanguageSwitcher.jsx
+|   |   ListingCard.scss
+|   |   OffcanvasProfile.jsx
+|   |   OffcanvasProfile.scss
+|   |   OwnerCard.jsx
+|   |   OwnerCard.scss
+|   |   PetSitterCard.jsx
+|   |   PetSitterCard.scss
+|   |   PetSitterPopup.JSX
+|   |   PetSitterPopup.SCSS
+|   |   ProfileDropdown.jsx
+|   |   ProfileDropdown.scss
+|   |   ReviewModal.jsx
+|   |   ReviewModal.scss
+|   |   SitterCard.jsx
+|   |   SitterCard.scss
+|   |   SitterModal.jsx
+|   |   SitterModal.scss
+|   |   TestimonialCard.jsx
+|   |   TestimonialCard.scss
+|   |   
+|   +---formComponents
+|   |       addToFevouriteBtn.jsx
+|   |       addToFevouriteBtn.scss
+|   |       CheckboxDropdown.jsx
+|   |       CheckboxDropdown.scss
+|   |       CustomCheckbox.jsx
+|   |       CustomCheckbox.scss
+|   |       CustomCheckboxGroup.jsx
+|   |       CustomCheckboxGroup.scss
+|   |       CustomCheckboxWithValue.jsx
+|   |       CustomCheckboxWithValue.scss
+|   |       EditInput.jsx
+|   |       EditInput.scss
+|   |       fileUploader.jsx
+|   |       fileUploader.scss
+|   |       Input.jsx
+|   |       Input.scss
+|   |       PerServiceSeect.jsx
+|   |       PetServiceSelect.scss
+|   |       RangeSlider.jsx
+|   |       RangeSlider.scss
+|   |       RateSlider.jsx
+|   |       RateSlider.scss
+|   |       SearchBox.jsx
+|   |       SearchBox.scss
+|   |       Select.jsx
+|   |       Select.scss
+|   |       
+|   +---Loader
+|   |       index.jsx
+|   |       style.scss
+|   |       
+|   \---PopupModal
+|           index.jsx
+|           PopupModal.scss
+|           
++---data
+|       sitterData.json
+|       
++---hooks
+|       useGeolocation.js
+|       usePreviousPath.js
+|       
++---layout
+|   +---footer
+|   |       index.jsx
+|   |       style.scss
+|   |       
+|   \---header
+|       |   index.jsx
+|       |   intl.yaml
+|       |   style.scss
+|       |   
+|       \---translations
+|               en.yaml
+|               es.yaml
+|               fr.yaml
+|               
++---services
+|       apiClient.js
+|       authService.js
+|       chatService.js
+|       endpoints.js
+|       formService.js
+|       ownerService.js
+|       publicService.js
+|       sitterService.js
+|       
++---store
+|   |   createAppSlice.js
+|   |   hooks.js
+|   |   store.js
+|   |   
+|   \---features
+|       +---auth
+|       |       authSlice.js
+|       |       
+|       +---filter
+|       |       filterSlice.js
+|       |       
+|       +---siteSettings
+|       \---user
+|               userSlice.js
+|               
++---styles
+|       style.scss
+|       _base.scss
+|       _custom-functions.scss
+|       _mixins.scss
+|       _modal-popups.scss
+|       _toast.scss
+|       _typographics.scss
+|       _var.scss
+|       
+\---views
+    +---common
+    |   +---ContactSection
+    |   |       index.jsx
+    |   |       style.scss
+    |   |       
+    |   +---FaqPageView
+    |   |       index.jsx
+    |   |       style.scss
+    |   |       
+    |   +---InstructionsSection
+    |   |       index.jsx
+    |   |       style.scss
+    |   |       
+    |   +---PrivacyPolicySection
+    |   |       index.jsx
+    |   |       style.scss
+    |   |       
+    |   \---TermsAndConditionsSection
+    |           index.jsx
+    |           style.scss
+    |           
+    +---home
+    |   +---About
+    |   |       index.jsx
+    |   |       style.scss
+    |   |       
+    |   +---BlogSection
+    |   |       index.jsx
+    |   |       style.scss
+    |   |       
+    |   +---FaqSection
+    |   |       index.jsx
+    |   |       style.scss
+    |   |       
+    |   +---FeaturedPetSitters
+    |   |       index.jsx
+    |   |       style.scss
+    |   |       
+    |   +---HeroSection
+    |   |       index.jsx
+    |   |       style.scss
+    |   |       
+    |   +---HowItWorks
+    |   |       index.jsx
+    |   |       style.scss
+    |   |       
+    |   +---SearchBar
+    |   |       index.jsx
+    |   |       style.scss
+    |   |       
+    |   +---Services
+    |   |       index.jsx
+    |   |       style.scss
+    |   |       
+    |   \---Testimonials
+    |           index.jsx
+    |           style.scss
+    |           
+    +---listing
+    |   +---listingFilter
+    |   |       index.jsx
+    |   |       style.scss
+    |   |       
+    |   \---MapView
+    |           index.jsx
+    |           MapComponent.jsx
+    |           style.scss
+    |           
+    +---ProfileViewPage
+    |       index.jsx
+    |       ManageSubscriptions.jsx
+    |       style.scss
+    |       
+    +---updateOwnerServices
+    |       index.jsx
+    |       style.scss
+    |       
+    +---updateProfile
+    |       index.jsx
+    |       style.scss
+    |       
+    +---updateSitterServices
+    |       index.jsx
+    |       style.scss
+    |       
+    +---worker
+    |   +---gallerySwiper
+    |   |       index.jsx
+    |   |       style.scss
+    |   |       
+    |   +---HowItWorks
+    |   |       index.jsx
+    |   |       style.scss
+    |   |       
+    |   +---ServicesSection
+    |   |       index.jsx
+    |   |       style.scss
+    |   |       
+    |   +---Testimonials
+    |   |       index.jsx
+    |   |       style.scss
+    |   |       
+    |   \---WorkerBenefits
+    |           index.jsx
+    |           style.scss
+    |           
+    \---workerProfile
+            index.jsx
+            style.scss
+            

@@ -1,0 +1,21 @@
+auth:
+    login: Login
+    loginDesc: Welcome back! Please enter your details to login.
+    emailLabel: Email
+    emailPlaceholder: Enter your email
+    passwordLabel: Password
+    forgotPassword: Forgot Password?
+    continue: Continue
+    noAccount: Don't have an account?
+    register: Register
+    or: OR
+    google: Continue with Google
+    loginImageAlt: Login Image
+    googleLogoAlt: Google Logo
+    connecting: Connecting...
+    loggedInSuccess: Logged in successfully!
+    googleAccountNotFound: Account not found. Please sign up with Google first.
+    googleAuthFailed: Google authorization failed.
+    emailRequired: Email is required.
+    passwordRequired: Password is required.
+    unexpectedError: An unexpected error occurred

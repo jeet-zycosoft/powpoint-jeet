@@ -1,0 +1,17 @@
+footer:
+    citiesHeading: Des villes avec une large offre
+    cityLink: Garde d'animaux à {city}
+    terms: Conditions générales
+    privacy: Politique de confidentialité
+    copyright: Copyright ©{year} PawPoint. Tous droits réservés.
+    emailAria: Envoyez-nous un e-mail
+    phoneAria: Appelez-nous
+    locationAria: Voir l'emplacement
+    brandAria: PawPoint
+    legalNavAria: Mentions légales
+    logoAlt: Logo PawPoint
+    social:
+        facebook: Facebook
+        twitter: X
+        instagram: Instagram
+        youtube: YouTube

@@ -1,0 +1,17 @@
+footer:
+    citiesHeading: Cities with a wide range of offerings
+    cityLink: Pet sitting in {city}
+    terms: Terms and Conditions
+    privacy: Privacy Policy
+    copyright: Copyright ©{year} PawPoint. All rights reserved.
+    emailAria: Email us
+    phoneAria: Call us
+    locationAria: View location
+    brandAria: PawPoint
+    legalNavAria: Legal
+    logoAlt: PawPoint Logo
+    social:
+        facebook: Facebook
+        twitter: X
+        instagram: Instagram
+        youtube: YouTube

@@ -1,0 +1,86 @@
+home:
+    hero:
+        heading:
+        desc: Encuentra cuidadores y paseadores de mascotas de confianza en tu
+            vecindario para un cuidado confiable y amoroso cuando no puedes estar
+            allí.
+        buttonText: Encontrar un Cuidador
+    searchBar:
+        lookingFor: Busco*
+        options:
+            boarding: Alojamiento para perros
+            sitting: Cuidado de casas
+            daycare: Guardería para perros
+            walking: Paseo de perros
+        addressLabel: Dirección*
+        addressPlaceholder: Manchester en Reino Unido
+        button: Buscar
+    howItWorks:
+        heading: Cómo <span>Funciona</span>
+        desc: Al contrario de la creencia popular, Lorem Ipsum no es simplemente texto
+            aleatorio. Tiene sus raíces en una pieza de la literatura clásica latina
+            del 45 a. C., por lo que tiene más de 2000 años.
+        card1:
+            title: Explora Cuidadores
+            desc: Busca cualquier cuidador de mascotas por ubicación, disponibilidad y
+                servicio.
+        card2:
+            title: Reserva con Confianza
+            desc: Envía mensajes, reúnete y confirma, todas las reservas están seguras.
+        card3:
+            title: Disfruta de Tranquilidad
+            desc: Tu cuidador envía actualizaciones diarias, fotos y colas que se mueven.
+    testimonials:
+        heading: Lo Que Dicen Nuestros <span>Clientes</span>
+        desc: Al contrario de la creencia popular, Lorem Ipsum no es simplemente texto
+            aleatorio. Tiene sus raíces en una pieza de la literatura clásica latina
+            del 45 a. C., por lo que tiene más de 2000 años.
+    about:
+        heading: Dedicados {br} <span>paseadores de mascotas</span> {br} en los que
+            puedes confiar
+        p1: En nuestra esencia, entendemos que la felicidad de tu mascota es de suma
+            importancia.
+        button: Aprende Más
+    featuredSitters:
+        heading: <span>Cuidadores Destacados</span> Cerca de Ti
+        desc: Al contrario de la creencia popular, Lorem Ipsum no es simplemente texto
+            aleatorio. Tiene sus raíces en una pieza de la literatura clásica latina
+            del 45 a. C., por lo que tiene más de 2000 años.
+        button: Ver Todos los Cuidadores
+    faq:
+        heading: Preguntas Frecuentes – Preguntas, <span>Respondemos</span>
+        desc: Al contrario de la creencia popular, Lorem Ipsum no es simplemente texto
+            aleatorio. Tiene sus raíces en una pieza de la literatura clásica latina
+            del 45 a. C., por lo que tiene más de 2000 años.
+        q1: ¿Sus cuidadores están verificados?
+        a1: Sí, todos nuestros cuidadores pasan por un exhaustivo proceso de selección,
+            que incluye verificaciones de antecedentes y entrevistas.
+        q2: ¿Qué incluye el cuidado de mascotas?
+        a2: Alimentación, tiempo de juego, paseos, mimos y actualizaciones periódicas.
+        q3: ¿Mi reserva está asegurada?
+        a3: Sí, todas las reservas realizadas a través de nuestra plataforma están
+            cubiertas por nuestro seguro.
+        q4: ¿Puedo conocer al cuidador primero?
+        a4: ¡Por supuesto! Recomendamos una reunión previa antes de la reserva.
+        q5: ¿Qué pasa si mi cuidador cancela?
+        a5: En el raro caso de una cancelación, te ayudaremos a encontrar un reemplazo
+            adecuado.
+    services:
+        heading: Servicios de <span>Cuidado de Mascotas</span>
+        desc: Al contrario de la creencia popular, Lorem Ipsum no es simplemente texto
+            aleatorio.
+        boarding:
+            desc: Tus mascotas se quedan por la noche en la casa del cuidador. Serán
+                tratadas como parte de la familia.
+        sitting:
+            desc: Tu cuidador se encarga de tus mascotas y de tu casa. Recibirán toda la
+                atención que necesitan.
+        walking:
+            desc: Tu perro da un paseo por el barrio. Perfecto para días ocupados.
+        daycare:
+            desc: Tu perro pasa el día en la casa de tu cuidador.
+        button: Reserva un Cuidador
+    blog:
+        heading: Consejos, Noticias y <span>Historias de Mascotas</span>
+        desc: Al contrario de la creencia popular, Lorem Ipsum no es simplemente texto
+            aleatorio.

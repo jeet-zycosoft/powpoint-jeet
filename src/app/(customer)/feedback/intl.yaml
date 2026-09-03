@@ -1,0 +1,7 @@
+feedback:
+    title: Send PawPoint a message
+    name: Name
+    email: Email address
+    messageLabel: Make account changes yourself. Enter your message here.
+    messagePlaceholder: Type your message here...
+    send: Send

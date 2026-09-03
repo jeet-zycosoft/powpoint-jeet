@@ -1,0 +1,448 @@
+@use "@/styles/var";
+@use "sass:map";
+
+.owner-profile-container {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    max-width: 960px; // Focused, clean layout max-width for profile pages
+    margin: 0 auto;
+
+    @media screen and (max-width: 991px) {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+
+    @media screen and (max-width: 575px) {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .main-title {
+        font-size: 3rem;
+        font-weight: 800;
+        font-family: map.get(var.$fonts, "primary");
+        color: map.get(var.$colors, "secondary");
+        text-align: center;
+        margin-bottom: 3.5rem;
+        position: relative;
+
+        &::after {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: #1d7161;
+            margin: 0.75rem auto 0;
+            border-radius: 2px;
+        }
+
+        @media screen and (max-width: 767px) {
+            font-size: 2.25rem;
+            margin-bottom: 2rem;
+        }
+    }
+
+    .profile-section {
+        padding: 2.25rem 2.5rem;
+        margin-bottom: 2rem;
+        position: relative;
+        border: 2px solid #faf9f6;
+        border-radius: 1.25rem;
+        background-color: #ffffff;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+        overflow: hidden;
+
+        @media screen and (max-width: 575px) {
+            padding: 1.5rem 1.8rem;
+        }
+
+        &:hover {
+            box-shadow: 0 8px 30px rgba(29, 113, 97, 0.05);
+        }
+
+        &.solid-bg {
+            background-color: #faf9f6;
+            border-color: transparent;
+        }
+
+        .profile-section__heading {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1d7161;
+            padding-right: 3.5rem; // Guarantees heading text never collides with absolute-positioned edit icon
+            display: flex;
+            align-items: center;
+
+            @media screen and (max-width: 575px) {
+                font-size: 1.25rem;
+                margin-bottom: 1.25rem;
+            }
+        }
+
+        .card-header {
+            background: transparent;
+            border: none;
+            padding: 0;
+        }
+
+        .edit-button {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: transparent;
+            border: none;
+            padding: 0.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+            svg {
+                width: 24px;
+                height: 24px;
+
+                path {
+                    transition: fill 0.3s ease;
+                }
+            }
+
+            &:hover {
+                background-color: rgba(#1d7161, 0.08);
+                transform: scale(1.12) rotate(8deg);
+
+                svg path {
+                    fill: #1d7161;
+                }
+            }
+
+            &:active {
+                transform: scale(0.95);
+            }
+
+            @media screen and (max-width: 575px) {
+                top: 1rem;
+                right: 1rem;
+            }
+        }
+
+        .card-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+
+            .item {
+                color: #536562;
+                font-size: 1.05rem;
+                font-weight: 500;
+                margin-bottom: 0.85rem;
+                // display: flex;
+                // flex-wrap: wrap;
+                align-items: baseline;
+                gap: 0.25rem 0.5rem;
+                line-height: 1.5;
+
+                .value {
+                    font-family: map.get(var.$fonts, "primary");
+                    font-weight: 600;
+                    color: map.get(var.$colors, "black");
+                    word-break: break-word;
+                    overflow-wrap: anywhere;
+                }
+            }
+
+            &.notification-setting {
+                flex-direction: column;
+                gap: 0.5rem;
+                width: 100%;
+            }
+        }
+
+        .profile-picture {
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            background-color: #eae9e6;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+
+            &:hover {
+                transform: scale(1.03);
+            }
+        }
+
+        .profile-picture-placeholder {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #eae9e6;
+            border: 3px solid #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+
+            svg {
+                width: 60px;
+                height: 60px;
+                color: #afaeac;
+                transition: color 0.3s ease;
+            }
+
+            &:hover {
+                transform: scale(1.03);
+
+                svg {
+                    color: #1d7161;
+                }
+            }
+        }
+
+        .personal-info {
+            flex-grow: 1;
+            min-width: 0; // Prevents overflow of very long names/messages
+        }
+
+        .advertisement-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem 4rem;
+            width: 100%;
+
+            .ad-details {
+                flex: 1 1 380px;
+                min-width: 0;
+
+                @media (max-width: 991px) {
+                    flex: 1 1 100%;
+                }
+            }
+        }
+
+        .subscription-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0;
+            padding: 0.85rem 1.25rem;
+            border-radius: 0.75rem;
+            background-color: transparent;
+            transition:
+                background-color 0.25s ease,
+                transform 0.25s ease;
+            width: 100%;
+
+            &:hover {
+                background-color: rgba(#1d7161, 0.03);
+                transform: translateX(6px);
+            }
+
+            input[type="checkbox"] {
+                appearance: none;
+                -webkit-appearance: none;
+                margin-right: 1.25rem;
+                margin-top: 0.25rem;
+                width: 22px;
+                height: 22px;
+                cursor: pointer;
+                flex-shrink: 0;
+                border: 2px solid #b5c2bf;
+                border-radius: 6px;
+                background-color: #ffffff;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+                box-sizing: border-box;
+
+                &::after {
+                    content: "";
+                    width: 5px;
+                    height: 10px;
+                    border: solid white;
+                    border-width: 0 2px 2px 0;
+                    transform: rotate(45deg) scale(0);
+                    transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+                    margin-bottom: 2px;
+                }
+
+                &:checked {
+                    background-color: #3d6b5e;
+                    border-color: #3d6b5e;
+
+                    &::after {
+                        transform: rotate(45deg) scale(1);
+                    }
+                }
+
+                &:hover {
+                    border-color: #3d6b5e;
+                }
+
+                &:focus-visible {
+                    outline: none;
+                    box-shadow: 0 0 0 3px rgba(#3d6b5e, 0.25);
+                }
+            }
+
+            label {
+                display: flex;
+                flex-direction: column;
+                cursor: pointer;
+                user-select: none;
+                flex-grow: 1;
+
+                strong {
+                    font-size: 1.05rem;
+                    color: map.get(var.$colors, "black");
+                    margin-bottom: 0.25rem;
+                }
+
+                span {
+                    color: #6a7c78;
+                    font-size: 0.9rem;
+                    line-height: 1.45;
+                }
+            }
+        }
+
+        .btn-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+
+            a {
+                color: #1d7161;
+                font-weight: 600;
+                text-decoration: none;
+                position: relative;
+                transition: color 0.3s ease;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    transform: scaleX(0);
+                    height: 2px;
+                    bottom: -2px;
+                    left: 0;
+                    background-color: #1d7161;
+                    transform-origin: bottom right;
+                    transition: transform 0.25s ease-out;
+                }
+
+                &:hover {
+                    color: #12493e;
+
+                    &::after {
+                        transform: scaleX(1);
+                        transform-origin: bottom left;
+                    }
+                }
+            }
+
+            .btn.text-danger {
+                font-weight: 600;
+                transition: all 0.3s ease;
+                padding: 0.5rem 1.25rem;
+                border-radius: 0.5rem;
+                border: 1px solid transparent;
+
+                &:hover {
+                    background-color: rgba(#dc3545, 0.08);
+                    transform: translateY(-1px);
+                }
+
+                &:active {
+                    transform: translateY(0);
+                }
+            }
+        }
+    }
+}
+
+// Responsive style overrides
+@media (max-width: 768px) {
+    .owner-profile-container {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+
+    .profile-section {
+        padding: 1.5rem 1.75rem;
+        border-radius: 1rem;
+
+        .card-content {
+            flex-direction: column;
+            gap: 1.5rem;
+
+            .profile-picture,
+            .profile-picture-placeholder {
+                align-self: flex-start;
+            }
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .profile-section {
+        padding: 1.25rem 1.25rem;
+
+        .card-content {
+            gap: 1.25rem;
+
+            .profile-picture,
+            .profile-picture-placeholder {
+                width: 90px;
+                height: 90px;
+                align-self: flex-start;
+            }
+
+            .profile-picture-placeholder svg {
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        .subscription-item {
+            padding: 0.75rem 0.5rem;
+
+            &:hover {
+                transform: none; // Stable scrolling physics on small mobile devices
+            }
+
+            input[type="checkbox"] {
+                margin-right: 0.85rem;
+                width: 18px;
+                height: 18px;
+
+                &::after {
+                    width: 4px;
+                    height: 8px;
+                    border-width: 0 1.5px 1.5px 0;
+                    margin-bottom: 1.5px;
+                }
+            }
+
+            label {
+                strong {
+                    font-size: 0.95rem;
+                }
+
+                span {
+                    font-size: 0.85rem;
+                }
+            }
+        }
+    }
+}

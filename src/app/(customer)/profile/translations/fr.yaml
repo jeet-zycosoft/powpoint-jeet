@@ -1,0 +1,50 @@
+profile:
+    title: Profil
+    personalData: Données personnelles
+    name: Nom
+    personalMessage: Message personnel
+    myAdvertisement: Mon annonce
+    address: Adresse
+    maximumDistance: Distance maximale
+    availability: Disponibilité
+    languages: Langues
+    none: Aucun
+    notificationSettings: Paramètres de notification
+    notifications:
+        newUsers:
+            title: Nouveaux utilisateurs
+            description: Soyez notifié lorsque de nouveaux utilisateurs s'inscrivent et correspondent à vos besoins.
+        personalMessages:
+            title: Messages personnels
+            description: Messages personnels d'autres utilisateurs et/ou messages importants du site.
+        newMatchAlerts:
+            title: Alertes de nouvelles correspondances
+            description: Soyez notifié lorsque de nouveaux utilisateurs s'inscrivent et correspondent aux préférences de votre animal.
+    deleteAccount: Supprimer le compte
+    subscriptions:
+        title: Gérer la/les abonnement(s) chat
+        loading: Chargement des abonnements...
+        loadError: Échec du chargement des abonnements.
+        retry: Réessayer
+        empty: Aucun abonnement actif trouvé.
+        activatePremium: Activer Premium
+        modal:
+            activatePremium:
+                title: Activer Premium
+                message: Cet abonnement est annulé ou expiré. Si vous souhaitez activer premium pour cette zone ou une nouvelle zone, rendez-vous sur la page d'activation Premium.
+                close: Fermer
+                activate: Activer Premium
+            cancelRenewal:
+                title: Annuler le renouvellement de l'abonnement
+                message: Êtes-vous sûr de vouloir annuler le renouvellement automatique de l'abonnement à {location} ? Une fois annulé, vous aurez toujours accès au chat avec les pet sitters de cette zone jusqu'à la fin de la période de facturation le {date}.
+                keep: Conserver l'abonnement
+                cancel: Annuler le renouvellement
+        toasts:
+            cancelSuccess: Renouvellement de l'abonnement annulé avec succès.
+            cancelFailed: Échec de l'annulation du renouvellement de l'abonnement.
+            cancelError: Une erreur s'est produite lors de l'annulation de l'abonnement.
+        status:
+            activeRenew: Renouveler automatiquement l'abonnement chat pour cet emplacement le {date}
+            expired: Abonnement expiré le {date}
+            cancelled: Abonnement annulé. L'accès se terminera le {date}
+        fallbackLocation: cet emplacement

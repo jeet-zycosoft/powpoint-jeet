@@ -1,0 +1,10 @@
+paymentSuccess:
+    loading: Cargando detalles de la suscripción...
+    altIllustration: Ilustración de pago exitoso
+    altSuccess: Éxito
+    title: ¡Pago realizado!
+    subtitle: Tu suscripción Active Premium ya está activa.
+    activePackages: 'Paquetes activos:'
+    connections: 'Conexiones:'
+    findSitter: Buscar cuidador
+    openChats: Abrir chats

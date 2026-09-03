@@ -1,0 +1,168 @@
+common:
+    close: Fermer
+    closeModal: Fermer la fenêtre
+    cancel: Annuler
+    retry: Réessayer
+    send: Envoyer
+    save: Enregistrer
+    edit: Modifier
+    add: Ajouter
+    loading: Chargement...
+    user: Utilisateur
+    notification: Notification
+    required: obligatoire
+    gotIt: Compris
+    all: Tous
+    me: Moi
+    km: KM
+    favorite: Favori
+    addFavorite: Ajouter aux favoris
+    removeFavorite: Retirer des favoris
+    readArticle: Lire l'article
+    blogPost: Article de blog
+    petPartner: Partenaire animalier
+    petSitter: Petsitter
+    age: 'Âge :'
+    exp: 'Exp :'
+    years: Ans
+    reviews: '{count} Avis'
+    from: à partir de
+    viewProfile: Voir le profil
+    chat: Discussion
+    contact: Contact
+chatModal:
+    defaultSitter: le petsitter
+    processTitle: Processus de discussion
+    acceptTitle: Accepter la conversation ?
+    acceptQuota: 'Accepter utilise 1 crédit (maintenant {display}, après {nextDisplay}).'
+    acceptCredit: Accepter consommera 1 crédit de connexion.
+    decline: Refuser
+    acceptConnection: Accepter la connexion
+    purchaseTitle: Abonnement requis
+    getPremium: Obtenir Active Premium
+    renewTitle: Renouveler l'abonnement
+    renewMessage: Votre forfait a expiré. Renouvelez pour continuer à discuter avec les petsitters.
+    renewButton: Renouveler l'abonnement
+    locationTitle: Petsitter dans une autre zone
+    locationMessage: 'Ce petsitter est à {sitterCity}, mais votre profil est à {ownerCity}. Les forfaits existants restent sur votre ancienne zone. Remplacez votre localisation par l''adresse de ce petsitter pour acheter Active Premium pour sa zone.'
+    anotherArea: une autre zone
+    yourArea: votre zone actuelle
+    replaceLocation: Remplacer la localisation
+    upgradeTitle: Limite de connexions atteinte
+    upgradeMessage: Limite mensuelle de petsitters atteinte. Achetez un autre forfait pour vous connecter à plus de petsitters.
+    buyPackage: Acheter un autre forfait
+    verifyTitle: Vérification du chat
+reviewModal:
+    title: Écrire un avis
+    ratingLabel: Note
+    commentLabel: Votre avis
+    commentPlaceholder: Partagez votre expérience...
+    submit: Envoyer l'avis
+    submitting: Envoi...
+    validationRating: Veuillez sélectionner une note.
+    validationComment: Veuillez écrire un avis.
+    success: Avis envoyé avec succès.
+    error: Échec de l'envoi de l'avis.
+    closeAria: Fermer l'avis
+sitterModal:
+    chatNow: Discuter maintenant
+    services: Services
+    reviews: Avis
+    location: Lieu
+    about: À propos
+    favorite: Favori
+    loginFavorite: Veuillez vous connecter pour gérer les favoris.
+    addSuccess: Ajouté aux favoris.
+    removeSuccess: Retiré des favoris.
+    favoriteError: Échec de la mise à jour des favoris.
+profileMenu:
+    myAccount: Mon compte
+    profile: Profil
+    conversations: Conversations
+    favorites: Favoris
+    instructions: Instructions
+    feedback: Commentaires
+    logout: Déconnexion
+    petOwner: Propriétaire
+    petSitter: Petsitter
+    advertisements: Annonces
+    pawpoint: PawPoint
+    faq: FAQ
+    terms: Conditions générales
+    privacy: Politique de confidentialité
+language:
+    english: English
+    spanish: Español
+    french: Français
+    title: Sélectionner les langues
+    search: Rechercher des langues
+    save: Enregistrer les langues
+    noResults: Aucune langue trouvée
+fieldHint:
+    completeProfile: Complétez votre profil
+    defaultMessage: Veuillez remplir ce champ pour continuer.
+searchBox:
+    placeholder: Rechercher un lieu
+    searchAria: Rechercher un lieu
+    submitAria: Lancer la recherche
+    searching: Recherche de lieux...
+forms:
+    ratePerNight: Tarif par nuit*
+    enterItem: Saisir un élément
+    items: Éléments
+    removeItem: Supprimer l'élément
+    itemsCount: '{count}/{max} éléments'
+    duplicateItem: Cet élément existe déjà.
+    maxItems: Nombre maximum d'éléments atteint.
+    cropPhoto: Recadrer la photo
+    closeCrop: Fermer le recadrage
+    applyCrop: Appliquer
+    cropping: Recadrage...
+    cropError: Échec du recadrage de l'image.
+    dropFiles: Déposez les fichiers ici
+    dragDrop: Glissez-déposez des fichiers ici, ou cliquez pour sélectionner
+    avgNight: 'Moy., €25/nuit'
+    bold: Gras
+    italic: Italique
+    underline: Souligné
+    bulletList: Liste à puces
+    numberedList: Liste numérotée
+services:
+    boarding: Pension pour chiens
+    sitting: Garde à domicile
+    daycare: Garderie pour chiens
+    walking: Promenade de chiens
+    dropIn: Visites à domicile
+    dog: Chien
+    cat: Chat
+    serviceType: Type de service
+    petType: Type d'animal
+    dogSize: Taille du chien
+    maxPrice: Prix maximum
+blogSidebar:
+    categories: Catégories
+    recentPosts: Articles récents
+    tags: Tags
+    search: Rechercher
+    noPosts: Aucun article récent
+authLogo:
+    homeAria: Accueil PawPoint
+    logoAlt: Logo PawPoint
+chatRooms:
+    joinFailed: Échec de la connexion aux salles de discussion.
+cards:
+    noServices: Aucun service listé
+    pending: En attente
+popup:
+    closeAria: Fermer la fenêtre
+header:
+    incompleteProfileDefault: Complétez d'abord votre profil pour parcourir les annonces.
+    incompleteProfileMissing: 'Encore requis : {items}'
+sitter:
+    gallery:
+        prevPhotos: Photos précédentes
+        nextPhotos: Photos suivantes
+        closeImage: Fermer l'image
+        prevImage: Image précédente
+        nextImage: Image suivante
+        imageAlt: 'Image de galerie {number}'

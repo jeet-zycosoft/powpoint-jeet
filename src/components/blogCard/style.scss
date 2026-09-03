@@ -1,0 +1,173 @@
+@use "@/styles/var";
+@use "sass:map";
+
+.blog-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0.75rem;
+    border-radius: 20px;
+    background-color: map.get(var.$colors, "white");
+    border: 1px solid map.get(var.$colors, "formBorder");
+    box-shadow: 0 10px 25px rgba(12, 39, 34, 0.05);
+    transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 35px rgba(12, 39, 34, 0.1);
+        border-color: rgba(247, 178, 103, 0.4);
+
+        .blog-card__image-wrapper {
+            .blog-card__img {
+                transform: scale(1.06);
+            }
+        }
+
+        .blog-card__read-more {
+            color: map.get(var.$colors, "primary");
+            .arrow-icon {
+                transform: translateX(4px);
+            }
+        }
+    }
+
+    &__image-wrapper {
+        position: relative;
+        width: 100%;
+        height: 210px;
+        border-radius: 16px;
+        overflow: hidden;
+        background-color: map.get(var.$colors, "light_bg");
+    }
+
+    &__img-link {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    &__category-badge {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        background: rgba(12, 39, 34, 0.85);
+        backdrop-filter: blur(8px);
+        color: map.get(var.$colors, "primary");
+        font-size: 0.78rem;
+        font-weight: 700;
+        padding: 4px 14px;
+        border-radius: 50px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        z-index: 2;
+    }
+
+    .blog-content {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        padding: 1.25rem 0.75rem 0.5rem 0.75rem;
+    }
+
+    &__meta {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 0.6rem;
+        font-size: 0.82rem;
+        color: #6b7280;
+    }
+
+    &__meta-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        .icon {
+            color: map.get(var.$colors, "secondary");
+        }
+    }
+
+    &__title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        line-height: 1.4;
+        margin-bottom: 0.65rem;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+
+        a {
+            color: map.get(var.$colors, "heading");
+            text-decoration: none !important;
+            transition: color 0.25s ease;
+
+            &:hover {
+                color: map.get(var.$colors, "secondary");
+            }
+        }
+    }
+
+    &__excerpt {
+        font-size: 0.92rem;
+        color: map.get(var.$colors, "text");
+        line-height: 1.55;
+        margin-bottom: 1.2rem;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        opacity: 0.88;
+    }
+
+    &__footer {
+        margin-top: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 0.8rem;
+        border-top: 1px solid map.get(var.$colors, "formBorder");
+    }
+
+    &__author {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        .author-avatar {
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: map.get(var.$colors, "heading");
+        }
+    }
+
+    &__read-more {
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: map.get(var.$colors, "secondary");
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        text-decoration: none !important;
+        transition: all 0.25s ease;
+
+        .arrow-icon {
+            transition: transform 0.25s ease;
+        }
+    }
+}

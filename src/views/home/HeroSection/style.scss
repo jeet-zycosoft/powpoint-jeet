@@ -1,0 +1,213 @@
+@use "sass:map";
+@use "@/styles/var";
+@use "@/styles/mixins";
+
+.hero-section {
+    height: 80vh;
+    max-height: 820px;
+    min-height: 580px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+
+    &__inner {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+    }
+
+    .section-heading {
+        font-size: 4.25rem;
+        padding-top: 0;
+        margin-bottom: 1rem;
+        line-height: 1.15;
+    }
+
+    .section-desc {
+        margin-bottom: 1.5rem;
+    }
+
+    &__content {
+        max-width: 36rem;
+    }
+
+    &--with-search {
+        .hero-section__content {
+            max-width: 44rem;
+        }
+    }
+
+    &__browse-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        margin-top: 1.15rem;
+        padding: 0;
+        border: none;
+        background: none;
+        color: #0c2722;
+        font-size: 1rem;
+        font-weight: 650;
+        text-decoration: none;
+        letter-spacing: 0.01em;
+        transition: color 0.2s ease, gap 0.2s ease;
+
+        span {
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+
+        &:hover {
+            color: #4a766e;
+
+            span {
+                transform: translateX(4px);
+            }
+        }
+    }
+
+    .hero-bg-image {
+        position: absolute;
+        left: 0;
+        right: 0;
+        // Hide ~50px from the top of the image, then start
+        top: -50px;
+        width: 100%;
+        height: calc(100% + 50px);
+        object-fit: cover;
+        object-position: top center;
+        z-index: 0;
+
+        &.desktop {
+            display: block;
+        }
+
+        &.mobile {
+            display: none;
+        }
+    }
+
+    // Laptop 1536px
+    @include mixins.media-down(1536px) {
+        max-height: 760px;
+
+        .section-heading {
+            font-size: 3.75rem;
+        }
+    }
+
+    // Laptop 1366px
+    @include mixins.media-down(1366px) {
+        max-height: 700px;
+        min-height: 540px;
+
+        .section-heading {
+            font-size: 3.25rem;
+        }
+
+        .section-desc {
+            margin-bottom: 1.25rem;
+        }
+    }
+
+    // Tablet (below 992px)
+    @include mixins.media-down("lg") {
+        max-height: 640px;
+
+        .section-heading {
+            font-size: 2.7rem;
+        }
+
+        &__content {
+            max-width: 100%;
+        }
+    }
+
+    // Mobile — content at bottom, photo visible above, dark layer behind content
+    @include mixins.media-down("md") {
+        height: calc(100svh - 3.5rem);
+        min-height: calc(586px - 3.5rem);
+        max-height: none;
+        text-align: center;
+        align-items: flex-end;
+        padding-top: 0;
+        padding-bottom: 1.25rem;
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 62%;
+            z-index: 1;
+            pointer-events: none;
+            background: linear-gradient(
+                to top,
+                rgba(0, 0, 0, 0.78) 0%,
+                rgba(0, 0, 0, 0.55) 45%,
+                rgba(0, 0, 0, 0) 100%
+            );
+        }
+
+        .hero-section__inner {
+            z-index: 2;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-heading {
+            font-size: 2.05rem;
+            color: #fff;
+            margin-bottom: 0.65rem;
+        }
+
+        .section-desc {
+            margin-bottom: 1rem;
+            font-size: 0.98rem;
+            color: rgba(255, 255, 255, 0.92);
+        }
+
+        &__content {
+            max-width: 100%;
+            margin-inline: auto;
+        }
+
+        &__browse-link {
+            margin-top: 0.85rem;
+            justify-content: center;
+            color: #fff;
+
+            &:hover {
+                color: map.get(var.$colors, "primary");
+            }
+        }
+
+        .hero-bg-image {
+            &.desktop {
+                display: none;
+            }
+
+            &.mobile {
+                display: block;
+                object-fit: cover;
+                object-position: top center;
+            }
+        }
+    }
+
+    @include mixins.mobile {
+        height: calc(100svh - 3.25rem);
+        min-height: calc(586px - 3.25rem);
+        padding-bottom: 1rem;
+
+        .section-heading {
+            font-size: 1.8rem;
+        }
+
+        .section-desc {
+            font-size: 0.92rem;
+            margin-bottom: 0.85rem;
+        }
+    }
+}

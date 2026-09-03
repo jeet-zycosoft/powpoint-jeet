@@ -1,0 +1,33 @@
+$colors: (
+    "primary": #f7b267,
+    "secondary": #4a766e,
+    "heading": #0c2722,
+    "text": #19453d,
+    "light_bg": #f8f6f1,
+    "formBorder": #f0ece2,
+    "formBorder1": #faf9f5,
+    "formBorder2": #fcfcfa,
+    "border1": #f0ece2,
+    "info": #d9ff50,
+    "warning": #ffbe0b,
+    "danger": #ff0000,
+    "white": #ffffff,
+    "dark": #000103,
+    "transparent": transparent,
+    "black": #000000,
+    "success": #60c869,
+);
+
+// Color
+$primary: #f7b267;
+$secondary: #4a786f;
+$text-light: #5d5f69;
+$white: #ffffff;
+$dark: #000103;
+$stroke-color: #e2e5f1;
+
+// Font
+$fonts: (
+    "primary": var(--primary-font),
+    "secondary": var(--secondary-font),
+);

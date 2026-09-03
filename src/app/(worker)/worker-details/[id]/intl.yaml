@@ -1,0 +1,63 @@
+workerDetails:
+    loading: Loading profile details...
+    notFound:
+        title: Sitter not found
+        message: This sitter profile is unavailable.
+    fallbackName: Pet sitter
+    reviewsCount: '{count} Reviews'
+    locationLabel: 'Location:'
+    chatNow: Chat now
+    verifying: Verifying...
+    services:
+        title: Services
+        empty: No services listed.
+        seeAdditionalRates: See additional rates
+        boarding:
+            title: Boarding
+            description: in the sitter's home
+            unit: per night
+        houseSitting:
+            title: House Sitting
+            description: in your home
+            unit: per night
+        dropIn:
+            title: Drop-In Visits
+            description: visits in your home
+            unit: per visit
+        daycare:
+            title: Doggy Day Care
+            description: in the sitter's home
+            unit: per day
+        walking:
+            title: Dog Walking
+            description: walks in your neighborhood
+            unit: per walk
+    verified:
+        title: Verified data
+        email: Email Address
+        idCheck: Id-check
+        reviews: Reviews
+    location:
+        title: Location
+    description: Description
+    experience: Experience
+    starSitter:
+        title: '{name} has Star Sitter status'
+        body: The Star Sitter program highlights responsive sitters who deliver highly rated care and have a history of listing accurate availability and preferences, making it easier for pet parents to find the best care for their pets.
+    reviews:
+        title: Reviews
+        readMore: Read more reviews
+        petParent: Pet parent
+        repeatClient: Repeat client
+    about: About {name}.
+    communication: Communication
+    skills: Skills
+    safety: Safety, trust & environment
+    alternatives: Alternatives
+    toasts:
+        loginRequired: Please log in to chat with sitters.
+        verifyFailed: Failed to verify chat status.
+        accepted: Conversation accepted!
+        acceptFailed: Failed to accept conversation.
+        declined: Conversation declined.
+        declineFailed: Failed to decline conversation.

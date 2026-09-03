@@ -1,0 +1,50 @@
+profile:
+    title: Perfil
+    personalData: Datos personales
+    name: Nombre
+    personalMessage: Mensaje personal
+    myAdvertisement: Mi anuncio
+    address: Dirección
+    maximumDistance: Distancia máxima
+    availability: Disponibilidad
+    languages: Idiomas
+    none: Ninguno
+    notificationSettings: Configuración de notificaciones
+    notifications:
+        newUsers:
+            title: Nuevos usuarios
+            description: Recibe notificaciones cuando se registren nuevos usuarios que coincidan con tus necesidades.
+        personalMessages:
+            title: Mensajes personales
+            description: Mensajes personales de otros usuarios y/o mensajes importantes del sitio web.
+        newMatchAlerts:
+            title: Alertas de nuevas coincidencias
+            description: Recibe notificaciones cuando se registren nuevos usuarios que coincidan con las preferencias de tu mascota.
+    deleteAccount: Eliminar cuenta
+    subscriptions:
+        title: Gestionar suscripción(es) de chat
+        loading: Cargando suscripciones...
+        loadError: Error al cargar las suscripciones.
+        retry: Reintentar
+        empty: No se encontraron suscripciones activas.
+        activatePremium: Activar Premium
+        modal:
+            activatePremium:
+                title: Activar Premium
+                message: Esta suscripción está cancelada o expirada. Si deseas activar premium para esta o una nueva área, ve a la página de Activación Premium.
+                close: Cerrar
+                activate: Activar Premium
+            cancelRenewal:
+                title: Cancelar renovación de suscripción
+                message: ¿Estás seguro de que deseas cancelar la renovación automática de la suscripción en {location}? Una vez cancelada, seguirás teniendo acceso para chatear con cuidadores en esta área hasta que termine el período de facturación el {date}.
+                keep: Mantener suscripción
+                cancel: Cancelar renovación
+        toasts:
+            cancelSuccess: Renovación de suscripción cancelada correctamente.
+            cancelFailed: Error al cancelar la renovación de la suscripción.
+            cancelError: Ocurrió un error al cancelar la suscripción.
+        status:
+            activeRenew: Renovar automáticamente la suscripción de chat para esta ubicación el {date}
+            expired: Suscripción expirada el {date}
+            cancelled: Suscripción cancelada. El acceso finalizará el {date}
+        fallbackLocation: esta ubicación

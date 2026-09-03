@@ -1,0 +1,118 @@
+@use "@/styles/var";
+@use "@/styles/custom-functions" as *;
+@use "sass:map";
+
+.Toastify__toast-container {
+    padding: toRem(12);
+    width: toRem(350);
+
+    @media only screen and (max-width: 576px) {
+        width: 100%;
+        padding: toRem(8);
+    }
+}
+
+.Toastify__toast {
+    font-family: map.get(var.$fonts, "secondary");
+    background-color: rgba(248, 246, 241, 0.95) !important; // glassmorphic light_bg
+    backdrop-filter: blur(10px);
+    border-radius: toRem(14) !important;
+    box-shadow: 0 10px 30px rgba(12, 39, 34, 0.08) !important;
+    color: map.get(var.$colors, "heading") !important;
+    padding: toRem(16) toRem(20) !important;
+    min-height: auto !important;
+    margin-bottom: toRem(12) !important;
+    border: 1px solid rgba(12, 39, 34, 0.04) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 35px rgba(12, 39, 34, 0.12) !important;
+    }
+
+    // Success Toast
+    &--success {
+        border-left: toRem(6) solid map.get(var.$colors, "success") !important;
+
+        .Toastify__toast-icon {
+            svg {
+                fill: map.get(var.$colors, "success") !important;
+            }
+        }
+    }
+
+    // Error Toast
+    &--error {
+        border-left: toRem(6) solid map.get(var.$colors, "danger") !important;
+
+        .Toastify__toast-icon {
+            svg {
+                fill: map.get(var.$colors, "danger") !important;
+            }
+        }
+    }
+
+    // Warning Toast
+    &--warning {
+        border-left: toRem(6) solid map.get(var.$colors, "warning") !important;
+
+        .Toastify__toast-icon {
+            svg {
+                fill: map.get(var.$colors, "warning") !important;
+            }
+        }
+    }
+
+    // Info/Default Toast
+    &--info {
+        border-left: toRem(6) solid map.get(var.$colors, "primary") !important;
+
+        .Toastify__toast-icon {
+            svg {
+                fill: map.get(var.$colors, "primary") !important;
+            }
+        }
+    }
+}
+
+.Toastify__toast-body {
+    padding: 0 !important;
+    margin: 0 !important;
+    font-size: toRem(14);
+    font-weight: 500;
+    line-height: 1.5;
+    color: map.get(var.$colors, "heading") !important;
+
+    // Customize text styles specifically inside the body if they have titles
+    div {
+        color: map.get(var.$colors, "heading") !important;
+    }
+}
+
+.Toastify__toast-icon {
+    width: toRem(22) !important;
+    margin-inline-end: toRem(12) !important;
+}
+
+.Toastify__close-button {
+    color: map.get(var.$colors, "secondary") !important;
+    opacity: 0.55;
+    align-self: center !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: toRem(4) !important;
+
+    &:hover {
+        opacity: 1;
+        color: map.get(var.$colors, "heading") !important;
+        transform: scale(1.1) rotate(90deg);
+    }
+}
+
+// Keep the close timer running; display:none stops auto-dismiss
+.Toastify__progress-bar {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    height: 0 !important;
+}

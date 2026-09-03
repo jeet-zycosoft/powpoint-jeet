@@ -1,0 +1,7 @@
+feedback:
+    title: Envoyer un message à PawPoint
+    name: Nom
+    email: Adresse e-mail
+    messageLabel: Effectuez vous-même les modifications de compte. Saisissez votre message ici.
+    messagePlaceholder: Saisissez votre message ici...
+    send: Envoyer

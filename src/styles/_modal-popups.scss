@@ -1,0 +1,46 @@
+.ad-modal {
+    &__img {
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .modal-body a {
+        position: relative;
+    }
+
+    &-content {
+        background: linear-gradient(360deg, rgba(0, 0, 0, 0.8) 10%, rgba(0, 157, 255, 0) 100%);
+        padding: toRem(26) toRem(20) toRem(20) toRem(20);
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        color: white;
+        span {
+            font-size: toRem(20);
+            font-weight: 600;
+        }
+        p {
+            font-size: toRem(15);
+            color: rgb(226, 226, 226);
+        }
+    }
+
+    .modal-content {
+        background-color: transparent;
+        border: none;
+    }
+
+    .modal-header {
+        border: none;
+    }
+
+    .btn-close {
+        background-color: white;
+        border-radius: 50%;
+        margin-bottom: toRem(-70);
+        z-index: 1000;
+    }
+}

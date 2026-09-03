@@ -1,0 +1,54 @@
+{
+  "header": {
+    "login": "Iniciar sesión / Registrarse",
+    "home": "Inicio",
+    "findSitter": "Encontrar Cuidador",
+    "becomeSitter": "Ser Cuidador",
+    "blog": "Blog",
+    "support": "Soporte",
+    "languages": "Idiomas"
+  },
+  "home": {
+    "hero": {
+      "heading": "Cuidadores de <span>mascotas</span> confiables.",
+      "desc": "Reserve cuidadores de mascotas locales y verificados para cuidar a sus mascotas como lo haría usted mientras está fuera, en el trabajo* o de vacaciones.",
+      "buttonText": "Reservar un Cuidador"
+    },
+    "about": {
+      "heading": "Somos más <br /> que <span>solo cuidadores</span>",
+      "p1": "Contrario a la creencia popular, Lorem Ipsum no es simplemente texto aleatorio. Tiene sus raíces en una pieza de literatura latina clásica del 45 a.C., lo que lo hace tener más de 2000 años.",
+      "p2": "Richard McClintock, un profesor de latín en Hampden-Sydney College en Virginia, buscó una de las palabras latinas más oscuras, consectetur, de un pasaje de Lorem Ipsum, y al revisar las citas de la palabra en la literatura clásica, descubrió la fuente indudable.",
+      "p3": "Lorem Ipsum proviene de las secciones 1.10.32 y 1.10.33 de \"de Finibus Bonorum et Malorum\" (Los Extremos del Bien y del Mal) de Cicerón, escrito en el 45 a.C. Este libro es un tratado sobre la teoría de la ética, muy popular durante el Renacimiento.",
+      "button": "Reservar un Cuidador"
+    }
+  },
+  "auth": {
+    "login": "Iniciar sesión",
+    "loginDesc": "Inicie sesión para ver sus próximas caminatas, sesiones de juego y amigos peludos.",
+    "emailLabel": "Dirección de correo electrónico*",
+    "emailPlaceholder": "Ingrese correo",
+    "passwordLabel": "Contraseña*",
+    "confpasswordLabel": "Confirm Password*",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "continue": "Continuar",
+    "noAccount": "¿No tienes una cuenta?",
+    "register": "Registrarse",
+    "or": "O",
+    "google": "Continuar con Google",
+    "createAccount": "Crea tu cuenta",
+    "signupDesc": "Regístrate y convierte tu amor por los animales en ingresos.",
+    "firstName": "Nombre*",
+    "lastName": "Apellido*",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?"
+  },
+  "sitter": {
+    "hero": {
+      "heading": "Convierte tu amor por los <span>animales en un</span> cheque",
+      "desc": "Únete a nuestro equipo y convierte cada huella en un cheque. Pasea perros, juega a buscar y recibe un pago: sí, ¡es un trabajo real!",
+      "buttonText": "Empezar"
+    },
+    "benefits": {
+        "heading": "Ventajas de <span>ser un cuidador</span>"
+    }
+  }
+}

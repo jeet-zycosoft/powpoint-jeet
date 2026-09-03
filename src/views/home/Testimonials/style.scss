@@ -1,0 +1,108 @@
+@use "@/styles/var";
+@use "sass:map";
+
+.testimonials {
+    background-color: #fef7f0;
+    padding-block: 5rem;
+    text-align: center;
+
+    .section-heading {
+        @media screen and (max-width: 575px) {
+            font-size: toRem(60);
+        }
+    }
+
+    .section-desc {
+        max-width: 800px;
+        margin: 0 auto 40px;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        color: map.get(var.$colors, "secondary");
+        border: 1px solid map.get(var.$colors, "secondary");
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        transition: 0.3s ease-in-out;
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        &::after {
+            font-size: 2rem;
+        }
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+    }
+
+    .swiper-button-prev {
+        left: -60px !important;
+
+        @media (max-width: 768px) {
+            left: 0 !important;
+            background-color: #fff;
+        }
+    }
+
+    .swiper-button-next {
+        right: -60px !important;
+
+        @media (max-width: 768px) {
+            right: 0 !important;
+            background-color: #fff;
+        }
+    }
+
+    &-cards {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin-bottom: 40px;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    &-navigation {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+
+        .arrow-button {
+            background-color: transparent;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background-color: #333;
+                color: #fff;
+            }
+
+            &.left-arrow {
+                position: absolute;
+                left: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            &.right-arrow {
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+    }
+}

@@ -1,0 +1,249 @@
+@use "@/styles/custom-functions" as *;
+@use "@/styles/var";
+@use "sass:map";
+
+// header ------- start//
+.header {
+    width: 100%;
+    padding: toRem(6) 0;
+    background-color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1005;
+    flex-shrink: 0;
+
+    &--sd {
+        box-shadow: none !important;
+    }
+
+    // &.isSticky &-links {
+    //   display: none !important;
+    // }
+
+    // &.notSticky &-hamburger {
+    //   display: none;
+    // }
+
+    .navbar {
+        padding: toRem(2);
+    }
+
+    .navbar-brand {
+        padding: 0;
+        img {
+            width: 100%;
+            max-width: toRem(160);
+            height: auto;
+        }
+    }
+
+    .nav-list__item {
+        position: relative;
+        color: #0c2722;
+        font-size: toRem(16);
+        font-weight: 500;
+        text-decoration: none;
+        padding: toRem(4) 0;
+        transition: color 0.25s ease;
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 100%;
+            height: 2px;
+            border-radius: 2px;
+            background-color: map.get(var.$colors, "secondary");
+            transform: scaleX(0);
+            transform-origin: left center;
+            transition: transform 0.25s ease;
+        }
+
+        &:hover {
+            color: map.get(var.$colors, "secondary");
+
+            &::after {
+                transform: scaleX(1);
+            }
+        }
+
+        &.active {
+            color: map.get(var.$colors, "secondary");
+            font-weight: 650;
+
+            &::after {
+                transform: scaleX(1);
+                background-color: map.get(var.$colors, "primary");
+            }
+        }
+    }
+
+    &__login_signup {
+        font-weight: 600;
+        padding: toRem(8) toRem(22);
+        margin-left: toRem(16);
+        border-radius: toRem(120);
+        background-color: map.get(var.$colors, "primary");
+        transition: background-color 0.25s ease, transform 0.2s ease;
+
+        &:hover {
+            background-color: #ec971f;
+            color: #0c2722 !important;
+        }
+    }
+
+    .btn svg {
+        font-size: toRem(24);
+    }
+
+    // sticky
+    &.isSticky {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-hamburger {
+        margin-left: toRem(8);
+        display: none;
+    }
+
+    @media only screen and (max-width: 992px) {
+        &-links {
+            display: none !important;
+        }
+
+        &-hamburger {
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &__login_signup {
+            margin-left: 0;
+        }
+    }
+}
+
+// ========= offcanvaas ========
+.offcanvas-logo {
+    width: toRem(180);
+    height: auto;
+}
+
+.offcanvas-list {
+    font-size: toRem(20);
+    font-weight: 800;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0 toRem(10);
+    line-height: toRem(10);
+
+    &__item {
+        color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: toRem(16);
+        transition: all 0.3s;
+        border-bottom: toRem(1) solid #e2e5f1;
+        padding: toRem(13) 0;
+
+        span::before {
+            content: "";
+            display: inline-block;
+            width: 0;
+            height: toRem(2);
+            background-color: map.get(var.$colors, "secondary");
+            margin-right: 0;
+            margin-bottom: toRem(4);
+            transition: all 0.3s;
+        }
+
+        &:hover,
+        &.active {
+            color: map.get(var.$colors, "secondary");
+
+            span::before {
+                width: toRem(16);
+                margin-right: toRem(8);
+            }
+        }
+
+        &.active {
+            font-weight: 700;
+            color: map.get(var.$colors, "secondary");
+
+            span::before {
+                background-color: map.get(var.$colors, "primary");
+            }
+        }
+
+        &--arrow {
+            transform: rotate(45deg);
+            color: var.$primary;
+        }
+    }
+}
+
+.mobile-header-offcanvas {
+    border-left: 1px solid map.get(var.$colors, "formBorder") !important;
+    transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.35s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    will-change: transform;
+
+    &.offcanvas-end {
+        transform: translateX(100%);
+        visibility: hidden;
+
+        &.show,
+        &.showing {
+            transform: translateX(0) !important;
+            visibility: visible !important;
+        }
+
+        &.hiding {
+            transform: translateX(100%) !important;
+        }
+    }
+
+    .offcanvas-header {
+        padding: 1.25rem 1.5rem;
+        border-bottom: 1px solid map.get(var.$colors, "formBorder");
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .offcanvas-title {
+            color: map.get(var.$colors, "heading");
+            font-size: 1.4rem;
+            font-weight: 700;
+
+            h5 {
+                margin: 0;
+                font-weight: 700;
+                color: map.get(var.$colors, "heading");
+            }
+        }
+
+        .btn-close {
+            box-shadow: none !important;
+            background-color: map.get(var.$colors, "light_bg");
+            opacity: 1;
+            border-radius: 50%;
+            width: 2.25rem;
+            height: 2.25rem;
+            background-size: 0.8rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+            &:hover {
+                background-color: map.get(var.$colors, "primary");
+                transform: rotate(90deg);
+            }
+        }
+    }
+}
+
+// header ------- end//

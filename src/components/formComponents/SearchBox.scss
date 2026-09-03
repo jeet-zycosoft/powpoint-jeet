@@ -1,0 +1,188 @@
+@use "@/styles/var";
+@use "sass:map";
+@use "sass:color";
+
+.search-box {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+
+    .search-input-wrapper {
+        position: relative;
+        width: 100%;
+
+        input {
+            width: 100%;
+            border: none;
+            background-color: map.get(var.$colors, "white");
+            padding-block: 0.8rem;
+            padding-left: 1.8rem;
+            padding-right: 3.75rem;
+            border-radius: 0.6rem;
+            font-size: 1rem;
+            color: map.get(var.$colors, "text");
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            transition:
+                filter 0.3s ease,
+                box-shadow 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+
+            &:focus {
+                outline: none;
+                filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.08));
+            }
+        }
+
+        .search-button {
+            position: absolute;
+            right: 0.35rem;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            background-color: map.get(var.$colors, "primary");
+            border: none;
+            transition:
+                background-color 0.15s ease,
+                transform 0.1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+
+            &:hover {
+                background-color: color.adjust(map.get(var.$colors, "primary"), $lightness: -5%);
+            }
+
+            &:active {
+                transform: translateY(-50%) scale(0.95);
+            }
+        }
+
+        .search-input::placeholder {
+            color: #385e60;
+            opacity: 0.6;
+        }
+    }
+
+    // Suggestions Dropdown Styling
+    .suggestions-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        margin-top: 0.5rem;
+        background: rgba(map.get(var.$colors, "white"), 0.98);
+        backdrop-filter: blur(10px);
+        border: 1px solid map.get(var.$colors, "formBorder");
+        border-radius: 0.8rem;
+        box-shadow: 0 12px 30px rgba(map.get(var.$colors, "heading"), 0.12);
+        z-index: 1000;
+        overflow: hidden;
+        animation: slideDown 0.2s ease-out;
+
+        .suggestion-loading {
+            padding: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: map.get(var.$colors, "secondary");
+            font-size: 0.9rem;
+            font-weight: 500;
+
+            .spinner-dots {
+                width: 16px;
+                height: 16px;
+                border: 2px solid rgba(map.get(var.$colors, "primary"), 0.3);
+                border-top-color: map.get(var.$colors, "primary");
+                border-radius: 50%;
+                animation: spin 0.8s linear infinite;
+                display: inline-block;
+            }
+        }
+
+        .suggestions-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 280px;
+            overflow-y: auto;
+
+            // Scrollbar customization
+            &::-webkit-scrollbar {
+                width: 6px;
+            }
+            &::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            &::-webkit-scrollbar-thumb {
+                background: rgba(map.get(var.$colors, "secondary"), 0.2);
+                border-radius: 10px;
+            }
+            &::-webkit-scrollbar-thumb:hover {
+                background: rgba(map.get(var.$colors, "secondary"), 0.4);
+            }
+
+            .suggestion-item {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                padding: 0.8rem 1.2rem;
+                cursor: pointer;
+                border-bottom: 1px solid rgba(map.get(var.$colors, "formBorder"), 0.5);
+                transition:
+                    background-color 0.15s ease,
+                    color 0.15s ease;
+
+                &:last-child {
+                    border-bottom: none;
+                }
+
+                .suggestion-icon-wrapper {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: map.get(var.$colors, "secondary");
+                    transition: color 0.15s ease;
+                }
+
+                .suggestion-text {
+                    font-size: 0.9rem;
+                    color: map.get(var.$colors, "text");
+                    line-height: 1.4;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                &:hover,
+                &.active {
+                    background-color: map.get(var.$colors, "light_bg");
+
+                    .suggestion-icon-wrapper {
+                        color: map.get(var.$colors, "primary");
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

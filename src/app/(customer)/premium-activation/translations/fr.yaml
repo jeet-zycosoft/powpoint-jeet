@@ -1,0 +1,46 @@
+premium:
+    loading: Chargement des plans d'abonnement...
+    errors:
+        loadFailed: Échec du chargement des détails du plan. Veuillez réessayer plus tard.
+        unableToLoad: Impossible de charger les détails de l'abonnement.
+        loginRequired: Veuillez vous connecter pour acheter Premium.
+        completeLocation: Veuillez compléter la localisation de votre profil (ville et coordonnées sur la carte) avant d'acheter Active Premium.
+        orderFailed: Échec de l'initialisation du paiement de la commande.
+        sdkFailed: Échec du chargement du SDK de paiement Razorpay.
+        verificationFailed: Échec de la vérification du paiement.
+        loginToContinue: Veuillez vous connecter pour continuer.
+        completeProfileLocation: Veuillez compléter la localisation de votre profil.
+        invalidRequest: Requête invalide. Veuillez réessayer.
+        serviceUnavailable: Service temporairement indisponible. Veuillez réessayer plus tard.
+        genericError: Une erreur s'est produite. Veuillez réessayer.
+        unsupportedGateway: Configuration de passerelle de paiement non prise en charge.
+    retry: Réessayer
+    processing: Traitement...
+    securePayment: Paiement sécurisé
+    noPlan: Aucun plan actif disponible pour le moment.
+    titles:
+        purchase: Active Premium
+        renew: Renouvelez votre Active Premium
+        location: Active Premium pour une nouvelle zone
+        upgrade: Ajouter un autre forfait
+    descriptions:
+        purchase: Accédez au chat avec les pet sitters de votre zone.
+        renew: Votre forfait a expiré. Renouvelez-le pour continuer à discuter avec les pet sitters.
+        location: Achetez Active Premium pour cette nouvelle localisation.
+        upgrade: Limite mensuelle de pet sitters atteinte. Achetez un autre forfait pour contacter plus de pet sitters.
+    coverage: 'Couverture :'
+    coverageDetail: Pet sitters dans un rayon de {radius}m autour de votre localisation
+    connections: 'Connexions :'
+    connectionsDetail: Contactez {limit} nouveaux pet sitters par forfait
+    intervals:
+        month: /mois
+        year: /an
+        week: /semaine
+        day: /jour
+    defaultBenefits:
+        arrange: Organisez tout entre vous
+        fullAccess: Accès complet
+        cancellable: Peut être annulé immédiatement
+    checkout:
+        name: PawPoint
+        description: Abonnement Active Premium
