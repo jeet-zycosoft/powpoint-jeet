@@ -15,6 +15,7 @@ home:
         addressLabel: Adresse*
         addressPlaceholder: Manchester au Royaume-Uni
         button: Recherche
+        selectLocationFirst: Veuillez d'abord sélectionner un lieu parmi les suggestions.
     howItWorks:
         heading: Comment <span>Ça Marche</span>
         desc: Contrairement aux idées reçues, le Lorem Ipsum n'est pas simplement du
@@ -45,6 +46,10 @@ home:
         desc: Contrairement aux idées reçues, le Lorem Ipsum n'est pas simplement du
             texte aléatoire.
         button: Voir Tous
+        locationPrompt: Activez votre localisation pour voir les gardiens près de chez vous.
+        locationPromptHint: Si vous ne pouvez pas l'activer, pas d'inquiétude — nous afficherons quand même des gardiens.
+        enableLocation: Activer la localisation
+        continueAnyway: Continuer sans localisation
     faq:
         heading: FAQ – Vous Demandez, <span>Nous Répondons</span>
         desc: Contrairement aux idées reçues, le Lorem Ipsum n'est pas simplement du

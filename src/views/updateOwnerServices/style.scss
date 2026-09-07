@@ -13,6 +13,21 @@
         border-radius: 1.2rem;
         margin-bottom: 30px;
         border: 1px solid map.get(var.$colors, "formBorder");
+        overflow: visible;
+
+        &:has(.search-box) {
+            position: relative;
+            z-index: 8;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 640px;
+
+            .search-input-wrapper input {
+                border: 1px solid map.get(var.$colors, "formBorder");
+            }
+        }
 
         &:first-child {
             background-color: map.get(var.$colors, "formBorder");

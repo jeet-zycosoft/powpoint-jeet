@@ -10,7 +10,7 @@ import Loader from '@/components/Loader';
 import { selectUser, replaceUserInfo, updateServiceDetails } from '@/store/features/user/userSlice';
 import { ownerService } from '@/services/ownerService';
 import { sitterService } from '@/services/sitterService';
-import { unwrapOwnProfile, unwrapOwnService } from '@/services/profileHelpers';
+import { unwrapOwnProfile, unwrapOwnService, formatLanguagesList } from '@/services/profileHelpers';
 import ManageSubscriptions from './ManageSubscriptions';
 
 const EditIcon = () => (
@@ -95,7 +95,7 @@ const ProfileViewPage = ({ id }) => {
             return acc;
         }, [])
         .join(', ');
-    const languages = serviceDetails?.languages?.map((item) => item.long || item).join(', ') || '';
+    const languages = formatLanguagesList(serviceDetails?.languages, t('profile.none'));
 
     return (
         <div className="owner-profile-container container">

@@ -1,6 +1,6 @@
 'use client';
 import AuthGuard from '@/components/AuthGuard';
-import Loader from '@/components/Loader';
+import ListingCardSkeleton from '@/components/ListingCardSkeleton';
 import OwnerCard from '@/components/OwnerCard';
 import SitterCard from '@/components/SitterCard';
 import SitterModal from '@/components/SitterModal';
@@ -8,10 +8,18 @@ import { toLocationId } from '@/hooks/useGeolocation';
 import { selectUser, updateServiceDetails } from '@/store/features/user/userSlice';
 import ListingFilter from '@/views/listing/listingFilter';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Suspense, use, useEffect, useReducer, useRef, useState } from 'react';
+import { Suspense, use, useEffect, useLayoutEffect, useReducer, useRef, useState } from 'react';
 import { Offcanvas } from 'react-bootstrap';
 import { useIntl } from 'react-intl';
-import { TbChevronDown, TbLayoutListFilled, TbMapPinFilled } from 'react-icons/tb';
+import { FaPaw } from 'react-icons/fa';
+import {
+    TbChevronDown,
+    TbLayoutListFilled,
+    TbMapPin,
+    TbMapPinFilled,
+    TbMapPinOff,
+    TbSearch,
+} from 'react-icons/tb';
 import { useDispatch, useSelector } from 'react-redux';
 import './listings.scss';
 
@@ -38,6 +46,13 @@ import {
     getIncompleteProfileToast,
     getListingGatePath,
 } from '@/services/profileCompletion';
+import {
+    isValidListingSearch,
+    readLastListingSearch,
+    toServiceLabel,
+    toServiceType,
+    writeLastListingSearch,
+} from '@/services/listingSearchStorage';
 import { publicService } from '@/services/publicService';
 import { sitterService } from '@/services/sitterService';
 import { getFooterLocationBySlug } from '@/data/footerLocations';
@@ -59,7 +74,7 @@ const initialFilterState = {
     search: '',
     filters: {
         min_price: 1,
-        max_price: 250,
+        max_price: 50,
         rating: 4,
 
         service_type: {
@@ -134,6 +149,11 @@ const getFilterStateFromUserData = ({
 }) => {
     const addressParam = searchParams?.get?.('address') || footerCityQuery || null;
     const serviceParam = searchParams?.get?.('service');
+    // Coordinates passed straight from a confirmed home-page search (avoids re-prompting
+    // guests for a location they already picked).
+    const latParam = toFiniteNumber(searchParams?.get?.('lat'));
+    const lngParam = toFiniteNumber(searchParams?.get?.('lng'));
+    const locationIdParam = toLocationId(searchParams?.get?.('location_id'));
 
     // 1. Service Type: URL param takes precedence, then Redux serviceDetails, then default
     let serviceType = { ...initialFilterState.filters.service_type };
@@ -233,44 +253,11 @@ const getFilterStateFromUserData = ({
         }
     }
 
-    // 4. Rate / Max Price: from serviceDetails.charge or serviceDetails.boarding_charge
-    let maxPrice = initialFilterState.filters.max_price;
-    if (serviceDetails) {
-        const rawCharge =
-            serviceDetails.charge ||
-            serviceDetails.boarding_charge ||
-            serviceDetails.house_sitting_charge ||
-            serviceDetails.doggy_day_care_charge ||
-            serviceDetails.dog_walking_charge ||
-            serviceDetails.max_price;
-        const parsedCharge = Number(rawCharge);
-        if (Number.isFinite(parsedCharge) && parsedCharge > 0) {
-            maxPrice = parsedCharge;
-        }
-    }
+    // 4. Rate / Max Price: listing default is $50 (not the user's saved service charge)
+    const maxPrice = initialFilterState.filters.max_price;
 
-    // 5. Available Days: from serviceDetails.available_days / weekday_availability / days
-    let availableDays = { ...initialFilterState.filters.available_days };
-    if (serviceDetails) {
-        const daysSource =
-            serviceDetails.available_days ||
-            serviceDetails.weekday_availability ||
-            serviceDetails.days;
-        if (daysSource && typeof daysSource === 'object') {
-            const mappedDays = {
-                monday: Boolean(daysSource.monday ?? daysSource.Monday),
-                tuesday: Boolean(daysSource.tuesday ?? daysSource.Tuesday),
-                wednesday: Boolean(daysSource.wednesday ?? daysSource.Wednesday),
-                thursday: Boolean(daysSource.thursday ?? daysSource.Thursday),
-                friday: Boolean(daysSource.friday ?? daysSource.Friday),
-                saturday: Boolean(daysSource.saturday ?? daysSource.Saturday),
-                sunday: Boolean(daysSource.sunday ?? daysSource.Sunday),
-            };
-            if (Object.values(mappedDays).some(Boolean)) {
-                availableDays = mappedDays;
-            }
-        }
-    }
+    // 5. Available Days: listing default is all days (not the user's saved availability)
+    const availableDays = { ...initialFilterState.filters.available_days };
 
     // 6. Languages: from serviceDetails.lang_ids or serviceDetails.languages
     let langIds = initialFilterState.filters.lang_ids;
@@ -333,17 +320,26 @@ const getFilterStateFromUserData = ({
     const userLng = toFiniteNumber(userInfo?.longitude ?? userInfo?.lon ?? userInfo?.long);
     const userLocationId = toLocationId(userInfo?.location_id);
 
-    // Only auto-select the logged-in user's own coordinates when there's no explicit
+    // A confirmed home-page search already carries coordinates in the URL - use them directly
+    // so the listing page never re-asks the guest to pick a location they already chose.
+    // Otherwise, only auto-select the logged-in user's own coordinates when there's no explicit
     // address override from the URL (so a shared search link starts in address-entry mode).
     const initialSelectedLocation =
-        !addressParam && userLat != null && userLng != null
+        addressParam && latParam != null && lngParam != null
             ? {
-                  latitude: userLat,
-                  longitude: userLng,
-                  location_id: userLocationId ?? null,
+                  latitude: latParam,
+                  longitude: lngParam,
+                  location_id: locationIdParam ?? null,
                   label: addressDisplay,
               }
-            : null;
+            : !addressParam && userLat != null && userLng != null
+              ? {
+                    latitude: userLat,
+                    longitude: userLng,
+                    location_id: userLocationId ?? null,
+                    label: addressDisplay,
+                }
+              : null;
 
     return {
         ...initialFilterState,
@@ -385,17 +381,15 @@ function filterReducer(state, action) {
             const parts = typeof path === 'string' ? path.split('.') : path;
             return updateNestedState(state, parts, value);
         }
-        // Fired on every keystroke in the address box. Typed text is display-only and is never
-        // matched against location fields. Clearing the box (or diverging from the currently
-        // selected suggestion's label) drops the confirmed selectedLocation.
+        // Fired on every keystroke in the address box. Typed text is display-only.
+        // Keep the last confirmed location so refining a search does not drop geo results
+        // or re-open the guest location popup. Only a fully cleared box drops it.
         case 'UPDATE_ADDRESS_TEXT': {
             const value = typeof action.payload === 'string' ? action.payload : '';
-            const matchesSelection =
-                state.selectedLocation && state.selectedLocation.label === value;
             return {
                 ...state,
                 addressInputValue: value,
-                selectedLocation: value === '' || !matchesSelection ? null : state.selectedLocation,
+                selectedLocation: value === '' ? null : state.selectedLocation,
             };
         }
         // Fired only when the user confirms a suggestion from the dropdown.
@@ -416,6 +410,24 @@ function filterReducer(state, action) {
         }
         case 'SET_FILTER_STATE':
             return action.payload;
+        case 'HYDRATE_SAVED_SEARCH': {
+            const saved = action.payload;
+            if (!isValidListingSearch(saved)) return state;
+            return {
+                ...state,
+                addressInputValue: saved.address || state.addressInputValue,
+                selectedLocation: {
+                    latitude: saved.latitude,
+                    longitude: saved.longitude,
+                    location_id: saved.location_id ?? null,
+                    label: saved.address || state.addressInputValue,
+                },
+                filters: {
+                    ...state.filters,
+                    ...(saved.service ? { service_type: toServiceType(saved.service) } : {}),
+                },
+            };
+        }
         case 'RESET_FILTERS':
             return initialFilterState;
         default:
@@ -636,19 +648,134 @@ const ListingsPageContent = ({ params }) => {
     const [cityLocationReady, setCityLocationReady] = useState(!footerCity);
 
     const [filterState, dispatch] = useReducer(filterReducer, undefined, () => {
-        return getFilterStateFromUserData({
+        const base = getFilterStateFromUserData({
             userInfo,
             serviceDetails,
             searchParams,
             footerCityQuery: footerCity?.query,
         });
+        if (footerCity || hasConfirmedLocation(base) || typeof window === 'undefined') {
+            return base;
+        }
+        const saved = readLastListingSearch(slug);
+        if (!isValidListingSearch(saved)) return base;
+        return filterReducer(base, { type: 'HYDRATE_SAVED_SEARCH', payload: saved });
     });
+
+    const [searchHydrated, setSearchHydrated] = useState(false);
+    const guestPromptDoneRef = useRef(hasConfirmedLocation(filterState));
+
+    // Restore the last listing search on the client before paint. URL coords still win.
+    useLayoutEffect(() => {
+        if (footerCity) {
+            setSearchHydrated(true);
+            return;
+        }
+
+        const params = new URLSearchParams(window.location.search);
+        const urlHasLocation =
+            toFiniteNumber(params.get('lat')) != null &&
+            toFiniteNumber(params.get('lng')) != null;
+
+        if (!urlHasLocation) {
+            const saved = readLastListingSearch(slug);
+            if (isValidListingSearch(saved)) {
+                dispatch({
+                    type: 'HYDRATE_SAVED_SEARCH',
+                    payload: saved,
+                });
+                guestPromptDoneRef.current = true;
+            }
+        } else {
+            guestPromptDoneRef.current = true;
+        }
+
+        setSearchHydrated(true);
+    }, [footerCity, slug]);
+
+    useEffect(() => {
+        if (hasConfirmedLocation(filterState)) {
+            guestPromptDoneRef.current = true;
+        }
+    }, [filterState.selectedLocation]);
+
+    // Persist the confirmed search so returning to this page restores the input and results.
+    useEffect(() => {
+        if (!searchHydrated || footerCity) return;
+        if (!hasConfirmedLocation(filterState)) return;
+
+        const location = filterState.selectedLocation;
+        writeLastListingSearch(slug, {
+            address: location.label || '',
+            latitude: location.latitude,
+            longitude: location.longitude,
+            location_id: location.location_id ?? null,
+            service: toServiceLabel(filterState.filters.service_type),
+        });
+    }, [
+        searchHydrated,
+        footerCity,
+        slug,
+        filterState.selectedLocation,
+        filterState.filters.service_type,
+    ]);
+
+    // Keep the listing URL in sync with the confirmed search so refresh / share stay accurate.
+    useEffect(() => {
+        if (!searchHydrated || footerCity) return;
+        if (!hasConfirmedLocation(filterState)) return;
+        if (slug !== 'sitter' && slug !== 'customer' && slug !== 'owner' && slug !== 'worker') {
+            return;
+        }
+
+        const location = filterState.selectedLocation;
+        const next = new URLSearchParams();
+        const address = location.label || '';
+        if (address) next.set('address', address);
+        next.set('lat', String(location.latitude));
+        next.set('lng', String(location.longitude));
+        if (location.location_id != null) next.set('location_id', String(location.location_id));
+        const service = toServiceLabel(filterState.filters.service_type);
+        if (service) next.set('service', service);
+
+        const sameLocation =
+            searchParams.get('address') === (address || null) &&
+            searchParams.get('lat') === String(location.latitude) &&
+            searchParams.get('lng') === String(location.longitude) &&
+            (searchParams.get('location_id') || '') ===
+                (location.location_id != null ? String(location.location_id) : '') &&
+            (searchParams.get('service') || '') === (service || '');
+
+        if (sameLocation) return;
+
+        const path = slug === 'customer' ? '/sitter/listing' : `/${slug}/listing`;
+        router.replace(`${path}?${next.toString()}`, { scroll: false });
+    }, [
+        searchHydrated,
+        footerCity,
+        slug,
+        filterState.selectedLocation,
+        filterState.filters.service_type,
+        searchParams,
+        router,
+    ]);
 
     // Synchronize default filter selection whenever logged-in user data is loaded from Redux cache
     const hasInitializedUserRef = useRef(false);
     useEffect(() => {
         if (footerCity) return;
         if (isAuthenticated && (userInfo || serviceDetails) && !hasInitializedUserRef.current) {
+            const urlHasLocation =
+                toFiniteNumber(searchParams.get('lat')) != null &&
+                toFiniteNumber(searchParams.get('lng')) != null;
+
+            // A saved listing search should win over profile defaults when the URL has no coords,
+            // so returning from another page restores the last place they searched.
+            if (!urlHasLocation && isValidListingSearch(readLastListingSearch(slug))) {
+                hasInitializedUserRef.current = true;
+                return;
+            }
+
             const userDefaults = getFilterStateFromUserData({
                 userInfo,
                 serviceDetails,
@@ -660,7 +787,7 @@ const ListingsPageContent = ({ params }) => {
             });
             hasInitializedUserRef.current = true;
         }
-    }, [isAuthenticated, userInfo, serviceDetails, searchParams, footerCity]);
+    }, [isAuthenticated, userInfo, serviceDetails, searchParams, footerCity, slug]);
 
     useEffect(() => {
         if (!footerCity) return undefined;
@@ -756,7 +883,7 @@ const ListingsPageContent = ({ params }) => {
         setFetchTrigger((prev) => prev + 1);
     };
     const [sitters, setSitters] = useState([]);
-    const [loading, setLoading] = useState(() => Boolean(isAuthenticated) || Boolean(footerCity));
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     // Radius/pagination meta from the last successful response:
@@ -776,9 +903,16 @@ const ListingsPageContent = ({ params }) => {
     };
 
     const seeMoreState = getSeeMoreState(responseMeta);
+    const showListSkeleton = loading || isSeeMoreLoading;
     const hasLocation = hasConfirmedLocation(filterState);
     const waitingForCity = Boolean(footerCity) && !cityLocationReady;
-    const mustPickGuestLocation = !isAuthenticated && isCustomer && !hasLocation && !waitingForCity;
+    const mustPickGuestLocation =
+        searchHydrated &&
+        !isAuthenticated &&
+        isCustomer &&
+        !hasLocation &&
+        !waitingForCity &&
+        !guestPromptDoneRef.current;
     const selectedLocationRef = useRef(filterState.selectedLocation);
     selectedLocationRef.current = filterState.selectedLocation;
 
@@ -795,6 +929,7 @@ const ListingsPageContent = ({ params }) => {
 
     // Debounced effect for API-driven filter updates
     useEffect(() => {
+        if (!searchHydrated) return;
         if (footerCity && !cityLocationReady) return;
 
         if (!isAuthenticated && isCustomer && !hasConfirmedLocation(filterState)) {
@@ -894,6 +1029,7 @@ const ListingsPageContent = ({ params }) => {
         fetchTrigger,
         footerCity,
         cityLocationReady,
+        searchHydrated,
     ]);
 
     const getCountLabel = (count) => {
@@ -933,12 +1069,18 @@ const ListingsPageContent = ({ params }) => {
                                     : t('listing.heading.owners')}
                             </h2>
 
-                            {!loading && !mustPickGuestLocation && (
+                            {showListSkeleton ? (
                                 <p className="results-count">
-                                    {responseMeta?.total != null
-                                        ? getCountLabel(responseMeta.total)
-                                        : getCountLabel(sitters.length)}
+                                    <span className="skeleton-shimmer results-count-skeleton" />
                                 </p>
+                            ) : (
+                                !mustPickGuestLocation && (
+                                    <p className="results-count">
+                                        {responseMeta?.total != null
+                                            ? getCountLabel(responseMeta.total)
+                                            : getCountLabel(sitters.length)}
+                                    </p>
+                                )
                             )}
                         </div>
                         <div className="header-controls">
@@ -967,19 +1109,23 @@ const ListingsPageContent = ({ params }) => {
                     </div>
 
                     <div className="result-tabs">
-                        {loading ? (
-                            <div
-                                style={{
-                                    height: '70dvh',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                }}
-                            >
-                                <Loader text={t('listing.loadingSearch')} />
-                            </div>
+                        {showListSkeleton ? (
+                            tab === 'map' ? (
+                                <div
+                                    className="listing-map-skeleton skeleton-shimmer"
+                                    role="status"
+                                    aria-label={t('listing.loadingSearch')}
+                                />
+                            ) : (
+                                <div role="status" aria-label={t('listing.loadingSearch')}>
+                                    <ListingCardSkeleton count={4} />
+                                </div>
+                            )
                         ) : mustPickGuestLocation ? (
                             <div className="no-results-box">
+                                <div className="no-results-icon" aria-hidden="true">
+                                    <TbMapPin />
+                                </div>
                                 <h3 className="fw-semibold">{t('listing.guestLocation.title')}</h3>
                                 <p className="text-muted">{t('listing.guestLocation.desc')}</p>
                             </div>
@@ -987,6 +1133,12 @@ const ListingsPageContent = ({ params }) => {
                             <div className="no-results-box">
                                 {filterState.selectedLocation && !seeMoreState.show ? (
                                     <>
+                                        <div className="no-results-icon" aria-hidden="true">
+                                            <TbMapPinOff />
+                                            <span className="no-results-icon__paw">
+                                                <FaPaw />
+                                            </span>
+                                        </div>
                                         <h3 className="fw-semibold">
                                             {t('listing.empty.noneNearbyTitle', {
                                                 role: isCustomer
@@ -1004,6 +1156,12 @@ const ListingsPageContent = ({ params }) => {
                                     </>
                                 ) : (
                                     <>
+                                        <div className="no-results-icon" aria-hidden="true">
+                                            <TbSearch />
+                                            <span className="no-results-icon__paw">
+                                                <FaPaw />
+                                            </span>
+                                        </div>
                                         <h3 className="fw-semibold">
                                             {t('listing.empty.noneTitle', {
                                                 role:
@@ -1086,7 +1244,7 @@ const ListingsPageContent = ({ params }) => {
                             />
                         )}
 
-                        {!loading && seeMoreState.show && (
+                        {!showListSkeleton && seeMoreState.show && (
                             <div className="see-more-footer">
                                 <button
                                     type="button"
@@ -1094,7 +1252,7 @@ const ListingsPageContent = ({ params }) => {
                                     onClick={handleSeeMore}
                                     disabled={isSeeMoreLoading}
                                 >
-                                    {isSeeMoreLoading ? t('listing.loading') : t('listing.seeMore')}
+                                    {t('listing.seeMore')}
                                 </button>
                             </div>
                         )}
@@ -1156,11 +1314,17 @@ const ListingsPageContent = ({ params }) => {
 function ListingsFallback() {
     const intl = useIntl();
     return (
-        <Loader
-            fullPage
-            text={intl.formatMessage({ id: 'listing.loadingListings' })}
-            fullPage={true}
-        />
+        <div className="listings-page">
+            <div className="container">
+                <div
+                    className="result-tabs"
+                    role="status"
+                    aria-label={intl.formatMessage({ id: 'listing.loadingListings' })}
+                >
+                    <ListingCardSkeleton count={4} />
+                </div>
+            </div>
+        </div>
     );
 }
 

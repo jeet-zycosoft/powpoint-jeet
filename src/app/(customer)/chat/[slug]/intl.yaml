@@ -1,5 +1,6 @@
 chat:
-    joinError: Cannot join chat until start returns room_id
+    joinError: Unable to open this chat right now. Please try again.
+    connectionError: Could not connect to live chat. Please refresh the page.
     toasts:
         verifyFailed: Failed to verify chat access.
         messageNotSent: Message not sent. Chat is not connected.

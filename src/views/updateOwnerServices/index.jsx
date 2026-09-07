@@ -662,7 +662,7 @@ const UpdateOwnerServices = () => {
                             type: 'SET_STATE',
                             payload: {
                                 address: formatLocationLabel(location),
-                                city: getCityName(addressObj),
+                                city: getCityName(addressObj) || location.name || '',
                                 country: getCountryName(addressObj),
                                 latitude: location.lat,
                                 longitude: location.lon,

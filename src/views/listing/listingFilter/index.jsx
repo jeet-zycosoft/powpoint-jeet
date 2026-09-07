@@ -102,7 +102,7 @@ const ListingFilter = ({ slug, filterState: state, dispatch: activeDispatch, onI
                     {
                         label: intl.formatMessage({ id: 'listing.filterPanel.sunday' }),
                         value: 'sun',
-                        selected: false,
+                        selected: true,
                     },
                     {
                         label: intl.formatMessage({ id: 'listing.filterPanel.monday' }),
@@ -112,27 +112,27 @@ const ListingFilter = ({ slug, filterState: state, dispatch: activeDispatch, onI
                     {
                         label: intl.formatMessage({ id: 'listing.filterPanel.tuesday' }),
                         value: 'tue',
-                        selected: false,
+                        selected: true,
                     },
                     {
                         label: intl.formatMessage({ id: 'listing.filterPanel.wednesday' }),
                         value: 'wed',
-                        selected: false,
+                        selected: true,
                     },
                     {
                         label: intl.formatMessage({ id: 'listing.filterPanel.thursday' }),
                         value: 'thu',
-                        selected: false,
+                        selected: true,
                     },
                     {
                         label: intl.formatMessage({ id: 'listing.filterPanel.friday' }),
                         value: 'fri',
-                        selected: false,
+                        selected: true,
                     },
                     {
                         label: intl.formatMessage({ id: 'listing.filterPanel.saturday' }),
                         value: 'sat',
-                        selected: false,
+                        selected: true,
                     },
                 ],
             },

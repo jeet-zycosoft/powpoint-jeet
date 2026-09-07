@@ -1,7 +1,6 @@
 'use client';
 
 import checkCircle from '@/../public/icons/verify.png';
-import img1 from '@/../public/images/demo2.webp';
 import AuthGuard from '@/components/AuthGuard';
 import Loader from '@/components/Loader';
 import { ownerService } from '@/services/ownerService';
@@ -62,15 +61,6 @@ function PaymentSuccessContent() {
     return (
         <div className="payment-success-container">
             <div className="login-form">
-                <div className="login-image">
-                    <Image
-                        src={img1}
-                        alt={t('paymentSuccess.altIllustration')}
-                        width={500}
-                        height={500}
-                        priority
-                    />
-                </div>
                 <div className="login-content">
                     <div className="status-icon success">
                         <Image

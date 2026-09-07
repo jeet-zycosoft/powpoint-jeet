@@ -49,6 +49,7 @@ function ChatPageInner({ params }) {
     const intl = useIntl();
     const t = (id, values) => intl.formatMessage({ id }, values);
     const joinErrorMessage = t('chat.joinError');
+    const connectionErrorMessage = t('chat.connectionError');
     const router = useRouter();
     const dispatch = useDispatch();
     const { isAuthenticated, userInfo } = useSelector(selectUser);
@@ -159,7 +160,7 @@ function ChatPageInner({ params }) {
         setJoinError('');
         const connected = ensureConnected(personId);
         if (!connected) {
-            setJoinError(joinErrorMessage);
+            setJoinError(connectionErrorMessage);
             return false;
         }
         joinRoom(rId);
@@ -182,8 +183,23 @@ function ChatPageInner({ params }) {
                 roomIdRef.current = null;
                 setOpenRoom(null);
 
-                const response = await chatService.canChat({ other_user_id: slug });
-                const chatData = parseCanChat(response);
+                // can-chat / start / messages are independent lookups on the backend
+                // (start and messages both re-verify access themselves), so fire them
+                // together instead of waiting on each one before starting the next.
+                // This turns 3 sequential round trips into 1, which is most of where
+                // the old "10 second" chat-open delay came from.
+                const [canChatOutcome, startOutcome, messagesOutcome] = await Promise.allSettled([
+                    chatService.canChat({ other_user_id: slug }),
+                    chatService.start({ other_user_id: slug, person_id: slug }),
+                    chatService.messages({ other_user_id: slug, limit: 50, offset: 0 }),
+                ]);
+
+                const canChatResponse =
+                    canChatOutcome.status === 'fulfilled' ? canChatOutcome.value : null;
+                const startResponse =
+                    startOutcome.status === 'fulfilled' ? startOutcome.value : null;
+
+                const chatData = parseCanChat(canChatResponse || startResponse);
                 const msg = chatData.message;
                 const uiAction = chatData.uiAction;
 
@@ -194,13 +210,9 @@ function ChatPageInner({ params }) {
                 setSitterQuota(chatData.sitterQuota);
                 setIsInitiator(chatData.isInitiator);
 
-                if (chatData.canRead) {
-                    const startRes = await chatService.start({
-                        other_user_id: slug,
-                        person_id: slug,
-                    });
-                    const started = unwrapChatStart(startRes);
-                    const startFlags = parseCanChat(startRes);
+                if (startResponse) {
+                    const started = unwrapChatStart(startResponse);
+                    const startFlags = parseCanChat(startResponse);
                     const rId = started.roomId;
                     const personId = started.myChatPersonId;
 
@@ -225,23 +237,37 @@ function ChatPageInner({ params }) {
                         return;
                     }
 
-                    await fetchHistory({
-                        rId,
-                        personId,
-                        otherPersonId: started.otherChatPersonId,
-                    });
+                    if (messagesOutcome.status === 'fulfilled') {
+                        setMessages(normalizeHistoryMessages(messagesOutcome.value));
+                    } else {
+                        // Rare: messages failed even though start succeeded — retry once.
+                        await fetchHistory({
+                            rId,
+                            personId,
+                            otherPersonId: started.otherChatPersonId,
+                        });
+                    }
                     activateThread({ rId, personId });
                     return;
                 }
 
-                if (uiAction !== 'OPEN_CHAT') {
+                setIsCheckingAccess(false);
+
+                if (uiAction && uiAction !== 'OPEN_CHAT') {
                     setChatUiAction(uiAction);
                     setChatMessage(msg);
-                    setIsChatModalOpen(true);
+                    // Accept/decline is already shown in the chat banner
+                    if (uiAction !== 'SHOW_ACCEPT_CONVERSATION_POPUP') {
+                        setIsChatModalOpen(true);
+                    }
+                } else if (!canChatResponse) {
+                    // Both can-chat and start failed outright (network/permission issue).
+                    setJoinError(t('chat.toasts.verifyFailed'));
+                    toast.error(t('chat.toasts.verifyFailed'));
                 }
             } catch (err) {
                 console.error('Error verifying chat access:', err);
-                setJoinError(joinErrorMessage);
+                setJoinError(t('chat.toasts.verifyFailed'));
                 toast.error(t('chat.toasts.verifyFailed'));
             } finally {
                 setIsCheckingAccess(false);
@@ -329,8 +355,20 @@ function ChatPageInner({ params }) {
             await chatService.acceptConversation({ other_user_id: slug });
             toast.success(t('chat.toasts.accepted'));
 
-            const response = await chatService.canChat({ other_user_id: slug });
-            const chatData = parseCanChat(response);
+            // Now that access is granted, look up state and start/join the room
+            // together instead of one-at-a-time.
+            const [canChatOutcome, startOutcome, messagesOutcome] = await Promise.allSettled([
+                chatService.canChat({ other_user_id: slug }),
+                chatService.start({ other_user_id: slug, person_id: slug }),
+                chatService.messages({ other_user_id: slug, limit: 50, offset: 0 }),
+            ]);
+
+            const canChatResponse =
+                canChatOutcome.status === 'fulfilled' ? canChatOutcome.value : null;
+            const startResponse =
+                startOutcome.status === 'fulfilled' ? startOutcome.value : null;
+
+            const chatData = parseCanChat(canChatResponse || startResponse);
 
             setCanSend(chatData.canSend);
             setCanAccept(chatData.canAccept);
@@ -339,12 +377,15 @@ function ChatPageInner({ params }) {
             setSitterQuota(chatData.sitterQuota);
             setIsInitiator(chatData.isInitiator);
 
-            const startRes = await chatService.start({
-                other_user_id: slug,
-                person_id: slug,
-            });
-            const started = unwrapChatStart(startRes);
-            const startFlags = parseCanChat(startRes);
+            if (!startResponse) {
+                setJoinError(joinErrorMessage);
+                toast.error(joinErrorMessage);
+                setIsChatModalOpen(false);
+                return;
+            }
+
+            const started = unwrapChatStart(startResponse);
+            const startFlags = parseCanChat(startResponse);
             const rId = started.roomId;
             const personId = started.myChatPersonId;
 
@@ -363,11 +404,15 @@ function ChatPageInner({ params }) {
                 return;
             }
 
-            await fetchHistory({
-                rId,
-                personId,
-                otherPersonId: started.otherChatPersonId,
-            });
+            if (messagesOutcome.status === 'fulfilled') {
+                setMessages(normalizeHistoryMessages(messagesOutcome.value));
+            } else {
+                await fetchHistory({
+                    rId,
+                    personId,
+                    otherPersonId: started.otherChatPersonId,
+                });
+            }
             activateThread({ rId, personId });
             setIsChatModalOpen(false);
         } catch (err) {
@@ -384,7 +429,7 @@ function ChatPageInner({ params }) {
             await chatService.declineConversation({ other_user_id: slug });
             toast.info(t('chat.toasts.declined'));
             setIsChatModalOpen(false);
-            router.push(`/worker-details/${slug}`);
+            router.push('/conversations');
         } catch (err) {
             console.error('Error declining conversation:', err);
             toast.error(t('chat.toasts.declineFailed'));
@@ -423,7 +468,7 @@ function ChatPageInner({ params }) {
     const handleCloseModal = () => {
         setIsChatModalOpen(false);
         if (!canRead) {
-            router.push(`/worker-details/${slug}`);
+            router.push('/conversations');
         }
     };
 
@@ -520,20 +565,31 @@ function ChatPageInner({ params }) {
               : t('chat.connection.disconnected');
 
     const inputEnabled = Boolean(canSend && threadReady);
-    const inputPlaceholder = !roomId
-        ? joinErrorMessage
-        : !threadReady
-          ? t('chat.placeholders.waitingJoin')
-          : canSend
-            ? t('chat.placeholders.typeMessage')
-            : t('chat.placeholders.inputDisabled');
+    const waitingToAccept = Boolean((canAccept || canDecline) && !canSend);
+    const inputPlaceholder =
+        waitingToAccept || !canRead
+            ? t('chat.placeholders.inputDisabled')
+            : !roomId
+              ? joinError || joinErrorMessage
+              : !threadReady
+                ? t('chat.placeholders.waitingJoin')
+                : canSend
+                  ? t('chat.placeholders.typeMessage')
+                  : t('chat.placeholders.inputDisabled');
 
     return (
         <div className="chat-page-wrapper">
             <div className="chat-container">
                 <div className="chat-header">
                     <div className="header-left">
-                        <Link href={`/worker-details/${slug}`} className="back-btn">
+                        <Link
+                            href={
+                                userInfo?.user_type === 'S'
+                                    ? `/profile?id=${slug}`
+                                    : `/worker-details/${slug}`
+                            }
+                            className="back-btn"
+                        >
                             <MdChevronLeft />
                         </Link>
                         <div className="user-info">
@@ -588,7 +644,11 @@ function ChatPageInner({ params }) {
                 <div className="chat-body" ref={chatBodyRef}>
                     {!canRead ? (
                         <div className="text-center py-5">
-                            <p className="text-muted">{t('chat.body.messagesAfterAccept')}</p>
+                            <p className="text-muted">
+                                {waitingToAccept
+                                    ? t('chat.body.messagesAfterAccept')
+                                    : chatMessage || t('chat.body.messagesAfterAccept')}
+                            </p>
                         </div>
                     ) : !roomId || joinError ? (
                         <div className="chat-empty-state">

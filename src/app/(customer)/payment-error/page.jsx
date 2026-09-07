@@ -1,8 +1,6 @@
 'use client';
 
-import img1 from '@/../public/images/demo2.webp';
 import AuthGuard from '@/components/AuthGuard';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { FaTimesCircle } from 'react-icons/fa';
 import { useIntl } from 'react-intl';
@@ -33,15 +31,6 @@ function PaymentErrorContent() {
     return (
         <div className="payment-success-container">
             <div className="login-form">
-                <div className="login-image">
-                    <Image
-                        src={img1}
-                        alt={t('paymentError.altIllustration')}
-                        width={500}
-                        height={500}
-                        priority
-                    />
-                </div>
                 <div className="login-content">
                     <div className="status-icon error">
                         <FaTimesCircle />

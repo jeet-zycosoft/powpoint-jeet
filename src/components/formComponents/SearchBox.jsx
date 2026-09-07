@@ -1,5 +1,5 @@
 'use client';
-import { formatLocationLabel } from '@/services/addressFormat';
+import { formatLocationLabel, searchPlaces } from '@/services/addressFormat';
 import { useEffect, useRef, useState } from 'react';
 import { useIntl } from 'react-intl';
 import './SearchBox.scss';
@@ -47,6 +47,9 @@ const SearchBox = ({
                 userTypingRef.current = false;
             } else {
                 setDisplayValue(getDisplayAddress(value));
+                // Parent restored/set the value — don't open suggestions until the user types.
+                preventNextFetchRef.current = true;
+                setShowSuggestions(false);
             }
         } else {
             setDisplayValue(localValue);
@@ -65,7 +68,7 @@ const SearchBox = ({
         }
     };
 
-    // Debounce location search queries to Nominatim
+    // Debounce location search: cities, landmarks, streets, and postcodes
     useEffect(() => {
         if (preventNextFetchRef.current) {
             preventNextFetchRef.current = false;
@@ -81,32 +84,19 @@ const SearchBox = ({
             setIsLoading(true);
             setShowSuggestions(true);
             try {
-                const response = await fetch(
-                    `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(
-                        displayValue,
-                    )}&polygon_geojson=1&format=jsonv2&addressdetails=1&accept-language=en`,
-                    {
-                        headers: {
-                            'Accept-Language': 'en',
-                        },
-                    },
-                );
-                if (response.ok) {
-                    const data = await response.json();
-                    setSuggestions(data || []);
-                } else {
-                    setSuggestions([]);
-                }
+                const lang = String(intl.locale || 'en').slice(0, 2);
+                const data = await searchPlaces(displayValue, { lang });
+                setSuggestions(data || []);
             } catch (error) {
                 console.error('Error fetching location suggestions:', error);
                 setSuggestions([]);
             } finally {
                 setIsLoading(false);
             }
-        }, 500);
+        }, 400);
 
         return () => clearTimeout(delayDebounceFn);
-    }, [displayValue]);
+    }, [displayValue, intl.locale]);
 
     // Close dropdown on click outside
     useEffect(() => {
@@ -234,7 +224,7 @@ const SearchBox = ({
                         <ul className="suggestions-list">
                             {suggestions.map((item, index) => (
                                 <li
-                                    key={item.place_id}
+                                    key={`${item.place_id || item.osm_id || item.lat}-${index}`}
                                     className={`suggestion-item ${index === activeIndex ? 'active' : ''}`}
                                     onClick={() => handleSelectLocation(item)}
                                     onMouseEnter={() => setActiveIndex(index)}

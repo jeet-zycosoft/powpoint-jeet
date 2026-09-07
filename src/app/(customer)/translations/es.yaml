@@ -15,6 +15,7 @@ home:
         addressLabel: Dirección*
         addressPlaceholder: Manchester en Reino Unido
         button: Buscar
+        selectLocationFirst: Por favor, selecciona una ubicación de las sugerencias primero.
     howItWorks:
         heading: Cómo <span>Funciona</span>
         desc: Al contrario de la creencia popular, Lorem Ipsum no es simplemente texto
@@ -47,6 +48,10 @@ home:
             aleatorio. Tiene sus raíces en una pieza de la literatura clásica latina
             del 45 a. C., por lo que tiene más de 2000 años.
         button: Ver Todos los Cuidadores
+        locationPrompt: Activa tu ubicación para ver cuidadores cerca de ti.
+        locationPromptHint: Si no puedes activarla, no te preocupes — igual te mostraremos cuidadores.
+        enableLocation: Activar ubicación
+        continueAnyway: Continuar sin ubicación
     faq:
         heading: Preguntas Frecuentes – Preguntas, <span>Respondemos</span>
         desc: Al contrario de la creencia popular, Lorem Ipsum no es simplemente texto

@@ -134,6 +134,13 @@
                 font-weight: 600;
                 color: map.get(var.$colors, "heading");
             }
+
+            .results-count-skeleton {
+                display: inline-block;
+                width: 8.5rem;
+                height: 0.95rem;
+                vertical-align: middle;
+            }
         }
 
         .see-more-footer {
@@ -171,6 +178,13 @@
             gap: 1rem;
             min-height: calc(100dvh - 300px);
         }
+
+        .listing-map-skeleton {
+            width: 100%;
+            min-height: calc(100dvh - 300px);
+            border-radius: 1.5rem;
+            border: 1px solid map.get(var.$colors, "formBorder");
+        }
     }
 
     .loading-box {
@@ -181,22 +195,64 @@
     }
 
     .no-results-box {
-        // border: 1px solid map.get(var.$colors, "formBorder");
-        padding: 4rem 2rem;
-        border-radius: 1rem;
+        padding: 3.5rem 2rem;
+        border-radius: 1.25rem;
         background-color: white;
         font-family: map.get(var.$fonts, "primary");
-        margin-block: 0 1rem;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
-        margin: 2rem auto;
-        max-width: 600px;
+        margin: 2.5rem auto 1rem;
+        max-width: 520px;
         width: 100%;
-        margin-top: 12rem;
-        // box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        border: 1px dashed map.get(var.$colors, "formBorder");
+
+        .no-results-icon {
+            position: relative;
+            width: 5.5rem;
+            height: 5.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            background: linear-gradient(180deg, #fff6ea 0%, #f8f6f1 100%);
+            border: 1px solid map.get(var.$colors, "formBorder");
+            color: map.get(var.$colors, "primary");
+            font-size: 2.35rem;
+            box-shadow: 0 8px 20px rgba(12, 39, 34, 0.06);
+
+            &__paw {
+                position: absolute;
+                right: 0.15rem;
+                bottom: 0.15rem;
+                width: 1.85rem;
+                height: 1.85rem;
+                border-radius: 50%;
+                background-color: map.get(var.$colors, "white");
+                border: 2px solid map.get(var.$colors, "white");
+                box-shadow: 0 4px 10px rgba(12, 39, 34, 0.12);
+                color: map.get(var.$colors, "secondary");
+                font-size: 0.85rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        h3 {
+            color: map.get(var.$colors, "heading");
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 0;
+            max-width: 360px;
+            line-height: 1.5;
+        }
     }
 }
 

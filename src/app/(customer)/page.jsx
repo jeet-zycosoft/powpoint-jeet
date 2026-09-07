@@ -27,7 +27,7 @@ const data = {
         headingKey: 'home.hero.heading',
         descKey: 'home.hero.desc',
         buttonTextKey: 'home.hero.buttonText',
-        bannerImgLink: '/images/pet-banner4.png',
+        bannerImgLink: '/images/pet-banner5.png',
         bannerMobImgLink: '/images/customer-banner-mobile-new.png',
         buttonLink: '/sitter/listing',
     },
