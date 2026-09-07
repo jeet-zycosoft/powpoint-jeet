@@ -1,0 +1,107 @@
+@use "@/styles/var";
+@use "sass:map";
+
+.listing-card-skeleton-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.listing-card-skeleton {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "image info"
+        "image desc";
+    gap: 0.5rem 2rem;
+    padding: 1.5rem;
+    border: 1px solid map.get(var.$colors, "formBorder");
+    border-radius: 1.25rem;
+    background-color: #ffffff;
+
+    @media screen and (max-width: 575px) {
+        grid-template-columns: 140px 1fr;
+        grid-template-areas:
+            "image info"
+            "desc desc";
+        gap: 0.75rem 1.5rem;
+        padding: 1.25rem;
+    }
+
+    &__image {
+        grid-area: image;
+        width: 200px;
+        height: 200px;
+        border-radius: 1rem;
+
+        @media screen and (max-width: 575px) {
+            width: 145px;
+            height: 145px;
+        }
+    }
+
+    &__info {
+        grid-area: info;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-width: 0;
+    }
+
+    &__title {
+        width: 42%;
+        max-width: 220px;
+        height: 28px;
+        margin-bottom: 0.5rem;
+    }
+
+    &__location {
+        width: 55%;
+        max-width: 260px;
+        height: 16px;
+        margin-bottom: 0.85rem;
+    }
+
+    &__badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    &__badge {
+        width: 150px;
+        height: 36px;
+        border-radius: 0.75rem;
+
+        @media screen and (max-width: 575px) {
+            width: 100%;
+        }
+    }
+
+    &__desc {
+        grid-area: desc;
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
+        min-width: 0;
+    }
+
+    &__desc-heading {
+        width: 140px;
+        height: 18px;
+        margin-bottom: 0.15rem;
+    }
+
+    &__line {
+        width: 92%;
+        max-width: 640px;
+        height: 14px;
+
+        &--short {
+            width: 68%;
+        }
+    }
+}

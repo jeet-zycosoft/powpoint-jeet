@@ -13,6 +13,7 @@ home:
         addressLabel: 'Address*'
         addressPlaceholder: 'Manchester in UK'
         button: 'Search'
+        selectLocationFirst: 'Please select a location from the suggestions first.'
     howItWorks:
         heading: 'How Pet <span>Sitting Works</span>'
         desc: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.'
@@ -36,6 +37,10 @@ home:
         heading: 'Featured <span>Pet Sitters</span> Near You'
         desc: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.'
         button: 'View All Sitters'
+        locationPrompt: 'Please enable your location to see pet sitters near you.'
+        locationPromptHint: "If you cannot turn it on, no worries — we will still show sitters."
+        enableLocation: 'Enable location'
+        continueAnyway: 'Continue without location'
     faq:
         heading: 'FAQs – You Ask, <span>We Answer</span>'
         desc: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.'

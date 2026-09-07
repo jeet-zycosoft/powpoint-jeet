@@ -16,6 +16,7 @@ import { resolveAvatarUrl } from '@/services/avatar';
 import { chatService } from '@/services/chatService';
 import { isDifferentArea, parseCanChat, pickUserLocation } from '@/services/chatHelpers';
 import { handleReplaceLocationAction } from '@/services/replaceLocationFlow';
+import { formatLanguagesList } from '@/services/profileHelpers';
 import { publicService } from '@/services/publicService';
 import { useRouter } from 'next/navigation';
 import { useIntl } from 'react-intl';
@@ -311,11 +312,7 @@ const SitterModal = ({ sitter, onClose, onFavoriteToggle }) => {
             ? ownerDetails?.languages || ownerDetails?.service_details?.languages
             : sitter?.languages || sitter?.service_details?.languages;
 
-        if (Array.isArray(langs)) {
-            return langs.map((l) => l.lang_long || l.long || l.name || l).join(', ');
-        }
-        if (typeof langs === 'string') return langs;
-        return 'Dutch, English';
+        return formatLanguagesList(langs, 'Dutch, English');
     };
 
     const getTypesOfPets = () => {

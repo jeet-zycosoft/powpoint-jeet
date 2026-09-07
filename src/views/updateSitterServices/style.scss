@@ -12,6 +12,21 @@
         border: 2px solid map.get(var.$colors, "formBorder1");
         border-radius: 1.2rem;
         background-color: map.get(var.$colors, "white");
+        overflow: visible;
+
+        &:has(.search-box) {
+            position: relative;
+            z-index: 8;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 640px;
+
+            .search-input-wrapper input {
+                border: 1px solid map.get(var.$colors, "formBorder");
+            }
+        }
 
         @media (max-width: 767px) {
             padding: 1.5rem;

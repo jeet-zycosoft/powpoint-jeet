@@ -1,5 +1,6 @@
 chat:
-    joinError: Impossible de rejoindre le chat tant que start ne renvoie pas room_id
+    joinError: Impossible d'ouvrir ce chat pour le moment. Veuillez réessayer.
+    connectionError: Impossible de se connecter au chat en direct. Veuillez actualiser la page.
     toasts:
         verifyFailed: Échec de la vérification de l'accès au chat.
         messageNotSent: Message non envoyé. Le chat n'est pas connecté.

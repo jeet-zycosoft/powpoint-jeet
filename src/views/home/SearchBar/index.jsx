@@ -1,7 +1,13 @@
 'use client';
 import SearchBox from '@/components/formComponents/SearchBox';
 import Select from '@/components/formComponents/Select';
+import {
+    isValidListingSearch,
+    readLastListingSearch,
+    writeLastListingSearch,
+} from '@/services/listingSearchStorage';
 import { formatLocationLabel } from '@/services/addressFormat';
+import { toLocationId } from '@/hooks/useGeolocation';
 import {
     clearPendingSearchLocation,
     selectPendingSearchLocation,
@@ -11,6 +17,7 @@ import { useEffect, useState } from 'react';
 import { IoSearch } from 'react-icons/io5';
 import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import './style.scss';
 
 const SearchBar = ({ variant = 'default' }) => {
@@ -21,6 +28,8 @@ const SearchBar = ({ variant = 'default' }) => {
     const [address, setAddress] = useState('');
     const [service, setService] = useState('Dog Boarding');
     const [locationHighlight, setLocationHighlight] = useState(false);
+    // Only a confirmed suggestion pick may drive a search; typed text alone never qualifies.
+    const [selectedLocation, setSelectedLocation] = useState(null);
 
     const SelectData = {
         label: intl.formatMessage({ id: 'home.searchBar.lookingFor' }),
@@ -46,9 +55,30 @@ const SearchBar = ({ variant = 'default' }) => {
     };
 
     useEffect(() => {
+        if (pendingSearchLocation) return;
+
+        const saved = readLastListingSearch('sitter');
+        if (!isValidListingSearch(saved)) return;
+
+        setAddress(saved.address || '');
+        setSelectedLocation({
+            latitude: saved.latitude,
+            longitude: saved.longitude,
+            location_id: saved.location_id ?? null,
+            label: saved.address || '',
+        });
+        if (saved.service) {
+            setService(saved.service);
+        }
+        // Restore once on mount. Footer "pending" fills take over via the effect below.
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    useEffect(() => {
         if (!pendingSearchLocation) return;
 
         setAddress(pendingSearchLocation);
+        setSelectedLocation(null);
         setLocationHighlight(true);
         dispatch(clearPendingSearchLocation());
 
@@ -67,16 +97,66 @@ const SearchBar = ({ variant = 'default' }) => {
         };
     }, [pendingSearchLocation, dispatch]);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const buildListingUrl = (location) => {
         const queryParams = new URLSearchParams();
-        if (address) {
-            queryParams.set('address', address);
+        const addressLabel = location?.label || address;
+        if (addressLabel) {
+            queryParams.set('address', addressLabel);
         }
         if (service) {
             queryParams.set('service', service);
         }
-        router.push(`/sitter/listing?${queryParams.toString()}`);
+        if (location?.latitude != null && location?.longitude != null) {
+            queryParams.set('lat', location.latitude);
+            queryParams.set('lng', location.longitude);
+        }
+        if (location?.location_id != null) {
+            queryParams.set('location_id', location.location_id);
+        }
+        return `/sitter/listing?${queryParams.toString()}`;
+    };
+
+    const persistListingSearch = (location) => {
+        if (!location) return;
+        writeLastListingSearch('sitter', {
+            address: location.label || address,
+            latitude: location.latitude,
+            longitude: location.longitude,
+            location_id: location.location_id ?? null,
+            service,
+        });
+    };
+
+    // Typing away from the confirmed suggestion (or clearing the field) drops the selection,
+    // so a stale address text can never sneak through as a "selected" location.
+    const handleAddressChange = (value) => {
+        setAddress(value);
+        setSelectedLocation((prev) => (prev && prev.label === value ? prev : null));
+    };
+
+    // Picking a suggestion is itself the search action — jump straight to the listing page.
+    const handleLocationSelect = (place) => {
+        const label = formatLocationLabel(place);
+        const location = {
+            latitude: Number(place.lat),
+            longitude: Number(place.lon),
+            location_id: toLocationId(place.place_id) ?? null,
+            label,
+        };
+        setAddress(label);
+        setSelectedLocation(location);
+        persistListingSearch(location);
+        router.push(buildListingUrl(location));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!selectedLocation || selectedLocation.label !== address) {
+            toast.info(intl.formatMessage({ id: 'home.searchBar.selectLocationFirst' }));
+            return;
+        }
+        persistListingSearch(selectedLocation);
+        router.push(buildListingUrl(selectedLocation));
     };
 
     return (
@@ -98,10 +178,8 @@ const SearchBar = ({ variant = 'default' }) => {
                                 </label>
                                 <SearchBox
                                     value={address}
-                                    onChange={setAddress}
-                                    onLocationSelect={(location) => {
-                                        setAddress(formatLocationLabel(location));
-                                    }}
+                                    onChange={handleAddressChange}
+                                    onLocationSelect={handleLocationSelect}
                                 />
                                 <input type="hidden" name="address" value={address} />
                             </div>

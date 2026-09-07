@@ -1,5 +1,5 @@
 'use client';
-import Loader from '@/components/Loader';
+import SitterDetailsSkeleton from '@/components/SitterDetailsSkeleton';
 import { extractList, profileKeys, useSitterDetail } from '@/hooks/useProfileQueries';
 import { ownerService } from '@/services/ownerService';
 import { publicService } from '@/services/publicService';
@@ -474,7 +474,11 @@ function SitterProfileInner({ params }) {
     };
 
     if (loading) {
-        return <Loader fullPage text={t('workerDetails.loading')} />;
+        return (
+            <div role="status" aria-label={t('workerDetails.loading')}>
+                <SitterDetailsSkeleton />
+            </div>
+        );
     }
 
     if (!sitter) {

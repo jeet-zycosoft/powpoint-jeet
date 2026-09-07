@@ -31,3 +31,33 @@ export function unwrapOwnService(response) {
 
     return dropKeys(service, META_KEYS);
 }
+
+export function getLanguageName(item) {
+    if (item == null) return '';
+    if (typeof item === 'string') return item.trim();
+    if (typeof item !== 'object') return String(item);
+
+    const name =
+        item.lang_long || item.long || item.name || item.label || item.language || item.lang;
+    return typeof name === 'string' ? name.trim() : '';
+}
+
+export function formatLanguagesList(languages, emptyLabel = '') {
+    if (!languages) return emptyLabel;
+    if (typeof languages === 'string') return languages;
+
+    if (Array.isArray(languages)) {
+        return languages.map(getLanguageName).filter(Boolean).join(', ') || emptyLabel;
+    }
+
+    if (typeof languages === 'object') {
+        return (
+            Object.entries(languages)
+                .filter(([, checked]) => Boolean(checked))
+                .map(([name]) => name)
+                .join(', ') || emptyLabel
+        );
+    }
+
+    return emptyLabel;
+}
