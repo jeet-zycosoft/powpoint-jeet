@@ -1,26 +1,27 @@
 'use client';
 import { authService } from '@/services/authService';
 import {
+    completeAuthenticatedSession,
     handleAuthSuccess,
     isAlreadyRegisteredError,
+    isAuthRejected,
     isEmailVerificationRequired,
     redirectToEmailVerification,
 } from '@/services/authFlow';
-import { setUser } from '@/store/features/user/userSlice';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { useReducer, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useReducer, useState, Suspense } from 'react';
 import { FaBriefcase, FaPaw } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import '../login/login.scss';
 
+import img1 from '@/../public/images/registration-img.png';
 import googleIcon from '@/../public/icons/google.png';
-import img1 from '@/../public/images/demo1.webp';
 
 import LocalIntlProvider from '@/app/LocalIntlProvider';
 import AuthLogo from '@/components/AuthLogo';
-import { useGoogleLogin } from '@react-oauth/google';
+import GoogleLoginButton from '@/components/GoogleLoginButton';
 import { useIntl } from 'react-intl';
 import baseMessages from './intl.yaml';
 import en from './translations/en.yaml';
@@ -38,10 +39,12 @@ const SignupPageInner = () => {
     const intl = useIntl();
     const dispatchRedux = useDispatch();
     const router = useRouter();
+    const searchParams = useSearchParams();
     const [showPassword, setShowPassword] = useState(false);
     const [showPassword1, setShowPassword1] = useState(false);
     const [step, setStep] = useState(1);
     const [loading, setLoading] = useState(false);
+    const [googleSignupMode, setGoogleSignupMode] = useState(false);
     const [apiErrors, setApiErrors] = useState({});
 
     const getFieldError = (fieldName) => {
@@ -66,16 +69,6 @@ const SignupPageInner = () => {
         switch (action.type) {
             case 'CHANGE_INPUT':
                 return { ...state, [action.field]: action.value };
-            case 'SET_GOOGLE_PROFILE':
-                return {
-                    ...state,
-                    first_name: action.first_name,
-                    last_name: action.last_name,
-                    email: action.email,
-                    password: action.sub,
-                    confirm_password: action.sub,
-                    login_type: 'google',
-                };
             case 'RESET_FORM':
                 return action.initialState;
             default:
@@ -84,51 +77,77 @@ const SignupPageInner = () => {
     }
 
     const [formData, dispatch] = useReducer(formReducer, initialFormState);
-    // useReducer ========================================
 
-    const [isGoogleLoading, setIsGoogleLoading] = useState(false);
+    useEffect(() => {
+        if (searchParams?.get('from') === 'google') {
+            setGoogleSignupMode(true);
+            setStep(2);
+        }
+    }, [searchParams]);
 
-    // Google login ========================================
-    const googleLogin = useGoogleLogin({
-        onSuccess: async (tokenResponse) => {
-            setIsGoogleLoading(true);
-            try {
-                const res = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
-                    headers: {
-                        Authorization: `Bearer ${tokenResponse.access_token}`,
-                    },
-                });
-                const profile = await res.json();
-                const firstName =
-                    profile.given_name || (profile.name ? profile.name.split(' ')[0] : '');
-                const lastName =
-                    profile.family_name ||
-                    (profile.name ? profile.name.split(' ').slice(1).join(' ') : '');
+    const startGoogleSignup = () => {
+        setApiErrors({});
+        setGoogleSignupMode(true);
+        setStep(2);
+    };
 
-                dispatch({
-                    type: 'SET_GOOGLE_PROFILE',
-                    first_name: firstName,
-                    last_name: lastName,
-                    email: profile.email || '',
-                    sub: profile.sub || '',
-                });
-                setStep(2);
-            } catch (error) {
-                console.error('Failed to fetch user profile:', error);
-                toast.error(intl.formatMessage({ id: 'auth.googleProfileFailed' }));
-            } finally {
-                setIsGoogleLoading(false);
-            }
-        },
-        onError: () => {
-            console.error('Google authorization failed.');
+    const handleGoogleRegister = async (googleResponse) => {
+        const idToken = googleResponse?.credential;
+        const userType = formData.user_type;
+        if (!idToken || (userType !== 'O' && userType !== 'S')) {
             toast.error(intl.formatMessage({ id: 'auth.googleAuthFailed' }));
-            setIsGoogleLoading(false);
-        },
-    });
-    // Google login ========================================
+            return;
+        }
 
-    // handle input change ========================================
+        setLoading(true);
+        try {
+            const data = await authService.register({
+                login_type: 'google',
+                id_token: idToken,
+                user_type: userType,
+            });
+
+            if (isAuthRejected(data)) {
+                toast.error(data?.message || intl.formatMessage({ id: 'auth.registrationFailed' }));
+                return;
+            }
+
+            if (isEmailVerificationRequired(data)) {
+                toast.success(
+                    data?.message || intl.formatMessage({ id: 'auth.registrationSuccessVerify' }),
+                );
+                redirectToEmailVerification(data, router, {
+                    login_type: 'google',
+                    user_type: userType,
+                });
+                return;
+            }
+
+            await completeAuthenticatedSession({
+                response: data,
+                dispatch: dispatchRedux,
+                router,
+            });
+            toast.success(data?.message || intl.formatMessage({ id: 'auth.registrationSuccess' }));
+        } catch (error) {
+            console.error('Google registration error:', error);
+            if (isAlreadyRegisteredError(error)) {
+                const msg =
+                    error.response?.data?.message ||
+                    intl.formatMessage({ id: 'auth.emailAlreadyRegistered' });
+                toast.error(msg);
+                router.push('/login');
+                return;
+            }
+            toast.error(
+                error.response?.data?.message ||
+                    intl.formatMessage({ id: 'auth.registrationFailed' }),
+            );
+        } finally {
+            setLoading(false);
+        }
+    };
+
     function handleInputChange(e) {
         const { name, value } = e.target;
         dispatch({
@@ -187,28 +206,28 @@ const SignupPageInner = () => {
         }
 
         setApiErrors({});
+        setGoogleSignupMode(false);
         setStep(2);
     }
 
     const handleSelectRole = (role) => {
-        setLoading(true);
         dispatch({
             type: 'CHANGE_INPUT',
             field: 'user_type',
             value: role,
         });
 
-        const isGoogle = formData.login_type === 'google';
+        if (googleSignupMode) {
+            return;
+        }
+
+        setLoading(true);
+
         const finalData = {
             ...formData,
             user_type: role,
-            login_type: isGoogle ? 'google' : 'email',
+            login_type: 'email',
         };
-
-        if (isGoogle) {
-            delete finalData.password;
-            delete finalData.confirm_password;
-        }
 
         authService
             .register(finalData)
@@ -232,38 +251,32 @@ const SignupPageInner = () => {
                 const token = userData?.access_token || userData?.token;
 
                 if (outcome === 'authenticated' && token) {
-                    dispatchRedux(setUser(userData));
-                    toast.success(intl.formatMessage({ id: 'auth.registrationSuccess' }));
-                    const isSitter = role === 'S';
-                    router.push(isSitter ? '/worker/base-form' : '/customer/base-form');
-                    return;
-                }
-
-                if (!isGoogle) {
-                    toast.success(
-                        data?.message ||
-                            intl.formatMessage({ id: 'auth.registrationSuccessVerify' }),
-                    );
-                    redirectToEmailVerification(
-                        {
-                            data: {
-                                email: finalData.email,
-                                requires_email_verification: true,
-                            },
-                        },
+                    completeAuthenticatedSession({
+                        response: data,
+                        dispatch: dispatchRedux,
                         router,
-                        {
-                            email: finalData.email,
-                            password: formData.password,
-                            login_type: 'email',
-                            user_type: role,
-                        },
-                    );
+                    });
+                    toast.success(intl.formatMessage({ id: 'auth.registrationSuccess' }));
                     return;
                 }
 
-                toast.error(
-                    data?.message || intl.formatMessage({ id: 'auth.registrationFailed' }),
+                toast.success(
+                    data?.message || intl.formatMessage({ id: 'auth.registrationSuccessVerify' }),
+                );
+                redirectToEmailVerification(
+                    {
+                        data: {
+                            email: finalData.email,
+                            requires_email_verification: true,
+                        },
+                    },
+                    router,
+                    {
+                        email: finalData.email,
+                        password: formData.password,
+                        login_type: 'email',
+                        user_type: role,
+                    },
                 );
             })
             .catch((error) => {
@@ -504,9 +517,7 @@ const SignupPageInner = () => {
                             <button
                                 type="button"
                                 className="google-btn"
-                                onClick={() => googleLogin()}
-                                disabled={isGoogleLoading}
-                                style={{ opacity: isGoogleLoading ? 0.7 : 1 }}
+                                onClick={startGoogleSignup}
                             >
                                 <Image
                                     src={googleIcon}
@@ -514,16 +525,21 @@ const SignupPageInner = () => {
                                     width={20}
                                     height={20}
                                 />
-                                {isGoogleLoading
-                                    ? intl.formatMessage({ id: 'auth.connecting' })
-                                    : intl.formatMessage({ id: 'auth.google' })}
+                                {intl.formatMessage({ id: 'auth.google' })}
                             </button>
                         </form>
                     </div>
                 ) : (
                     <div className="login-content signup">
                         <AuthLogo />
-                        <button type="button" className="back-btn" onClick={() => setStep(1)}>
+                        <button
+                            type="button"
+                            className="back-btn"
+                            onClick={() => {
+                                setGoogleSignupMode(false);
+                                setStep(1);
+                            }}
+                        >
                             <svg
                                 width="16"
                                 height="16"
@@ -543,7 +559,13 @@ const SignupPageInner = () => {
                         <h1 style={{ fontSize: '24px' }}>
                             {intl.formatMessage({ id: 'auth.selectRoleTitle' })}
                         </h1>
-                        <p>{intl.formatMessage({ id: 'auth.selectRoleDesc' })}</p>
+                        <p>
+                            {intl.formatMessage({
+                                id: googleSignupMode
+                                    ? 'auth.googleChooseRoleDesc'
+                                    : 'auth.selectRoleDesc',
+                            })}
+                        </p>
 
                         <div className="role-cards-container">
                             <div
@@ -567,6 +589,17 @@ const SignupPageInner = () => {
                                 <p>{intl.formatMessage({ id: 'auth.sitterDesc' })}</p>
                             </div>
                         </div>
+                        {googleSignupMode && formData.user_type && (
+                            <GoogleLoginButton
+                                disabled={loading}
+                                onSuccess={handleGoogleRegister}
+                                onError={() => {
+                                    toast.error(
+                                        intl.formatMessage({ id: 'auth.googleAuthFailed' }),
+                                    );
+                                }}
+                            />
+                        )}
                         {loading && (
                             <div className="mt-3 text-center">
                                 <div className="spinner-border text-warning" role="status">
@@ -586,7 +619,9 @@ const SignupPageInner = () => {
 export default function SignupPage() {
     return (
         <LocalIntlProvider messages={messages}>
-            <SignupPageInner />
+            <Suspense fallback={null}>
+                <SignupPageInner />
+            </Suspense>
         </LocalIntlProvider>
     );
 }

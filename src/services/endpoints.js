@@ -74,6 +74,8 @@ export const endpoints = {
         siteSettings: 'site-settings',
         blogs: 'blogs',
         blogDetail: 'blogs/:slug',
+        blogDetailQuery: 'blog-detail',
         recentBlog: 'recent-blog/:id',
+        blogNewsletterSubscribe: 'blog-newsletter/subscribe',
     },
 };

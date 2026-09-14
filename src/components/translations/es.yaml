@@ -145,6 +145,15 @@ blogSidebar:
     tags: Etiquetas
     search: Buscar
     noPosts: No hay publicaciones recientes
+    newsletterTitle: Boletín de cuidado de mascotas
+    newsletterDesc: Recibe consejos expertos, guías de nutrición y noticias de cuidadores en tu correo.
+    newsletterPlaceholder: Tu correo electrónico
+    newsletterButton: Suscribirme ahora
+    newsletterSubmitting: Suscribiendo...
+    newsletterSuccess: ¡Suscripción exitosa!
+    newsletterAlready: Ya estás suscrito.
+    newsletterInvalidEmail: Introduce un correo electrónico válido.
+    newsletterError: Algo salió mal. Inténtalo de nuevo.
 authLogo:
     homeAria: Inicio de PawPoint
     logoAlt: Logo de PawPoint

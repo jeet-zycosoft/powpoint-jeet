@@ -29,7 +29,9 @@ premium:
         location: Buy Active Premium for this new location.
         upgrade: Monthly sitter limit reached. Buy another package to connect with more sitters.
     coverage: 'Coverage:'
-    coverageDetail: Sitters within {radius}m of your location
+    coverageDetail: Sitters within {radius}m of {location}
+    location: 'Location:'
+    yourLocationFallback: your location
     connections: 'Connections:'
     connectionsDetail: Connect with {limit} new sitters per package
     intervals:

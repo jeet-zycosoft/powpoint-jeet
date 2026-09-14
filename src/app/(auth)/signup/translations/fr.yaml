@@ -25,6 +25,7 @@ auth:
     connecting: Connexion...
     googleProfileFailed: Échec de la récupération du profil Google.
     googleAuthFailed: Échec de l'autorisation Google.
+    googleChooseRoleDesc: Choisissez Propriétaire ou Gardien, puis continuez avec Google.
     firstNameRequired: Le prénom est obligatoire.
     lastNameRequired: Le nom est obligatoire.
     emailRequired: L'e-mail est obligatoire.

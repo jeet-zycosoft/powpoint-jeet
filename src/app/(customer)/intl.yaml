@@ -27,8 +27,8 @@ home:
             title: 'Enjoy Peace of Mind'
             desc: 'Your sitter sends daily updates, photos, and tails wag.'
     testimonials:
-        heading: "What Our <span>Client</span> Say's"
-        desc: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.'
+        heading: "What Our <span>Clients</span> Say"
+        desc: "Real stories from pet owners who found trusted sitters through PawPoint."
     about:
         heading: We're More{br} Than <span>Just Sitters</span>
         p1: "At our core, we understand that your pet's happiness is of utmost importance."

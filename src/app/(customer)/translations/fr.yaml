@@ -33,8 +33,7 @@ home:
             desc: Votre gardien envoie des mises à jour quotidiennes et des photos.
     testimonials:
         heading: Ce Que Nos <span>Clients</span> Disent
-        desc: Contrairement aux idées reçues, le Lorem Ipsum n'est pas simplement du
-            texte aléatoire.
+        desc: Des témoignages réels de propriétaires qui ont trouvé des pet-sitters de confiance sur PawPoint.
     about:
         heading: Des {br} <span>promeneurs d'animaux</span> {br} dévoués en qui vous
             pouvez avoir confiance

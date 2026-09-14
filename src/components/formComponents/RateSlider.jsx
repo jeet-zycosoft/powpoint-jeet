@@ -5,7 +5,7 @@ import './RateSlider.scss';
 
 const MIN_RATE = 1;
 const MAX_RATE = 250;
-const DEFAULT_RATE = 50;
+const DEFAULT_RATE = 250;
 
 const toRate = (value) => {
     const parsed = Number(value);

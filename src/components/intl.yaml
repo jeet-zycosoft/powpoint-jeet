@@ -145,6 +145,15 @@ blogSidebar:
     tags: Tags
     search: Search
     noPosts: No recent posts
+    newsletterTitle: Pet Care Newsletter
+    newsletterDesc: Get expert pet tips, nutrition guides, and sitter news sent to your inbox.
+    newsletterPlaceholder: Your email address
+    newsletterButton: Subscribe Now
+    newsletterSubmitting: Subscribing...
+    newsletterSuccess: Subscribed successfully!
+    newsletterAlready: You are already subscribed.
+    newsletterInvalidEmail: Please enter a valid email address.
+    newsletterError: Something went wrong. Please try again.
 authLogo:
     homeAria: PawPoint home
     logoAlt: PawPoint Logo

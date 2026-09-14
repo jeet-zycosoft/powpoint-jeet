@@ -309,6 +309,18 @@
                 }
             }
 
+            .google-login-wrap {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                margin-top: 8px;
+
+                &.is-disabled {
+                    pointer-events: none;
+                    opacity: 0.7;
+                }
+            }
+
             .role-cards-container {
                 display: flex;
                 gap: 20px;

@@ -7,7 +7,7 @@
     justify-content: center;
     width: 100%;
     position: relative;
-    z-index: 2;
+    z-index: 5;
     scroll-margin-top: 7.5rem;
 
     &.is-location-filled .search-bar {
@@ -47,11 +47,21 @@
     .search-bar__field {
         min-width: 0;
         width: 100%;
+        position: relative;
+
+        &:has(.custom-select-container.is-open),
+        &:has(.suggestions-dropdown) {
+            z-index: 30;
+        }
     }
 
     .form-group {
         margin-bottom: 0;
         width: 100%;
+    }
+
+    .custom-select-container.is-open .options-list {
+        z-index: 50;
     }
 
     .address-field {

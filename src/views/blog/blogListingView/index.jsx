@@ -1,8 +1,10 @@
 'use client';
 
 import BlogSidebar from '@/components/BlogSidebar';
-import Loader from '@/components/Loader';
+import { BlogListingSkeleton } from '@/components/BlogSkeleton';
 import { publicService } from '@/services/publicService';
+import { useBlogLocale } from '@/hooks/useBlogLocale';
+import { pickLocale, blogPostPath } from '@/utils/blogLocale';
 import { useQuery } from '@tanstack/react-query';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -11,11 +13,11 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import BlogLoadMore from './BlogLoadMore';
 import './style.scss';
 
-const formatDate = (dateString) => {
+const formatDate = (dateString, locale = 'en') => {
     if (!dateString) return '';
     try {
         const date = new Date(dateString);
-        return date.toLocaleDateString('en-US', {
+        return date.toLocaleDateString(locale === 'en' ? 'en-US' : locale, {
             year: 'numeric',
             month: 'short',
             day: 'numeric',
@@ -25,23 +27,37 @@ const formatDate = (dateString) => {
     }
 };
 
-const BlogListingView = () => {
+const BlogListingView = ({ locale: localeProp } = {}) => {
     const intl = useIntl();
+    const locale = useBlogLocale(localeProp);
 
-    const { data: blogs = [], isLoading: loading } = useQuery({
-        queryKey: ['blogs', 'list'],
+    const {
+        data: blogs = [],
+        isLoading,
+        isFetching,
+        isPending,
+    } = useQuery({
+        queryKey: ['blogs', 'list', locale],
         queryFn: async () => {
-            const res = await publicService.blogs();
+            const res = await publicService.blogs({ locale, per_page: 50, page: 1 });
             return res.data || [];
         },
     });
 
+    const showSkeleton = isLoading || isPending || (isFetching && blogs.length === 0);
+
     const featuredBlog = blogs.length > 0 ? blogs[0] : null;
     const remainingBlogs = blogs.length > 1 ? blogs.slice(1) : blogs;
+    const featuredTitle = featuredBlog ? pickLocale(featuredBlog.title, locale) : '';
+    const featuredExcerpt = featuredBlog ? pickLocale(featuredBlog.excerpt, locale) : '';
+    const featuredImage =
+        featuredBlog?.image_url ||
+        (featuredBlog?.image?.startsWith('/')
+            ? featuredBlog.image
+            : `/images/blog/${featuredBlog?.image || 'blog1.png'}`);
 
     return (
         <div className="blog-listing-view">
-            {/* Hero Banner Section */}
             <section className="blog-hero-section">
                 <div className="container">
                     <div className="hero-content text-center">
@@ -69,44 +85,24 @@ const BlogListingView = () => {
                 </div>
             </section>
 
-            {/* Main Content Area */}
             <div className="container py-5">
-                {loading ? (
-                    <div
-                        style={{
-                            height: '60dvh',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                        }}
-                    >
-                        <Loader
-                            text={intl.formatMessage({
-                                id: 'blog.loading',
-                                defaultMessage: 'Loading articles...',
-                            })}
-                        />
-                    </div>
+                {showSkeleton ? (
+                    <BlogListingSkeleton />
                 ) : (
                     <>
-                        {/* Featured Blog Banner */}
                         {featuredBlog && (
                             <div className="featured-blog-banner mb-5">
-                                <div className="row align-items-center g-0">
+                                <div className="row align-items-stretch g-0">
                                     <div className="col-lg-6">
                                         <div className="featured-img-wrapper">
                                             <Image
-                                                src={
-                                                    featuredBlog.image_url ||
-                                                    (featuredBlog.image?.startsWith('/')
-                                                        ? featuredBlog.image
-                                                        : `/images/blog/${featuredBlog.image || 'blog1.png'}`)
-                                                }
-                                                width={650}
-                                                height={380}
-                                                alt={featuredBlog.title}
+                                                src={featuredImage}
+                                                alt={featuredTitle}
+                                                fill
+                                                sizes="(max-width: 991px) 100vw, 647px"
                                                 className="featured-img"
                                                 unoptimized={!!featuredBlog.image_url}
+                                                priority
                                             />
                                             <span className="featured-badge">
                                                 {intl.formatMessage({ id: 'blog.featuredArticle' })}
@@ -121,20 +117,19 @@ const BlogListingView = () => {
                                                     {formatDate(
                                                         featuredBlog.published_at ||
                                                             featuredBlog.created_at,
+                                                        locale,
                                                     )}
                                                 </span>
                                             </div>
                                             <h2 className="featured-title">
-                                                <Link href={`/blog/${featuredBlog.slug}`}>
-                                                    {featuredBlog.title}
+                                                <Link href={blogPostPath(locale, featuredBlog.slug)}>
+                                                    {featuredTitle}
                                                 </Link>
                                             </h2>
-                                            <p className="featured-excerpt">
-                                                {featuredBlog.excerpt}
-                                            </p>
+                                            <p className="featured-excerpt">{featuredExcerpt}</p>
                                             <div className="featured-footer">
                                                 <Link
-                                                    href={`/blog/${featuredBlog.slug}`}
+                                                    href={blogPostPath(locale, featuredBlog.slug)}
                                                     className="read-btn"
                                                 >
                                                     {intl.formatMessage({ id: 'blog.readFullPost' })}{' '}
@@ -147,7 +142,6 @@ const BlogListingView = () => {
                             </div>
                         )}
 
-                        {/* Results Count Header */}
                         <div className="d-flex align-items-center justify-content-between mb-4">
                             <h4 className="fw-bold mb-0">
                                 {intl.formatMessage({ id: 'blog.latestArticles' })}
@@ -161,15 +155,12 @@ const BlogListingView = () => {
                             </div>
                         </div>
 
-                        {/* Grid Layout: Main Articles + Sidebar */}
                         <div className="row g-4">
                             <div className="col-lg-8">
                                 <BlogLoadMore blogs={remainingBlogs} initialCount={6} step={3} />
                             </div>
-
-                            {/* Sidebar */}
                             <div className="col-lg-4">
-                                <BlogSidebar currentBlogId={featuredBlog?.id} />
+                                <BlogSidebar currentBlogId={featuredBlog?.id} locale={locale} />
                             </div>
                         </div>
                     </>

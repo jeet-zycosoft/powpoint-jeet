@@ -29,7 +29,9 @@ premium:
         location: Compra Active Premium para esta nueva ubicación.
         upgrade: Límite mensual de cuidadores alcanzado. Compra otro paquete para conectar con más cuidadores.
     coverage: 'Cobertura:'
-    coverageDetail: Cuidadores dentro de {radius}m de tu ubicación
+    coverageDetail: Cuidadores dentro de {radius}m de {location}
+    location: 'Ubicación:'
+    yourLocationFallback: tu ubicación
     connections: 'Conexiones:'
     connectionsDetail: Conecta con {limit} cuidadores nuevos por paquete
     intervals:

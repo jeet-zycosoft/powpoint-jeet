@@ -1,6 +1,8 @@
 footer:
     citiesHeading: Des villes avec une large offre
+    citiesSubtext: Trouvez des pet sitters de confiance dans les villes du Royaume-Uni. Amour et soins pour vos animaux, où que vous soyez.
     cityLink: Garde d'animaux à {city}
+    citiesImageAlt: Chien et chat heureux ensemble
     terms: Conditions générales
     privacy: Politique de confidentialité
     copyright: Copyright ©{year} PawPoint. Tous droits réservés.

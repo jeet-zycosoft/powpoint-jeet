@@ -8,18 +8,19 @@ import './login.scss';
 import { authService } from '@/services/authService';
 import {
     completeAuthenticatedSession,
+    isAuthRejected,
     isEmailVerificationRequired,
+    isGoogleUserMissing,
     isUnverifiedEmailError,
     redirectToEmailVerification,
 } from '@/services/authFlow';
 
-import googleIcon from '@/../public/icons/google.png';
 import img1 from '@/../public/images/demo2.webp';
 
 import LocalIntlProvider from '@/app/LocalIntlProvider';
 import AuthLogo from '@/components/AuthLogo';
+import GoogleLoginButton from '@/components/GoogleLoginButton';
 import { toast } from 'react-toastify';
-import { useGoogleLogin } from '@react-oauth/google';
 import { useIntl } from 'react-intl';
 import baseMessages from './intl.yaml';
 import en from './translations/en.yaml';
@@ -76,57 +77,54 @@ const LoginPageInner = () => {
         return 'authenticated';
     };
 
-    const googleLogin = useGoogleLogin({
-        onSuccess: async (tokenResponse) => {
-            setIsGoogleLoading(true);
-            setApiErrors({});
-            try {
-                const res = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
-                    headers: {
-                        Authorization: `Bearer ${tokenResponse.access_token}`,
-                    },
-                });
-                const profile = await res.json();
-                if (!profile?.email) {
-                    throw new Error('No email found in Google profile');
-                }
-
-                const firstName =
-                    profile.given_name || (profile.name ? profile.name.split(' ')[0] : '');
-                const lastName =
-                    profile.family_name ||
-                    (profile.name ? profile.name.split(' ').slice(1).join(' ') : '');
-
-                const loginPayload = {
-                    email: profile.email,
-                    first_name: firstName,
-                    last_name: lastName,
-                    login_type: 'google',
-                };
-
-                const data = await authService.login(loginPayload);
-                const outcome = await handleAuthSuccess(data);
-                if (outcome === 'authenticated') {
-                    toast.success(intl.formatMessage({ id: 'auth.loggedInSuccess' }));
-                }
-            } catch (error) {
-                console.error('Google login error:', error);
-                const responseData = error.response?.data;
-                const errMsg =
-                    responseData?.message ||
-                    responseData?.error ||
-                    intl.formatMessage({ id: 'auth.googleAccountNotFound' });
-                toast.error(errMsg);
-            } finally {
-                setIsGoogleLoading(false);
-            }
-        },
-        onError: () => {
-            console.error('Google login failed');
+    const handleGoogleSuccess = async (googleResponse) => {
+        const idToken = googleResponse?.credential;
+        if (!idToken) {
             toast.error(intl.formatMessage({ id: 'auth.googleAuthFailed' }));
+            return;
+        }
+
+        setIsGoogleLoading(true);
+        setApiErrors({});
+        try {
+            const data = await authService.login({
+                login_type: 'google',
+                id_token: idToken,
+            });
+
+            if (isAuthRejected(data) || isGoogleUserMissing(null, data)) {
+                const errMsg =
+                    data?.message || intl.formatMessage({ id: 'auth.googleAccountNotFound' });
+                toast.error(errMsg);
+                if (isGoogleUserMissing(null, data)) {
+                    router.push('/signup?from=google');
+                }
+                return;
+            }
+
+            const outcome = await handleAuthSuccess(data);
+            if (outcome === 'authenticated') {
+                toast.success(intl.formatMessage({ id: 'auth.loggedInSuccess' }));
+            } else if (outcome === 'none') {
+                toast.error(
+                    data?.message || intl.formatMessage({ id: 'auth.unexpectedError' }),
+                );
+            }
+        } catch (error) {
+            console.error('Google login error:', error);
+            const responseData = error.response?.data;
+            const errMsg =
+                responseData?.message ||
+                responseData?.error ||
+                intl.formatMessage({ id: 'auth.googleAccountNotFound' });
+            toast.error(errMsg);
+            if (isGoogleUserMissing(error, responseData)) {
+                router.push('/signup?from=google');
+            }
+        } finally {
             setIsGoogleLoading(false);
-        },
-    });
+        }
+    };
     // ========================================
     const initialFormState = {
         email: '',
@@ -349,23 +347,13 @@ const LoginPageInner = () => {
                             <a href="/signup">{intl.formatMessage({ id: 'auth.register' })}</a>
                         </p>
                         <div className="or-divider">{intl.formatMessage({ id: 'auth.or' })}</div>
-                        <button
-                            type="button"
-                            className="google-btn"
-                            onClick={() => googleLogin()}
+                        <GoogleLoginButton
                             disabled={isLoading || isGoogleLoading}
-                            style={{ opacity: isGoogleLoading ? 0.7 : 1 }}
-                        >
-                            <Image
-                                src={googleIcon}
-                                alt={intl.formatMessage({ id: 'auth.googleLogoAlt' })}
-                                width={20}
-                                height={20}
-                            />
-                            {isGoogleLoading
-                                ? intl.formatMessage({ id: 'auth.connecting' })
-                                : intl.formatMessage({ id: 'auth.google' })}
-                        </button>
+                            onSuccess={handleGoogleSuccess}
+                            onError={() => {
+                                toast.error(intl.formatMessage({ id: 'auth.googleAuthFailed' }));
+                            }}
+                        />
                     </form>
                 </div>
             </div>

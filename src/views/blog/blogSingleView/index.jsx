@@ -9,15 +9,19 @@ import { useQuery } from '@tanstack/react-query';
 import { useIntl } from 'react-intl';
 import BlogCard from '@/components/blogCard';
 import BlogSidebar from '@/components/BlogSidebar';
-import Loader from '@/components/Loader';
+import BlogSeoHead from '@/components/BlogSeoHead';
+import { BlogDetailSkeleton } from '@/components/BlogSkeleton';
 import { publicService } from '@/services/publicService';
+import { useBlogLocale } from '@/hooks/useBlogLocale';
+import { pickLocale, blogListPath } from '@/utils/blogLocale';
+import { buildBlogSeo } from '@/utils/blogSeo';
 import './style.scss';
 
-const formatDate = (dateString) => {
+const formatDate = (dateString, locale = 'en') => {
     if (!dateString) return '';
     try {
         const date = new Date(dateString);
-        return date.toLocaleDateString('en-US', {
+        return date.toLocaleDateString(locale === 'en' ? 'en-US' : locale, {
             year: 'numeric',
             month: 'short',
             day: 'numeric',
@@ -27,26 +31,33 @@ const formatDate = (dateString) => {
     }
 };
 
-const BlogSingleView = ({ slug: initialSlug, blog: initialBlog }) => {
+const BlogSingleView = ({ slug: initialSlug, blog: initialBlog, locale: localeProp }) => {
     const intl = useIntl();
+    const locale = useBlogLocale(localeProp);
     const slug = initialSlug || initialBlog?.slug;
     const [copiedLink, setCopiedLink] = useState(false);
+    const [openFaqIndex, setOpenFaqIndex] = useState(0);
 
-    const { data: blog = initialBlog || null, isLoading: loading } = useQuery({
-        queryKey: ['blogs', 'detail', slug],
+    const {
+        data: blog = initialBlog || null,
+        isLoading,
+        isFetching,
+        isPending,
+    } = useQuery({
+        queryKey: ['blogs', 'detail', slug, locale],
         queryFn: async () => {
             if (!slug) return null;
-            const res = await publicService.blogDetail(slug);
+            const res = await publicService.blogDetail({ slug, locale });
             return res?.data || null;
         },
         enabled: Boolean(slug),
     });
 
     const { data: relatedBlogs = [] } = useQuery({
-        queryKey: ['blogs', 'related', blog?.id],
+        queryKey: ['blogs', 'related', blog?.id, locale],
         queryFn: async () => {
             if (!blog?.id) return [];
-            const res = await publicService.recentBlog(blog.id);
+            const res = await publicService.recentBlog({ id: blog.id, locale });
             const list = res?.data;
             if (Array.isArray(list)) {
                 return list.filter((item) => item.id !== blog.id).slice(0, 3);
@@ -59,27 +70,36 @@ const BlogSingleView = ({ slug: initialSlug, blog: initialBlog }) => {
         enabled: Boolean(blog?.id),
     });
 
-    const handleCopyLink = () => {
-        if (typeof window !== 'undefined') {
-            navigator.clipboard.writeText(window.location.href);
+    const showSkeleton = isLoading || isPending || (isFetching && !blog);
+
+    const handleCopyLink = async () => {
+        if (typeof window === 'undefined') return;
+
+        const url = window.location.href;
+
+        try {
+            if (navigator.clipboard?.writeText) {
+                await navigator.clipboard.writeText(url);
+            } else {
+                const textarea = document.createElement('textarea');
+                textarea.value = url;
+                textarea.setAttribute('readonly', '');
+                textarea.style.position = 'fixed';
+                textarea.style.left = '-9999px';
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+            }
             setCopiedLink(true);
             setTimeout(() => setCopiedLink(false), 3000);
+        } catch (err) {
+            console.error('Failed to copy link:', err);
         }
     };
 
-    if (loading) {
-        return (
-            <div
-                style={{
-                    height: '70dvh',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                }}
-            >
-                <Loader text={intl.formatMessage({ id: 'blog.loadingDetails' })} />
-            </div>
-        );
+    if (showSkeleton) {
+        return <BlogDetailSkeleton />;
     }
 
     if (!blog) {
@@ -90,7 +110,7 @@ const BlogSingleView = ({ slug: initialSlug, blog: initialBlog }) => {
                     <p className="text-muted">
                         {intl.formatMessage({ id: 'blog.notFoundDesc' })}
                     </p>
-                    <Link href="/blog" className="btn-primary d-inline-block mt-3">
+                    <Link href={blogListPath(locale)} className="btn-primary d-inline-block mt-3">
                         {intl.formatMessage({ id: 'blog.backToListing' })}
                     </Link>
                 </div>
@@ -98,13 +118,21 @@ const BlogSingleView = ({ slug: initialSlug, blog: initialBlog }) => {
         );
     }
 
+    const seo = buildBlogSeo(blog, locale);
+    const title = seo?.title || pickLocale(blog.title, locale);
+    const excerpt = seo?.excerpt || pickLocale(blog.excerpt, locale);
+    const content = seo?.content || pickLocale(blog.content, locale);
     const imagePath =
+        seo?.imageUrl ||
         blog.image_url ||
         (blog.image?.startsWith('/') ? blog.image : `/images/blog/${blog.image || 'blog1.png'}`);
-    const displayDate = formatDate(blog.published_at || blog.created_at || blog.date);
+    const displayDate = formatDate(blog.published_at || blog.created_at || blog.date, locale);
+    const faqItems = seo?.faqItems || [];
 
     return (
         <div className="blog-single-view">
+            <BlogSeoHead blog={blog} locale={locale} />
+
             {/* Header / Breadcrumb */}
             <div className="blog-single-header">
                 <div className="container">
@@ -112,13 +140,15 @@ const BlogSingleView = ({ slug: initialSlug, blog: initialBlog }) => {
                     <nav className="blog-breadcrumbs">
                         <Link href="/">{intl.formatMessage({ id: 'blog.breadcrumbHome' })}</Link>
                         <FiChevronRight className="separator" />
-                        <Link href="/blog">{intl.formatMessage({ id: 'blog.breadcrumbBlog' })}</Link>
+                        <Link href={blogListPath(locale)}>
+                            {intl.formatMessage({ id: 'blog.breadcrumbBlog' })}
+                        </Link>
                         <FiChevronRight className="separator" />
-                        <span className="current">{blog.title}</span>
+                        <span className="current">{title}</span>
                     </nav>
 
                     <div className="header-article-meta">
-                        <h1 className="single-article-title">{blog.title}</h1>
+                        <h1 className="single-article-title">{title}</h1>
 
                         <div className="article-author-bar justify-content-start">
                             {displayDate && (
@@ -144,22 +174,64 @@ const BlogSingleView = ({ slug: initialSlug, blog: initialBlog }) => {
                                     src={imagePath}
                                     width={800}
                                     height={450}
-                                    alt={blog.title || intl.formatMessage({ id: 'blog.imageAlt' })}
+                                    alt={title || intl.formatMessage({ id: 'blog.imageAlt' })}
                                     className="featured-cover-img"
-                                    unoptimized={!!blog.image_url}
+                                    unoptimized={!!(seo?.imageUrl || blog.image_url)}
                                     priority
                                 />
                             </div>
 
                             {/* Rich Article Body */}
-                            {blog.content ? (
+                            {content ? (
                                 <div
                                     className="article-body-content"
-                                    dangerouslySetInnerHTML={{ __html: blog.content }}
+                                    dangerouslySetInnerHTML={{ __html: content }}
                                 />
                             ) : (
                                 <div className="article-body-content">
-                                    <p>{blog.excerpt}</p>
+                                    <p>{excerpt}</p>
+                                </div>
+                            )}
+
+                            {/* FAQ from schema.faq_items */}
+                            {faqItems.length > 0 && (
+                                <div className="article-faq-section mt-4">
+                                    <h2 className="h4 mb-3">
+                                        {intl.formatMessage({
+                                            id: 'blog.faqTitle',
+                                            defaultMessage: 'Frequently Asked Questions',
+                                        })}
+                                    </h2>
+                                    <div className="blog-faq-list">
+                                        {faqItems.map((item, index) => {
+                                            const isOpen = openFaqIndex === index;
+                                            return (
+                                                <div
+                                                    key={`faq-${index}`}
+                                                    className={`blog-faq-item${isOpen ? ' open' : ''}`}
+                                                >
+                                                    <button
+                                                        type="button"
+                                                        className="blog-faq-question"
+                                                        aria-expanded={isOpen}
+                                                        onClick={() =>
+                                                            setOpenFaqIndex(isOpen ? null : index)
+                                                        }
+                                                    >
+                                                        <span>{item.question}</span>
+                                                        <span className="blog-faq-chevron" aria-hidden>
+                                                            {isOpen ? '−' : '+'}
+                                                        </span>
+                                                    </button>
+                                                    {isOpen && (
+                                                        <div className="blog-faq-answer">
+                                                            <p>{item.answer}</p>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
                                 </div>
                             )}
 
@@ -197,7 +269,7 @@ const BlogSingleView = ({ slug: initialSlug, blog: initialBlog }) => {
                                                     typeof window !== 'undefined'
                                                         ? window.location.href
                                                         : '',
-                                                )}&text=${encodeURIComponent(blog.title)}`,
+                                                )}&text=${encodeURIComponent(title)}`,
                                                 '_blank',
                                             )
                                         }
@@ -236,7 +308,7 @@ const BlogSingleView = ({ slug: initialSlug, blog: initialBlog }) => {
 
                     {/* Sidebar */}
                     <div className="col-lg-4">
-                        <BlogSidebar currentBlogId={blog.id} />
+                        <BlogSidebar currentBlogId={blog.id} locale={locale} />
                     </div>
                 </div>
 

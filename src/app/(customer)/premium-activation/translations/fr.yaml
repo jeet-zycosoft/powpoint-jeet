@@ -29,7 +29,9 @@ premium:
         location: Achetez Active Premium pour cette nouvelle localisation.
         upgrade: Limite mensuelle de pet sitters atteinte. Achetez un autre forfait pour contacter plus de pet sitters.
     coverage: 'Couverture :'
-    coverageDetail: Pet sitters dans un rayon de {radius}m autour de votre localisation
+    coverageDetail: Pet sitters dans un rayon de {radius}m autour de {location}
+    location: 'Localisation :'
+    yourLocationFallback: votre localisation
     connections: 'Connexions :'
     connectionsDetail: Contactez {limit} nouveaux pet sitters par forfait
     intervals:

@@ -1,6 +1,8 @@
 footer:
     citiesHeading: Cities with a wide range of offerings
+    citiesSubtext: Find trusted pet sitters in cities across the UK. Love and care for your pets, wherever you are.
     cityLink: Pet sitting in {city}
+    citiesImageAlt: Happy dog and cat together
     terms: Terms and Conditions
     privacy: Privacy Policy
     copyright: Copyright ©{year} PawPoint. All rights reserved.

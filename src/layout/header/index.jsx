@@ -27,6 +27,7 @@ import ProfileDropdown from '@/components/ProfileDropdown';
 import { Button, Container, Nav, Navbar, Offcanvas } from 'react-bootstrap';
 import logo from '@/../public/logo.webp';
 import { useIntl } from 'react-intl';
+import { blogListPath, normalizeLocale } from '@/utils/blogLocale';
 import baseMessages from './intl.yaml';
 import en from './translations/en.yaml';
 import es from './translations/es.yaml';
@@ -106,7 +107,7 @@ const HeaderInner = () => {
         ? { href: '/owner/listing', labelId: 'header.findOwner', gated: true }
         : { href: '/sitter/listing', labelId: 'header.findSitter', gated: true };
     const sharedNavLinks = [
-        { href: '/blog', labelId: 'header.blog' },
+        { href: blogListPath(normalizeLocale(intl.locale)), labelId: 'header.blog' },
         { href: '/contact', labelId: 'header.support' },
     ];
     const navLinks = isLoggedIn
@@ -144,6 +145,7 @@ const HeaderInner = () => {
         pathname.startsWith('/customer/listing') ||
         isFooterCityPath(pathname) ||
         pathname.startsWith('/blog') ||
+        /^\/(en|es|fr)\/blog(\/|$)/.test(pathname) ||
         pathname.startsWith('/contact') ||
         pathname === '/sitter' ||
         pathname.startsWith('/worker-details') ||

@@ -25,6 +25,7 @@ auth:
     connecting: Conectando...
     googleProfileFailed: No se pudo obtener el perfil de Google.
     googleAuthFailed: Error en la autorización de Google.
+    googleChooseRoleDesc: Elige Dueño o Cuidador primero, luego continúa con Google.
     firstNameRequired: El nombre es obligatorio.
     lastNameRequired: El apellido es obligatorio.
     emailRequired: El correo electrónico es obligatorio.

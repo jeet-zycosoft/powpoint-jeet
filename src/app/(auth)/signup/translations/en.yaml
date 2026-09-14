@@ -25,6 +25,7 @@ auth:
     connecting: Connecting...
     googleProfileFailed: Failed to fetch user profile from Google.
     googleAuthFailed: Google authorization failed.
+    googleChooseRoleDesc: Choose Owner or Sitter first, then continue with Google.
     firstNameRequired: First name is required.
     lastNameRequired: Last name is required.
     emailRequired: Email is required.

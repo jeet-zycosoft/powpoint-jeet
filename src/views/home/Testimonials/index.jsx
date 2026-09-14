@@ -1,43 +1,38 @@
 'use client';
 import TestimonialCard from '@/components/TestimonialCard';
-import './style.scss';
-
+import { FormattedMessage, useIntl } from 'react-intl';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import './style.scss';
 
 const testimonials = [
     {
         name: 'Emma',
         location: 'Brighton',
-        companyName: 'feedback company',
-        rating: 3.8,
+        rating: 5,
         feedback:
-            'D Our sitter was amazing - daily updates, photos, and a very happy dog when we got home!',
+            'Our sitter was amazing – daily updates, photos, and a very happy dog when we got home!',
         image: '40?img=1',
     },
     {
-        name: 'Emma',
-        location: 'Brighton',
-        companyName: 'feedback company',
-        rating: 3.8,
+        name: 'James',
+        location: 'London',
+        rating: 5,
         feedback:
-            'D Our sitter was amazing - daily updates, photos, and a very happy dog when we got home!',
-        image: '40?img=1',
+            'Booking was simple and our cat was so well cared for. We already booked the same sitter again.',
+        image: '40?img=5',
     },
     {
-        name: 'Emma',
-        location: 'Brighton',
-        companyName: 'feedback company',
-        rating: 3.8,
+        name: 'Sofia',
+        location: 'Manchester',
+        rating: 5,
         feedback:
-            'D Our sitter was amazing - daily updates, photos, and a very happy dog when we got home!',
-        image: '40?img=1',
+            'Clear communication, trusted sitters, and real peace of mind while we were away. Highly recommend PawPoint.',
+        image: '40?img=9',
     },
 ];
-
-import { FormattedMessage, useIntl } from 'react-intl';
 
 const arrowBtn = (
     <svg
@@ -59,9 +54,9 @@ const Testimonials = () => {
     const intl = useIntl();
 
     return (
-        <section className="testimonials">
+        <section className="home-testimonials" aria-labelledby="home-testimonials-heading">
             <div className="container">
-                <h2 className="section-heading">
+                <h2 id="home-testimonials-heading" className="section-heading">
                     <FormattedMessage
                         id="home.testimonials.heading"
                         values={{ span: (chunks) => <span>{chunks}</span> }}
@@ -74,12 +69,12 @@ const Testimonials = () => {
                     <Swiper
                         modules={[Navigation]}
                         navigation={{
-                            prevEl: '.ts1',
-                            nextEl: '.ts2',
+                            prevEl: '.home-testimonials .ts1',
+                            nextEl: '.home-testimonials .ts2',
                         }}
                         spaceBetween={30}
                         slidesPerView={2}
-                        loop={true}
+                        loop={testimonials.length > 2}
                         breakpoints={{
                             320: {
                                 slidesPerView: 1,
@@ -96,7 +91,7 @@ const Testimonials = () => {
                         }}
                     >
                         {testimonials.map((testimonial, index) => (
-                            <SwiperSlide key={index}>
+                            <SwiperSlide key={`${testimonial.name}-${index}`}>
                                 <TestimonialCard data={testimonial} />
                             </SwiperSlide>
                         ))}

@@ -1,68 +1,72 @@
 'use client';
 
 import './TestimonialCard.scss';
+import { useId } from 'react';
 import { useIntl } from 'react-intl';
 
 const StarRating = ({ rating = 0 }) => {
-    // SVG total width = 100, 5 stars → each star = 20px
-    const offset = Math.max(0, Math.min(rating * 20, 100)); // clamp 0–100
+    const gradientId = useId().replace(/:/g, '');
+    const starId = `star-${gradientId}`;
+    const offset = Math.max(0, Math.min(Number(rating) * 20, 100));
 
     return (
-        <svg width="100" height="20" viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            width="100"
+            height="20"
+            viewBox="0 0 100 20"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden
+        >
             <defs>
                 <linearGradient
-                    id="starGradient"
+                    id={gradientId}
                     x1="0"
                     y1="0"
                     x2="100%"
-                    y2="100%"
+                    y2="0"
                     gradientUnits="userSpaceOnUse"
                 >
-                    {/* <linearGradient id='starGradient'> */}
                     <stop offset={`${offset}%`} stopColor="#ffc107" />
-                    <stop offset={`${offset}%`} stopColor="#fff" />
+                    <stop offset={`${offset}%`} stopColor="#e5e5e5" />
                 </linearGradient>
 
-                <symbol id="star" viewBox="0 0 20 20">
+                <symbol id={starId} viewBox="0 0 20 20">
                     <polygon
                         points="8.94 0 11.05 6.49 17.88 6.49 12.35 10.51 14.46 17 8.94 12.99 3.41 17 5.52 10.51 0 6.49 6.83 6.49"
                         stroke="#ffc107"
                     />
                 </symbol>
             </defs>
-            <g fill="url(#starGradient)">
-                <use href="#star" x={'-40'} />
-                <use href="#star" x={'-20'} />
-                <use href="#star" x={'0'} />
-                <use href="#star" x={'20'} />
-                <use href="#star" x={'40'} />
-                {/* <use href='#star' x={'60'} /> */}
-                {/* <use href='#star' x={'80'} /> */}
+            <g fill={`url(#${gradientId})`}>
+                <use href={`#${starId}`} x={'-40'} />
+                <use href={`#${starId}`} x={'-20'} />
+                <use href={`#${starId}`} x={'0'} />
+                <use href={`#${starId}`} x={'20'} />
+                <use href={`#${starId}`} x={'40'} />
             </g>
         </svg>
     );
 };
 
-const TestimonialCard = ({ data, index }) => {
+const TestimonialCard = ({ data }) => {
     const intl = useIntl();
+    if (!data) return null;
+
     const altText =
         data.name && data.location
             ? `${data.name}, ${data.location}`
             : data.name || data.location || intl.formatMessage({ id: 'common.user' });
+    const rating = Number(data.rating) || 0;
 
     return (
-        <div className="testimonial-card" key={index}>
+        <article className="testimonial-card">
             <div className="testimonial-card-header">
-                <span className="testimonial-card-quote">“</span>
-                <div className="">
-                    <span>{data.companyName}</span>
-                </div>
-
+                <span className="testimonial-card-quote" aria-hidden>
+                    “
+                </span>
                 <div className="testimonial-card-rating">
-                    <div>
-                        <StarRating rating={1} />
-                    </div>
-                    <div> {data.rating}/5</div>
+                    <StarRating rating={rating} />
+                    <span className="testimonial-card-rating-value">{rating}/5</span>
                 </div>
             </div>
             <p className="testimonial-card-body">{data.feedback}</p>
@@ -72,7 +76,7 @@ const TestimonialCard = ({ data, index }) => {
                     - {data.name}, {data.location}
                 </span>
             </div>
-        </div>
+        </article>
     );
 };
 
