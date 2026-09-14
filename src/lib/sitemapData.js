@@ -3,9 +3,6 @@ import FOOTER_LOCATIONS, { toCitySlug } from '@/data/footerLocations';
 import { BLOG_LOCALES, blogListPath, blogPostPath } from '@/utils/blogLocale';
 import { absoluteUrl } from '@/utils/siteUrl';
 
-/** Rebuild sitemap periodically so new blog posts / cities appear automatically. */
-export const revalidate = 3600;
-
 const STATIC_PATHS = [
     { path: '/', changeFrequency: 'weekly', priority: 1 },
     { path: '/sitter', changeFrequency: 'weekly', priority: 0.8 },
@@ -18,14 +15,28 @@ const STATIC_PATHS = [
     { path: '/terms-and-conditions', changeFrequency: 'yearly', priority: 0.3 },
 ];
 
+const BLOG_FETCH_TIMEOUT_MS = 8000;
+
+function withTimeout(promise, ms, label) {
+    let timer;
+    const timeout = new Promise((_, reject) => {
+        timer = setTimeout(() => reject(new Error(`${label} timed out after ${ms}ms`)), ms);
+    });
+    return Promise.race([promise, timeout]).finally(() => clearTimeout(timer));
+}
+
 async function fetchBlogsForLocale(locale) {
     try {
-        const res = await publicService.blogs({ locale, per_page: 100, page: 1 });
+        const res = await withTimeout(
+            publicService.blogs({ locale, per_page: 100, page: 1 }),
+            BLOG_FETCH_TIMEOUT_MS,
+            `Sitemap blogs (${locale})`,
+        );
         if (Array.isArray(res?.data)) return res.data;
         if (Array.isArray(res?.data?.data)) return res.data.data;
         return [];
     } catch (err) {
-        console.error(`Sitemap: failed to load blogs for ${locale}`, err);
+        console.error(`Sitemap: failed to load blogs for ${locale}`, err?.message || err);
         return [];
     }
 }

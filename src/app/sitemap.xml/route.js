@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { buildSitemapEntries, renderSitemapXml } from '@/lib/sitemapData';
 
+// Always generate at request time so `next build` does not wait on the blogs API.
+export const dynamic = 'force-dynamic';
 export const revalidate = 3600;
 
 export async function GET() {
