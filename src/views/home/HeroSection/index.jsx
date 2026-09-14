@@ -10,24 +10,26 @@ const HeroSection = ({ sectionData, showSearch = false }) => {
 
     return (
         <section className={`hero-section ${showSearch ? 'hero-section--with-search' : ''}`}>
-            <Image
-                src={sectionData?.bannerImgLink || ''}
-                alt="banner image"
-                className="hero-bg-image desktop"
-                loading="eager"
-                width={2000}
-                height={2000}
-            />
-            {sectionData?.bannerMobImgLink && (
+            <div className="hero-section__media" aria-hidden>
                 <Image
-                    src={sectionData?.bannerMobImgLink}
-                    alt="banner image mobile"
-                    className="hero-bg-image mobile"
+                    src={sectionData?.bannerImgLink || ''}
+                    alt=""
+                    className="hero-bg-image desktop"
                     loading="eager"
-                    width={1000}
-                    height={1000}
+                    width={2000}
+                    height={2000}
                 />
-            )}
+                {sectionData?.bannerMobImgLink && (
+                    <Image
+                        src={sectionData?.bannerMobImgLink}
+                        alt=""
+                        className="hero-bg-image mobile"
+                        loading="eager"
+                        width={1000}
+                        height={1000}
+                    />
+                )}
+            </div>
             <div className="container hero-section__inner">
                 <div
                     className={`hero-section__content ${showSearch ? 'col-lg-7 col-md-9' : 'col-md-6'}`}

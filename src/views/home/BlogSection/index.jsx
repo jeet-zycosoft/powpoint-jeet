@@ -1,7 +1,8 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import BlogCard from '@/components/blogCard';
 import { publicService } from '@/services/publicService';
+import { normalizeLocale } from '@/utils/blogLocale';
 import { FormattedMessage, useIntl } from 'react-intl';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -27,28 +28,38 @@ const arrowBtn = (
 
 const BlogSection = () => {
     const intl = useIntl();
+    const locale = normalizeLocale(intl.locale);
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        let cancelled = false;
+
         const fetchBlogs = async () => {
             try {
                 setLoading(true);
-                const res = await publicService.blogs();
+                const res = await publicService.blogs({ locale, per_page: 10, page: 1 });
+                if (cancelled) return;
                 if (res?.data && Array.isArray(res.data)) {
                     setBlogs(res.data);
                 } else if (res?.status && Array.isArray(res?.data?.data)) {
                     setBlogs(res.data.data);
+                } else {
+                    setBlogs([]);
                 }
             } catch (err) {
                 console.error('Error fetching home blogs:', err);
+                if (!cancelled) setBlogs([]);
             } finally {
-                setLoading(false);
+                if (!cancelled) setLoading(false);
             }
         };
 
         fetchBlogs();
-    }, []);
+        return () => {
+            cancelled = true;
+        };
+    }, [locale]);
 
     if (!loading && blogs.length === 0) {
         return null;

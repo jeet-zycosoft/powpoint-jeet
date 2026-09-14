@@ -335,5 +335,59 @@
             color: map.get(var.$colors, "heading");
         }
     }
+
+    .article-faq-section {
+        border-top: 1px solid #e8e4dc;
+        padding-top: 1.5rem;
+
+        .blog-faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .blog-faq-item {
+            background: #f8f6f1;
+            border-radius: 10px;
+            overflow: hidden;
+
+            &.open {
+                .blog-faq-question {
+                    color: map.get(var.$colors, "primary");
+                }
+            }
+        }
+
+        .blog-faq-question {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.9rem 1.1rem;
+            border: 0;
+            background: transparent;
+            text-align: left;
+            font-weight: 700;
+            color: map.get(var.$colors, "heading");
+            cursor: pointer;
+        }
+
+        .blog-faq-chevron {
+            flex-shrink: 0;
+            font-size: 1.25rem;
+            line-height: 1;
+        }
+
+        .blog-faq-answer {
+            padding: 0 1.1rem 1rem;
+            color: map.get(var.$colors, "text");
+            line-height: 1.6;
+
+            p {
+                margin: 0;
+            }
+        }
+    }
 }
 

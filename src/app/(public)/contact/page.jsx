@@ -1,7 +1,7 @@
 import ContactSection from '@/views/common/ContactSection';
 import LocalIntlProvider from '@/app/LocalIntlProvider';
+import { publicPageMetadata } from '@/utils/pageSeo';
 
-// Language translations
 import baseMessages from './intl.yaml';
 import en from './translations/en.yaml';
 import es from './translations/es.yaml';
@@ -14,10 +14,13 @@ const messages = {
     fr: { ...baseMessages?.fr, ...fr },
 };
 
-export const metadata = {
+export const revalidate = 3600;
+
+export const metadata = publicPageMetadata({
     title: 'Contact Us | PawPoint',
     description: 'Get in touch with PawPoint for any questions, support, or account changes.',
-};
+    path: '/contact',
+});
 
 export default function ContactPage() {
     return (

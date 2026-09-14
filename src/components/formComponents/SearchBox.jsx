@@ -191,9 +191,15 @@ const SearchBox = ({
                 />
 
                 <button
+                    type="button"
                     className="search-button"
                     aria-label={intl.formatMessage({ id: 'searchBox.submitAria' })}
-                    onClick={handleSearch}
+                    onMouseDown={(e) => e.stopPropagation()}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        handleSearch();
+                    }}
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -226,7 +232,16 @@ const SearchBox = ({
                                 <li
                                     key={`${item.place_id || item.osm_id || item.lat}-${index}`}
                                     className={`suggestion-item ${index === activeIndex ? 'active' : ''}`}
-                                    onClick={() => handleSelectLocation(item)}
+                                    onMouseDown={(e) => {
+                                        // Keep focus in the field and avoid Offcanvas backdrop dismiss.
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                    }}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        handleSelectLocation(item);
+                                    }}
                                     onMouseEnter={() => setActiveIndex(index)}
                                 >
                                     <div className="suggestion-icon-wrapper">

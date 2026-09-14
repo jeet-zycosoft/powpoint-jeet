@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './Select.scss';
 
 const DownArrow = () => (
@@ -14,6 +14,7 @@ const DownArrow = () => (
 const Select = ({ SelectData, value, onChange }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [internalSelected, setInternalSelected] = useState(SelectData.options[0]);
+    const containerRef = useRef(null);
 
     const isObjectOptions =
         SelectData.options.length > 0 && typeof SelectData.options[0] === 'object';
@@ -33,6 +34,29 @@ const Select = ({ SelectData, value, onChange }) => {
                 : SelectData.placeholder || internalSelected;
     }
 
+    useEffect(() => {
+        if (!isOpen) return undefined;
+
+        const handleClickOutside = (event) => {
+            if (containerRef.current && !containerRef.current.contains(event.target)) {
+                setIsOpen(false);
+            }
+        };
+
+        const handleEscape = (event) => {
+            if (event.key === 'Escape') {
+                setIsOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener('keydown', handleEscape);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener('keydown', handleEscape);
+        };
+    }, [isOpen]);
+
     const handleSelect = (option) => {
         if (onChange) {
             onChange(isObjectOptions ? option.value : option);
@@ -43,9 +67,19 @@ const Select = ({ SelectData, value, onChange }) => {
     };
 
     return (
-        <div className="form-group custom-select-container">
+        <div
+            className={`form-group custom-select-container${isOpen ? ' is-open' : ''}`}
+            ref={containerRef}
+        >
             {SelectData.label && <label htmlFor={SelectData.id}>{SelectData.label}</label>}
-            <div className="select-trigger" onClick={() => setIsOpen(!isOpen)}>
+            <div
+                className="select-trigger"
+                onClick={() => setIsOpen(!isOpen)}
+                role="combobox"
+                aria-expanded={isOpen}
+                aria-controls={SelectData.id ? `${SelectData.id}-listbox` : undefined}
+                aria-haspopup="listbox"
+            >
                 {selectedDisplay}
                 <span className={`arrow ${isOpen ? 'open' : ''}`}>
                     <DownArrow />
@@ -53,9 +87,13 @@ const Select = ({ SelectData, value, onChange }) => {
             </div>
 
             {isOpen && (
-                <ul className="options-list">
+                <ul
+                    className="options-list"
+                    id={SelectData.id ? `${SelectData.id}-listbox` : undefined}
+                    role="listbox"
+                >
                     {SelectData.options.map((option, index) => (
-                        <li key={index} onClick={() => handleSelect(option)}>
+                        <li key={index} role="option" onClick={() => handleSelect(option)}>
                             {isObjectOptions ? option.label : option}
                         </li>
                     ))}

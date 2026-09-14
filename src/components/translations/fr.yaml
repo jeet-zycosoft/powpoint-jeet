@@ -145,6 +145,15 @@ blogSidebar:
     tags: Tags
     search: Rechercher
     noPosts: Aucun article récent
+    newsletterTitle: Newsletter soins pour animaux
+    newsletterDesc: Recevez des conseils d'experts, des guides nutritionnels et des actus pet-sitters.
+    newsletterPlaceholder: Votre adresse e-mail
+    newsletterButton: S'abonner maintenant
+    newsletterSubmitting: Abonnement...
+    newsletterSuccess: Abonnement réussi !
+    newsletterAlready: Vous êtes déjà abonné.
+    newsletterInvalidEmail: Veuillez saisir une adresse e-mail valide.
+    newsletterError: Une erreur s'est produite. Réessayez.
 authLogo:
     homeAria: Accueil PawPoint
     logoAlt: Logo PawPoint

@@ -19,7 +19,7 @@ const getAuthToken = () => {
     if (typeof window === 'undefined') return null;
 
     const now = Date.now() / 1000;
-    const storageToken = localStorage.getItem('token');
+    const storageToken = localStorage.getItem('token') || localStorage.getItem('access_token');
 
     // Always prefer localStorage. If it was cleared (logout) or rotated (new login),
     // drop the in-memory cache so we never keep serving the previous user's JWT.
@@ -69,6 +69,7 @@ const isPublicPath = (pathname = '') => {
         pathname.startsWith('/customer/listing') ||
         isFooterCityPath(pathname) ||
         pathname.startsWith('/blog') ||
+        /^\/(en|es|fr)\/blog(\/|$)/.test(pathname) ||
         pathname.startsWith('/contact') ||
         pathname === '/sitter' ||
         pathname.startsWith('/worker-details') ||

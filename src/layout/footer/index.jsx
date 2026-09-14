@@ -9,6 +9,7 @@ import { usePathname } from 'next/navigation';
 import { useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
 import {
+    FaChevronRight,
     FaEnvelope,
     FaFacebookF,
     FaInstagram,
@@ -119,27 +120,63 @@ const FooterInner = () => {
             {!isSitter && (
                 <section className="footer-cities">
                     <div className="container">
-                        <h2 className="footer-cities__heading">
-                            {intl.formatMessage({ id: 'footer.citiesHeading' })}
-                        </h2>
-                        <div className="footer-cities__grid">
-                            {FOOTER_LOCATIONS.map((location) => {
-                                const cityPath = getFooterCityPath(location);
-                                const isActive = activeCitySlug === toCitySlug(location.name);
-                                return (
-                                    <Link
-                                        key={location.query}
-                                        href={cityPath}
-                                        className={`footer-cities__link${isActive ? ' is-active' : ''}`}
-                                        aria-current={isActive ? 'page' : undefined}
-                                    >
-                                        {intl.formatMessage(
-                                            { id: 'footer.cityLink' },
-                                            { city: location.name },
-                                        )}
-                                    </Link>
-                                );
-                            })}
+                        <div className="footer-cities__panel">
+                            <div className="footer-cities__media" aria-hidden>
+                                <Image
+                                    src="/images/footer-image-new.png"
+                                    alt=""
+                                    fill
+                                    className="footer-cities__media-img footer-cities__media-img--desktop"
+                                    sizes="(max-width: 991px) 0px, 1200px"
+                                    priority={false}
+                                />
+                                <Image
+                                    src="/images/footer-mobile-image.png"
+                                    alt=""
+                                    fill
+                                    className="footer-cities__media-img footer-cities__media-img--mobile"
+                                    sizes="(max-width: 991px) 100vw, 0px"
+                                    priority={false}
+                                />
+                            </div>
+
+                            <div className="footer-cities__body">
+                                <div className="footer-cities__intro">
+                                    <h2 className="footer-cities__heading">
+                                        {intl.formatMessage({ id: 'footer.citiesHeading' })}
+                                    </h2>
+                                    <p className="footer-cities__subtext">
+                                        {intl.formatMessage({ id: 'footer.citiesSubtext' })}
+                                    </p>
+                                </div>
+
+                                <div className="footer-cities__grid">
+                                    {FOOTER_LOCATIONS.map((location) => {
+                                        const cityPath = getFooterCityPath(location);
+                                        const isActive =
+                                            activeCitySlug === toCitySlug(location.name);
+                                        return (
+                                            <Link
+                                                key={location.query}
+                                                href={cityPath}
+                                                className={`footer-cities__link${isActive ? ' is-active' : ''}`}
+                                                aria-current={isActive ? 'page' : undefined}
+                                            >
+                                                <span className="footer-cities__link-text">
+                                                    {intl.formatMessage(
+                                                        { id: 'footer.cityLink' },
+                                                        { city: location.name },
+                                                    )}
+                                                </span>
+                                                <FaChevronRight
+                                                    className="footer-cities__link-chevron"
+                                                    aria-hidden
+                                                />
+                                            </Link>
+                                        );
+                                    })}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>

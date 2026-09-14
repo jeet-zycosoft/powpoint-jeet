@@ -13,10 +13,11 @@ export const LanguageContext = createContext();
 export const useLanguage = () => useContext(LanguageContext);
 
 export const GlobalLanguageProvider = ({ children }) => {
-    // Read immediately on client mount (I18nProvider only renders after hydration),
-    // so navigating between pages keeps the saved language without flashing to English.
+    // Prefer cookie (set by middleware / language switch), then localStorage.
     const [locale, setLocale] = useState(() => {
         if (typeof window === 'undefined') return 'en';
+        const cookieMatch = document.cookie.match(/(?:^|;\s*)language=(en|es|fr)(?:;|$)/);
+        if (cookieMatch?.[1]) return cookieMatch[1];
         const saved = window.localStorage.getItem('language');
         return saved === 'en' || saved === 'es' || saved === 'fr' ? saved : 'en';
     });
@@ -29,11 +30,18 @@ export const GlobalLanguageProvider = ({ children }) => {
         if (newLocale !== 'en' && newLocale !== 'es' && newLocale !== 'fr') return;
         setLocale(newLocale);
         window.localStorage.setItem('language', newLocale);
+        document.cookie = `language=${newLocale};path=/;max-age=31536000;SameSite=Lax`;
         document.documentElement.lang = newLocale;
     };
 
+    // Keep cookie in sync
+    useEffect(() => {
+        document.cookie = `language=${locale};path=/;max-age=31536000;SameSite=Lax`;
+        window.localStorage.setItem('language', locale);
+    }, [locale]);
+
     return (
-        <LanguageContext.Provider value={{ locale, changeLanguage }}>
+        <LanguageContext.Provider value={{ locale, changeLanguage, setLocale }}>
             {children}
         </LanguageContext.Provider>
     );

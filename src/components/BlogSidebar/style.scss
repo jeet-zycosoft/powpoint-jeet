@@ -236,9 +236,26 @@
                     cursor: pointer;
                     transition: background-color 0.25s ease;
 
-                    &:hover {
+                    &:hover:not(:disabled) {
                         background-color: #e5a156;
                     }
+
+                    &:disabled {
+                        opacity: 0.7;
+                        cursor: not-allowed;
+                    }
+                }
+
+                .newsletter-error {
+                    margin: 0;
+                    padding: 8px 12px;
+                    border-radius: 12px;
+                    background-color: rgba(220, 53, 69, 0.18);
+                    color: #fecaca;
+                    font-size: 0.82rem;
+                    font-weight: 500;
+                    text-align: left;
+                    line-height: 1.35;
                 }
             }
 
@@ -280,6 +297,40 @@
                     border-color: map.get(var.$colors, "secondary");
                 }
             }
+        }
+    }
+}
+
+.blog-sidebar-skeleton {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    &__row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    &__thumb {
+        width: 70px;
+        height: 70px;
+        border-radius: 10px;
+        flex-shrink: 0;
+    }
+
+    &__meta {
+        flex: 1;
+    }
+
+    &__line {
+        height: 12px;
+        border-radius: 6px;
+        margin-bottom: 8px;
+
+        &--sm {
+            width: 90px;
+            height: 10px;
         }
     }
 }

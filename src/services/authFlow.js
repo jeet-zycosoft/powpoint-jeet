@@ -26,10 +26,32 @@ export function saveAuthTokens(payload) {
     if (typeof window === 'undefined' || !token) return null;
 
     localStorage.setItem('token', token);
+    localStorage.setItem('access_token', token);
     if (payload.refresh_token) {
         localStorage.setItem('refresh_token', payload.refresh_token);
     }
+    if (payload.user) {
+        localStorage.setItem('user', JSON.stringify(payload.user));
+    }
     return token;
+}
+
+export function isAuthRejected(response) {
+    return response?.status === false;
+}
+
+export function isGoogleUserMissing(error, response) {
+    const data = error?.response?.data || response || {};
+    const statusCode = error?.response?.status;
+    const message = String(data?.message || data?.error || '').toLowerCase();
+    return (
+        statusCode === 404 ||
+        message.includes('not found') ||
+        message.includes('not registered') ||
+        message.includes('no account') ||
+        message.includes('does not exist') ||
+        message.includes('unknown user')
+    );
 }
 
 export function storeEmailVerificationSession(response) {

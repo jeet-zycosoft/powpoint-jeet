@@ -29,10 +29,8 @@ home:
             title: Enjoy Peace of Mind
             desc: Your sitter sends daily updates, photos, and tails wag.
     testimonials:
-        heading: What Our <span>Client</span> Say's
-        desc: Contrary to popular belief, Lorem Ipsum is not simply random text. It has
-            roots in a piece of classical Latin literature from 45 BC, making it
-            over 2000 years old.
+        heading: What Our <span>Clients</span> Say
+        desc: Real stories from pet owners who found trusted sitters through PawPoint.
     about:
         heading: We're More {br} Than <span>Just Sitters</span>
         p1: Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. {br}{br} Richard McClintock, a Latin professor at Hampden obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in source.{br}{br} Lorem Ipsum comes from sections 1.1032 and 1.10.33 of de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory Of ethics, very popular during the Renaissance.

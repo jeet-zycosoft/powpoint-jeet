@@ -3,13 +3,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FiCalendar, FiArrowRight } from 'react-icons/fi';
 import { useIntl } from 'react-intl';
+import { useBlogLocale } from '@/hooks/useBlogLocale';
+import { pickLocale, blogListPath, blogPostPath } from '@/utils/blogLocale';
 import './style.scss';
 
-const formatDate = (dateString) => {
+const formatDate = (dateString, locale = 'en') => {
     if (!dateString) return '';
     try {
         const date = new Date(dateString);
-        return date.toLocaleDateString('en-US', {
+        return date.toLocaleDateString(locale === 'en' ? 'en-US' : locale, {
             year: 'numeric',
             month: 'short',
             day: 'numeric',
@@ -21,13 +23,16 @@ const formatDate = (dateString) => {
 
 const BlogCard = ({ blog }) => {
     const intl = useIntl();
+    const locale = useBlogLocale();
     if (!blog) return null;
 
-    const blogUrl = blog.slug ? `/blog/${blog.slug}` : '/blog';
+    const title = pickLocale(blog.title, locale);
+    const excerpt = pickLocale(blog.excerpt, locale);
+    const blogUrl = blog.slug ? blogPostPath(locale, blog.slug) : blogListPath(locale);
     const imagePath =
         blog.image_url ||
         (blog.image?.startsWith('/') ? blog.image : `/images/blog/${blog.image || 'blog1.png'}`);
-    const displayDate = formatDate(blog.published_at || blog.created_at || blog.date);
+    const displayDate = formatDate(blog.published_at || blog.created_at || blog.date, locale);
 
     return (
         <div className="blog-card">
@@ -37,7 +42,7 @@ const BlogCard = ({ blog }) => {
                         src={imagePath}
                         width={400}
                         height={250}
-                        alt={blog.title || intl.formatMessage({ id: 'common.blogPost' })}
+                        alt={title || intl.formatMessage({ id: 'common.blogPost' })}
                         className="blog-card__img"
                         unoptimized={!!blog.image_url}
                     />
@@ -54,10 +59,10 @@ const BlogCard = ({ blog }) => {
                 </div>
 
                 <h3 className="blog-card__title">
-                    <Link href={blogUrl}>{blog.title}</Link>
+                    <Link href={blogUrl}>{title}</Link>
                 </h3>
 
-                {blog.excerpt && <p className="blog-card__excerpt">{blog.excerpt}</p>}
+                {excerpt && <p className="blog-card__excerpt">{excerpt}</p>}
 
                 <div className="blog-card__footer">
                     <Link href={blogUrl} className="blog-card__read-more">

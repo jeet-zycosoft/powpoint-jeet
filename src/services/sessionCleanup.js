@@ -1,7 +1,7 @@
 import { clearAuthTokenCache } from '@/services/authTokenCache';
 
 // Keep in sync with authFlow.js VERIFY_* keys (avoid importing authFlow — circular risk).
-const AUTH_LOCAL_KEYS = ['token', 'refresh_token', 'reduxState'];
+const AUTH_LOCAL_KEYS = ['token', 'access_token', 'refresh_token', 'user', 'reduxState'];
 const AUTH_SESSION_KEYS = ['verify_email', 'verify_token', 'verify_pending_login'];
 const CHAT_KEY_PREFIXES = ['pawpoint.chat.myPersonId.'];
 const CHAT_EXACT_KEYS = ['pawpoint.chat.lastRead'];

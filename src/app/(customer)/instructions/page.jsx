@@ -1,6 +1,7 @@
 import InstructionsSection from '@/views/common/InstructionsSection';
 
 import LocalIntlProvider from '@/app/LocalIntlProvider';
+import { publicPageMetadata } from '@/utils/pageSeo';
 import baseMessages from './intl.yaml';
 import en from './translations/en.yaml';
 import es from './translations/es.yaml';
@@ -13,7 +14,15 @@ const messages = {
     fr: { ...baseMessages?.fr, ...fr },
 };
 
-const InstructionsPage = () => {
+export const revalidate = 3600;
+
+export const metadata = publicPageMetadata({
+    title: 'How PawPoint Works | Instructions',
+    description: 'Learn how to use PawPoint to find pet sitters, book care, and manage your account.',
+    path: '/instructions',
+});
+
+export default function InstructionsPage() {
     return (
         <LocalIntlProvider messages={messages}>
             <div
@@ -28,6 +37,4 @@ const InstructionsPage = () => {
             </div>
         </LocalIntlProvider>
     );
-};
-
-export default InstructionsPage;
+}

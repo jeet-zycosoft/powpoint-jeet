@@ -45,7 +45,7 @@ function PremiumActivationInner() {
     const intl = useIntl();
     const t = (key, values) => intl.formatMessage({ id: key }, values);
     const router = useRouter();
-    const { isAuthenticated, userInfo } = useSelector(selectUser);
+    const { isAuthenticated, userInfo, serviceDetails } = useSelector(selectUser);
 
     const [plan, setPlan] = useState(null);
     const [paymentConfig, setPaymentConfig] = useState(null);
@@ -306,6 +306,14 @@ function PremiumActivationInner() {
         }
     };
 
+    const locationName =
+        userInfo?.address ||
+        serviceDetails?.address ||
+        [userInfo?.city || serviceDetails?.city, userInfo?.country || serviceDetails?.country]
+            .filter(Boolean)
+            .join(', ') ||
+        t('premium.yourLocationFallback');
+
     return (
         <div className="premium-page-wrapper">
             <div className="premium-card">
@@ -321,9 +329,13 @@ function PremiumActivationInner() {
                 {paymentConfig && (
                     <div className="config-info">
                         <p>
+                            <strong>{t('premium.location')}</strong> {locationName}
+                        </p>
+                        <p>
                             <strong>{t('premium.coverage')}</strong>{' '}
                             {t('premium.coverageDetail', {
                                 radius: paymentConfig.chat_subscription_radius || 1000,
+                                location: locationName,
                             })}
                         </p>
                         <p>

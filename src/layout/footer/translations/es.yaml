@@ -1,6 +1,8 @@
 footer:
     citiesHeading: Ciudades con una amplia oferta
+    citiesSubtext: Encuentra cuidadores de confianza en ciudades de todo el Reino Unido. Amor y cuidado para tus mascotas, estés donde estés.
     cityLink: Cuidado de mascotas en {city}
+    citiesImageAlt: Perro y gato felices juntos
     terms: Términos y Condiciones
     privacy: Política de Privacidad
     copyright: Copyright ©{year} PawPoint. Todos los derechos reservados.

@@ -296,9 +296,37 @@
 
     .offcanvas-body {
         padding: 1.5rem;
+        overflow-x: hidden;
+        overflow-y: auto;
 
         .filters {
             width: 100% !important;
+        }
+
+        // Keep address suggestions inside the panel so taps don't hit the backdrop
+        // and accidentally close Filters.
+        .address-search {
+            position: relative;
+            z-index: 5;
+
+            .search-box {
+                z-index: 5;
+                margin: 0;
+            }
+
+            .suggestions-dropdown {
+                position: relative;
+                top: auto;
+                left: auto;
+                right: auto;
+                margin-top: 0.5rem;
+                z-index: 1;
+                max-height: none;
+
+                .suggestions-list {
+                    max-height: 220px;
+                }
+            }
         }
     }
 }

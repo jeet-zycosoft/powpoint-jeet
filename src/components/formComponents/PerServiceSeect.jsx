@@ -22,7 +22,7 @@ const PetServiceSelect = ({
     const [localService, setLocalService] = useState('Dog Boarding');
     const [localPetType, setLocalPetType] = useState('Dog');
     const [localDogSize, setLocalDogSize] = useState('16-40');
-    const [localRate, setLocalRate] = useState(50);
+    const [localRate, setLocalRate] = useState(250);
 
     const isControlled = serviceType !== undefined;
 
@@ -45,7 +45,7 @@ const PetServiceSelect = ({
     const currentService = isControlled ? getUiServiceFromPayload(serviceType) : localService;
     const currentPetType = isControlled ? getUiPetTypeFromPayload(petTypes) : localPetType;
     const currentDogSize = isControlled ? dogSize : localDogSize;
-    const currentMaxPrice = isControlled ? (maxPrice ?? 50) : localRate;
+    const currentMaxPrice = isControlled ? (maxPrice ?? 250) : localRate;
 
     const handleServiceChange = (val) => {
         if (isControlled) {
