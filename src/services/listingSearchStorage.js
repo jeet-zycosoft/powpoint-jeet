@@ -24,6 +24,7 @@ export const toServiceType = (label) => ({
 });
 
 const toFiniteNumber = (value) => {
+    if (value === '' || value === null || value === undefined) return null;
     const parsed = Number(value);
     return Number.isFinite(parsed) ? parsed : null;
 };

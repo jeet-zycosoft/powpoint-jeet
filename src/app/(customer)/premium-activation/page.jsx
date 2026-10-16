@@ -73,8 +73,8 @@ function PremiumActivationInner() {
                 const planRes = await ownerService.fetchPlan();
                 const planData = planRes?.data || planRes;
 
-                const configRes = await apiClient.get('website/owner/payment-config');
-                const configData = configRes?.data?.data || configRes?.data || configRes;
+                const configRes = await ownerService.paymentConfig();
+                const configData = configRes?.data || configRes;
 
                 if (isMounted) {
                     setPlan(planData);
@@ -128,6 +128,17 @@ function PremiumActivationInner() {
 
             const orderData = orderRes?.data || orderRes;
             const gateway = orderData.gateway || paymentConfig?.payment_gateway;
+            const isFreeActivation =
+                orderData.is_free === true ||
+                gateway === 'free' ||
+                orderData.checkout_status === 'activated';
+
+            // Free plan: subscription is activated server-side — no Stripe/Razorpay
+            if (isFreeActivation) {
+                toast.success(t('premium.activatedToast'));
+                router.push('/payment-success');
+                return;
+            }
 
             if (orderData.checkout_url) {
                 window.location.href = orderData.checkout_url;
@@ -135,6 +146,12 @@ function PremiumActivationInner() {
             }
 
             if (gateway === 'razorpay') {
+                if (!paymentConfig?.publishable_key) {
+                    toast.error(t('premium.errors.unsupportedGateway'));
+                    setCheckoutLoading(false);
+                    return;
+                }
+
                 const sdkLoaded = await loadRazorpayScript();
                 if (!sdkLoaded) {
                     toast.error(t('premium.errors.sdkFailed'));
@@ -143,7 +160,7 @@ function PremiumActivationInner() {
                 }
 
                 const options = {
-                    key: paymentConfig?.publishable_key,
+                    key: paymentConfig.publishable_key,
                     subscription_id: orderData.subscription_id,
                     name: orderData.checkout_name || t('premium.checkout.name'),
                     description: orderData.checkout_description || t('premium.checkout.description'),
@@ -249,6 +266,7 @@ function PremiumActivationInner() {
     }
 
     const isPlanActive = plan?.is_active !== false;
+    const isFreePlan = Boolean(plan?.is_free || paymentConfig?.is_free);
 
     const getCurrencySymbol = (curr) => {
         switch (curr?.toUpperCase()) {
@@ -321,9 +339,19 @@ function PremiumActivationInner() {
                 <p className="description">{getDescriptionByReason()}</p>
 
                 <div className="price-container">
-                    <span className="currency">{getCurrencySymbol(plan.currency)}</span>
-                    <span className="amount">{plan.price}</span>
-                    <span className="period">{getIntervalLabel(plan.interval)}</span>
+                    {isFreePlan ? (
+                        <>
+                            <span className="currency">{getCurrencySymbol(plan.currency)}</span>
+                            <span className="amount">0</span>
+                            <span className="period">{t('premium.freeLabel')}</span>
+                        </>
+                    ) : (
+                        <>
+                            <span className="currency">{getCurrencySymbol(plan.currency)}</span>
+                            <span className="amount">{plan.price}</span>
+                            <span className="period">{getIntervalLabel(plan.interval)}</span>
+                        </>
+                    )}
                 </div>
 
                 {paymentConfig && (
@@ -360,8 +388,11 @@ function PremiumActivationInner() {
                             </>
                         ) : (
                             <>
-                                <FaLock className="lock-icon" />
-                                {plan.cta_text || t('premium.securePayment')}
+                                {!isFreePlan && <FaLock className="lock-icon" />}
+                                {plan.cta_text ||
+                                    (isFreePlan
+                                        ? t('premium.activateFree')
+                                        : t('premium.securePayment'))}
                             </>
                         )}
                     </button>

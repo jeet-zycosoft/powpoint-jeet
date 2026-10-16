@@ -39,12 +39,23 @@ profile:
                 message: ¿Estás seguro de que deseas cancelar la renovación automática de la suscripción en {location}? Una vez cancelada, seguirás teniendo acceso para chatear con cuidadores en esta área hasta que termine el período de facturación el {date}.
                 keep: Mantener suscripción
                 cancel: Cancelar renovación
+            cancelSubscription:
+                title: Cancelar suscripción
+                message: ¿Estás seguro de que deseas cancelar la suscripción en {location}? Una vez cancelada, seguirás teniendo acceso para chatear con cuidadores en esta área hasta el {date}.
+                keep: Mantener suscripción
+                cancel: Cancelar suscripción
         toasts:
             cancelSuccess: Renovación de suscripción cancelada correctamente.
             cancelFailed: Error al cancelar la renovación de la suscripción.
             cancelError: Ocurrió un error al cancelar la suscripción.
+            cancelSubscription:
+                cancelSuccess: Suscripción cancelada correctamente.
+                cancelFailed: Error al cancelar la suscripción.
+                cancelError: Ocurrió un error al cancelar la suscripción.
         status:
             activeRenew: Renovar automáticamente la suscripción de chat para esta ubicación el {date}
+            activeUntil: Active Premium para esta ubicación hasta el {date}
             expired: Suscripción expirada el {date}
             cancelled: Suscripción cancelada. El acceso finalizará el {date}
+        freeBadge: Gratis
         fallbackLocation: esta ubicación

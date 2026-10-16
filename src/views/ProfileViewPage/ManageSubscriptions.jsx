@@ -22,6 +22,18 @@ const formatDate = (dateString) => {
     }
 };
 
+/** Free / non-recurring plans should not use "auto-renewal" copy. */
+const isNonRecurringSubscription = (sub) => {
+    if (!sub) return false;
+    if (sub.is_free === true || sub.plan?.is_free === true) return true;
+    if (sub.gateway === 'free' || sub.payment_gateway === 'free') return true;
+    if (sub.is_recurring === false || sub.plan?.is_recurring === false) return true;
+    return false;
+};
+
+const getSubscriptionId = (sub) =>
+    sub?.subscription_id ?? sub?.id ?? sub?.subscription?.id ?? null;
+
 const ManageSubscriptions = ({ userType }) => {
     const intl = useIntl();
     const t = (key, values) => intl.formatMessage({ id: key }, values);
@@ -55,6 +67,7 @@ const ManageSubscriptions = ({ userType }) => {
     const handleSubscriptionToggle = useCallback(
         (sub) => {
             const isCurrentlyActive = sub.status === 'A' && !sub.is_expired;
+            const nonRecurring = isNonRecurringSubscription(sub);
 
             if (!isCurrentlyActive) {
                 showModal({
@@ -79,37 +92,74 @@ const ManageSubscriptions = ({ userType }) => {
             const expiryDateFormatted = formatDate(
                 sub.period?.current_period_end || sub.period?.expiry_date,
             );
+            const locationLabel =
+                sub.location?.city || t('profile.subscriptions.fallbackLocation');
+            const modalPrefix = nonRecurring
+                ? 'profile.subscriptions.modal.cancelSubscription'
+                : 'profile.subscriptions.modal.cancelRenewal';
 
             showModal({
                 type: 'warning',
-                title: t('profile.subscriptions.modal.cancelRenewal.title'),
-                message: t('profile.subscriptions.modal.cancelRenewal.message', {
-                    location: sub.location?.city || t('profile.subscriptions.fallbackLocation'),
+                title: t(`${modalPrefix}.title`),
+                message: t(`${modalPrefix}.message`, {
+                    location: locationLabel,
                     date: expiryDateFormatted,
                 }),
                 buttons: [
                     {
-                        text: t('profile.subscriptions.modal.cancelRenewal.keep'),
+                        text: t(`${modalPrefix}.keep`),
                         variant: 'outline-secondary',
                     },
                     {
-                        text: t('profile.subscriptions.modal.cancelRenewal.cancel'),
+                        text: t(`${modalPrefix}.cancel`),
                         variant: 'danger',
                         onClick: async () => {
+                            const subscriptionId = getSubscriptionId(sub);
+                            if (!subscriptionId) {
+                                toast.error(
+                                    t(
+                                        nonRecurring
+                                            ? 'profile.subscriptions.toasts.cancelSubscription.cancelError'
+                                            : 'profile.subscriptions.toasts.cancelError',
+                                    ),
+                                );
+                                return;
+                            }
+
                             try {
                                 const res = await ownerService.cancelSubscription({
-                                    params: { subscription_id: sub.subscription_id },
+                                    params: { subscription_id: subscriptionId },
                                 });
 
                                 if (res?.status) {
-                                    toast.success(t('profile.subscriptions.toasts.cancelSuccess'));
+                                    toast.success(
+                                        t(
+                                            nonRecurring
+                                                ? 'profile.subscriptions.toasts.cancelSubscription.cancelSuccess'
+                                                : 'profile.subscriptions.toasts.cancelSuccess',
+                                        ),
+                                    );
                                     fetchSubscriptions();
                                 } else {
-                                    toast.error(t('profile.subscriptions.toasts.cancelFailed'));
+                                    toast.error(
+                                        res?.message ||
+                                            t(
+                                                nonRecurring
+                                                    ? 'profile.subscriptions.toasts.cancelSubscription.cancelFailed'
+                                                    : 'profile.subscriptions.toasts.cancelFailed',
+                                            ),
+                                    );
                                 }
                             } catch (err) {
                                 console.error('Failed to cancel subscription:', err);
-                                toast.error(t('profile.subscriptions.toasts.cancelError'));
+                                toast.error(
+                                    err?.response?.data?.message ||
+                                        t(
+                                            nonRecurring
+                                                ? 'profile.subscriptions.toasts.cancelSubscription.cancelError'
+                                                : 'profile.subscriptions.toasts.cancelError',
+                                        ),
+                                );
                             }
                         },
                     },
@@ -166,6 +216,7 @@ const ManageSubscriptions = ({ userType }) => {
                 ) : (
                     subscriptions.map((sub) => {
                         const isChecked = sub.status === 'A' && !sub.is_expired;
+                        const nonRecurring = isNonRecurringSubscription(sub);
                         const locationLabel = [
                             sub.location?.city,
                             sub.location?.state,
@@ -179,25 +230,34 @@ const ManageSubscriptions = ({ userType }) => {
                         );
 
                         return (
-                            <div className="subscription-item" key={sub.subscription_id}>
+                            <div
+                                className="subscription-item"
+                                key={getSubscriptionId(sub) || locationLabel}
+                            >
                                 <input
                                     type="checkbox"
-                                    id={`sub-${sub.subscription_id}`}
+                                    id={`sub-${getSubscriptionId(sub)}`}
                                     checked={isChecked}
                                     onChange={() => handleSubscriptionToggle(sub)}
                                 />
-                                <label htmlFor={`sub-${sub.subscription_id}`}>
+                                <label htmlFor={`sub-${getSubscriptionId(sub)}`}>
                                     <strong>
                                         {locationLabel} (
                                         {sub.sitter_quota?.display ||
                                             `${sub.sitter_quota?.used_new_sitters || 0}/${sub.sitter_quota?.allowed_new_sitters || 5}`}
                                         )
+                                        {nonRecurring
+                                            ? ` · ${t('profile.subscriptions.freeBadge')}`
+                                            : ''}
                                     </strong>
                                     <span>
                                         {isChecked
-                                            ? t('profile.subscriptions.status.activeRenew', {
-                                                  date: dateFormatted,
-                                              })
+                                            ? t(
+                                                  nonRecurring
+                                                      ? 'profile.subscriptions.status.activeUntil'
+                                                      : 'profile.subscriptions.status.activeRenew',
+                                                  { date: dateFormatted },
+                                              )
                                             : sub.is_expired
                                               ? t('profile.subscriptions.status.expired', {
                                                     date: dateFormatted,

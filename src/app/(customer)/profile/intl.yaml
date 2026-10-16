@@ -39,12 +39,23 @@ profile:
                 message: Are you sure you want to cancel the auto-renewal for the subscription in {location}? Once cancelled, you will still have access to chat with sitters in this area until the billing period ends on {date}.
                 keep: Keep Subscription
                 cancel: Cancel Renewal
+            cancelSubscription:
+                title: Cancel Subscription
+                message: Are you sure you want to cancel the subscription in {location}? Once cancelled, you will still have access to chat with sitters in this area until {date}.
+                keep: Keep Subscription
+                cancel: Cancel Subscription
         toasts:
             cancelSuccess: Subscription renewal cancelled successfully.
             cancelFailed: Failed to cancel subscription renewal.
             cancelError: An error occurred while cancelling subscription.
+            cancelSubscription:
+                cancelSuccess: Subscription cancelled successfully.
+                cancelFailed: Failed to cancel subscription.
+                cancelError: An error occurred while cancelling subscription.
         status:
             activeRenew: Automatically renew the chat subscription for this location on {date}
+            activeUntil: Active Premium for this location until {date}
             expired: Subscription expired on {date}
             cancelled: Subscription cancelled. Access will end on {date}
+        freeBadge: Free
         fallbackLocation: this location

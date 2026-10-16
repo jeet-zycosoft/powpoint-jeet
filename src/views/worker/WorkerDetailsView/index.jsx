@@ -5,7 +5,7 @@ import { ownerService } from '@/services/ownerService';
 import { publicService } from '@/services/publicService';
 import { selectUser } from '@/store/features/user/userSlice';
 import { useQuery } from '@tanstack/react-query';
-import { use, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
 import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
@@ -368,6 +368,37 @@ function SitterProfileInner({ params }) {
     const [isChatLoading, setIsChatLoading] = useState(false);
     const [chatActionInProgress, setChatActionInProgress] = useState(false);
     const [sitterQuota, setSitterQuota] = useState(null);
+    const [isFavorite, setIsFavorite] = useState(false);
+
+    useEffect(() => {
+        setIsFavorite(Boolean(sitter?.isInFev || sitter?.is_favorite));
+    }, [sitter?.id, sitter?.isInFev, sitter?.is_favorite]);
+
+    const handleFavoriteClick = async () => {
+        if (!isAuthenticated) {
+            toast.info(t('sitterModal.loginFavorite'));
+            router.push('/login');
+            return;
+        }
+        if (!sitter?.id && !id) return;
+
+        const sitterId = sitter?.id || id;
+
+        try {
+            if (isFavorite) {
+                await publicService.favoriteRemove({ sitter_id: sitterId });
+                setIsFavorite(false);
+                toast.success(t('sitterModal.removeSuccess'));
+            } else {
+                await publicService.favoriteAdd({ favorited_user_id: sitterId });
+                setIsFavorite(true);
+                toast.success(t('sitterModal.addSuccess'));
+            }
+        } catch (err) {
+            console.error('Error updating favorite:', err);
+            toast.error(t('sitterModal.favoriteError'));
+        }
+    };
 
     const handleChatClick = async (e) => {
         if (e) e.preventDefault();
@@ -797,7 +828,13 @@ function SitterProfileInner({ params }) {
                                 loadingLabel={t('workerDetails.verifying')}
                                 icon={<FiMessageCircle size={20} />}
                             />
-                            {isAuthenticated && <AddToFevouriteBtn />}
+                            {isAuthenticated && (
+                                <AddToFevouriteBtn
+                                    active={isFavorite}
+                                    onClick={handleFavoriteClick}
+                                    label={t('common.favorite')}
+                                />
+                            )}
                         </div>
                     </div>
                 </div>

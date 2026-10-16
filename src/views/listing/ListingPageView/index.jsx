@@ -110,6 +110,8 @@ const initialFilterState = {
 };
 
 const toFiniteNumber = (value) => {
+    // Number(null) and Number('') are 0, which would look like a real coordinate.
+    if (value === '' || value === null || value === undefined) return null;
     const parsed = Number(value);
     return Number.isFinite(parsed) ? parsed : null;
 };

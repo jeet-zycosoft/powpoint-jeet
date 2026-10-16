@@ -17,6 +17,9 @@ premium:
     retry: Reintentar
     processing: Procesando...
     securePayment: Pago seguro
+    activateFree: Activar Premium — Gratis
+    activatedToast: Premium activado
+    freeLabel: Gratis
     noPlan: No hay ningún plan activo disponible en este momento.
     titles:
         purchase: Active Premium
